@@ -103,7 +103,28 @@ include "../conexion.php";
                                 <td><?php echo $data['nombre'] ?></td>
                                 <td><?php echo $data['telefono'] ?></td>
                                 <td><?php echo $data['direccion'] ?></td>
-                                <td><?php echo $data['estatus'] ?></td>
+                                <td>
+                                <?php
+                                        if ($data['estatus'] == 0) {
+                                    ?>
+                                    <div class="alert alert-danger">
+
+                                    <?php
+                                            echo "Inactivo"; 
+                                        }else{
+                                    
+                                    ?> 
+                                    </div>
+
+                                    <div class="alert alert-success">
+                                    
+                                    <?php
+                                    
+                                        echo "Activo";
+                                    }
+
+                                    ?>
+                                </td>
                                 
                                 
 
