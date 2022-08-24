@@ -85,65 +85,91 @@
 
 
 
-                    <div class=" container-register2">
+                    <div class=" ">
+
+                    
                         
                         <form action="" method="post" class="fields" class="">
 
                         <div class="row mb-3">
-                             <div class="col-md-6">
-                                 <div class=" mb-3 mb-md-0">
+                        <h3>Registro de Proyectos - Comercializadora</h3><hr>
+                            <div class=" col-md-1 offset-md-11">
+                                    <span for="inputFirstName">N°</span> 
+                                    <input class="form-control form-control" id="inputFirstName" type="text" value="12" disabled />
+                            </div>
+
+                            <div class=" mb-3">
                                     <span for="inputFirstName">Nombre del Contratante / Persona y Dirección de Contacto</span> 
                                     <input class="form-control form-control-sm" id="inputFirstName" type="text" />
-                                 </div>
-                             </div>
+                            </div>
 
-                             <div class="col-md-6">
-                                 <div class=" mb-3 mb-md-0">
+                            <div class=" mb-3">
                                     <span for="inputFirstName">Objeto del Contrato (Obra similar)</span> 
                                     <input class="form-control form-control-sm" id="inputFirstName" type="text" />
-                                 </div>
-                             </div>
-                              
-                        </div>
+                            </div>
 
-                        <div class="row mb-3">
+                             
+
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Nombre del Contratante / Persona y Dirección de Contacto</span> 
+                                    <span for="inputFirstName">Ubicación</span> 
+                                    <input class="form-control form-control-sm" id="inputFirstName" type="text" />
+                                 </div>
+                             </div>
+
+                             <div class="col-md-3">
+                                 <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Monto final del contrato en Bs. (*)</span> 
+                                    <input class="form-control form-control-sm money" id="inputFirstName" type="number" step='0.01'  placeholder='0.00' />
+                                 </div>
+                             </div>
+
+                             <div class="col-md-3">
+                                 <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Monto en $u$ (Llenado de uso alternativo)</span> 
+                                    <input class="form-control form-control-sm money " id="inputFirstName" type="number" step='0.01'  placeholder='0.00' />
+                                 </div>
+                             </div>
+
+                             <div class="col-md-6">
+                                 <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Período de ejecución (Fecha de inicio y finalización)</span> 
+                                    <input class="form-control form-control-sm" id="inputFirstName" type="date" />
+                                 </div>
+                             </div>
+
+                             
+
+                             <div class="col-md-6">
+                                 <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">% participación en Asociación (**)</span> 
+                                    <input class="form-control form-control-sm warning" id="inputFirstName" type="text" value="Encargado"/>
+                                 </div>
+                             </div>
+
+                             <div class="col-md-6">
+                                 <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Nombre Ll del Socio(s) (***)</span> 
                                     <input class="form-control form-control-sm" id="inputFirstName" type="text" />
                                  </div>
                              </div>
 
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Objeto del Contrato (Obra similar)</span> 
-                                    <input class="form-control form-control-sm" id="inputFirstName" type="text" />
-                                 </div>
-                             </div>
-                              
-                        </div>
-
-                        <div class="row mb-3">
-                             <div class="col-md-6">
-                                 <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Nombre del Contratante / Persona y Dirección de Contacto</span> 
-                                    <input class="form-control form-control-sm" id="inputFirstName" type="text" />
+                                    <span for="inputFirstName">Profesional Responsable (****)</span> 
+                                    <input class="form-control form-control-sm warning" id="inputFirstName" type="text" value="Alberto Arispe Ponce" />
                                  </div>
                              </div>
 
-                             <div class="col-md-6">
-                                 <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Objeto del Contrato (Obra similar)</span> 
-                                    <input class="form-control form-control-sm" id="inputFirstName" type="text" />
-                                 </div>
-                             </div>
-                              
+                             <div class=" col-md-8"> <hr>
+                             <div class="input-group mb-3">
+                                    <label class="input-group-text" for="inputGroupFile01"><i class="fa-solid fa-upload"></i></label>
+                                    <input type="file" class="form-control" id="inputGroupFile01">
+                                    </div>
+                             </div> 
                         </div>
 
                         
-
-                        
-
 
 
                             <hr class="w-100">
@@ -153,11 +179,8 @@
                             
 
                             <div class="center">
-                                <center>
                                 <div class=" align-self-center " role="alert" style=""> <?php echo isset ($alert) ? $alert :''; ?></div>
-                                <input type="submit" value="Crear Cliente" class="btn btn-success  border-0 w-50   " data-dismiss="alert" >
-                                </center>
-                                
+                                <input type="submit" value="Registrar Experiencia" class="btn btn-success  border-0 w-50   " data-dismiss="alert" >
                             </div>
                             
                                     

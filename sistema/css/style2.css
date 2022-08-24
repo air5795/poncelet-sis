@@ -22,7 +22,8 @@
 
 }
 .container-register2{
-    
+    position:relative;
+    max-width: 900px;
     background-color: rgb(243, 243, 243);
     border-radius: 7px;
     margin: 0 15px;
@@ -43,5 +44,14 @@
 
 }
 
+.money{
+    background-color: rgb(227, 255, 236) !important;
+}
 
+.warning{
+    background-color: rgb(255, 255, 209);
+}
 
+.orange{
+    background-color: rgb(250, 228, 214);
+}
