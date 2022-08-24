@@ -38,7 +38,7 @@ include "../conexion.php";
                 <hr>
                 <!-- llenado de tabla-->
 
-                <a href="registro_cliente.php" class="btn btn-primary">Crear Usuario</a>
+                <a href="registro_cliente.php" class="btn btn-primary">Crear nuevo Cliente</a>
 
                 <hr>
             
