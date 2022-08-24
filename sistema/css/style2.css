@@ -21,6 +21,15 @@
     
 
 }
+.container-register2{
+    
+    background-color: rgb(243, 243, 243);
+    border-radius: 7px;
+    margin: 0 15px;
+    box-shadow: 0 5px 10px;
+    padding: 30px;
+    
+}
 
 .formulario{
     display: grid;
