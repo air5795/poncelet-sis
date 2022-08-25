@@ -1,50 +1,5 @@
 <?php
-    
 
-    session_start();
-    
-
-    include "../conexion.php";
-    if (!empty($_POST)) {
-        $alert = '';
-        if (empty($_POST['nombre']) || empty($_POST['direccion']) || empty($_POST['nit'])) {
-            $alert = '<p class="alert alert-danger w-50"> Todos los Campos Son Obligatorios menos telefono *</p> ';
-        } 
-        else 
-        {
-
-            $nit = $_POST['nit'];
-            $nombre = $_POST['nombre'];
-            $telefono = $_POST['telefono'];
-            $direccion = $_POST['direccion'];
-            $usuario_id = $_SESSION['iduser'];
-
-            $result = 0;
-
-            if (is_numeric($nit) and $nit !=0) {
-                $query = mysqli_query($conexion,"SELECT * FROM cliente WHERE nit = '$nit'");
-                $result = mysqli_fetch_array($query);
-
-
-            }
-
-            if ($result > 0) {
-                $alert = '<p class="alert alert-danger w-50"> El numero de nit ya existe</p> ';
-            }else {
-                $query_insert = mysqli_query($conexion, "INSERT INTO cliente (nit,nombre,telefono,direccion,usuario_id) 
-                                                         VALUES ('$nit','$nombre','$telefono','$direccion','$usuario_id')");
-                                        
-                                        if ($query_insert) {
-                                            $alert = '<p class="alert alert-success"> Cliente Guardado Correctamente </p> ';
-                                        }
-                                        else{
-                                            $alert = '<p class="alert alert-danger w-50"> El registro fallo </p> ';
-                                        }
-            }
-            
-        }
-        
-    }
 ?>
 
 
