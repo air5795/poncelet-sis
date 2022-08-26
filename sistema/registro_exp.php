@@ -110,17 +110,17 @@
                         <div class="row mb-3">
                             
 
-                            <div class=" mb-3">
-                                    <span for="inputFirstName">Nombre del Contratante / Persona y Dirección de Contacto</span> 
+                            <div class=" mb-3 caja">
+                                    <span for="inputFirstName">Nombre del Contratante / Persona y Dirección de Contacto</span>
                                     <input class="form-control form-control-sm" name="nombre_contratante" type="text" />
                             </div>
 
-                            <div class=" mb-3">
+                            <div class=" mb-3 caja">
                                     <span for="inputFirstName">Objeto del Contrato (Obra similar)</span> 
                                     <input class="form-control form-control-sm" name="obj_contrato" type="text" />
                             </div>
 
-                             
+                             <hr>
 
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">

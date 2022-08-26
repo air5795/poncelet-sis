@@ -23,7 +23,7 @@
 }
 .container-register2{
     position:relative;
-    width: 100%;
+    max-width:900px;
     background-color: rgb(243, 243, 243);
     border-radius: 7px;
     margin: 0 15px;
@@ -63,3 +63,4 @@
     background-color: rgb(236, 247, 236);
     border-radius: 5px;
 }
+

@@ -39,18 +39,50 @@ include "../conexion.php";
                 <!-- llenado de tabla-->
 
                 <div class="row g-3">
-                <a href="registro_exp.php" class=" btn btn-primary col ">Nuevo Proyecto</a>
-                <a href="registro_exp.php" class=" btn btn-danger col ">Crear PDF</a>
                 
                 <div class="input-group  col">
-                        <span class="input-group-text" id="basic-addon1">N° de proyectos </span>
-                        <input type="text" class="form-control alert-warning" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                       <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
                 </div>
-                <div class="input-group  col ">
+                <div class="input-group  col">
+                        <a href="registro_exp.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i>  Crear PDF</a>
+                </div>
+                <div class="input-group  col">
+                        <a href="registro_exp.php" class=" btn btn-success col "> <i class="fa-solid fa-table"></i>  Crear Excel</a>
+                </div>
+                <div class="input-group col">
+                        
+                    </div>
+                    <div class="input-group col">
+                        
+                    </div>
+                    <div class="input-group col">
+                        
+                    </div>
+                    <div class="input-group col">
+                        
+                    </div>
+                
+                </div>
+<hr>
+                <div class="row g-3">
+                    <div class="input-group col">
+                        
+                    </div>
+                    <div class="input-group col">
+                        
+                    </div>
+                    <div class="input-group col">
+                        <span class="input-group-text" id="basic-addon1">N° de proyectos </span>
+                        <input type="text" class="form-control border-warning bg-opacity-25 bg-warning" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group  col ">
                         <span class="input-group-text" id="basic-addon1">Total (Bs)</span>
                         <input type="text" class="form-control alert-success" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
                 </div>
-                </div>
+
+                
 
                 
                     
@@ -70,8 +102,8 @@ include "../conexion.php";
 
                 <div class="card-body">
                 
-                <table  class="display compact" style="width:100%" " id="datatablesSimple"  >
-                <thead>
+                <table  class=" table-striped-columns" style="width:100%" " id="datatablesSimple"  >
+                <thead class="table-secondary">
                     <tr>
                         <th>idº</th>
                         <th>Nombre del contratante / Persona y Direccion de contacto</th>
