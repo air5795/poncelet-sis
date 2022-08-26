@@ -40,27 +40,28 @@ include "../conexion.php";
 
                 <div class="row g-3">
                 
-                <div class="input-group  col">
-                       <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
+                        <div class="input-group  col">
+                            <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
+                        </div>
+                        <div class="input-group  col">
+                                <a href="registro_exp.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i>  Crear PDF</a>
+                        </div>
+                        <div class="input-group  col">
+                                <a href="registro_exp.php" class=" btn btn-success col "> <i class="fa-solid fa-table"></i>  Crear Excel</a>
+                        </div>
+
+                        <div class="input-group col">
+                                
+                        </div>
+                        <div class="input-group col">
+                                
+                        </div>
+                        <div class="input-group col">
+                                
+                        </div>
+                        <div class="input-group col">
+                        
                 </div>
-                <div class="input-group  col">
-                        <a href="registro_exp.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i>  Crear PDF</a>
-                </div>
-                <div class="input-group  col">
-                        <a href="registro_exp.php" class=" btn btn-success col "> <i class="fa-solid fa-table"></i>  Crear Excel</a>
-                </div>
-                <div class="input-group col">
-                        
-                    </div>
-                    <div class="input-group col">
-                        
-                    </div>
-                    <div class="input-group col">
-                        
-                    </div>
-                    <div class="input-group col">
-                        
-                    </div>
                 
                 </div>
 <hr>

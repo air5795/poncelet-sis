@@ -101,11 +101,14 @@
 
 
 
-                    <div class=" container-register2">
+                    <div class=" container-register2 row g-4">
 
+                        <div class="col">
+
+                        
                     
                         
-                        <form action="" method="post" class="fields was-validated" enctype="multipart/form-data" novalidate >
+                        <form action="" method="post" class="fields was-validated " enctype="multipart/form-data" novalidate >
 
                         <div class="row mb-3">
                             
@@ -131,7 +134,7 @@
 
                              <div class="col-md-3">
                                  <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Monto del contrato en Bs.</span> 
+                                    <span for="inputFirstName">Monto en Bs.</span> 
                                     <input class="form-control form-control-sm money" id="bs" name="monto_bs" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_dolar()" required/>
                                  </div>
                              </div>
@@ -174,11 +177,14 @@
                              </div>
 
                              <div class=" col-md-8"> <hr>
-                             <div class="input-group mb-3">
-                                    <label class="input-group-text" for="inputGroupFile01"><i class="fa-solid fa-upload"></i></label>
-                                    <input type="file" class="form-control" id="inputGroupFile01" name="image" required>
-                                    </div>
-                             </div> 
+                             
+                             
+                             
+
+                             <div class="">
+                                    <input type="file" class=""  name="image" id="files"  required>
+                            </div>
+                             </div>
                         </div>
 
                         
@@ -195,15 +201,32 @@
                                 <input type="submit" value="Registrar Experiencia" class="btn btn-success  border-0 w-50   " data-dismiss="alert" >
                             </div>
                             
+                            
                                     
 
 
                             
                        </form>
 
-                       
-                    </div>
+                       </div>
+
+                       <div class="col">
+                            <div class="" id="">
+                             <center> <output id="list" class="form-control""></output></center>
+                             
+
+                            </div>
+                       </div>
+
+
+
+                      
                         
+                       
+                        
+                    </div>
+
+                    
 
                         
                     </div>
@@ -242,14 +265,45 @@
         }
 
 
-    </script>
         
+
+    </script>
+        <script>
+            function archivo(evt) {
+                var files = evt.target.files; // FileList object
+                
+                    //Obtenemos la imagen del campo "file". 
+                for (var i = 0, f; f = files[i]; i++) {         
+                    //Solo admitimos imágenes.
+                    if (!f.type.match('image.*')) {
+                            continue;
+                    }
+                
+                    var reader = new FileReader();
+                    
+                    reader.onload = (function(theFile) {
+                        return function(e) {
+                        // Creamos la imagen.
+                                document.getElementById("list").innerHTML = ['<img class="thumb" style="width:320px;" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+                        };
+                    })(f);
+            
+                    reader.readAsDataURL(f);
+                }
+            }
+                        
+                document.getElementById('files').addEventListener('change', archivo, false);
+        </script>
+    
+        <script src="js/function.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+
+        
         <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>
