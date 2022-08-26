@@ -38,7 +38,24 @@ include "../conexion.php";
                 <hr>
                 <!-- llenado de tabla-->
 
-                <a href="registro_exp.php" class="btn btn-primary">Nuevo Proyecto</a>
+                <div class="row g-3">
+                <a href="registro_exp.php" class=" btn btn-primary col ">Nuevo Proyecto</a>
+                <a href="registro_exp.php" class=" btn btn-danger col ">Crear PDF</a>
+                
+                <div class="input-group  col">
+                        <span class="input-group-text" id="basic-addon1">N° de proyectos </span>
+                        <input type="text" class="form-control alert-warning" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group  col ">
+                        <span class="input-group-text" id="basic-addon1">Total (Bs)</span>
+                        <input type="text" class="form-control alert-success" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                </div>
+
+                
+                    
+                
+                
 
                 <hr>
             
@@ -52,10 +69,11 @@ include "../conexion.php";
 
 
                 <div class="card-body">
+                
                 <table  class="display compact" style="width:100%" " id="datatablesSimple"  >
                 <thead>
                     <tr>
-                        <th>Nº</th>
+                        <th>idº</th>
                         <th>Nombre del contratante / Persona y Direccion de contacto</th>
                         <th>Objeto del Contrato</th>
                         <th>Ubicacion</th>
@@ -100,10 +118,16 @@ include "../conexion.php";
 
                     if ($result > 0) {
                         while ($data = mysqli_fetch_array($query)) {
+                            if ($data['image'] != 'nodisponible.png') {
+                                $image = 'img/actas/'.$data['image'];
+
+                            }else {
+                                $image = 'img/'.$data['image'];
+                            }                            
 
                     ?>
                             <tr>
-                                <td><?php echo $data['num_acta'] ?></td>
+                                <td><?php echo $data['id_exp'] ?></td>
                                 <td><?php echo $data['nombre_contratante'] ?></td>
                                 <td><?php echo $data['obj_contrato'] ?></td>
                                 <td><?php echo $data['ubicacion'] ?></td>
@@ -114,8 +138,7 @@ include "../conexion.php";
                                 <td><?php echo $data['n_socio'] ?></td>
                                 <td><?php echo $data['profesional_resp'] ?></td>
                                 <td>
-                                    <img style= "width:100px" src="data:image/png;base64,<?php echo base64_encode($data['image']) ?>" 
-                                    alt=""> 
+                                    <img style= "width:100px" src="<?php echo $image ?>" alt=""> 
                                 </td>
                                 
                                 

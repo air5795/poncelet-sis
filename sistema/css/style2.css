@@ -23,7 +23,7 @@
 }
 .container-register2{
     position:relative;
-    max-width: 900px;
+    width: 100%;
     background-color: rgb(243, 243, 243);
     border-radius: 7px;
     margin: 0 15px;
@@ -54,4 +54,12 @@
 
 .orange{
     background-color: rgb(250, 228, 214);
+}
+.input-money{
+    border: rgb(0, 190, 48) 1px solid;
+    width: 200px;
+    padding: 6px;
+    margin: 23px;
+    background-color: rgb(236, 247, 236);
+    border-radius: 5px;
 }

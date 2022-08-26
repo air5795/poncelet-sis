@@ -1,5 +1,66 @@
 <?php
+    
 
+    session_start();
+    
+
+    include "../conexion.php";
+    if (!empty($_POST)) {
+
+        if (empty($_POST['nombre_contratante']) || empty($_POST['obj_contrato']) || empty($_POST['ubicacion']) || empty($_POST['monto_bs']) || empty($_POST['monto_dolares']) 
+         || empty($_POST['fecha_ejecucion']) || empty($_POST['participa_aso']) || empty($_POST['profesional_resp'])) {
+            $alert = '<p class="alert alert-danger w-50"> Todos los Campos Son Obligatorios menos Nombre LI Socio(s)*</p> ';
+       } 
+       else 
+     {
+            
+            $nombre_contratante = $_POST['nombre_contratante'];
+            $obj_contrato = $_POST['obj_contrato'];
+            $ubicacion = $_POST['ubicacion'];
+            $monto_bs = $_POST['monto_bs'];
+            $monto_dolores = $_POST['monto_dolares'];
+            $fecha_ejecucion = $_POST['fecha_ejecucion'];
+            $participa_aso = $_POST['participa_aso'];
+            $n_socio = $_POST['n_socio'];
+            $profesional_resp = $_POST['profesional_resp'];
+            $usuario_id = $_SESSION['iduser'];
+
+            $image = $_FILES['image'];
+            $nombre_image = $image['name'];
+            $type = $image['type'];
+            $url_temp = $image['tmp_name'];
+
+            $imgProducto = 'nodisponible.png';
+
+            if ($nombre_image != '') {
+                $destino = 'img/actas/';
+                $img_nombre = 'acta_'.md5(date('d-m-y H:m:s'));
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa = $img_nombre.'.jpg';
+                $src= $destino.$imgActa;
+            }
+
+
+            
+            $query_insert = mysqli_query($conexion, "INSERT INTO exp_general (nombre_contratante, obj_contrato, ubicacion, monto_bs, monto_dolares
+                                                                , fecha_ejecucion, participa_aso, n_socio, profesional_resp, image, usuario_id) 
+                                                     VALUES ('$nombre_contratante','$obj_contrato','$ubicacion','$monto_bs','$monto_dolores'
+                                                                ,'$fecha_ejecucion','$participa_aso','$n_socio','$profesional_resp','$imgActa','$usuario_id')");
+                                        
+                                        if ($query_insert) {
+                                            if ($nombre_image != '') {
+                                                move_uploaded_file($url_temp,$src);
+                                            }
+                                            $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
+                                        }
+                                        else{
+                                            $alert = '<p class="alert alert-danger w-50"> El registro fallo </p> ';
+                                        }
+            
+            
+        }
+        
+    }
 ?>
 
 
@@ -40,27 +101,23 @@
 
 
 
-                    <div class=" ">
+                    <div class=" container-register2">
 
                     
                         
-                        <form action="" method="post" class="fields" class="">
+                        <form action="" method="post" class="fields" enctype="multipart/form-data">
 
                         <div class="row mb-3">
-                        <h3>Registro de Proyectos - Comercializadora</h3><hr>
-                            <div class=" col-md-1 offset-md-11">
-                                    <span for="number">N°</span> 
-                                    <input class="form-control form-control" id="num_acta" type="text" value="12" disabled />
-                            </div>
+                            
 
                             <div class=" mb-3">
                                     <span for="inputFirstName">Nombre del Contratante / Persona y Dirección de Contacto</span> 
-                                    <input class="form-control form-control-sm" id="nombre_contratante" type="text" />
+                                    <input class="form-control form-control-sm" name="nombre_contratante" type="text" />
                             </div>
 
                             <div class=" mb-3">
                                     <span for="inputFirstName">Objeto del Contrato (Obra similar)</span> 
-                                    <input class="form-control form-control-sm" id="obj_contrato" type="text" />
+                                    <input class="form-control form-control-sm" name="obj_contrato" type="text" />
                             </div>
 
                              
@@ -68,28 +125,28 @@
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Ubicación</span> 
-                                    <input class="form-control form-control-sm" id="ubicacion" type="text" />
+                                    <input class="form-control form-control-sm" name="ubicacion" type="text" />
                                  </div>
                              </div>
 
                              <div class="col-md-3">
                                  <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Monto final del contrato en Bs. (*)</span> 
-                                    <input class="form-control form-control-sm money" id="monto_bs" type="number" step='0.01'  placeholder='0.00' />
+                                    <span for="inputFirstName">Monto del contrato en Bs.</span> 
+                                    <input class="form-control form-control-sm money" id="bs" name="monto_bs" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_dolar()"/>
                                  </div>
                              </div>
 
                              <div class="col-md-3">
                                  <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Monto en $u$ (Llenado de uso alternativo)</span> 
-                                    <input class="form-control form-control-sm money " id="monto_dolares" type="number" step='0.01'  placeholder='0.00' />
+                                    <span for="inputFirstName">Monto en $u$ </span> 
+                                    <input class="form-control form-control-sm money " id="dolar" name="monto_dolares" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_bs()" />
                                  </div>
                              </div>
 
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Período de ejecución (Fecha de inicio y finalización)</span> 
-                                    <input class="form-control form-control-sm" id="fecha_ejecucion" type="date" />
+                                    <input class="form-control form-control-sm" name="fecha_ejecucion" type="date" />
                                  </div>
                              </div>
 
@@ -98,28 +155,28 @@
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">% participación en Asociación (**)</span> 
-                                    <input class="form-control form-control-sm warning" id="participa_aso" type="text" value="Encargado"/>
+                                    <input class="form-control form-control-sm warning" name="participa_aso" type="text" value="Encargado"/>
                                  </div>
                              </div> 
 
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Nombre Ll del Socio(s) (***)</span> 
-                                    <input class="form-control form-control-sm" id="n_socio" type="text" />
+                                    <input class="form-control form-control-sm" name="n_socio" type="text" />
                                  </div>
                              </div>
 
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Profesional Responsable (****)</span> 
-                                    <input class="form-control form-control-sm warning" id="profesional_resp" type="text" value="Alberto Arispe Ponce" />
+                                    <input class="form-control form-control-sm warning" name="profesional_resp" type="text" value="Alberto Arispe Ponce" />
                                  </div>
                              </div>
 
                              <div class=" col-md-8"> <hr>
                              <div class="input-group mb-3">
                                     <label class="input-group-text" for="inputGroupFile01"><i class="fa-solid fa-upload"></i></label>
-                                    <input type="file" class="form-control" id="inputGroupFile01">
+                                    <input type="file" class="form-control" id="inputGroupFile01" name="image">
                                     </div>
                              </div> 
                         </div>
@@ -163,7 +220,29 @@
                 </footer>
             </div>
         </div>
+    <script type="text/javascript">
+        function calcular_a_dolar(){
+            try{
+                var a = parseFloat(document.getElementById("bs").value) || 0;
+                decimal = a.toFixed(2);
+                proceso = decimal/6.96;
+                result = proceso.toFixed(2);
+                document.getElementById("dolar").value = result;
+            } catch(e){}
+        }
 
+        function calcular_a_bs(){
+            try{
+                var b = parseFloat(document.getElementById("dolar").value) || 0;
+                decimal = b.toFixed(2);
+                proceso = decimal*6.96;
+                result = proceso.toFixed(2);
+                document.getElementById("bs").value = result;
+            } catch(e){}
+        }
+
+
+    </script>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
