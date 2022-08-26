@@ -105,19 +105,19 @@
 
                     
                         
-                        <form action="" method="post" class="fields" enctype="multipart/form-data">
+                        <form action="" method="post" class="fields was-validated" enctype="multipart/form-data" novalidate >
 
                         <div class="row mb-3">
                             
 
                             <div class=" mb-3 caja">
                                     <span for="inputFirstName">Nombre del Contratante / Persona y Dirección de Contacto</span>
-                                    <input class="form-control form-control-sm" name="nombre_contratante" type="text" />
+                                    <input  class="form-control form-control-sm " name="nombre_contratante" type="text"  required />
                             </div>
 
                             <div class=" mb-3 caja">
                                     <span for="inputFirstName">Objeto del Contrato (Obra similar)</span> 
-                                    <input class="form-control form-control-sm" name="obj_contrato" type="text" />
+                                    <input class="form-control form-control-sm" name="obj_contrato" type="text" required />
                             </div>
 
                              <hr>
@@ -125,28 +125,28 @@
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Ubicación</span> 
-                                    <input class="form-control form-control-sm" name="ubicacion" type="text" />
+                                    <input class="form-control form-control-sm" name="ubicacion" type="text" required />
                                  </div>
                              </div>
 
                              <div class="col-md-3">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Monto del contrato en Bs.</span> 
-                                    <input class="form-control form-control-sm money" id="bs" name="monto_bs" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_dolar()"/>
+                                    <input class="form-control form-control-sm money" id="bs" name="monto_bs" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_dolar()" required/>
                                  </div>
                              </div>
 
                              <div class="col-md-3">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Monto en $u$ </span> 
-                                    <input class="form-control form-control-sm money " id="dolar" name="monto_dolares" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_bs()" />
+                                    <input class="form-control form-control-sm money " id="dolar" name="monto_dolares" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_bs()" required />
                                  </div>
                              </div>
 
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Período de ejecución (Fecha de inicio y finalización)</span> 
-                                    <input class="form-control form-control-sm" name="fecha_ejecucion" type="date" />
+                                    <input class="form-control form-control-sm" name="fecha_ejecucion" type="date" required />
                                  </div>
                              </div>
 
@@ -176,7 +176,7 @@
                              <div class=" col-md-8"> <hr>
                              <div class="input-group mb-3">
                                     <label class="input-group-text" for="inputGroupFile01"><i class="fa-solid fa-upload"></i></label>
-                                    <input type="file" class="form-control" id="inputGroupFile01" name="image">
+                                    <input type="file" class="form-control" id="inputGroupFile01" name="image" required>
                                     </div>
                              </div> 
                         </div>
