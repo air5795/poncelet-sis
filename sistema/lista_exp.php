@@ -3,6 +3,10 @@
 session_start();
 include "../conexion.php";
 
+//suma de monto bs total 
+
+
+
 ?>
 
 
@@ -73,13 +77,28 @@ include "../conexion.php";
                         
                     </div>
                     <div class="input-group col">
-                        <span class="input-group-text" id="basic-addon1">N° de proyectos </span>
-                        <input type="text" class="form-control border-warning bg-opacity-25 bg-warning" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                        
                     </div>
 
-                    <div class="input-group  col ">
-                        <span class="input-group-text" id="basic-addon1">Total (Bs)</span>
-                        <input type="text" class="form-control alert-success" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                    <?php
+                            $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general;");
+                            $result_sum = mysqli_fetch_array($sql_suma_bs);
+                            $total = $result_sum['SUM(monto_bs)']; 
+
+                            $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_exp) FROM exp_general;");
+                            $result_f = mysqli_fetch_array($sql_tfila);
+                            $total2 = $result_f['COUNT(id_exp)']; 
+
+                    ?>
+                    
+                    <div class="input-group col input-amarillo">
+                        <span class="input-group-text " id="basic-addon1">N° de proyectos </span>
+                        <input type="text" class="form-control  bg-opacity-25 bg-dark" style="color:beige" placeholder="" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $total2 ?>" disabled>
+                    </div>
+
+                    <div class="input-group  col  input-money">
+                        <span class="input-group-text bg-success" style="color:beige" id="basic-addon1">Total (Bs)</span>
+                        <input type="text" class="form-control alert-success" placeholder="" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $total. ' Bs' ?>" disabled>
                     </div>
                 </div>
 
