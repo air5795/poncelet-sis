@@ -40,47 +40,7 @@ include "../conexion.php";
                 </ol>
 
                 <hr>
-                <!-- llenado de tabla-->
-
-                <div class="row g-3">
-                
-                        <div class="input-group  col">
-                            <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
-                        </div>
-                        <div class="input-group  col">
-                                <a href="registro_exp.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i>  Crear PDF</a>
-                        </div>
-                        <div class="input-group  col">
-                                <a href="registro_exp.php" class=" btn btn-success col "> <i class="fa-solid fa-table"></i>  Crear Excel</a>
-                        </div>
-
-                        <div class="input-group col">
-                                
-                        </div>
-                        <div class="input-group col">
-                                
-                        </div>
-                        <div class="input-group col">
-                                
-                        </div>
-                        <div class="input-group col">
-                        
-                </div>
-                
-                </div>
-<hr>
-                <div class="row g-3">
-                    <div class="input-group col">
-                        
-                    </div>
-                    <div class="input-group col">
-                        
-                    </div>
-                    <div class="input-group col">
-                        
-                    </div>
-
-                    <?php
+                <?php
                             $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general;");
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
                             $total = $result_sum['SUM(monto_bs)']; 
@@ -90,28 +50,42 @@ include "../conexion.php";
                             $total2 = $result_f['COUNT(id_exp)']; 
 
                     ?>
-                    
-                    <div class="input-group col input-amarillo">
-                        <span class="input-group-text " id="basic-addon1">N° de proyectos </span>
-                        <input type="text" class="form-control  bg-opacity-25 bg-dark" style="color:beige" placeholder="" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $total2 ?>" disabled>
-                    </div>
+                <!-- llenado de tabla-->
 
-                    <div class="input-group  col  input-money">
-                        <span class="input-group-text bg-success" style="color:beige" id="basic-addon1">Total (Bs)</span>
-                        <input type="text" class="form-control alert-success" placeholder="" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $total. ' Bs' ?>" disabled>
-                    </div>
+                <div class="row">
+
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
+                    <a href="registro_exp.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i>  Crear PDF</a>
+                    <a href="registro_exp.php" class=" btn btn-success col "> <i class="fa-solid fa-table"></i>  Crear Excel</a>
+
+                    
+                    
+                </div>
+
+                <hr><br>
+
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    
+
+                    <a class="btn btn-success disabled" role="button" aria-disabled="true" ><?php echo 'Total : '.$total. ' Bs' ?></a>
+                    <a class="btn btn-secondary disabled" role="button" aria-disabled="true">N° de Proyectos: <?php echo $total2 ?></a>
+                    
                 </div>
 
                 
+                        
 
-                
+                        
                     
+                        
+                </div>
                 
-                
+                </div>
 
-                <hr>
+
             
-
+<br>
                 <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -124,10 +98,10 @@ include "../conexion.php";
                 
                 <table  class=" table-striped-columns" style="width:100%" " id="datatablesSimple"  >
                 <thead class="table-secondary">
-                    <tr>
+                    <tr class="fila">
                         <th>idº</th>
-                        <th>Nombre del contratante / Persona y Direccion de contacto</th>
-                        <th>Objeto del Contrato</th>
+                        <th class="col-sm-6">Nombre del contratante / Persona y Direccion de contacto</th>
+                        <th class="col-sm-6">Objeto del Contrato</th>
                         <th>Ubicacion</th>
                         <th>Monto final del contrato en (Bs)</th>
                         <th>Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
@@ -135,7 +109,9 @@ include "../conexion.php";
                         <th>% de Participacion en Asociacion</th>
                         <th>Nombre LI del Socio(s)</th>
                         <th>Profesional Responsable</th>
-                        <th>imagen (acta)</th>
+                        <th>imagen-1(Acta)</th>
+                        <th>imagen-2(Acta)</th>
+                        <th>imagen-3(Acta)</th>
                         <th>Acciones</th>    
                     </tr>
                     </thead>
@@ -167,15 +143,20 @@ include "../conexion.php";
                    
 
                     $result = mysqli_num_rows($query);
-
                     if ($result > 0) {
                         while ($data = mysqli_fetch_array($query)) {
-                            if ($data['image'] != 'nodisponible.png') {
+                            if ($data['image'] != 'nodisponible.png' ) {
                                 $image = 'img/actas/'.$data['image'];
+                                
 
                             }else {
                                 $image = 'img/'.$data['image'];
-                            }                            
+                            }
+                            
+                            $image2 = 'img/actas/'.$data['image2'];
+                            $image3= 'img/actas/'.$data['image3'];
+
+                      
 
                     ?>
                             <tr>
@@ -192,12 +173,18 @@ include "../conexion.php";
                                 <td>
                                     <img style= "width:100px" src="<?php echo $image ?>" alt=""> 
                                 </td>
+                                <td>
+                                    <img style= "width:100px" src="<?php echo $image2 ?>" alt=""> 
+                                </td>
+                                <td>
+                                    <img style= "width:100px" src="<?php echo $image3 ?>" alt=""> 
+                                </td>
                                 
                                 
 
                                 <td class="col-sm-2">
                                     <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar" >
-                                        <i class="fa fa-square-pen"></i>  
+                                        <i class="fa fa-square-pen"></i> 
                                     </a>
 
                                     

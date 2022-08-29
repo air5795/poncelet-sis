@@ -7,9 +7,10 @@
     include "../conexion.php";
     if (!empty($_POST)) {
 
+
         if (empty($_POST['nombre_contratante']) || empty($_POST['obj_contrato']) || empty($_POST['ubicacion']) || empty($_POST['monto_bs']) || empty($_POST['monto_dolares']) 
          || empty($_POST['fecha_ejecucion']) || empty($_POST['participa_aso']) || empty($_POST['profesional_resp'])) {
-            $alert = '<p class="alert alert-danger w-50"> Todos los Campos Son Obligatorios menos Nombre LI Socio(s)*</p> ';
+            $alert = '<p class="alert alert-danger "> Todos los Campos Son Obligatorios menos Nombre LI Socio(s)*</p> ';
        } 
        else 
      {
@@ -24,9 +25,18 @@
             $n_socio = $_POST['n_socio'];
             $profesional_resp = $_POST['profesional_resp'];
             $usuario_id = $_SESSION['iduser'];
-
             $image = $_FILES['image'];
+            $image2 = $_FILES['image2'];
+            $image3 = $_FILES['image3'];
+            
+
+            
+            
+            
+            //imagen 1
+  
             $nombre_image = $image['name'];
+
             $type = $image['type'];
             $url_temp = $image['tmp_name'];
 
@@ -40,22 +50,109 @@
                 $src= $destino.$imgActa;
             }
 
+            //imagen 2
+
+                 
+            $nombre_image2 = $image2['name'];
+            $type2= $image2['type'];
+            $url_temp2 = $image2['tmp_name'];
+
+            $imgProducto2 = 'nodisponible.png';
+
+            if ($nombre_image2 != '') {
+                $destino2 = 'img/actas/';
+                $img_nombre2 = 'acta2_'.md5(date('d-m-y H:m:s'));
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa2 = $img_nombre2.'.jpg';
+                $src2= $destino2.$imgActa2;
+            }else {
+                $destino2 = 0;
+                $img_nombre2 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa2 = 0;
+                $src2= 0;
+            }
+
+        
+
+            //imagen 3
 
             
-            $query_insert = mysqli_query($conexion, "INSERT INTO exp_general (nombre_contratante, obj_contrato, ubicacion, monto_bs, monto_dolares
-                                                                , fecha_ejecucion, participa_aso, n_socio, profesional_resp, image, usuario_id) 
-                                                     VALUES ('$nombre_contratante','$obj_contrato','$ubicacion','$monto_bs','$monto_dolores'
-                                                                ,'$fecha_ejecucion','$participa_aso','$n_socio','$profesional_resp','$imgActa','$usuario_id')");
-                                        
+  
+            $nombre_image3 = $image3['name'];
+            $type3 = $image3['type'];
+            $url_temp3 = $image3['tmp_name'];
+
+            $imgProducto3 = 'nodisponible.png';
+
+            if ($nombre_image3 != '') {
+                $destino3 = 'img/actas/';
+                $img_nombre3 = 'acta3_'.md5(date('d-m-y H:m:s'));
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa3 = $img_nombre3.'.jpg';
+                $src3= $destino3.$imgActa3;
+            }else {
+                $destino3 = 0;
+                $img_nombre3 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa3 = 0;
+                $src3= 0;
+            }
+
+        
+
+
+            
+            $query_insert = mysqli_query($conexion, "INSERT INTO exp_general(
+                                                                                nombre_contratante,
+                                                                                obj_contrato,
+                                                                                ubicacion,
+                                                                                monto_bs,
+                                                                                monto_dolares,
+                                                                                fecha_ejecucion,
+                                                                                participa_aso,
+                                                                                n_socio,
+                                                                                profesional_resp,
+                                                                                image,
+                                                                                image2,
+                                                                                image3,
+                                                                                usuario_id
+                                                                            )
+                                                                            VALUES(
+                                                                                '$nombre_contratante',
+                                                                                '$obj_contrato',
+                                                                                '$ubicacion',
+                                                                                '$monto_bs',
+                                                                                '$monto_dolores',
+                                                                                '$fecha_ejecucion',
+                                                                                '$participa_aso',
+                                                                                '$n_socio',
+                                                                                '$profesional_resp',
+                                                                                '$imgActa',
+                                                                                '$imgActa2',
+                                                                                '$imgActa3',
+                                                                                '$usuario_id'
+                                                                            )");
+                                
+
                                         if ($query_insert) {
-                                            if ($nombre_image != '') {
+                                            if ($nombre_image != '' ) {
                                                 move_uploaded_file($url_temp,$src);
-                                            }
+                                                move_uploaded_file($url_temp2,$src2);
+                                                move_uploaded_file($url_temp3,$src3);
+                                            
+                                            } 
                                             $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
+                                        }else{
+                                            $alert = '<p class="alert alert-danger "> El registro fallo </p> ';
                                         }
-                                        else{
-                                            $alert = '<p class="alert alert-danger w-50"> El registro fallo </p> ';
-                                        }
+
+                                        
+                        
+
+                                        
+
+
             
             
         }
@@ -101,9 +198,9 @@
 
 
 
-                    <div class=" container-register2 row g-4">
+                    <div class=" container-register2 row ">
 
-                        <div class="col">
+                        <div class="col-md-6">
 
                         
                     
@@ -182,7 +279,13 @@
                              
 
                              <div class="">
-                                    <input type="file" class=""  name="image" id="files"  required>
+                                    <input type="file" class="form-control"  name="image" id="files" required>
+                            </div>
+                            <div class="">
+                                    <input type="file" class="form-control"  name="image2" id="files">
+                            </div>
+                            <div class="">
+                                    <input type="file" class="form-control"  name="image3" id="files">
                             </div>
                              </div>
                         </div>
@@ -196,10 +299,14 @@
                             
                             
 
-                            <div class="center">
-                                <div class=" align-self-center " role="alert" style=""> <?php echo isset ($alert) ? $alert :''; ?></div>
-                                <input type="submit" value="Registrar Experiencia" class="btn btn-success  border-0 w-50   " data-dismiss="alert" >
+                            <div class="row">
+                                <div class="" role="alert" style=""> <?php echo isset ($alert) ? $alert :''; ?></div>
+                                
+                                <input type="submit" value="Registrar Experiencia" class="btn btn-success  border-0 " data-dismiss="alert" >
+                                
                             </div>
+
+                            <hr>
                             
                             
                                     
@@ -210,9 +317,13 @@
 
                        </div>
 
-                       <div class="col">
+                       <div class="col-md-6">
                             <div class="" id="">
-                             <center> <output id="list" class="form-control""></output></center>
+                             <center> 
+                                
+                             <output id="list" class="form-control "></output>
+                            
+                            </center>
                              
 
                             </div>
@@ -284,7 +395,7 @@
                     reader.onload = (function(theFile) {
                         return function(e) {
                         // Creamos la imagen.
-                                document.getElementById("list").innerHTML = ['<img class="thumb" style="width:320px;" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+                                document.getElementById("list").innerHTML = ['<img class="form-control" style="max-width:320px;" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
                         };
                     })(f);
             

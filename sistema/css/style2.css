@@ -55,26 +55,30 @@
     background-color: rgb(250, 228, 214);
 }
 .input-money{
-    border: rgb(0, 190, 48) 1px solid;
     width: 200px;
     padding: 6px;
-    margin: 23px;
-    background-color: rgb(236, 247, 236);
-    border-radius: 5px;
+    margin: 10px;
 }
 
 .input-amarillo{
-    border: rgb(17, 0, 37) 1px solid;
-    width: 200px;
+    width: max-content;
     padding: 6px;
-    margin: 23px;
-    background-color: rgb(104, 104, 104);
-    border-radius: 5px;
+    margin: 10px;
 
 }
 
+.boton{
+    margin: 15px;
+}
 
+.imgg{
+    max-width: 320px;
+    min-width: 250px;
+}
 
+.fila{
+    color: #222222;
+}
 
 
 
