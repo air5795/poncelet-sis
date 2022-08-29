@@ -183,13 +183,13 @@ include "../conexion.php";
                                 
 
                                 <td class="col-sm-2">
-                                    <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar" >
-                                        <i class="fa fa-square-pen"></i> 
+                                    <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-warning p-2" data-toggle="tooltip" data-placement="top" title="Editar" >
+                                    <i class="fa-solid fa-file-pen"></i>
                                     </a>
 
                                     
-                                    <a href="eliminar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Dar de Baja">
-                                        <i class="fa-solid fa-circle-minus"></i>
+                                    <a href="eliminar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-danger p-2" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                    <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                     
                                     
