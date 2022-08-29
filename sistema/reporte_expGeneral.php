@@ -13,11 +13,12 @@ $query = mysqli_query($conexion, "SELECT * FROM exp_general ORDER BY id_exp ASC"
 $result = mysqli_num_rows($query);
 
 
+
+
+
 ?>
 
-<?php
-ob_start();
-?>
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,14 +35,14 @@ ob_start();
                             
    
 
-    <div class="card-body">
+    <div class="">
 
 
-<table  class=" table table-bordered" style="width:100%" " id="datatablesSimple"  >
-                <thead class="table-secondary">
+<table  class="table" style="width:100%"    >
+                <thead class="">
                     
                 <tr>
-			        <td colspan="10" style="text-align:center;font-weight: bold;" class="exp">EXPERIENCIA GENERAL DE LA EMPRESA</td>
+			        <td colspan="10" style="text-align:center;font-weight: bold;">EXPERIENCIA GENERAL DE LA EMPRESA</td>
 		        </tr>
                 <tr>
 			        <td colspan="10" style="text-align:center; background-color: #969696; font-weight: bold;"  >Empresa Comercializadora PONCELET</td>
@@ -116,24 +117,21 @@ ob_start();
 </html>
 
 <?php
+
+
 $html = ob_get_clean();
-//echo $html;
+echo $html;
 
-require_once 'assets/dompdf/autoload.inc.php';
+include 'assets/dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
-
 $dompdf = new Dompdf();
-
 $options = $dompdf->getOptions();
 $options->set(array('isRemoteEnabled'=>true));
 $dompdf->setOptions($options);
-
-$dompdf->loadHtml($html);
-
-$dompdf->setPaper('letter');
-
+$dompdf->loadHtml('hola mundo');
+$dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
-
 $dompdf->stream("archivo_.pdf",array("Attachment" =>false));
-
 ?>
+
+
