@@ -17,7 +17,18 @@ if (empty($_SESSION['active'])) {
                 <div class="input-group">
                      
                      
-                    <p class="form-text p-2" style="color: #FFffff;">Usuario : </p> <p class="form-text p-2" style="color: #FF5733;"><?php echo $_SESSION['nombre'].' -'.$_SESSION['rol'];  ?> </p>    
+                    <p class="form-text p-2" style="color: #FFffff;">Usuario : </p> <p class="form-text p-2" style="color: #FF5733;">
+                        <?php 
+                            if ($_SESSION['rol'] == 1) {
+                                $tipo = 'Administrador';
+                                echo $_SESSION['nombre'].' - ('.$tipo.')'; 
+                            }else{
+                                $tipo = 'Trabajador';
+                                echo $_SESSION['nombre'].' - ('.$tipo.')';
+                            }
+                              
+                        ?> 
+                    </p>    
                 </div>
             </form>
             <!-- Navbar-->
