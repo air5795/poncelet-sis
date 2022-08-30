@@ -17,8 +17,8 @@ th {
 }
 
 .emp{
-    background: #2b2b2b;
-    color: #d1d1d1;
+    background: #707070;
+    color: #0a0a0a;
     font-size: 12px;
 }
 
@@ -27,7 +27,13 @@ th {
     font-size: 15px !important;
 }
 
+.exp2{
+    background: #ffffff;
+    font-size: 15px !important;
+    border-color: white;
+}
+
 .im{
-    margin-top: 170px;
-    width: 200px;
+    
+    width: 180px;
 }

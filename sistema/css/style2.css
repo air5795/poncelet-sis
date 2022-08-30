@@ -80,6 +80,17 @@
     color: #222222;
 }
 
+.tabla_ale{
+    font-size: 12px;
+    text-align: center;
+}
+thead{
+    text-align: center;
+    text-justify: auto;
+}
+th{
+    text-align: center;
+}
 
 
 

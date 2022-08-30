@@ -5,6 +5,21 @@
     
 
     include "../conexion.php";
+
+
+    $query = mysqli_query($conexion, "SELECT * FROM exp_general");
+    $result = mysqli_num_rows($query);
+    if ($result > 0) {
+        while ($data = mysqli_fetch_array($query)) {
+             $num = $data['id_exp'];
+             
+        }}
+
+        $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_exp) FROM exp_general;");
+        $result_f = mysqli_fetch_array($sql_tfila);
+        $total2 = $result_f['COUNT(id_exp)']; 
+
+
     if (!empty($_POST)) {
 
 
@@ -29,6 +44,7 @@
             $image2 = $_FILES['image2'];
             $image3 = $_FILES['image3'];
             
+            $num = $total2 +1;
 
             
             
@@ -44,7 +60,7 @@
 
             if ($nombre_image != '') {
                 $destino = 'img/actas/';
-                $img_nombre = 'acta_'.md5(date('d-m-y H:m:s'));
+                $img_nombre = 'acta_'.$num.'_1_'.$fecha_ejecucion;
                 //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
                 $imgActa = $img_nombre.'.jpg';
                 $src= $destino.$imgActa;
@@ -61,7 +77,7 @@
 
             if ($nombre_image2 != '') {
                 $destino2 = 'img/actas/';
-                $img_nombre2 = 'acta2_'.md5(date('d-m-y H:m:s'));
+                $img_nombre2 = 'acta_'.$num.'_2_'.$fecha_ejecucion;
                 //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
                 $imgActa2 = $img_nombre2.'.jpg';
                 $src2= $destino2.$imgActa2;
@@ -87,7 +103,7 @@
 
             if ($nombre_image3 != '') {
                 $destino3 = 'img/actas/';
-                $img_nombre3 = 'acta3_'.md5(date('d-m-y H:m:s'));
+                $img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
                 //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
                 $imgActa3 = $img_nombre3.'.jpg';
                 $src3= $destino3.$imgActa3;
@@ -184,6 +200,8 @@
                     <div class="container-fluid px-4">
                     <div>
                     <h1 class="mt-4">Registro de Experiencia General</h1>
+
+                    
                         
                         <ol class="breadcrumb mb-2 ">
                             <li class="breadcrumb-item active">Poncelet / Registro Experiencia General - Comercializadora</li> 
@@ -245,7 +263,7 @@
 
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Período de ejecución (Fecha de inicio y finalización)</span> 
+                                    <span for="inputFirstName">Período de ejecución </span> 
                                     <input class="form-control form-control-sm" name="fecha_ejecucion" type="date" required />
                                  </div>
                              </div>
@@ -255,7 +273,7 @@
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">% participación en Asociación (**)</span> 
-                                    <input class="form-control form-control-sm warning" name="participa_aso" type="text" value="Encargado"/>
+                                    <input class="form-control form-control-sm warning" name="participa_aso" type="text" value="ENCARGADO"/>
                                  </div>
                              </div> 
 
@@ -269,7 +287,7 @@
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Profesional Responsable (****)</span> 
-                                    <input class="form-control form-control-sm warning" name="profesional_resp" type="text" value="Alberto Arispe Ponce" />
+                                    <input class="form-control form-control-sm warning" name="profesional_resp" type="text" value="ALBERTO ARISPE PONCE" />
                                  </div>
                              </div>
 

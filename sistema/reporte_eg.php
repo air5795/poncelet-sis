@@ -31,7 +31,7 @@ ob_start();
 
 <body>
 <table>
-                <thead >
+                
                     <tr>
                         <td colspan="10" class="exp">EXPERIENCIA GENERAL</td>
                     </tr>
@@ -50,7 +50,7 @@ ob_start();
                         <th>Nombre LI del Socio(s)</th>
                         <th>Profesional Responsable</th> 
                     </tr>
-                    </thead>
+                    
                     <?php
                     // rescatar datos DB 
                     $query = mysqli_query($conexion, "SELECT
@@ -81,6 +81,7 @@ ob_start();
 
                     if ($result > 0) {
                         while ($data = mysqli_fetch_array($query)) {
+                            
 
                     ?>
                             <tr>
@@ -88,9 +89,9 @@ ob_start();
                                 <td><?php echo $data['nombre_contratante'] ?></td>
                                 <td><?php echo $data['obj_contrato'] ?></td>
                                 <td><?php echo $data['ubicacion'] ?></td>
-                                <td><?php echo $data['monto_bs'].' Bs' ?></td>
+                                <td><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
                                 <td><?php echo $data['fecha_ejecucion'] ?></td>
-                                <td><?php echo $data['monto_dolares'].' $' ?></td>
+                                <td><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
                                 <td><?php echo $data['participa_aso'] ?></td>
                                 <td><?php echo $data['n_socio'] ?></td>
                                 <td><?php echo $data['profesional_resp'] ?></td>
@@ -103,13 +104,20 @@ ob_start();
 
                     <tr>
                         <td colspan="6" class="exp">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
-                        <td colspan="4" class="exp"><?php echo $total.' Bs'?></td>
+                        <td colspan="4" class="exp"><?php echo number_format($total,2,'.',',').' Bs'?></td>
+                    </tr>
+                    <tr>
+                         <td colspan="10" class="exp2"><img class="im" src="img/sello.jpg" ></td>
                     </tr>
 
 
                 </table>
 
-                <img class="im" src="../img/img-1.jpg" >
+                
+
+                <!--<div style="page-break-after:always;">
+                            
+                </div>-->
                     
                 </body>
 
@@ -122,7 +130,6 @@ ob_start();
                     $dompdf->setPaper('A4', 'landscape');
                     $dompdf->render();
                     $dompdf->stream('Experiencia_General',array('attachment'=>0));
-                                
-                                
+                                         
                 ?>
 

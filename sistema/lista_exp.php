@@ -55,22 +55,22 @@ include "../conexion.php";
 
                 <div class="row">
 
-                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <div class="d-inline-block" role="group" aria-label="Basic mixed styles example">
                     <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
-                    <a href="reporte_eg.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i>  Crear PDF</a>
-                    <a href="registro_exp.php" class=" btn btn-success col "> <i class="fa-solid fa-table"></i>  Crear Excel</a>
+                    <a href="reporte_eg.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i>  Crear PDF (Lista)</a>
+                    <!--<a href="reporte_img.php" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i>  Crear PDF (Actas) </a>-->
+                    <a class="btn btn-success disabled" role="button" aria-disabled="true" ><?php echo 'Total : '.number_format($total,2,'.',','). ' Bs' ?></a>
+                    <a class="btn btn-secondary disabled" role="button" aria-disabled="true">N° de Proyectos: <?php echo $total2 ?></a>
 
-                    
+                
                     
                 </div>
 
-                <hr><br>
+                
 
-                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <div class="btn-group d-print" role="group" aria-label="Basic mixed styles example">
+        
                     
-
-                    <a class="btn btn-success disabled" role="button" aria-disabled="true" ><?php echo 'Total : '.$total. ' Bs' ?></a>
-                    <a class="btn btn-secondary disabled" role="button" aria-disabled="true">N° de Proyectos: <?php echo $total2 ?></a>
                     
                 </div>
 
@@ -97,16 +97,16 @@ include "../conexion.php";
 
                 <div class="card-body">
                 
-                <table  class=" table-striped-columns" style="width:100%" " id="datatablesSimple"  >
+                <table  class="tabla_ale"" id="datatablesSimple"  >
                 <thead class="table-secondary">
-                    <tr class="fila">
+                    <tr class="">
                         <th>idº</th>
                         <th class="col-sm-6">Nombre del contratante / Persona y Direccion de contacto</th>
                         <th class="col-sm-6">Objeto del Contrato</th>
                         <th>Ubicacion</th>
-                        <th>Monto final del contrato en (Bs)</th>
-                        <th>Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
-                        <th>Monto en $u$ (Llenado de uso alternativo)</th>
+                        <th class="col-sm-4">Monto final del contrato en (Bs)</th>
+                        <th class="col-sm-4" >Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
+                        <th class="col-sm-4">Monto en $u$ (Llenado de uso alternativo)</th>
                         <th>% de Participacion en Asociacion</th>
                         <th>Nombre LI del Socio(s)</th>
                         <th>Profesional Responsable</th>
@@ -157,7 +157,7 @@ include "../conexion.php";
                             $image2 = 'img/actas/'.$data['image2'];
                             $image3= 'img/actas/'.$data['image3'];
 
-                      
+                            
 
                     ?>
                             <tr>
@@ -165,9 +165,9 @@ include "../conexion.php";
                                 <td><?php echo $data['nombre_contratante'] ?></td>
                                 <td><?php echo $data['obj_contrato'] ?></td>
                                 <td><?php echo $data['ubicacion'] ?></td>
-                                <td><?php echo $data['monto_bs'] ?></td>
+                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
                                 <td><?php echo $data['fecha_ejecucion'] ?></td>
-                                <td><?php echo $data['monto_dolares'] ?></td>
+                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
                                 <td><?php echo $data['participa_aso'] ?></td>
                                 <td><?php echo $data['n_socio'] ?></td>
                                 <td><?php echo $data['profesional_resp'] ?></td>
