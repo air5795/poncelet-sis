@@ -5,6 +5,26 @@ row_num, fecha_ejecucion, monto_bs, monto_dolares, nombre_contratante, n_socio, 
 FROM exp_general ORDER BY fecha_ejecucion;
 
 
+SELECT
+    ROW_NUMBER() OVER(
+ORDER BY
+    fecha_ejecucion
+) row_num,
+fecha_ejecucion,
+monto_bs,
+monto_dolares,
+nombre_contratante,
+n_socio,
+obj_contrato,
+participa_aso,
+profesional_resp,
+ubicacion
+FROM
+    exp_general
+ORDER BY
+    fecha_ejecucion;
+
+
 --sumar columna SELECT SUM(Precios) FROM Productos;
 
 SELECT SUM(Precios) FROM Productos;

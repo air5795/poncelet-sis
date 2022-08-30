@@ -57,7 +57,7 @@ include "../conexion.php";
 
                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                     <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
-                    <a href="registro_exp.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i>  Crear PDF</a>
+                    <a href="reporte_eg.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i>  Crear PDF</a>
                     <a href="registro_exp.php" class=" btn btn-success col "> <i class="fa-solid fa-table"></i>  Crear Excel</a>
 
                     

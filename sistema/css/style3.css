@@ -1,9 +1,33 @@
-body{
-    font-family: arial;
-    font-size: small;
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    text-align: center;
+}
+table , td, th {
+	border: 1px solid #595959;
+	border-collapse: collapse;
+}
+td, th {
+	padding: 3px;
+	width: 30px;
+	height: 25px;
+}
+th {
+	background: #d1d1d1;
 }
 
 .emp{
-    background-color: #969696;
-    font-weight: bold;
+    background: #2b2b2b;
+    color: #d1d1d1;
+    font-size: 12px;
+}
+
+.exp{
+    background: #d1d1d1;
+    font-size: 15px !important;
+}
+
+.im{
+    margin-top: 170px;
+    width: 200px;
 }
