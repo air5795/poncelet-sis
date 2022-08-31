@@ -56,8 +56,8 @@ include "../conexion.php";
 
 
                 <div class="card-body">
-                <table  class="display compact" style="width:100%" " id="datatablesSimple"  >
-                <thead>
+                <table  class=" table table-bordered tabla_ale" id="datatablesSimple"  >
+                <thead class="table-secondary">
                     <tr>
                         <th>ID</th>
                         <th>NOMBRE</th>

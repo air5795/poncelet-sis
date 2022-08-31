@@ -57,11 +57,51 @@ if (empty($_SESSION['active'])) {
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Comercializadora</div>
+
+                             <!-- lista de menu 1 -->
+
+                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsedoc" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                                Documentos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+
+                            <div class="collapse" id="collapsedoc" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                                
+                                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-file-circle-plus"></i></div>
+                                                    Experiencia General
+                                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                                </a>
+
+                                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                                    <nav class="sb-sidenav-menu-nested nav">
+                                                        <a class="nav-link" href="registro_exp.php">Registrar Experiencia</a>
+                                                        <a class="nav-link" href="lista_exp.php">Ver Experiencia G.</a>
+                                                    </nav>
+                                                </div>
+
+                                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapse_e" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-file-circle-minus"></i></div>
+                                                    Experiencia Especifica
+                                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                                </a>
+
+                                                <div class="collapse" id="pagesCollapse_e" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                                    <nav class="sb-sidenav-menu-nested nav">
+                                                        <a class="nav-link" href="lista_exp_e.php">Listar Exp. Especifica</a>
+                                                        
+                                                    </nav>
+                                                </div>
+
+                                            </nav>
+                                        </div>
                             
-                            <!-- lista de menu 1 -->
+                            <!-- lista de menu 2 -->
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseexp" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-briefcase"></i></div>
                                 Experiencias
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -90,8 +130,8 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapse_e" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="#">Listar Exp. Especifica</a>
-                                                        <a class="nav-link" href="#">Ver Experiencia E.</a>
+                                                        <a class="nav-link" href="lista_exp_e.php">Listar Exp. Especifica</a>
+                                                        
                                                     </nav>
                                                 </div>
 
@@ -100,7 +140,7 @@ if (empty($_SESSION['active'])) {
                             
 
 
-                            <!-- lista de menu 2 -->
+                            <!-- lista de menu 3 -->
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-dollar-sign"></i></div>

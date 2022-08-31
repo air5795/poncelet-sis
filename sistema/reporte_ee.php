@@ -3,9 +3,9 @@
 session_start();
 include "../conexion.php";
 
-$sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general;");
-                            $result_sum = mysqli_fetch_array($sql_suma_bs);
-                            $total = $result_sum['SUM(monto_bs)']; 
+
+
+
 
 require_once 'pdf/vendor/autoload.php';
 use Dompdf\Dompdf;
@@ -30,6 +30,7 @@ ob_start();
 </head>
 
 <body>
+    
 <table>
                 
                     <tr>
@@ -52,25 +53,46 @@ ob_start();
                     </tr>
                     
                     <?php
+
+                    $sql = '';
+
+
+                    if(!(empty($_POST['check']))){	
+                        foreach($_POST['check'] as $elegidos){		
+                        // echo $elegidos."<br>";
+                        //echo  var_dump($elegidos);
+
+                        //$cadena =  explode(',', $elegidos);
+
+                        if ($sql != '')
+                                
+                        $sql .= ' OR ';
+                        $sql .= "id_exp = $elegidos";
+
+                        
+                            
+                    }}
+                    
+                    
+
                     // rescatar datos DB 
-                    $query = mysqli_query($conexion, "SELECT
-                                                            ROW_NUMBER() OVER(
-                                                        ORDER BY
-                                                            fecha_ejecucion
-                                                        ) row_num,
-                                                        fecha_ejecucion,
-                                                        monto_bs,
-                                                        monto_dolares,
-                                                        nombre_contratante,
-                                                        n_socio,
-                                                        obj_contrato,
-                                                        participa_aso,
-                                                        profesional_resp,
-                                                        ubicacion
-                                                        FROM
-                                                            exp_general
-                                                        ORDER BY
-                                                            fecha_ejecucion;");
+                    $query = mysqli_query($conexion, "SELECT ROW_NUMBER() OVER( ORDER BY fecha_ejecucion) row_num,
+                                                                                                        id_exp,
+                                                                                                        fecha_ejecucion,
+                                                                                                        monto_bs,
+                                                                                                        monto_dolares,
+                                                                                                        nombre_contratante,
+                                                                                                        n_socio,
+                                                                                                        obj_contrato,
+                                                                                                        participa_aso,
+                                                                                                        profesional_resp,
+                                                                                                        ubicacion
+                                                                                                        FROM
+                                                                                                            exp_general
+                                                                                                        WHERE
+                                                                                                            $sql
+                                                                                                        ORDER BY
+                                                                                                            fecha_ejecucion;");
 
 
 
@@ -100,6 +122,10 @@ ob_start();
 
                         }
                     }
+
+                    $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general where $sql ;");
+                            $result_sum = mysqli_fetch_array($sql_suma_bs);
+                            $total = $result_sum['SUM(monto_bs)']; 
                     ?>
 
                     <tr>
