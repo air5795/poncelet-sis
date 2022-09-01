@@ -3,10 +3,6 @@
 session_start();
 include "../conexion.php";
 
-
-
-
-
 require_once 'pdf/vendor/autoload.php';
 use Dompdf\Dompdf;
 ob_start();
@@ -34,7 +30,7 @@ ob_start();
 <table>
                 
                     <tr>
-                        <td colspan="10" class="exp">EXPERIENCIA GENERAL</td>
+                        <td colspan="10" class="exp">EXPERIENCIA ESPECIFICA</td>
                     </tr>
                     <tr>
                         <td colspan="10" class="emp">Empresa Comercializadora PONCELET</td>
@@ -72,6 +68,8 @@ ob_start();
                         
                             
                     }}
+
+                    
                     
                     
 
@@ -86,6 +84,9 @@ ob_start();
                                                                                                         obj_contrato,
                                                                                                         participa_aso,
                                                                                                         profesional_resp,
+                                                                                                        image,
+                                                                                                        image2,
+                                                                                                        image3,
                                                                                                         ubicacion
                                                                                                         FROM
                                                                                                             exp_general
@@ -96,13 +97,43 @@ ob_start();
 
 
 
+                    
 
                     $result = mysqli_num_rows($query);
+
+                    // crear directorio o carpeta Exp especifica
+                    $nombre_directorio = "Exp_especifica";
+                    $resultado = mkdir("../sistema/img/"."/$nombre_directorio");
+
+                    // borrar contenido 
+
+                    $files = glob('../sistema/img/Exp_especifica/*'); //obtenemos todos los nombres de los ficheros
+                    foreach($files as $file){
+                        if(is_file($file))
+                        unlink($file); //elimino el fichero
+                    }
+
+                    
+                    
+                    
 
                     
 
                     if ($result > 0) {
                         while ($data = mysqli_fetch_array($query)) {
+                            if ($data['image'] != 'nodisponible.png' ) {
+                                $ru = $data['image'];
+                                $image = 'img/actas/'.$data['image'];
+                                
+
+                            }else {
+                                $image = 'img/'.$data['image'];
+                            }
+                            
+                            $image2 = 'img/actas/'.$data['image2'];
+                            $ru2 = $data['image2'];
+                            $image3= 'img/actas/'.$data['image3'];
+                            $ru3 = $data['image3'];
                             
 
                     ?>
@@ -120,8 +151,34 @@ ob_start();
                             </tr>
                     <?php
 
+                    
+
+                    // copiar actas especificas
+
+                    
+                    
+                    if ($ru !=0 ) {
+                        $origen = "../sistema"."/$image";
+                        $destino = "../sistema/img/Exp_especifica"."/$ru";
+                        $resultado = copy($origen, $destino);
+                    }
+                    if ($ru2 !=0) {
+                        $origen2 = "../sistema"."/$image2";
+                        $destino2 = "../sistema/img/Exp_especifica"."/$ru2";
+                        $resultado2 = copy($origen2, $destino2);
+                    }
+                    if ($ru3 !=0) {
+                        $origen3 = "../sistema"."/$image3";
+                        $destino3 = "../sistema/img/Exp_especifica"."/$ru3";
+                        $resultado3 = copy($origen3, $destino3);
+                    }
+
+
                         }
                     }
+
+                    shell_exec('start C:/xampp/htdocs/poncelet-sis/sistema/img/Exp_especifica');
+                    //shell_exec('start .');
 
                     $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general where $sql ;");
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
@@ -147,6 +204,17 @@ ob_start();
                     
                 </body>
 
+                    <?php
+                    
+
+                    
+
+                    
+                                     
+                    
+                    
+
+                    ?>
                 </html>
                 <?php
                     $html = ob_get_clean();
@@ -155,7 +223,7 @@ ob_start();
                     //$dompdf->setPaper('letter','portrait');
                     $dompdf->setPaper('A4', 'landscape');
                     $dompdf->render();
-                    $dompdf->stream('Experiencia_General',array('attachment'=>0));
+                    $dompdf->stream('Experiencia_Especifica',array('attachment'=>0));
                                          
                 ?>
 
