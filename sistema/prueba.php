@@ -4,6 +4,9 @@
 
     include "../conexion.php";
 
+    
+         
+
 
 ?>
 
@@ -50,25 +53,30 @@
 
                              <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Fecha Inicial</span> 
-                                    <input class="form-control form-control-sm money" name="FechaI" type="date" required />
+                                    <input class="form-control form-control-sm money" name="FechaI" type="date"  required />
                                  </div>
                              </div>
 
                              <div class="col-md-3">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Fecha Final.</span> 
-                                    <input class="form-control form-control-sm money" id="bs" name="FechaF" type="date"  required/>
+                                    <input class="form-control form-control-sm money" name="FechaF" type="date"   required/>
                                  </div>
                              </div>
 
                              <?php
 
+                             if (!empty($_POST['FechaI']) || !empty($_POST['FechaF'])) {
+                                
                              
-    
-                           
 
-                            $date1 = new DateTime("$_POST[FechaI]");
-                            $date2 = new DateTime("$_POST[FechaF]");
+                             
+                             
+                             $a = $_POST['FechaI'];
+                             $b = $_POST['FechaF'];
+
+                            $date1 = new DateTime("$a");
+                            $date2 = new DateTime("$b");
                             $result = date_diff($date1,$date2);
 
                             $tiempo = array();
@@ -90,13 +98,24 @@
                                     <span for="inputFirstName">Resultado</span> 
                                     <input class="form-control form-control-sm warning" id="bs" name="resultado" type="text" 
                                     value="<?php
-                    
                                             echo $tiempo[0]." Años - ". $tiempo[1]." meses - ". $tiempo[2]." dias || " . $tiempo[11]." dias";
-                                            
-
                                             ?>" />
+
+                                            
                                  </div>
                              </div>
+
+                             <p class="alert alert-info"></p>
+
+                             <?php
+                             
+                            
+                        } else {
+                            echo "<p class='alert alert-danger col-md-3 '> LLenar los Datos </p> ";
+                        }
+                             
+                             ?>
+                             </p>
 
                         </div>
 
