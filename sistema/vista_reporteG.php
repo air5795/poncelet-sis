@@ -22,6 +22,7 @@ $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general;")
         }
     </style>
 </head>
+
 <body>
 
 
@@ -40,10 +41,8 @@ $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general;")
                             $img2 = 'img/actas/'.$data['image2'];
                             $img3 = 'img/actas/'.$data['image3'];
 
-                            echo '<li><img src="'.$img.'"></li>';
-                           
-                            
-
+                            //echo '<li><img src="'.$img.'"></li>';
+                           print_r($data['image']);
                     ?>
                         
                         
