@@ -58,7 +58,7 @@ include "../conexion.php";
                 <div class="d-inline-block" role="group" aria-label="Basic mixed styles example">
                     <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
                     <a href="reporte_eg.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i>  Crear PDF Experiencia General</a>
-                    <!--<a href="reporte_img.php" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i>  Crear PDF (Actas) </a>-->
+                    <a href="rep_ImgEG.php" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i>  Crear PDF (Actas) </a>
                     <a class="btn btn-success disabled" role="button" aria-disabled="true" ><?php echo 'Total : '.number_format($total,2,'.',','). ' Bs' ?></a>
                     <a class="btn btn-secondary disabled" role="button" aria-disabled="true">N° de Proyectos: <?php echo $total2 ?></a>
 

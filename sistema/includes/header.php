@@ -25,8 +25,7 @@ if (empty($_SESSION['active'])) {
                             }else{
                                 $tipo = 'Trabajador';
                                 echo $_SESSION['nombre'].' - ('.$tipo.')';
-                            }
-                              
+                            }   
                         ?> 
                     </p>    
                 </div>
@@ -56,31 +55,41 @@ if (empty($_SESSION['active'])) {
                                 Inicio
                             </a>
 
+                            <!-- lista de menu 1 -->
+
                             <div class="sb-sidenav-menu-heading">Comercializadora</div>
-
-                             <!-- lista de menu 1 -->
-
-                             
-                            
-                                              
+                 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapsedoc" aria-expanded="false" aria-controls="pagesCollapseError">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
-                                Documentos 
+                                Documentos
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-
                             <div class="collapse" id="pagesCollapsedoc" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="registro_usuario.php">Doc. Empresa</a>
-                                    
+                                    <a class="nav-link" href="registro_usuario.php">Doc. Empresa</a> 
+                                </nav>
+                            </div>
+
+                            <!-- lista de menu 2 -->
+
+                            
+                 
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseH" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-gear"></i></div>
+                                Herramientas
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="pagesCollapseH" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="calComer.php">Calculadora Experiencia</a> 
                                 </nav>
                             </div>
                             
-                            <!-- lista de menu 2 -->
+                            <!-- lista de menu 3 -->
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseexp" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-briefcase"></i></div>
-                                Experiencias
+                                Experiencias 
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
 
@@ -118,7 +127,7 @@ if (empty($_SESSION['active'])) {
                             
 
 
-                            <!-- lista de menu 3 -->
+                            <!-- lista de menu 4 -->
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-dollar-sign"></i></div>
