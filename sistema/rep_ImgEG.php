@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+include "../conexion.php";
+
 require_once(dirname(__FILE__).'./../vendor/autoload.php');
 
 use Spipu\Html2Pdf\Html2Pdf;

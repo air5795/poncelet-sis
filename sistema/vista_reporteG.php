@@ -3,11 +3,7 @@
 session_start();
 include "../conexion.php";
 
-$sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general;");
-                            $result_sum = mysqli_fetch_array($sql_suma_bs);
-                            $total = $result_sum['SUM(monto_bs)']; 
-
-                            ?>
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -25,39 +21,20 @@ $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general;")
 
 <body>
 
+<?php
+    $directory="img/actas/";
+    $dirint = dir($directory);
 
-                <ul class="menu">
-                    <?php
-                    // rescatar datos DB 
-                    $query = mysqli_query($conexion, "SELECT * FROM exp_general;");
-                    $result = mysqli_num_rows($query);
-
-                    
-
-                    if ($result > 0) {
-                        while ($data = mysqli_fetch_array($query)) {
-                      
-                            $img = 'img/actas/'.$data['image'];
-                            $img2 = 'img/actas/'.$data['image2'];
-                            $img3 = 'img/actas/'.$data['image3'];
-
-                            //echo '<li><img src="'.$img.'"></li>';
-                           print_r($data['image']);
-                    ?>
-                        
-                        
-                <?php
-
-                    }
-                }
-                ?>
-
-</ul>
-                <!--<tr>
-                     <td colspan="10" class="exp2"><img class="im" src="img/sello.jpg" ></td>
-                </tr>-->
-
-
+    while (($archivo = $dirint->read()) != false)
+    {
+        if (strpos($archivo,'jpg') || strpos($archivo,'jpeg')){
+            $image = $directory. $archivo;
+            echo'<img style="width:700px" src='.$image. '>';
+        }
+    }
+    $dirint->close();
+?>
+                
             
     
 </body>
