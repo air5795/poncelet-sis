@@ -3,6 +3,16 @@
     session_start();
     include "includes/scripts.php";
     include "includes/header.php";
+    include "../conexion.php"; 
+
+    $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general;");
+                            $result_sum = mysqli_fetch_array($sql_suma_bs);
+                            $total = $result_sum['SUM(monto_bs)']; 
+
+                            $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_exp) FROM exp_general;");
+                            $result_f = mysqli_fetch_array($sql_tfila);
+                            $total2 = $result_f['COUNT(id_exp)']; 
+
 ?>
 
 
@@ -25,10 +35,26 @@
         <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Bienvenido al Sistema</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Poncelet</li>
-                        </ol>
+                        <div class="alert alert-warning alert-dismissible fade show " role="alert">
+                             <?php echo $_SESSION['nombre']  ?>  <strong> Bienvenido al Sistema ! <br></strong> En este sistema encontraras una serie de herramientas para la automatizacion del manejo de la informacion en PONCELET.
+                            <button type="button" class=" btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        <hr>
+                        
+                        
+
+
+                        <div class="container">
+                            <div class="card">
+                                <div class=" card-body">
+                                    <center><h4>PANEL DE CONTROL</h4></center>
+                                    <hr>
+                                    <a class="btn btn-success disabled" role="button" aria-disabled="true" ><?php echo 'Total : '.number_format($total,2,'.',','). ' Bs' ?></a>
+                                    <a class="btn btn-secondary disabled" role="button" aria-disabled="true">N° de Proyectos de la Comercializadora: <?php echo $total2 ?></a>
+                                </div>
+                            </div>
+                        </div>
                         
                         
 

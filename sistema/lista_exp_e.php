@@ -81,6 +81,7 @@ include "../conexion.php";
                 <div class="card-body">
                 <form action="reporte_ee.php" method="POST">
                     <input type="submit" value="DESCARGAR EXPERIENCIA ESPECIFICA" class="btn btn-danger">
+                    <a href="rep_ImgEE.php" class="btn btn-secondary">DESCARGAR ACTAS </a>
                     
                     <hr>
                 <table  class=" tabla_ale" id="datatablesSimple" >

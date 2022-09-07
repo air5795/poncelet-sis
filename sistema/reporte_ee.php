@@ -102,8 +102,11 @@ ob_start();
                     $result = mysqli_num_rows($query);
 
                     // crear directorio o carpeta Exp especifica
-                    $nombre_directorio = "Exp_especifica";
-                    $resultado = mkdir("../sistema/img/"."/$nombre_directorio");
+                    //$nombre_directorio = "Exp_especifica";
+                    //$resultado = mkdir("../sistema/img/"."/$nombre_directorio");
+                    
+                    
+                    
 
                     // borrar contenido 
 
@@ -177,14 +180,13 @@ ob_start();
                         }
                     }
 
-                    shell_exec('start C:/xampp/htdocs/poncelet-sis/sistema/img/Exp_especifica');
+                    //shell_exec('start C:/xampp/htdocs/poncelet-sis/sistema/img/Exp_especifica');
                     //shell_exec('start .');
 
                     $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general where $sql ;");
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
                             $total = $result_sum['SUM(monto_bs)']; 
                     ?>
-
                     <tr>
                         <td colspan="6" class="exp">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
                         <td colspan="4" class="exp"><?php echo number_format($total,2,'.',',').' Bs'?></td>
@@ -204,17 +206,6 @@ ob_start();
                     
                 </body>
 
-                    <?php
-                    
-
-                    
-
-                    
-                                     
-                    
-                    
-
-                    ?>
                 </html>
                 <?php
                     $html = ob_get_clean();
@@ -224,6 +215,6 @@ ob_start();
                     $dompdf->setPaper('A4', 'landscape');
                     $dompdf->render();
                     $dompdf->stream('Experiencia_Especifica',array('attachment'=>0));
-                                         
+                                      
                 ?>
 

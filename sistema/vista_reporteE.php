@@ -11,7 +11,7 @@ include "../conexion.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACTAS</title>
+    <title>ACTAS ESPECIFICAS</title>
     <style type="text/css">
         .aimg{
             width: 750px;
@@ -22,7 +22,7 @@ include "../conexion.php";
 <body>
 
 <?php
-    $directory="img/actas/";
+    $directory="img/Exp_especifica/";
     $dirint = dir($directory);
 
     while (($archivo = $dirint->read()) != false)
