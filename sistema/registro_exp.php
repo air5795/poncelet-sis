@@ -273,7 +273,7 @@
                              <div class="col-md-6">
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">% participación en Asociación (**)</span> 
-                                    <input class="form-control form-control-sm warning" name="participa_aso" type="text" value="ENCARGADO"/>
+                                    <input class="form-control form-control-sm" name="participa_aso" type="text" />
                                  </div>
                              </div> 
 

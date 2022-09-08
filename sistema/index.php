@@ -41,20 +41,41 @@
                         </div>
 
                         <hr>
-                        
-                        
-
 
                         <div class="container">
-                            <div class="card">
-                                <div class=" card-body">
-                                    <center><h4>PANEL DE CONTROL</h4></center>
-                                    <hr>
-                                    <a class="btn btn-success disabled" role="button" aria-disabled="true" ><?php echo 'Total : '.number_format($total,2,'.',','). ' Bs' ?></a>
-                                    <a class="btn btn-secondary disabled" role="button" aria-disabled="true">N° de Proyectos de la Comercializadora: <?php echo $total2 ?></a>
-                                </div>
+
+                        <div class="row">
+
+                        <div class="card col " style="width: 20rem;">
+                            <img src="../img/portada.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-center"> PONCELET Comercializadora</h5>
+                                <p class="card-text text-center">PANEL DE CONTROL  </p>
+                                <P class="card text-center">TOTAL EN BS EXPERIENCIA GENERAL </P>
+                                <a class="btn btn-success disabled card " role="button" aria-disabled="true" ><?php echo ''.number_format($total,2,'.',','). ' Bs' ?></a>
+                                <P class="card text-center">N° DE PROYECTOS</P>
+                                <a class="btn btn-warning disabled card" role="button" aria-disabled="true"> <?php echo $total2 ?></a>
                             </div>
                         </div>
+                        
+                        <div class="card col " style="width: 20rem;">
+                            <img src="../img/portada2.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-center"> PONCELET Constructora</h5>
+                                <p class="card-text text-center">PANEL DE CONTROL  </p>
+                                <P class="card text-center">TOTAL EN BS EXPERIENCIA GENERAL </P>
+                                <a class="btn btn-success disabled card " role="button" aria-disabled="true" >En ETAPA DE CONSTRUCCION</a>
+                                <P class="card text-center">N° DE PROYECTOS</P>
+                                <a class="btn btn-warning disabled card" role="button" aria-disabled="true">En ETAPA DE CONSTRUCCION </a>
+                            </div>
+                        </div>
+                        </div>
+
+                        </div>
+                        
+
+
+                        
                         
                         
 
