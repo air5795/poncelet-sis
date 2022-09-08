@@ -46,7 +46,7 @@
 
                         <div class="row">
 
-                        <div class="card col " style="width: 20rem;">
+                        <div class="card col d-none d-md-block " >
                             <img src="../img/portada.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title text-center"> PONCELET Comercializadora</h5>
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         
-                        <div class="card col " style="width: 20rem;">
+                        <div class="card col d-none d-md-block" >
                             <img src="../img/portada2.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title text-center"> PONCELET Constructora</h5>
