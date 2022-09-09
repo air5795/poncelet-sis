@@ -28,11 +28,25 @@ include "../conexion.php";
     while (($archivo = $dirint->read()) != false)
     {
         if (strpos($archivo,'jpg') || strpos($archivo,'jpeg')){
+            $archivos[] = $archivo;
             $image = $directory. $archivo;
-            echo'<img style="width:700px" src='.$image. '>';
+            
+
+            
+            //echo '<pre>';
+            //print_r($archivos)."\n";
+            //echo '</pre>';
+            //echo'<img style="width:700px" src='.$image.'>';
         }
     }
     $dirint->close();
+
+    natsort($archivos);
+    foreach($archivos as $archivo) {
+    //echo $archivo;
+    echo'<img style="width:760px" src=img/actas/'.$archivo.'>';
+    }
+    
 ?>
                 
             

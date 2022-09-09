@@ -58,3 +58,8 @@ WHERE
 id_exp = 2 OR id_exp = 4
 ORDER BY
     fecha_ejecucion;
+
+
+    -- inicia db tabla de 0
+
+    TRUNCATE TABLE [TABLA]

@@ -24,8 +24,8 @@
 
 
         if (empty($_POST['nombre_contratante']) || empty($_POST['obj_contrato']) || empty($_POST['ubicacion']) || empty($_POST['monto_bs']) || empty($_POST['monto_dolares']) 
-         || empty($_POST['fecha_ejecucion']) || empty($_POST['participa_aso']) || empty($_POST['profesional_resp'])) {
-            $alert = '<p class="alert alert-danger "> Todos los Campos Son Obligatorios menos Nombre LI Socio(s)*</p> ';
+         || empty($_POST['fecha_ejecucion'])  || empty($_POST['profesional_resp'])) {
+            $alert = '<p class="alert alert-danger "> Todos los Campos Son Obligatorios menos Nombre LI Socio(s)* y Participacion en Asociacion</p> ';
        } 
        else 
      {
@@ -219,11 +219,15 @@
                     <div class=" container-register2 row ">
 
                         <div class="col-md-6">
+                         <!--<a class="btn alert alert-dark disabled" role="button" aria-disabled="true">N°: <?php echo $total2 + 1 ?></a>-->
+
 
                         
                     
                         
                         <form action="" method="post" class="fields was-validated " enctype="multipart/form-data" novalidate >
+
+                         
 
                         <div class="row mb-3">
                             
