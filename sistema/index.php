@@ -47,26 +47,28 @@
                         <div class="row">
 
                         <div class="card col d-none d-md-block " >
-                            <img src="../img/portada.png" class="card-img-top" alt="...">
+                            
                             <div class="card-body">
-                                <h5 class="card-title text-center"> PONCELET Comercializadora</h5>
+                                <h3 class="card-title text-center"> PONCELET Comercializadora</h3>
+                                <hr>
                                 <p class="card-text text-center">PANEL DE CONTROL  </p>
                                 <P class="card text-center">TOTAL EN BS EXPERIENCIA GENERAL </P>
                                 <a class="btn btn-success disabled card " role="button" aria-disabled="true" ><?php echo ''.number_format($total,2,'.',','). ' Bs' ?></a>
-                                <P class="card text-center">N° DE PROYECTOS</P>
-                                <a class="btn btn-warning disabled card" role="button" aria-disabled="true"> <?php echo $total2 ?></a>
+                                <P class="card text-center">N° DE PROYECTOS REGISTRADOS</P>
+                                <a style="color: white ;" class="btn bg-primary disabled card" role="button" aria-disabled="true"> <?php echo $total2 ?></a>
                             </div>
                         </div>
                         
                         <div class="card col d-none d-md-block" >
-                            <img src="../img/portada2.png" class="card-img-top" alt="...">
+                            
                             <div class="card-body">
-                                <h5 class="card-title text-center"> PONCELET Constructora</h5>
+                                <h3 class="card-title text-center"> PONCELET Constructora</h3>
+                                <hr>
                                 <p class="card-text text-center">PANEL DE CONTROL  </p>
                                 <P class="card text-center">TOTAL EN BS EXPERIENCIA GENERAL </P>
                                 <a class="btn btn-success disabled card " role="button" aria-disabled="true" >En ETAPA DE CONSTRUCCION</a>
-                                <P class="card text-center">N° DE PROYECTOS</P>
-                                <a class="btn btn-warning disabled card" role="button" aria-disabled="true">En ETAPA DE CONSTRUCCION </a>
+                                <P class="card text-center">N° DE PROYECTOS REGISTRADOS</P>
+                                <a  style="color: white ;" class="btn bg-primary disabled card " role="button" aria-disabled="true">En ETAPA DE CONSTRUCCION </a>
                             </div>
                         </div>
                         </div>

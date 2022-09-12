@@ -17,7 +17,8 @@
 
         $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_exp) FROM exp_general;");
         $result_f = mysqli_fetch_array($sql_tfila);
-        $total2 = $result_f['COUNT(id_exp)']; 
+        $total2 = $result_f['COUNT(id_exp)'];
+        $total3 =  $total2 + 1;    
 
 
     if (!empty($_POST)) {
@@ -159,6 +160,8 @@
                                             
                                             } 
                                             $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
+                                            header("Location: registro_exp.php");
+
                                         }else{
                                             $alert = '<p class="alert alert-danger "> El registro fallo </p> ';
                                         }
@@ -219,7 +222,7 @@
                     <div class=" container-register2 row ">
 
                         <div class="col-md-6">
-                         <!--<a class="btn alert alert-dark disabled" role="button" aria-disabled="true">N°: <?php echo $total2 + 1 ?></a>-->
+                         <a class="btn alert alert-dark disabled" role="button" aria-disabled="true">N°: <?php echo $total3 ?></a>
 
 
                         
