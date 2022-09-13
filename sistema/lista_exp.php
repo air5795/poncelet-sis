@@ -78,8 +78,6 @@ include "../conexion.php";
                         
 
                         
-                    
-                        
                 </div>
                 
                 </div>
@@ -235,10 +233,7 @@ include "../conexion.php";
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
 
-    <script type="text/javacsript">
     
-        
-    </script>
     
 
 </body>

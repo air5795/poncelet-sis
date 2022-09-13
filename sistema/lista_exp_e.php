@@ -20,6 +20,11 @@ include "../conexion.php";
 
     <title>SISPONCELET</title>
 
+    <script src="js/jquery-3.6.1.js"></script>
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+    <script src="js/jquery.dataTables.min.js"></script>
+
+
 </head>
 
 <body class="sb-nav-fixed">
@@ -84,19 +89,18 @@ include "../conexion.php";
                     <a href="rep_ImgEE.php" class="btn btn-secondary">DESCARGAR ACTAS </a>
                     
                     <hr>
-                <table  class=" tabla_ale" id="datatablesSimple" >
+                <table  class=" table  table-borderless table-hover tabla_ale" id="datatable" class="display" >
                 <thead class="table-secondary">
                     <tr class="">
                         <th>Check</th>
                         <th>idº</th>
-                        <th ">Nombre del contratante / Persona y Direccion de contacto</th>
-                        <th ">Objeto del Contrato</th>
+                        <th >Nombre del contratante / Persona y Direccion de contacto</th>
+                        <th >Objeto del Contrato</th>
                         <th>Ubicacion</th>
-                        <th ">Monto final del contrato en (Bs)</th>
-                        <th " >Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
-                        <th ">Monto en $u$ (Llenado de uso alternativo)</th>
-                        <th>% de Participacion en Asociacion</th>
-                        <th>Nombre LI del Socio(s)</th>
+                        <th >Monto final del contrato en (Bs)</th>
+                        <th  >Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
+                        <th >Monto en $u$ (Llenado de uso alternativo)</th>
+                        
                         <th>Profesional Responsable</th>
                         
                      
@@ -126,7 +130,7 @@ include "../conexion.php";
                                 <form>
                                 <td>
                                     <div class="form-check form-switch">
-                                        <input  name="check[]" value="<?php echo $data['id_exp'] ?>" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                        <input  name="check[]" value="<?php echo $data['id_exp'] ?>" class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckDefault">
                                     </div>
                                 </td>
                                 <td><?php echo $data['id_exp'] ?></td>
@@ -136,9 +140,9 @@ include "../conexion.php";
                                 <td class=" bg-success bg-opacity-10"><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
                                 <td><?php echo $data['fecha_ejecucion'] ?></td>
                                 <td class=" bg-success bg-opacity-10"><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
-                                <td><?php echo $data['participa_aso'] ?></td>
-                                <td><?php echo $data['n_socio'] ?></td>
+                                
                                 <td><?php echo $data['profesional_resp'] ?></td>
+
                                 
                                 
                             </tr>
@@ -183,13 +187,23 @@ include "../conexion.php";
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>-->
     <script src="js/datatables-simple-demo.js"></script>
 
-    <script type="text/javacsript">
-    
-        
-    </script>
+    <script>$(document).ready(function () {
+    $('#datatable').DataTable({
+        pageLength: 500,
+        lengthMenu: [
+            [5, 25, 50,150,500, -1],
+            [5, 25, 50,150,500, 'All'],
+        ],
+        language:{
+            url:'js/Spanish.json'
+        }
+    });
+});</script>
+
+
     
 
 </body>
