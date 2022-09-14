@@ -55,23 +55,34 @@ include "../conexion.php";
 
                 <div class="row">
 
-                <div class="d-inline-block" role="group" aria-label="Basic mixed styles example">
+                <div class="d-none d-xl-block d-lg-block d-md-block" role="group" aria-label="Basic mixed styles example">
                     <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
-                    <a href="reporte_eg.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i>  Crear PDF Experiencia General</a>
-                    <a href="rep_ImgEG.php" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i>  Crear PDF (Actas) </a>
-                    <a class="btn btn-success disabled" role="button" aria-disabled="true" ><?php echo 'Total : '.number_format($total,2,'.',','). ' Bs' ?></a>
-                    <a class="btn btn-secondary disabled" role="button" aria-disabled="true">N° de Proyectos: <?php echo $total2 ?></a>
-
+                    <a href="reporte_eg.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i> PDF Experiencia G. </a>
+                    <a href="rep_ImgEG.php" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i> PDF Actas</a> 
+                    
+                    <a class="btn btn-warning disabled " role="button" aria-disabled="true"> <strong> N° de Proyectos : </strong> 
+                    <?php echo $total2 ?></a>
+                    <a class="btn btn-outline-success  " role="button" aria-disabled="true" > <strong> Experiencia total (Bs): </strong> 
+                    <?php echo '&nbsp;&nbsp;&nbsp;'.number_format($total,2,'.',','). ' Bs' ?></a>
+                    
                 
                     
+                   
+                    <hr>
                 </div>
 
                 
+                
 
-                <div class="btn-group d-print" role="group" aria-label="Basic mixed styles example">
-        
-                    
-                    
+                <div class="btn-group d-md-none" role="group" aria-label="Basic mixed styles example">
+                     <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
+                    <a href="reporte_eg.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i> PDF Experiencia G.</a>
+                    <a href="rep_ImgEG.php" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i> PDF Actas</a>
+                </div>
+
+                <div class="btn-group d-md-none" role="group" aria-label="Basic mixed styles example">
+                <a class="btn btn-success disabled" role="button" aria-disabled="true" ><?php echo 'Total : '.number_format($total,2,'.',','). ' Bs' ?></a>
+                    <a class="btn btn-secondary  disabled" role="button" aria-disabled="true">N° de Proyectos: <?php echo $total2 ?></a>
                 </div>
 
                 
@@ -182,12 +193,12 @@ include "../conexion.php";
                                 
 
                                 <td class="col-sm-2">
-                                    <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-warning p-2" data-toggle="tooltip" data-placement="top" title="Editar" >
+                                    <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-warning p-2 disabled" data-toggle="tooltip" data-placement="top" title="Editar" >
                                     <i class="fa-solid fa-file-pen"></i>
                                     </a>
 
                                     
-                                    <a href="eliminar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-danger p-2" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                    <a href="eliminar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-danger p-2 disabled" data-toggle="tooltip" data-placement="top" title="Eliminar">
                                     <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                     

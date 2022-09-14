@@ -69,6 +69,13 @@ include "../conexion.php";
                     
                 </div>
 
+                <!--  modal 
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gallery-modal">
+                Launch demo modal
+                </button>-->
+
+                
+
                 
                         
 
@@ -104,8 +111,7 @@ include "../conexion.php";
                         <th>Profesional Responsable</th>
 
                         <th>imagen-1(Acta)</th>
-                        <th>imagen-2(Acta)</th>
-                        <th>imagen-3(Acta)</th>
+                        
                         
                      
                     </tr>
@@ -135,6 +141,8 @@ include "../conexion.php";
                             
                             $image2 = 'img/actas/'.$data['image2'];
                             $image3= 'img/actas/'.$data['image3'];
+
+                        
                             
 
                             
@@ -158,14 +166,9 @@ include "../conexion.php";
                                 <td><?php echo $data['profesional_resp'] ?></td>
 
                                 <td>
-                                    <img style= "width:100px" src="<?php echo $image ?>" alt=""> 
+                                    <img style= "width:100px" src="<?php echo $image ?>" class="gallery-item"> 
                                 </td>
-                                <td>
-                                    <img style= "width:100px" src="<?php echo $image2 ?>" alt=""> 
-                                </td>
-                                <td>
-                                    <img style= "width:100px" src="<?php echo $image3 ?>" alt=""> 
-                                </td>
+                                
 
                                 
                                 
@@ -185,6 +188,24 @@ include "../conexion.php";
                 </form>
                 </div>
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl" >
+                    <div class="modal-content modal-fullscreen ">
+                    <div class="modal-header">
+                        <!--<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" >
+                        <img src="img/actas/acta_103_1_2021-02-22.jpg" class="modal-img" alt="modal img">
+                    </div>
+                    
+                    </div>
+                </div>
+                </div>
+
+                
                 
 
 
@@ -226,6 +247,18 @@ include "../conexion.php";
         }
     });
 });</script>
+
+<script>
+    document.addEventListener("click",function(e){
+        if(e.target.classList.contains("gallery-item")){
+            const src = e.target.getAttribute("src");
+            document.querySelector(".modal-img").src = src;
+
+            const myModal = new bootstrap.Modal(document.getElementById('gallery-modal'));
+            myModal.show();
+        }
+    });
+</script>
 
 
     

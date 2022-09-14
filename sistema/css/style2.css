@@ -159,4 +159,15 @@ th{
 
 
 
+img{
+    max-width: 100%;
+}
+
+
+#gallery-modal .modal-img{
+width: 100%;
+}
+
+
+
 
