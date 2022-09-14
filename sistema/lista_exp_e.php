@@ -102,6 +102,10 @@ include "../conexion.php";
                         <th >Monto en $u$ (Llenado de uso alternativo)</th>
                         
                         <th>Profesional Responsable</th>
+
+                        <th>imagen-1(Acta)</th>
+                        <th>imagen-2(Acta)</th>
+                        <th>imagen-3(Acta)</th>
                         
                      
                     </tr>
@@ -121,6 +125,16 @@ include "../conexion.php";
                     $result = mysqli_num_rows($query);
                     if ($result > 0) {
                         while ($data = mysqli_fetch_array($query)) {
+                            if ($data['image'] != 'nodisponible.png' ) {
+                                $image = 'img/actas/'.$data['image'];
+                                
+
+                            }else {
+                                $image = 'img/'.$data['image'];
+                            }
+                            
+                            $image2 = 'img/actas/'.$data['image2'];
+                            $image3= 'img/actas/'.$data['image3'];
                             
 
                             
@@ -142,6 +156,16 @@ include "../conexion.php";
                                 <td class=" bg-success bg-opacity-10"><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
                                 
                                 <td><?php echo $data['profesional_resp'] ?></td>
+
+                                <td>
+                                    <img style= "width:100px" src="<?php echo $image ?>" alt=""> 
+                                </td>
+                                <td>
+                                    <img style= "width:100px" src="<?php echo $image2 ?>" alt=""> 
+                                </td>
+                                <td>
+                                    <img style= "width:100px" src="<?php echo $image3 ?>" alt=""> 
+                                </td>
 
                                 
                                 

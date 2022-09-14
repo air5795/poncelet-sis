@@ -191,9 +191,10 @@ ob_start();
                         <td colspan="6" class="exp">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
                         <td colspan="4" class="exp"><?php echo number_format($total,2,'.',',').' Bs'?></td>
                     </tr>
-                    <!--<tr>
+                    <tr>
+                        <hr>
                          <td colspan="10" class="exp2"><img class="im" src="img/sello.jpg" ></td>
-                    </tr>-->
+                    </tr>
 
 
                 </table>
