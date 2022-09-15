@@ -13,27 +13,49 @@ td, th {
 	height: 25px;
 }
 th {
-	background: #d1d1d1;
+	background: #d2dff3;
 }
 
 .emp{
-    background: #919191;
+    background: #d2dff3;
     color: #0a0a0a;
     font-size: 12px;
+    border-color: #0a0a0a;
 }
 
 .exp{
-    background: #d1d1d1;
-    font-size: 15px !important;
+    background:  #d2dff3;
+    font-size: 10px !important;
+    text-align: right;
+    
 }
 
 .exp2{
+    
     background: #ffffff;
     font-size: 15px !important;
     border-color: white;
+    
 }
 
 .im{
     
     width: 180px;
 }
+
+.exp4{
+
+    border-top-color: white;
+    border-left-color: white;
+    border-right-color: white;
+    
+}
+
+.exp5{
+
+    border-top-color: white;
+    border-left-color: white;
+    border-right-color: white;
+    border-bottom-color: white;   
+}
+

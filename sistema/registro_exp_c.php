@@ -7,7 +7,7 @@
     include "../conexion.php";
 
 
-    $query = mysqli_query($conexion, "SELECT * FROM exp_general");
+    $query = mysqli_query($conexion, "SELECT * FROM exp_general_c");
     $result = mysqli_num_rows($query);
     if ($result > 0) {
         while ($data = mysqli_fetch_array($query)) {
@@ -15,7 +15,7 @@
              
         }}
 
-        $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_exp) FROM exp_general;");
+        $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_exp) FROM exp_general_c;");
         $result_f = mysqli_fetch_array($sql_tfila);
         $total2 = $result_f['COUNT(id_exp)'];
         $total3 =  $total2 + 1;    
@@ -25,7 +25,7 @@
 
 
         if (empty($_POST['nombre_contratante']) || empty($_POST['obj_contrato']) || empty($_POST['ubicacion']) || empty($_POST['monto_bs']) || empty($_POST['monto_dolares']) 
-         || empty($_POST['fecha_ejecucion'])  || empty($_POST['profesional_resp'])) {
+         || empty($_POST['fecha_ejecucion']) || empty($_POST['fecha_final'])  || empty($_POST['profesional_resp'])) {
             $alert = '<p class="alert alert-danger "> Todos los Campos Son Obligatorios menos Nombre LI Socio(s)* y Participacion en Asociacion</p> ';
        } 
        else 
@@ -37,6 +37,7 @@
             $monto_bs = $_POST['monto_bs'];
             $monto_dolores = $_POST['monto_dolares'];
             $fecha_ejecucion = $_POST['fecha_ejecucion'];
+            $fecha_final = $_POST['fecha_final'];
             $participa_aso = $_POST['participa_aso'];
             $n_socio = $_POST['n_socio'];
             $profesional_resp = $_POST['profesional_resp'];
@@ -60,7 +61,7 @@
             $imgProducto = 'nodisponible.png';
 
             if ($nombre_image != '') {
-                $destino = 'img/actas/';
+                $destino = 'img/actas_c/';
                 $img_nombre = 'acta_'.$num.'_1_'.$fecha_ejecucion;
                 //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
                 $imgActa = $img_nombre.'.jpg';
@@ -77,7 +78,7 @@
             $imgProducto2 = 'nodisponible.png';
 
             if ($nombre_image2 != '') {
-                $destino2 = 'img/actas/';
+                $destino2 = 'img/actas_c/';
                 $img_nombre2 = 'acta_'.$num.'_2_'.$fecha_ejecucion;
                 //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
                 $imgActa2 = $img_nombre2.'.jpg';
@@ -103,7 +104,7 @@
             $imgProducto3 = 'nodisponible.png';
 
             if ($nombre_image3 != '') {
-                $destino3 = 'img/actas/';
+                $destino3 = 'img/actas_c/';
                 $img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
                 //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
                 $imgActa3 = $img_nombre3.'.jpg';
@@ -120,13 +121,14 @@
 
 
             
-            $query_insert = mysqli_query($conexion, "INSERT INTO exp_general(
+            $query_insert = mysqli_query($conexion, "INSERT INTO exp_general_c(
                                                                                 nombre_contratante,
                                                                                 obj_contrato,
                                                                                 ubicacion,
                                                                                 monto_bs,
                                                                                 monto_dolares,
                                                                                 fecha_ejecucion,
+                                                                                fecha_final,
                                                                                 participa_aso,
                                                                                 n_socio,
                                                                                 profesional_resp,
@@ -142,6 +144,7 @@
                                                                                 '$monto_bs',
                                                                                 '$monto_dolores',
                                                                                 '$fecha_ejecucion',
+                                                                                '$fecha_final',
                                                                                 '$participa_aso',
                                                                                 '$n_socio',
                                                                                 '$profesional_resp',
@@ -160,7 +163,7 @@
                                             
                                             } 
                                             $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
-                                            header("Location: registro_exp.php");
+                                            header("Location: registro_exp_c.php");
 
                                         }else{
                                             $alert = '<p class="alert alert-danger "> El registro fallo </p> ';
@@ -202,8 +205,8 @@
                 <main>
                     <div class="container-fluid px-4">
                     <div class="container-fluid px-4 row">
-                <img src="../img/carrito.png" style="width:100px;" class="col-2">
-                <h1 class="mt-4 col">Registro de Experiencia General - Comercializadora</h1> 
+                <img src="../img/9e02b5e0eaf44dc28217adc1360218bc-ilustracion-de-excavadora-de-construccion.png" style="width:100px;" class="col-2">
+                <h1 class="mt-4 col">Registro de Experiencia - Constructora</h1>    
                         
                         <hr>
                        <!-- contenido del sistema 2--> 
@@ -264,6 +267,13 @@
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Período de ejecución </span> 
                                     <input class="form-control form-control-sm" name="fecha_ejecucion" type="date" required />
+                                 </div>
+                             </div>
+
+                             <div class="col-md-6">
+                                 <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Período de Finalizacion </span> 
+                                    <input class="form-control form-control-sm" name="fecha_final" type="date" required />
                                  </div>
                              </div>
 

@@ -24,6 +24,12 @@ include "../conexion.php";
 
     <title>SISPONCELET</title>
 
+    <style type="text/css">
+  body {
+    color: black;
+    background-color:white; }
+  </style>
+
 </head>
 
 <body class="sb-nav-fixed">
@@ -34,17 +40,20 @@ include "../conexion.php";
 
     <div id="layoutSidenav_content">
         <main>
-        <div class="container-fluid px-4 row">
-                <img src="../img/carrito.png" style="width:100px;" class="col-2">
-                <h1 class="mt-4 col">Lista de Proyectos Comercializadora</h1>
+
+        
+            <div class="container-fluid px-4 row">
+                <img src="../img/9e02b5e0eaf44dc28217adc1360218bc-ilustracion-de-excavadora-de-construccion.png" style="width:100px;" class="col-2">
+                <h1 class="mt-4 col">Lista de Proyectos Constructora</h1> 
+                
 
                 <hr>
                 <?php
-                            $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general;");
+                            $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general_c;");
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
                             $total = $result_sum['SUM(monto_bs)']; 
 
-                            $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_exp) FROM exp_general;");
+                            $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_exp) FROM exp_general_c;");
                             $result_f = mysqli_fetch_array($sql_tfila);
                             $total2 = $result_f['COUNT(id_exp)']; 
 
@@ -54,13 +63,24 @@ include "../conexion.php";
                 <div class="row">
 
                 <div class="d-none d-xl-block d-lg-block d-md-block" role="group" aria-label="Basic mixed styles example">
-                    <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
-                    <a href="reporte_eg.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i> PDF Experiencia G. </a>
-                    <a href="rep_ImgEG.php" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i> PDF Actas</a> 
+                    <a href="registro_exp_c.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
+                   
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-file-pdf"></i> PDF Experiencia General 
+                        </button>
+                        <ul class="dropdown-menu" style="background-color: #eb0c0c ;">
+                        <li><a href="reporte_eg_c.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i> Reporte Tipo 1</a></li>
+                        <li><a href="reporte_eg_c2.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i> Reporte Tipo 2 </a></li>
+                        </ul>
                     
-                    <a class="btn btn-warning disabled " role="button" aria-disabled="true"> <strong> N° de Proyectos : </strong> 
+
+                    
+                    
+                    <a href="#" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i> PDF Actas</a> 
+                    
+                    <a class="btn btn-warning  " role="button" aria-disabled="true"> <strong> N° de Proyectos : </strong> 
                     <?php echo $total2 ?></a>
-                    <a class="btn btn-outline-success  " role="button" aria-disabled="true" > <strong> Experiencia total (Bs): </strong> 
+                    <a class="btn btn-outline-success " role="button" aria-disabled="true" > <strong> Experiencia total (Bs): </strong> 
                     <?php echo '&nbsp;&nbsp;&nbsp;'.number_format($total,2,'.',','). ' Bs' ?></a>
                     
                 
@@ -73,9 +93,9 @@ include "../conexion.php";
                 
 
                 <div class="btn-group d-md-none" role="group" aria-label="Basic mixed styles example">
-                     <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
-                    <a href="reporte_eg.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i> PDF Experiencia G.</a>
-                    <a href="rep_ImgEG.php" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i> PDF Actas</a>
+                     <a href="registro_exp_c.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
+                    <a href="reporte_eg_c.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i> PDF Experiencia G.</a>
+                    <a href="#" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i> PDF Actas</a>
                 </div>
 
                 <div class="btn-group d-md-none" role="group" aria-label="Basic mixed styles example">
@@ -92,8 +112,8 @@ include "../conexion.php";
                 </div>
 
 
-        
-                <div class="card mb-4">
+            
+                <div class="card mb-4 ">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 Listado de Proyectos en Base de datos Poncelet
@@ -101,7 +121,7 @@ include "../conexion.php";
                             
 
 
-                <div class="card-body">
+                <div class="card-body ">
                 
                 <table  class="tabla_ale" id="datatablesSimple"  >
                 <thead class="table-secondary">
@@ -144,7 +164,7 @@ include "../conexion.php";
 
 
                     // rescatar datos DB 
-                    $query = mysqli_query($conexion, "SELECT * FROM exp_general 
+                    $query = mysqli_query($conexion, "SELECT * FROM exp_general_c
                                                         ORDER BY id_exp ASC");
 
                    
@@ -153,15 +173,15 @@ include "../conexion.php";
                     if ($result > 0) {
                         while ($data = mysqli_fetch_array($query)) {
                             if ($data['image'] != 'nodisponible.png' ) {
-                                $image = 'img/actas/'.$data['image'];
+                                $image = 'img/actas_c/'.$data['image'];
                                 
 
                             }else {
                                 $image = 'img/'.$data['image'];
                             }
                             
-                            $image2 = 'img/actas/'.$data['image2'];
-                            $image3= 'img/actas/'.$data['image3'];
+                            $image2 = 'img/actas_c/'.$data['image2'];
+                            $image3= 'img/actas_c/'.$data['image3'];
 
                             
 
@@ -171,9 +191,15 @@ include "../conexion.php";
                                 <td><?php echo $data['nombre_contratante'] ?></td>
                                 <td><?php echo $data['obj_contrato'] ?></td>
                                 <td><?php echo $data['ubicacion'] ?></td>
-                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
-                                <td><?php echo $data['fecha_ejecucion'] ?></td>
-                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
+                                <td class=" bg-success bg-opacity-25"><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
+                                <td>
+                                    <strong>FECHA INICIO</strong> <br>
+                                    <?php echo $data['fecha_ejecucion'] ?> 
+                                    <br>
+                                    <strong>FECHA FINALIZACION</strong><br>
+                                    <?php echo $data['fecha_final'] ?>
+                                </td>
+                                <td class=" bg-success bg-opacity-25"><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
                                 <td><?php echo $data['participa_aso'] ?></td>
                                 <td><?php echo $data['n_socio'] ?></td>
                                 <td><?php echo $data['profesional_resp'] ?></td>

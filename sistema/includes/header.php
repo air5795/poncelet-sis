@@ -209,13 +209,7 @@ if (empty($_SESSION['active'])) {
                                         </div>
 
 
-                        <?php
-                        if ($_SESSION['rol'] == 1) {
-                            # code..
-                        
-                        ?>                
-
-                            <div class="sb-sidenav-menu-heading">CONSTRUCTORA</div>
+                                <div class="sb-sidenav-menu-heading">CONSTRUCTORA</div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseexp2" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-briefcase"></i></div>
@@ -234,8 +228,8 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="registro_exp.php">Registrar Experiencia</a>
-                                                        <a class="nav-link" href="lista_exp.php">Ver Experiencia G.</a>
+                                                        <a class="nav-link" href="registro_exp_c.php">Registrar Experiencia</a>
+                                                        <a class="nav-link" href="lista_exp_c.php">Ver Experiencia G.</a>
                                                     </nav>
                                                 </div>
 
@@ -254,6 +248,15 @@ if (empty($_SESSION['active'])) {
 
                                             </nav>
                                         </div>
+
+
+                        <?php
+                        if ($_SESSION['rol'] == 1) {
+                            # code..
+                        
+                        ?>                
+
+                            
 
 
                             <div class="sb-sidenav-menu-heading">Administrador</div>

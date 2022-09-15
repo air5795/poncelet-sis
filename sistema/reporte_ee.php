@@ -160,13 +160,14 @@ ob_start();
 
                     
                     
-                    if ($ru !=0 ) {
+                    if ($ru !=0 )  {
                         $origen = "../sistema"."/$image";
                         $destino = "../sistema/img/Exp_especifica"."/$ru";
                         $resultado = copy($origen, $destino);
+                        echo $destino;
                     }
                     if ($ru2 !=0) {
-                        $origen2 = "../sistema"."/$image2";
+                        $origen2 = "../sistema/".$image2;
                         $destino2 = "../sistema/img/Exp_especifica"."/$ru2";
                         $resultado2 = copy($origen2, $destino2);
                     }
@@ -174,6 +175,7 @@ ob_start();
                         $origen3 = "../sistema"."/$image3";
                         $destino3 = "../sistema/img/Exp_especifica"."/$ru3";
                         $resultado3 = copy($origen3, $destino3);
+                        
                     }
 
 
@@ -192,8 +194,7 @@ ob_start();
                         <td colspan="4" class="exp"><?php echo number_format($total,2,'.',',').' Bs'?></td>
                     </tr>
                     <tr>
-                        <hr>
-                         <td colspan="10" class="exp2"><img class="im" src="img/sello.jpg" ></td>
+                         <td colspan="10" class="exp2"><img class="im" src="img/sello.jpg" style="page-break-after:always;" ></td>
                     </tr>
 
 
@@ -215,7 +216,6 @@ ob_start();
                     //$dompdf->setPaper('letter','portrait');
                     $dompdf->setPaper('A4', 'landscape');
                     $dompdf->render();
-                    $dompdf->stream('Experiencia_Especifica',array('attachment'=>0));
-                                      
+                    $dompdf->stream('Experiencia_Especifica',array('attachment'=>0));                   
                 ?>
 

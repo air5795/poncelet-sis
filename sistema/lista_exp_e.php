@@ -35,11 +35,9 @@ include "../conexion.php";
 
     <div id="layoutSidenav_content">
         <main>
-            <div class="container-fluid px-4">
-                <h1 class="mt-4">Lista de Proyectos Comercializadora</h1>
-                <ol class="breadcrumb mb-2">
-                    <li class="breadcrumb-item active">Poncelet / Lista Proyectos (Experiencia Especifica)</li>
-                </ol>
+        <div class="container-fluid px-4 row">
+                <img src="../img/carrito.png" style="width:100px;" class="col-2">
+                <h1 class="mt-4 col">Lista de Proyectos Comercializadora</h1>
 
                 <hr>
                 <?php

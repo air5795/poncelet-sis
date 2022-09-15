@@ -13,6 +13,14 @@
                             $result_f = mysqli_fetch_array($sql_tfila);
                             $total2 = $result_f['COUNT(id_exp)']; 
 
+                            $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general_c;");
+                            $result_sum = mysqli_fetch_array($sql_suma_bs);
+                            $total3 = $result_sum['SUM(monto_bs)']; 
+
+                            $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_exp) FROM exp_general_c;");
+                            $result_f = mysqli_fetch_array($sql_tfila);
+                            $total4 = $result_f['COUNT(id_exp)'];
+
 ?>
 
 
@@ -66,9 +74,9 @@
                                 <hr>
                                 <p class="card-text text-center">PANEL DE CONTROL  </p>
                                 <P class="card text-center">TOTAL EN BS EXPERIENCIA GENERAL </P>
-                                <a class="btn btn-success disabled card " role="button" aria-disabled="true" >En ETAPA DE CONSTRUCCION</a>
+                                <a class="btn btn-success disabled card " role="button" aria-disabled="true" ><?php echo ''.number_format($total3,2,'.',','). ' Bs' ?></a>
                                 <P class="card text-center">N° DE PROYECTOS REGISTRADOS</P>
-                                <a  style="color: white ;" class="btn bg-primary disabled card " role="button" aria-disabled="true">En ETAPA DE CONSTRUCCION </a>
+                                <a  style="color: white ;" class="btn bg-primary disabled card " role="button" aria-disabled="true"><?php echo $total4 ?></a>
                             </div>
                         </div>
                         </div>

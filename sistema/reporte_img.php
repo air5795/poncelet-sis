@@ -31,6 +31,7 @@ if ($result > 0) {
 
 }}
 
+$pdf->PageNo();
 
 
 $pdf->Output();
