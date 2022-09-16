@@ -33,12 +33,12 @@ ob_start();
 <table>
                 
                     <tr>
-                        <td colspan="10" class="exp">EXPERIENCIA GENERAL</td>
-                    </tr>
+                        <td colspan="10" class="comer">EXPERIENCIA GENERAL</td>
+                    </tr> 
                     <tr>
-                        <td colspan="10" class="emp">Empresa Comercializadora PONCELET</td>
+                        <td colspan="10" class="comer2">Empresa Comercializadora PONCELET</td>
                     </tr>
-                    <tr>
+                    <tr class="comer3">
                         <th>N°</th>
                         <th >Nombre del contratante / Persona y Direccion de contacto</th>
                         <th >Objeto del Contrato</th>
@@ -90,7 +90,13 @@ ob_start();
                                 <td><?php echo $data['obj_contrato'] ?></td>
                                 <td><?php echo $data['ubicacion'] ?></td>
                                 <td><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
-                                <td><?php echo $data['fecha_ejecucion'] ?></td>
+                                <td>
+                                    <?php 
+                                        setlocale(LC_TIME, "spanish");
+                                        //echo $data['fecha_ejecucion']
+                                        echo strftime('%e/%B/%Y', strtotime($data['fecha_ejecucion']));
+                                    ?>
+                                </td>
                                 <td><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
                                 <td><?php echo $data['participa_aso'] ?></td>
                                 <td><?php echo $data['n_socio'] ?></td>
@@ -103,12 +109,12 @@ ob_start();
                     ?>
 
                     <tr>
-                        <td colspan="6" class="exp">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
-                        <td colspan="4" class="exp"><?php echo number_format($total,2,'.',',').' Bs'?></td>
+                        <td colspan="6" class="comer2">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
+                        <td colspan="4" class="comer"><?php echo number_format($total,2,'.',',').' Bs'?></td>
                     </tr>
-                    <!--<tr>
-                         <td colspan="10" class="exp2"><img class="im" src="img/sello.jpg" ></td>
-                    </tr>-->
+                    <tr>
+                         <td colspan="10"  ><img style="height: 150px; width:150px; "  src="img/sello.jpg" ></td>
+                    </tr>
 
 
                 </table>
@@ -122,7 +128,7 @@ ob_start();
                 </body>
 
                 </html>
-                <?php
+                <?php 
                     $html = ob_get_clean();
                     $dompdf = new Dompdf();
                     $dompdf->loadHtml($html);
@@ -130,6 +136,6 @@ ob_start();
                     $dompdf->setPaper('A4', 'landscape');
                     $dompdf->render();
                     $dompdf->stream('Experiencia_General',array('attachment'=>0));
-                                         
+                           
                 ?>
 

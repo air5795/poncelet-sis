@@ -30,15 +30,15 @@ ob_start();
 <table>
                 
                     <tr>
-                        <td colspan="10" class="exp">EXPERIENCIA ESPECIFICA</td>
+                        <td colspan="10" class="comer">EXPERIENCIA ESPECIFICA</td>
                     </tr>
                     <tr>
-                        <td colspan="10" class="emp">Empresa Comercializadora PONCELET</td>
+                        <td colspan="10" class="comer2">Empresa Comercializadora PONCELET</td>
                     </tr>
-                    <tr>
+                    <tr class="comer3">
                         <th>N°</th>
-                        <th >Nombre del contratante / Persona y Direccion de contacto</th>
-                        <th >Objeto del Contrato</th>
+                        <th>Nombre del contratante / Persona y Direccion de contacto</th>
+                        <th>Objeto del Contrato</th>
                         <th>Ubicacion</th>
                         <th>Monto final del contrato en (Bs)</th>
                         <th>Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
@@ -68,10 +68,6 @@ ob_start();
                         
                             
                     }}
-
-                    
-                    
-                    
 
                     // rescatar datos DB 
                     $query = mysqli_query($conexion, "SELECT ROW_NUMBER() OVER( ORDER BY fecha_ejecucion) row_num,
@@ -146,7 +142,11 @@ ob_start();
                                 <td><?php echo $data['obj_contrato'] ?></td>
                                 <td><?php echo $data['ubicacion'] ?></td>
                                 <td><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
-                                <td><?php echo $data['fecha_ejecucion'] ?></td>
+                                <td><?php 
+                                        setlocale(LC_TIME, "spanish");
+                                        //echo $data['fecha_ejecucion']
+                                        echo strftime('%e/%B/%Y', strtotime($data['fecha_ejecucion']));
+                                    ?></td>
                                 <td><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
                                 <td><?php echo $data['participa_aso'] ?></td>
                                 <td><?php echo $data['n_socio'] ?></td>
@@ -190,11 +190,11 @@ ob_start();
                             $total = $result_sum['SUM(monto_bs)']; 
                     ?>
                     <tr>
-                        <td colspan="6" class="exp">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
-                        <td colspan="4" class="exp"><?php echo number_format($total,2,'.',',').' Bs'?></td>
+                        <td colspan="6" class="comer">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
+                        <td colspan="4" class="comer2"><?php echo number_format($total,2,'.',',').' Bs'?></td>
                     </tr>
                     <tr>
-                         <td colspan="10" class="exp2"><img class="im" src="img/sello.jpg" style="page-break-after:always;" ></td>
+                         <td colspan="10"  ><img style="height: 150px; width:150px; "  src="img/sello.jpg" ></td>
                     </tr>
 
 
