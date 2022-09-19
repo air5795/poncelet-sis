@@ -86,8 +86,6 @@ include "../conexion.php";
                                 Listado de Proyectos en Base de datos Poncelet
                             </div>
                             
-
-
                 <div class="card-body">
                 <form action="reporte_ee.php" method="POST">
                     <input type="submit" value="DESCARGAR EXPERIENCIA ESPECIFICA" class="btn btn-danger">
@@ -187,7 +185,7 @@ include "../conexion.php";
                 </div>
                 </div>
 
-                <!-- Modal -->
+                <!-- Modal para  ver imagenes -->
                 <div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-xl" >
                     <div class="modal-content modal-fullscreen ">

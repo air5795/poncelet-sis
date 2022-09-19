@@ -41,6 +41,12 @@ include "../conexion.php";
     <div id="layoutSidenav_content">
         <main>
 
+            
+
+
+
+
+
         
             <div class="container-fluid px-4 row">
                 <img src="../img/9e02b5e0eaf44dc28217adc1360218bc-ilustracion-de-excavadora-de-construccion.png" style="width:100px;" class="col-2">
@@ -48,6 +54,26 @@ include "../conexion.php";
                 
 
                 <hr>
+
+                <ul class="nav nav-pills  justify-content-end">
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a style="color: red; background-color: aliceblue;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-print"></i> Imprimir Experiencia </a>
+                        <ul class="dropdown-menu">
+                        <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c.php"><i class="fa-solid fa-print"></i>->  GAM POTOSI</a></li>
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a style="color: red;" class="dropdown-item" href="#"> <i class="fa-solid fa-print"></i>->  Actas Constructora</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+                
+
+
+
                 <?php
                             $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general_c;");
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
@@ -55,7 +81,7 @@ include "../conexion.php";
 
                             $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_exp) FROM exp_general_c;");
                             $result_f = mysqli_fetch_array($sql_tfila);
-                            $total2 = $result_f['COUNT(id_exp)']; 
+                            $total2 = $result_f['COUNT(id_exp)'];   
 
                     ?>
                 <!-- llenado de tabla-->
@@ -64,28 +90,15 @@ include "../conexion.php";
 
                 <div class="d-none d-xl-block d-lg-block d-md-block" role="group" aria-label="Basic mixed styles example">
                     <a href="registro_exp_c.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
-                   
-                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-file-pdf"></i> PDF Experiencia General 
-                        </button>
-                        <ul class="dropdown-menu" style="background-color: #eb0c0c ;">
-                        <li><a href="reporte_eg_c.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i> Reporte Tipo 1</a></li>
-                        <li><a href="reporte_eg_c2.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i> Reporte Tipo 2 </a></li>
-                        </ul>
-                    
-
-                    
-                    
-                    <a href="#" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i> PDF Actas</a> 
                     
                     <a class="btn btn-warning  " role="button" aria-disabled="true"> <strong> N° de Proyectos : </strong> 
                     <?php echo $total2 ?></a>
                     <a class="btn btn-outline-success " role="button" aria-disabled="true" > <strong> Experiencia total (Bs): </strong> 
                     <?php echo '&nbsp;&nbsp;&nbsp;'.number_format($total,2,'.',','). ' Bs' ?></a>
+
+                    
                     
                 
-                    
-                   
                     <hr>
                 </div>
 
@@ -94,8 +107,8 @@ include "../conexion.php";
 
                 <div class="btn-group d-md-none" role="group" aria-label="Basic mixed styles example">
                      <a href="registro_exp_c.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
-                    <a href="reporte_eg_c.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i> PDF Experiencia G.</a>
-                    <a href="#" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i> PDF Actas</a>
+                    
+                    
                 </div>
 
                 <div class="btn-group d-md-none" role="group" aria-label="Basic mixed styles example">
@@ -191,15 +204,23 @@ include "../conexion.php";
                                 <td><?php echo $data['nombre_contratante'] ?></td>
                                 <td><?php echo $data['obj_contrato'] ?></td>
                                 <td><?php echo $data['ubicacion'] ?></td>
-                                <td class=" bg-success bg-opacity-25"><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
+                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
                                 <td>
                                     <strong>FECHA INICIO</strong> <br>
-                                    <?php echo $data['fecha_ejecucion'] ?> 
+                                    <?php 
+                                        setlocale(LC_TIME, "spanish");
+                                        //echo $data['fecha_ejecucion']
+                                        echo strftime('%e de %B %Y', strtotime($data['fecha_ejecucion']));
+                                    ?>
                                     <br>
                                     <strong>FECHA FINALIZACION</strong><br>
-                                    <?php echo $data['fecha_final'] ?>
+                                    <?php 
+                                        setlocale(LC_TIME, "spanish");
+                                        //echo $data['fecha_ejecucion']
+                                        echo strftime('%e de %B %Y', strtotime($data['fecha_final']));
+                                    ?>
                                 </td>
-                                <td class=" bg-success bg-opacity-25"><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
+                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
                                 <td><?php echo $data['participa_aso'] ?></td>
                                 <td><?php echo $data['n_socio'] ?></td>
                                 <td><?php echo $data['profesional_resp'] ?></td>

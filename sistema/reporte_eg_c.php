@@ -105,10 +105,18 @@ ob_start();
                                 <td><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
                                 <td>
                                     <strong>FECHA INICIO</strong> <br>
-                                    <?php echo $data['fecha_ejecucion'] ?> 
+                                    <?php 
+                                        setlocale(LC_TIME, "spanish");
+                                        //echo $data['fecha_ejecucion']
+                                        echo strftime('%e de %B %Y', strtotime($data['fecha_ejecucion']));
+                                    ?> 
                                     <br>
                                     <strong>FECHA FINALIZACION</strong><br>
-                                    <?php echo $data['fecha_final'] ?>
+                                    <?php 
+                                        setlocale(LC_TIME, "spanish");
+                                        //echo $data['fecha_ejecucion']
+                                        echo strftime('%e de %B %Y', strtotime($data['fecha_final']));
+                                    ?>
                                 </td>
                                 <td><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
                                 <td><?php echo $data['participa_aso'] ?></td>
@@ -139,7 +147,7 @@ ob_start();
                         ***	Indicar el nombre del Profesional Responsable, que desempeñó el cargo de Superintendente/ Residente o Director de Obras o su equivalente. Se puede nombrar a más de un profesional, si así correspondiese. <br>
                         ****	El monto en bolivianos no necesariamente debe coincidir con el monto en Dólares Americanos. <br>
                         NOTA.- Toda la información contenida en este formulario es una declaración jurada. En caso de adjudicación el proponente se compromete a presentar el certificado, Acta de Recepción Definitiva u otro documento que acredite su experiencia en cada una de las obras detalladas, en original o fotocopia legalizada emitida por el contratante. <br>
-
+                
                         </td>
                         
                     </tr>
