@@ -7,6 +7,10 @@ $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general_c;
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
                             $total = $result_sum['SUM(monto_bs)']; 
 
+                            $sql_suma_us = mysqli_query($conexion, "SELECT SUM(monto_dolares) FROM exp_general_c;");
+                            $result_sum = mysqli_fetch_array($sql_suma_us);
+                            $total_us = $result_sum['SUM(monto_dolares)']; 
+
 require_once 'pdf/vendor/autoload.php';
 use Dompdf\Dompdf;
 ob_start();
@@ -30,26 +34,27 @@ ob_start();
 </head>
 
 <body>
-<table>
-                
+                <table>
+                        <tr>
+                        <td colspan="9" class="exp5"> <STRONG style="font-size:12px;"> FORMULARIO 5 </STRONG></td>
+                        </tr>
+                        <tr>
+                            <td colspan="9" class="exp4"> <STRONG style="font-size:13px;"> EXPERIENCIA GENERAL DE LA EMPRESA </STRONG></td>
+                        </tr>
+                    
                     <tr>
-                        <td colspan="11" class="">EXPERIENCIA GENERAL DE LA EMPRESA</td>
+                        <td colspan="9" style="background-color: #deeaf6 ;">EMPRESA CONSTRUCTORA PONCELET</td>
                     </tr>
-                    <tr>
-                        <td colspan="11" class="emp">EMPRESA CONSTRUCTORA PONCELET</td>
-                    </tr>
-                    <tr>
+                    <tr style="background-color: #deeaf6 ;">
                         <th>N°</th>
-                        <th >Nombre del contratante / Persona y Direccion de contacto</th>
-                        <th >Objeto del Contrato</th>
+                        <th>Nombre del contratante / Persona y Direccion de contacto</th>
+                        <th>Objeto del Contrato</th>
                         <th>Ubicacion</th>
-                        <th>Monto final del contrato en (Bs)</th>
                         <th>Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
-                        <th>Monto en $u$ (Llenado de uso alternativo)</th>
                         <th>% de Participacion en Asociacion</th>
                         <th>Nombre LI del Socio(s)</th>
                         <th>Profesional Responsable</th>
-                        <th>N° de Pagina </th> 
+                        <th>Monto final del contrato en (Bs)</th>
                     </tr>
                     
                     <?php
@@ -78,6 +83,7 @@ ob_start();
 
 
                     $result = mysqli_num_rows($query);
+                    
 
                     
 
@@ -91,44 +97,70 @@ ob_start();
                                 <td><?php echo $data['nombre_contratante'] ?></td>
                                 <td><?php echo $data['obj_contrato'] ?></td>
                                 <td><?php echo $data['ubicacion'] ?></td>
-                                <td><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
+                               
                                 <td>
                                     <strong>FECHA INICIO</strong> <br>
-                                    <?php echo $data['fecha_ejecucion'] ?> 
+                                    <?php 
+                                        setlocale(LC_TIME, "spanish");
+                                        //echo $data['fecha_ejecucion']
+                                        echo strftime('%e de %B %Y', strtotime($data['fecha_ejecucion']));
+                                    ?>  
                                     <br>
                                     <strong>FECHA FINALIZACION</strong><br>
-                                    <?php echo $data['fecha_final'] ?>
+                                    <?php 
+                                        setlocale(LC_TIME, "spanish");
+                                        //echo $data['fecha_ejecucion']
+                                        echo strftime('%e de %B %Y', strtotime($data['fecha_final']));
+                                    ?>
                                 </td>
-                                <td><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
+                               
                                 <td><?php echo $data['participa_aso'] ?></td>
                                 <td><?php echo $data['n_socio'] ?></td>
                                 <td><?php echo $data['profesional_resp'] ?></td>
-                                <td>
-                                    <strong>Pag. </strong> 
-                                    <?php 
-
-                                        echo $data['row_num']
-  
-                                        //$ruta = "img/actas_c/";
-                                        //$total_i = count(glob($ruta.'{*.jpg,*.png}',GLOB_BRACE));
-                                        //echo $total_i; 
-                                            
-                                        ?>
-                                </td>
+                                <td><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
                             </tr>
                     <?php
 
                         }
                     }
                     ?>
+                    <tr class="exp">
+                        <td colspan="7" style="text-align: right; background-color: #deeaf6 ;">  TOTAL FACTURADO EN DÓLARES AMERICANOS (Llenado de uso alternativo)</td>
+                        <td colspan="2" style="background-color: white;"> <?php echo number_format($total_us,2,'.',',').'$'?></td>
+                        
+                    </tr>
+                    <tr class="exp">
+                        <td colspan="7" style="text-align: right; background-color: #deeaf6 ;">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
+                        <td colspan="2" style="background-color: white;"><?php echo number_format($total,2,'.',',').' Bs'?></td>
+                    </tr>
 
-                    <tr>
-                        <td colspan="7" class="exp">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
-                        <td colspan="4" class="exp"><?php echo number_format($total,2,'.',',').' Bs'?></td>
+                    <tr class="exp">
+                        
+                        <td colspan="1" style="background-color: white ; text-align: left;" > <center> * </center></td>
+                        <td colspan="8" style="background-color: white ; text-align: left;" > Cuando la empresa cuente con experiencia asociada, solo se debe consignar el monto correspondiente a su participación. </td>
+                    </tr>
+                    <tr class="exp">
+                        
+                        <td colspan="1" style="background-color: white ; text-align: left;" > <center> ** </center></td>
+                        <td colspan="8" style="background-color: white ; text-align: left;" > Si el contrato lo ejecutó asociado, indicar en esta casilla el nombre del o los socios. </td>
+                    </tr>
+                    <tr class="exp">
+                        
+                        <td colspan="1" style="background-color: white ; text-align: left;" > <center> *** </center> </td>
+                        <td colspan="8" style="background-color: white ; text-align: left;" > Indicar el nombre del Profesional Responsable, que desempeñó el cargo de Superintendente/ Residente o Director de Obras o su equivalente. Se puede nombrar a más de un profesional, si así correspondiese. </td>
+                    </tr>
+                    <tr class="exp">
+                        
+                        
+                        <td colspan="9" style="background-color: white ; text-align: left;" > <strong> NOTA.- </strong> Toda la información contenida en este formulario es una declaración jurada. En caso de adjudicación el proponente se compromete a presentar el certificado, Acta de Recepción Definitiva u otro documento que acredite su experiencia en cada una de las obras detalladas, en original o fotocopia legalizada emitida por el contratante. </td>
                     </tr>
                     <!--<tr>
                          <td colspan="10" class="exp2"><img class="im" src="img/sello.jpg" ></td>
                     </tr>-->
+
+                    <tr>
+                         <td colspan="9"  ><img style="height: 150px; width:150px; "  src="img/sello.jpg" ></td>
+                    </tr>
 
 
                 </table>
@@ -142,14 +174,14 @@ ob_start();
                 </body>
 
                 </html>
-                <?php
+                <?php 
                     $html = ob_get_clean();
                     $dompdf = new Dompdf();
                     $dompdf->loadHtml($html);
-                    //$dompdf->setPaper('letter','portrait');
-                    $dompdf->setPaper('A4', 'landscape');
+                    $dompdf->setPaper('letter','portrait');
+                    //$dompdf->setPaper('A4', 'landscape');
                     $dompdf->render();
                     $dompdf->stream('Exp_General_Constructora',array('attachment'=>0));
-                                         
+                                    
                 ?>
 

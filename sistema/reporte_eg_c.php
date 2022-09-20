@@ -142,6 +142,7 @@ ob_start();
                     <tr class="exp">
                         
                         <td colspan="10" style="background-color: white ; text-align: left;" >
+
                         *	Cuando la empresa cuente con experiencia asociada, solo se debe consignar el monto correspondiente a su participación. <br>
                         **	Si el contrato lo ejecutó asociado, indicar en esta casilla el nombre del o los socios. <br>
                         ***	Indicar el nombre del Profesional Responsable, que desempeñó el cargo de Superintendente/ Residente o Director de Obras o su equivalente. Se puede nombrar a más de un profesional, si así correspondiese. <br>
@@ -150,6 +151,10 @@ ob_start();
                 
                         </td>
                         
+                    </tr>
+
+                    <tr>
+                         <td colspan="10"  ><img style="height: 150px; width:150px; "  src="img/sello.jpg" ></td>
                     </tr>
                     <!--<tr>
                          <td colspan="10" class="exp2"><img class="im" src="img/sello.jpg" ></td>

@@ -241,7 +241,7 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapse_e" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="lista_exp_e.php">Listar Exp. Especifica</a>
+                                                        <a class="nav-link" href="lista_exp_e_c.php">Listar Exp. Especifica</a>
                                                         
                                                     </nav>
                                                 </div>
