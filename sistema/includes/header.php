@@ -36,7 +36,7 @@ if (empty($_SESSION['active'])) {
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Configuracion</a></li>
+                        
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="salir.php">Salir del Sistema</a></li>
                     </ul>
@@ -58,7 +58,7 @@ if (empty($_SESSION['active'])) {
 
                             
 
-                            <div class="sb-sidenav-menu-heading ">GENERAL</div>
+                            <div class="sb-sidenav-menu-heading " style="color: coral; font-size: medium; text-transform: none; background-color: #38383869;"><i class="fa-solid fa-object-ungroup"></i> General</div>
 
                             
 
@@ -71,7 +71,7 @@ if (empty($_SESSION['active'])) {
                             </a>
                             <div class="collapse" id="pagesCollapsedoc" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="registro_usuario.php">Doc. Empresa</a> 
+                                    <a class="nav-link" href="documentos.php">Documentos de la empresa</a> 
                                 </nav>
                             </div>
 
@@ -86,7 +86,10 @@ if (empty($_SESSION['active'])) {
                                 </nav>
                             </div>
 
-                            <div class="sb-sidenav-menu-heading ">Comercializadora</div>
+
+
+
+                            <div class="sb-sidenav-menu-heading " style="color:coral; font-size: medium;  text-transform: none; background-color: #38383869;" ><i class="fa-solid fa-cart-shopping"></i> Comercializadora</div>
 
                             
 
@@ -209,7 +212,7 @@ if (empty($_SESSION['active'])) {
                                         </div>
 
 
-                                <div class="sb-sidenav-menu-heading">CONSTRUCTORA</div>
+                                <div class="sb-sidenav-menu-heading" style="color: coral; font-size: medium; text-transform: none; background-color: #38383869;"><i class="fa-solid fa-wrench"></i> Constructora</div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseexp2" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-briefcase"></i></div>
@@ -259,11 +262,11 @@ if (empty($_SESSION['active'])) {
                             
 
 
-                            <div class="sb-sidenav-menu-heading">Administrador</div>
+                            <div class="sb-sidenav-menu-heading" style="color:white; font-size: medium; text-transform: none; background-color: #38383869; " ><i class="fa-solid fa-lock"></i> Administrador</div>
                             
                                               
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapse3" aria-expanded="false" aria-controls="pagesCollapseError">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user-plus"></i></div>
+                            <a  class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapse3" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <div class="sb-nav-link-icon" ><i class="fas fa-user-plus"></i></div>
                                 Usuarios
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -272,7 +275,6 @@ if (empty($_SESSION['active'])) {
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="registro_usuario.php">Nuevo Usuario</a>
                                     <a class="nav-link" href="lista_usuarios.php">Lista de Usuarios</a>
-                                    
                                 </nav>
                             </div>
                             <?php
