@@ -3,6 +3,14 @@
     session_start();
     include "../conexion.php";
 
+
+    if (!empty($_POST)) {
+        
+            $uno = 'poncelet';
+            $uno = $_POST['uno'];
+        
+        }
+
 ?>
 
 
@@ -29,7 +37,7 @@
                     <div class="container-fluid px-4">
                     <div class="container-fluid px-4 row">
                     <img src="../img/login.png" style="width:100px;" class="col-2">
-                <h1 class="mt-4 col">Claves y Credenciales PONCELET</h1>  
+                    <h1 class="mt-4 col">Claves y Credenciales PONCELET</h1>  
                         
                         <hr>
                        <!-- contenido del sistema 2--> 
@@ -66,17 +74,22 @@
                                 <div class="card-header text-center">
                                     WIFI OFICINA
                                 </div>
-                                <div class="card-body">
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        <strong>Usuario: </strong> <input class="" type="text"  id="uno" value="Poncelet" disabled>
-                                        <button id="submit_uno" class="btn btn-warning btn-sm"><i class="fa-solid fa-lock"></i></button>
-                                        <button id="guardar_uno" class="btn btn-success btn-sm"><i class="fa-solid fa-floppy-disk"></i></button>
-                                    </div>
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        <strong>Password: </strong> <input type="text"  id="dos" value="Ponce2021.@" disabled>
-                                        <button id="submit_dos" class="btn btn-warning btn-sm"><i class="fa-solid fa-lock"></i></button>
-                                        <button id="guardar_dos" class="btn btn-success btn-sm"><i class="fa-solid fa-floppy-disk"></i></button> 
-                                    </div>
+                                
+                                    <div class="card-body">
+                                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                            
+                                            <button id="submit_uno" class="btn btn-warning btn-sm"><i class="fa-solid fa-lock"></i></button>
+                                            <form action="claves.php" method="post">
+                                                <strong>Usuario: </strong> <input class="" type="text" name="uno" id="uno" value="<?php echo $uno?>" disabled>
+                                                <button id="guardar_uno" class="btn btn-success btn-sm"><i class="fa-solid fa-floppy-disk"></i></button>
+                                            </form>
+                                        </div>
+                                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                            <strong>Password: </strong> <input type="text"  id="dos" value="<?php echo $uno ?>" disabled>
+                                            <button id="submit_dos" class="btn btn-warning btn-sm"><i class="fa-solid fa-lock"></i></button>
+                                            <button id="guardar_dos" class="btn btn-success btn-sm"><i class="fa-solid fa-floppy-disk"></i></button> 
+                                        </div>
+                                
                                     
                                 </div>
                         </div>

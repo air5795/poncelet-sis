@@ -63,3 +63,17 @@ ORDER BY
     -- inicia db tabla de 0
 
     TRUNCATE TABLE [TABLA]
+
+
+
+
+    UPDATE `exp_general` SET `nombre_contratante` = 'GOBIERNO AUTONOMO MUNICIPAL DE PORCOd', 
+                            `obj_contrato` = 'ACTA DE CONFORMIDAD ADQUISICION DE CONTENEDORES Y EQUIPOS AMBIENTALESd', 
+                            `ubicacion` = 'PORCOd', 
+                            `monto_bs` = '400200.00', 
+                            `monto_dolares` = '57447.13', 
+                            `fecha_ejecucion` = '2015-12-07', 
+                            `participa_aso` = 'd', 
+                            `n_socio` = 'd', 
+                            `profesional_resp` = 'ALBERTO ARISPE PONCEd' 
+    WHERE `exp_general`.`id_exp` = 1

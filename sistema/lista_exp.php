@@ -178,26 +178,30 @@ include "../conexion.php";
                                 <td><?php echo $data['n_socio'] ?></td>
                                 <td><?php echo $data['profesional_resp'] ?></td>
                                 <td>
-                                    <img style= "width:100px" src="<?php echo $image ?>" alt=""> 
+                                    <img style= "width:100px" src="<?php echo $image ?>" alt="" class="gallery-item"> 
                                 </td>
                                 <td>
-                                    <img style= "width:100px" src="<?php echo $image2 ?>" alt=""> 
+                                    <img style= "width:100px" src="<?php echo $image2 ?>" alt="" class="gallery-item"> 
                                 </td>
                                 <td>
-                                    <img style= "width:100px" src="<?php echo $image3 ?>" alt=""> 
+                                    <img style= "width:100px" src="<?php echo $image3 ?>" alt="" class="gallery-item"> 
                                 </td>
                                 
                                 
 
                                 <td class="col-sm-2">
-                                    <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-warning p-2 disabled" data-toggle="tooltip" data-placement="top" title="Editar" >
-                                    <i class="fa-solid fa-file-pen"></i>
+
+                                <div style="min-width: max-content;">
+                                <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" >
+                                    <i class="fa-solid fa-file-pen"></i> Editar
                                     </a>
 
                                     
-                                    <a href="eliminar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-danger p-2 disabled" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                    <i class="fa-solid fa-trash-can"></i>
+                                    <a href="borrar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-danger  btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                    <i class="fa-solid fa-trash-can"></i> Eliminar
                                     </a>
+                                </div>
+                                    
                                     
                                     
                                 </td>
@@ -212,6 +216,22 @@ include "../conexion.php";
                 </table>
                 </div>
                 </div>
+
+                        <!-- modal-->
+                                <div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-xl" >
+                                                <div class="modal-content modal-fullscreen ">
+                                                <div class="modal-header">
+                                                    <!--<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body" >
+                                                    <img src="img/actas/acta_103_1_2021-02-22.jpg" class="modal-img" alt="modal img">
+                                                </div>
+                                                
+                                                </div>
+                                            </div>
+                                    </div>
                 
 
 
@@ -230,6 +250,18 @@ include "../conexion.php";
     </div>
     </div>
     <!-- datatablesSimple -->
+
+    <script>
+    document.addEventListener("click",function(e){
+        if(e.target.classList.contains("gallery-item")){
+            const src = e.target.getAttribute("src");
+            document.querySelector(".modal-img").src = src;
+
+            const myModal = new bootstrap.Modal(document.getElementById('gallery-modal'));
+            myModal.show();
+        }
+    });
+</script>
     
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
