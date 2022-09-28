@@ -303,3 +303,8 @@ width: 100%;
     
 }
 
+
+.imgcon{
+    display: flex;
+    height: 100px;
+}

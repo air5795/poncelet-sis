@@ -161,10 +161,10 @@
                                 
                                     <div class="card col-sm-2" style="font-size: 14px; padding: 0;">
                                     
-                                        <div class="card-header text-center " style="padding: 0; margin: 0;">
+                                        <div class="card-header text-center " style="padding: 0; margin: 0; font-weight: 800;">
                                         <?php echo $data['nombre'] ?> 
                                         </div>
-                                            <div class="card-body " style="padding: 0;margin: 0;">
+                                            <div class="card-body " style="padding: 0;margin: 0; background-color: #fff3cd;">
                                             
 
                                                 <div class="alert alert-warning alert-dismissible fade show" role="alert"> 
@@ -182,7 +182,7 @@
                                                 
                                             </div>
                                                 <a  data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_clave']; ?> " class="btn btn-outline-warning btn-sm" href=""><i class="fa-solid fa-pencil"></i> Actualizar</a>
-                                                <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_clave']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> Eliminar </a>
+                                                <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_clave']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> Eliminar </a>
                                     </div> 
                                     
                                     
@@ -217,8 +217,36 @@
                                                 </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                             <input type="submit" value="Actualizar Registros">
+                                        </div>
+
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                     <!-- Modal eliminar  -->
+                                <div class="modal fade " id="exampleModali<?php echo $data['id_clave']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content  bg-opacity-80">
+                                            <form action="eliminar_claves.php" method="post">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar registro  </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-header text-center " style="padding: 0; margin: 0;">
+                                            <input type="hidden" name="eid_clave" value="<?php echo $data['id_clave']; ?>" >
+                                            
+                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['nombre'] ?> " disabled>
+                                             
+                                            </div>
+                                                
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <input class="btn btn-danger" type="submit" value="Eliminar">
                                         </div>
 
                                         </form>
@@ -274,21 +302,6 @@
 </div>
                             </tbody>
                             </table>
-                        
-                        
-                       
-
-
-
-
-
-
-
-
-
-
-                    
-                        
 
                         
                     </div>

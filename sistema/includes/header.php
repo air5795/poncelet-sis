@@ -11,6 +11,7 @@ if (empty($_SESSION['active'])) {
             <center><img src="../img/ICONO5.png" alt=""></center> 
             
             
+            
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -27,14 +28,36 @@ if (empty($_SESSION['active'])) {
                                 $tipo = 'Trabajador';
                                 echo $_SESSION['nombre'].' - ('.$tipo.')';
                             }   
-                        ?> 
+                        ?>
+                                                
                     </p>    
                 </div>
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <?php
+                                                    if ($_SESSION['iduser'] == 1 ) {
+                                                    echo '<img style="width:35px; height:35px;" src="../img/ale.png" >';
+                                                        //echo $_SESSION['iduser'];
+                                                    }
+                                                    elseif ($_SESSION['iduser'] == 12 ) {
+                                                        echo '<img style="width:35px; height:35px;" src="../sistema/img/nicol.png" >';
+                                                            //echo $_SESSION['iduser'];
+                                                        }
+                                                        elseif ($_SESSION['iduser'] == 28 ) {
+                                                            echo '<img style="width:35px; height:35px;" src="../sistema/img/mavel.png" >';
+                                                                //echo $_SESSION['iduser'];
+                                                            }
+                                                            elseif ($_SESSION['iduser'] == 29 ) {
+                                                                echo '<img style="width:35px; height:35px;" src="../sistema/img/jazmin.png" >';
+                                                                    //echo $_SESSION['iduser'];
+                                                                } else{
+
+                                                                }
+                                                
+                                                ?> </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         
                         <li><hr class="dropdown-divider" /></li>
@@ -42,6 +65,7 @@ if (empty($_SESSION['active'])) {
                     </ul>
                 </li>
             </ul>
+            
             
         </nav>
         <div id="layoutSidenav">
