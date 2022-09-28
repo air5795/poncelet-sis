@@ -44,11 +44,7 @@
                         
                        <div class="container text-center">
                             <div class="row">
-                                <div style="
-background-color: #323232;
-    border-radius: 15px;
-    text-align-last: center;
-    border: #ff4200 solid 10px;" class="col">
+                                <div class="col">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <h3 style="color: #ff5301; padding: 10px; text-align: left;">Cargar Documentos</h3>
@@ -74,7 +70,7 @@ background-color: #323232;
                                      <!--tabla-->
                             <div class="card navbar col align-self-end" style="font-size: 12px;">
                                  <div class="card-body">
-                                    <table class="table table-bordered table-dark">
+                                    <table class="table table-bordered ">
                                         <thead class="table-light">
                                             <tr>
                                             <th width="7%">#</th>

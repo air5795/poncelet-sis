@@ -5,17 +5,54 @@
 
 
     if (!empty($_POST)) {
-        
-            $uno = 'poncelet';
-            $uno = $_POST['uno'];
-        
+
+
+        if (empty($_POST['name'])  
+        || empty($_POST['user']) 
+        || empty($_POST['pasword'])) {
+            $alert = '<p class="alert alert-danger "> Todos los Campos Son Obligatorios menos Nombre LI Socio(s)* y Participacion en Asociacion</p> ';
+       } 
+       else 
+     {
+            
+            $nombre_c = $_POST['name'];
+            $user_c = $_POST['user'];
+            $pasword_c = $_POST['pasword'];
+            
         }
+
+
+                    $query_insert = mysqli_query($conexion, "INSERT INTO claves(
+                        nombre,
+                        usuarios,
+                        passwords  
+                    )
+                    VALUES(
+                        '$nombre_c',
+                        '$user_c',
+                        '$pasword_c'
+                        
+                    )");
+
+
+            if ($query_insert) {
+            
+            $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
+            header("Location: claves.php");
+
+            }else{
+            $alert = '<p class="alert alert-danger "> El registro fallo </p> ';
+            }
+}
+
+
+
 
 ?>
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8" />
         <?php include "includes/scripts.php";?>
@@ -48,114 +85,197 @@
                         
 
 
-                       <div class="card">
-                        <div class="card-header">
-                            Correos de la Empresa
-                        </div>
-                        <div class="card-body">
-                        <div class="alert alert-success" role="alert">
+                       <div class="card" style="padding: 0; ">
+                        <div class="card-header "  >
                             
-                            <p class="mb-0" style="text-align: left;"> <strong> CORREO (COMERCIALIZADORA) :</strong> poncelet.bo@gmail.com</p>
-                            <p class="mb-0" style="text-align: left;"> <strong> Password :</strong> albertoarispe@1</p>
-                            <hr>
-                            <p class="mb-0" style="text-align: left;"> <strong> CORREO (CONSTRUCTORA) :</strong> poncelet.bol@gmail.com</p>
-                            <p class="mb-0" style="text-align: left;"> <strong> Password :</strong> albertoarispeponce</p>
-                            </div>
+                           
+                            REGISTRO DE CLAVES DE LA EMPRESA
                         </div>
-                        </div>
+                        <form action="claves.php" method="post" class="form-control" id="obj1">
+                        <div class="card-body "  >
+                                <div class="alert alert-secondary row " role="alert" style="padding: 0; margin:0; ">                                
+                                
+                                        <div class="col-sm-3">
+                                            <label for="">Nombre</label>
+                                            <input type="text" name="name"  class="form-control form-control-sm">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label for="">Usuario</label>
+                                            <input type="text" name="user" class="form-control form-control-sm">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label for="">Contraseña</label>
+                                            <input type="text" name="pasword"  class="form-control form-control-sm">
+                                        </div>
 
-
-
-                        
-                        
-                        <div class="row">
-
-                        <div class="card col-sm-3" style="font-size: 14px;">
-                                <div class="card-header text-center">
-                                    WIFI OFICINA
+                                        <div class="col-sm-2">
+                                            <label for=""></label>
+                                            <input type="submit" value="Registrar" class="form-control btn-success btn-sm"> 
+                                        </div>
+                                </form>
+                                
                                 </div>
+                        </div>
+                        </div>
+
+
+
+                        <!--<table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                                </tr>
+                            </thead>-->
+
+
+                            <div class="row">
+                            
+                            <?php
+                
+                    // rescatar datos DB 
+                    $query = mysqli_query($conexion, "SELECT * from claves ");
+
+                   
+
+                    $result = mysqli_num_rows($query);
+
+                    if ($result > 0) {
+                        while ($data = mysqli_fetch_array($query)) {
+
+                    ?>
+                            <!--<tbody>
+                                <tr>
+                                    <td><?php echo $data['id_clave'] ?></td>
+                                    <td><?php echo $data['nombre'] ?></td>
+                                    <td><?php echo $data['usuarios'] ?></td>
+                                    <td><?php echo $data['passwords'] ?></td>
+                                </tr>-->
+
+
+                                 <!-- Tarjetas  -->
+
+
                                 
-                                    <div class="card-body">
-                                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                            
-                                            <button id="submit_uno" class="btn btn-warning btn-sm"><i class="fa-solid fa-lock"></i></button>
-                                            <form action="claves.php" method="post">
-                                                <strong>Usuario: </strong> <input class="" type="text" name="uno" id="uno" value="<?php echo $uno?>" disabled>
-                                                <button id="guardar_uno" class="btn btn-success btn-sm"><i class="fa-solid fa-floppy-disk"></i></button>
-                                            </form>
-                                        </div>
-                                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                            <strong>Password: </strong> <input type="text"  id="dos" value="<?php echo $uno ?>" disabled>
-                                            <button id="submit_dos" class="btn btn-warning btn-sm"><i class="fa-solid fa-lock"></i></button>
-                                            <button id="guardar_dos" class="btn btn-success btn-sm"><i class="fa-solid fa-floppy-disk"></i></button> 
-                                        </div>
-                                
+                                    <div class="card col-sm-2" style="font-size: 14px; padding: 0;">
                                     
-                                </div>
-                        </div>
+                                        <div class="card-header text-center " style="padding: 0; margin: 0;">
+                                        <?php echo $data['nombre'] ?> 
+                                        </div>
+                                            <div class="card-body " style="padding: 0;margin: 0;">
+                                            
 
+                                                <div class="alert alert-warning alert-dismissible fade show" role="alert"> 
+                                                <i class="fa-solid fa-user-lock"></i><strong> Usuarios </strong> <input class="form-control form-control-sm" style="text-align: center;" type="text"  id="dos" value="<?php echo $data['usuarios'] ?>" disabled>
+                                                    
+                                                </div>
+                                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                                <i class="fa-solid fa-key"></i><strong> Password </strong> <input class="form-control form-control-sm" style="text-align: center;" type="text"  id="dos" value="<?php echo $data['passwords'] ?>" disabled>
+                                                    
+                                                </div>
+                                                <div class=" text-center align-items-center">
+                                               
+                                                
+                                                </div>
+                                                
+                                            </div>
+                                                <a  data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_clave']; ?> " class="btn btn-outline-warning btn-sm" href=""><i class="fa-solid fa-pencil"></i> Actualizar</a>
+                                                <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_clave']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> Eliminar </a>
+                                    </div> 
+                                    
+                                    
+                                <!-- Modal editar  -->
+                                <div class="modal fade" id="exampleModal<?php echo $data['id_clave']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form action="editar_claves.php" method="post">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Editar a <?php echo $data['nombre'] ?> </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-header text-center " style="padding: 0; margin: 0;">
+                                            <input type="hidden" name="eid_clave" value="<?php echo $data['id_clave']; ?>" >
+                                            <label for="">Nombre</label>
+                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['nombre'] ?>">
+                                             
+                                            </div>
+                                                <div class="card-body " style="padding: 0;margin: 0;">
+
+                                                    
+
+                                                    <div class="alert alert-warning alert-dismissible fade show" role="alert"> 
+                                                    <i class="fa-solid fa-user-lock"></i><strong> Usuarios </strong> <input class="form-control form-control-sm" style="text-align: center;" type="text"  id="dos" name="euser" value="<?php echo $data['usuarios'] ?>" >
+                                                        
+                                                    </div>
+                                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                                    <i class="fa-solid fa-key"></i><strong> Password </strong> <input class="form-control form-control-sm" style="text-align: center;" type="text"  id="dos" name="epass" value="<?php echo $data['passwords'] ?>" >
+                                                        
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <input type="submit" value="Actualizar Registros">
+                                        </div>
+
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    
+                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <?php
+                                    
+                                        
+                                    }
+                                }
+
+
+
+                                    ?>
+
+
+
+
+                                
+
+                                    <script>
+                                        function ocultar(){
+                                        document.getElementById('obj1').style.display = 'none';
+                                        }
+                                        function mostrar(){
+                                        document.getElementById('obj1').style.display = 'block';
+                                        }
+
+                                       
+                                    </script>
+
+</div>
+                            </tbody>
+                            </table>
                         
-
-
                         
-
-
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            
-
-                            
-                            <script>
-                            
-                            document.getElementById('submit_uno').onclick = function() {
-                                var disabled = document.getElementById("uno").disabled;
-                                if (disabled) {
-                                    document.getElementById("uno").disabled = false;
-                                }
-                                else {
-                                    document.getElementById("uno").disabled = true;
-                                }
-                            }
-
-                            document.getElementById('submit_dos').onclick = function() {
-                                var disabled = document.getElementById("dos").disabled;
-                                if (disabled) {
-                                    document.getElementById("dos").disabled = false;
-                                }
-                                else {
-                                    document.getElementById("dos").disabled = true;
-                                }
-                            }
-
-
-                            </script>
-                            
-                            
-                        </div>
                        
 
 
@@ -185,6 +305,10 @@
                 </footer>
             </div>
         </div>
+
+        
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -192,5 +316,6 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
-    </body>
+
+        </body>
 </html>

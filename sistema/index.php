@@ -50,38 +50,70 @@
 
                         <hr>
 
-                        <div class="container">
-
-                        <div class="row">
-
-                        <div class="card col d-none d-md-block " >
-                            
-                            <div class="card-body">
-                                <h3 class="card-title text-center"> PONCELET Comercializadora</h3>
-                                <hr>
-                                <p class="card-text text-center">PANEL DE CONTROL  </p>
-                                <P class="card text-center">TOTAL EN BS EXPERIENCIA GENERAL </P>
-                                <a class="btn btn-success disabled card " role="button" aria-disabled="true" ><?php echo ''.number_format($total,2,'.',','). ' Bs' ?></a>
-                                <P class="card text-center">N° DE PROYECTOS REGISTRADOS</P>
-                                <a style="color: white ;" class="btn bg-primary disabled card" role="button" aria-disabled="true"> <?php echo $total2 ?></a>
-                            </div>
-                        </div>
                         
-                        <div class="card col d-none d-md-block" >
-                            
-                            <div class="card-body">
-                                <h3 class="card-title text-center"> PONCELET Constructora</h3>
-                                <hr>
-                                <p class="card-text text-center">PANEL DE CONTROL  </p>
-                                <P class="card text-center">TOTAL EN BS EXPERIENCIA GENERAL </P>
-                                <a class="btn btn-success disabled card " role="button" aria-disabled="true" ><?php echo ''.number_format($total3,2,'.',','). ' Bs' ?></a>
-                                <P class="card text-center">N° DE PROYECTOS REGISTRADOS</P>
-                                <a  style="color: white ;" class="btn bg-primary disabled card " role="button" aria-disabled="true"><?php echo $total4 ?></a>
+
+                        <!--Home Content-->
+                        <div class="home-content">
+                            <div class="overview-boxes">
+
+                                <div class="box">
+                                    <div class="left-side">
+                                        <div class="box_topic">N° de Proyectos Comercializadora</div>
+                                        <div class="number"><?php echo $total2 ?></div>
+                                        <div class="indicator">
+                                            <i class="kk"></i>
+                                            <span class="text">Comercializadora/Poncelet</span>
+                                        </div>
+                                    </div>
+
+                                    <i class="fa-solid fa-cart-shopping cart"></i>
+                                </div>
+
+                                <div class="box">
+                                    <div class="left-side">
+                                        <div class="box_topic">Experiencia Total en (bs) Comercializadora</div>
+                                        <div class="number"><?php echo ''.number_format($total,2,'.',','). ' Bs' ?></div>
+                                        <div class="indicator">
+                                            <i class="kk"></i>
+                                            <span class="text">Comercializadora/Poncelet</span>
+                                        </div>
+                                    </div>
+
+                                    <i class="fa-solid fa-cart-shopping cart"></i>
+                                </div>
+
+
+                                <div class="box">
+                                    <div class="left-side">
+                                        <div class="box_topic">N° de Proyectos Constructora</div>
+                                        <div class="number"><?php echo $total4 ?></div>
+                                        <div class="indicator">
+                                            <i class="k"></i>
+                                            <span class="text">Constructora/Poncelet</span>
+                                        </div>
+                                    </div>
+
+                                    <i class="fa-solid fa-person-digging cons"></i>
+                                </div>
+
+
+                                <div class="box">
+                                    <div class="left-side">
+                                        <div class="box_topic">Experiencia Total en (bs) Constructora</div>
+                                        <div class="number"><?php echo ''.number_format($total3,2,'.',','). ' Bs' ?></div>
+                                        <div class="indicator">
+                                            <i class="k"></i>
+                                            <span class="text">Constructora/Poncelet</span>
+                                        </div>
+                                    </div>
+
+                                    <i class="fa-solid fa-person-digging cons"></i>
+                                </div>
                             </div>
                         </div>
-                        </div>
 
-                        </div>
+
+
                         
 
 
