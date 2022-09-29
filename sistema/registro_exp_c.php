@@ -203,10 +203,16 @@
 
         <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-4">
-                    <div class="container-fluid px-4 row">
-                <img src="../img/9e02b5e0eaf44dc28217adc1360218bc-ilustracion-de-excavadora-de-construccion.png" style="width:100px;" class="col-2">
-                <h1 class="mt-4 col">Registro de Experiencia - Constructora</h1>    
+                <div class="container-fluid px-4">
+                    <div>
+                    <h1 class="mt-4"><i class="fa-solid fa-person-digging"></i> Registro Experiencia Constructora</h1>
+                        
+                        <ol class="breadcrumb mb-2 ">
+                            <li class="breadcrumb-item active">Poncelet / Registro Experiencia</li> 
+                        </ol>
+                    
+                        
+                    </div>    
                         
                         <hr>
                        <!-- contenido del sistema 2--> 

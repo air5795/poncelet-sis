@@ -32,9 +32,9 @@
         <div id="layoutSidenav_content">
                 <main>
                 <div class="container-fluid px-4 row">
-                <img src="../img/docu.png" style="width:100px;" class="col-2">
                 
-                <h1 class="mt-4 col">Lista de Documentos de la Empresa</h1>   
+                
+                <h1 class="mt-4 col"><i class="fa-solid fa-folder-open"></i> Lista de Documentos de la Empresa</h1>   
                         
                         <hr>
                        <!-- contenido del sistema 2--> 

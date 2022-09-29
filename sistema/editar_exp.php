@@ -137,9 +137,9 @@
                 
                 <div class="container-fluid px-4 ">
                 <div class="container-fluid px-4 row">
-                <img src="../img/precaucion.png" style="width:100px;" class="col-2">
                 
-                    <h1 class="mt-4 col">Editar Experiencia -> <a class="btn btn-warning btn-sm disabled"> Que Corresponde a : <strong> <?php echo $n_c;?> </strong></a></h1> 
+                
+                    <h1 class="mt-4 col"><i class="fa-solid fa-triangle-exclamation"></i> Editar Experiencia <a class="btn btn-warning btn-sm disabled"> Que Corresponde a : <strong> <?php echo $n_c;?> </strong></a></h1> 
                             
                     </div>   
                         

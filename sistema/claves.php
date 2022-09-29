@@ -73,8 +73,8 @@
                 <main>
                     <div class="container-fluid px-4">
                     <div class="container-fluid px-4 row">
-                    <img src="../img/login.png" style="width:100px;" class="col-2">
-                    <h1 class="mt-4 col">Claves y Credenciales PONCELET</h1>  
+                    
+                    <h1 class="mt-4 col"> <i class="fa-solid fa-key"></i> Claves PONCELET</h1>  
                         
                         <hr>
                        <!-- contenido del sistema 2--> 

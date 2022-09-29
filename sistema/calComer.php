@@ -33,7 +33,7 @@
                 <main>
                     <div class="container-fluid px-4">
                     <div>
-                    <h1 class="mt-4">Calculadora de Experiencia Comercializadora </h1>
+                    <h1 class="mt-4"><i class="fa-solid fa-calculator"></i> Calculadora de Experiencia Comercializadora </h1>
                         
                         <ol class="breadcrumb mb-2 ">
                             <li class="breadcrumb-item active">Poncelet / Calcular Experiencia</li> 

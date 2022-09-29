@@ -35,10 +35,22 @@ include "../conexion.php";
 
     <div id="layoutSidenav_content">
         <main>
-        <div class="container-fluid px-4 row">
-                <img src="../img/9e02b5e0eaf44dc28217adc1360218bc-ilustracion-de-excavadora-de-construccion.png" style="width:100px;" class="col-2">
-                <h1 class="mt-4 col">Lista de Proyectos Constructora</h1> 
+        <div class="container-fluid px-4 ">
+                    <div>
+                    <h1 class="mt-4"><i class="fa-solid fa-person-digging"></i> Lista de Proyectos Constructora</h1>
+                        
+                        <ol class="breadcrumb mb-2 ">
+                            <li class="breadcrumb-item active">Poncelet / Proyectos Constructora</li> 
+                        </ol>
 
+
+
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Importante!</strong> Seleccionar los proyectos que quiere listar a la Experiencia Especifica.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    
+                </div>
                 <hr>
                 <?php
                             $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general_c;");
@@ -60,12 +72,7 @@ include "../conexion.php";
 
                 
         
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Importante!</strong> Seleccionar los proyectos que quiere listar a la Experiencia Especifica.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    
-                </div>
+               
 
                 <!--  modal 
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gallery-modal">
@@ -86,7 +93,7 @@ include "../conexion.php";
                                 Listado de Proyectos en Base de datos Poncelet
                             </div>
                             
-                <div class="card-body">
+                
 
 
 
@@ -99,7 +106,9 @@ include "../conexion.php";
                     <input name="dos" type="submit" value="GAM COTAGAITA" style="color: red; " class="btn btn-light">
                     <a href="rep_ImgEE_c.php" class="btn btn-light">DESCARGAR ACTAS </a>
                     <hr>
-                    <table  class=" table  table-borderless table-hover tabla_ale" id="datatable" class="display" >
+                    <div class="card-body display">
+                    
+                    <table  class="tabla_ale display responsive " id="datatable"  width="100%" >
                     <thead class="table-secondary">
                         <tr class="">
                             <th>Check</th>
@@ -187,7 +196,7 @@ include "../conexion.php";
 
                 </table>
 
-                </form>
+                
 
 
 
@@ -235,6 +244,10 @@ include "../conexion.php";
 
                 </div>
                 </div>
+                
+
+                </form>
+                
 
                 <!-- Modal para  ver imagenes -->
                 <div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -284,6 +297,7 @@ include "../conexion.php";
 
     <script>$(document).ready(function () {
     $('#datatable').DataTable({
+        responsive: true,
         pageLength: 500,
         lengthMenu: [
             [5, 25, 50,150,500, -1],

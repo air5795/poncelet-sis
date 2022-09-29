@@ -48,14 +48,17 @@ include "../conexion.php";
 
 
         
-            <div class="container-fluid px-4 row">
-                <img src="../img/9e02b5e0eaf44dc28217adc1360218bc-ilustracion-de-excavadora-de-construccion.png" style="width:100px;" class="col-2">
-                <h1 class="mt-4 col">Lista de Proyectos Constructora</h1> 
-                
+        <div class="container-fluid px-4 ">
+                    <div>
+                    <h1 class="mt-4"><i class="fa-solid fa-person-digging"></i> Lista de Proyectos Constructora</h1>
+                        
+                        <ol class="breadcrumb mb-2 ">
+                            <li class="breadcrumb-item active">Poncelet / Proyectos Constructora</li> 
+                        </ol>
 
-                <hr>
+                        
 
-                <ul class="nav nav-pills  justify-content-end">
+                        <ul class="nav nav-pills  justify-content-end">
                     <li class="nav-item">
                     </li>
                     <li class="nav-item dropdown">
@@ -69,6 +72,16 @@ include "../conexion.php";
                         </ul>
                     </li>
                 </ul>
+                    
+                        
+                    </div>
+                
+
+                <hr>
+
+                
+
+                
 
 
                 
