@@ -270,10 +270,69 @@
                                         <th>Acciones</th>    
                                     </tr>
                                     </thead>
+                                    <?php
+                    
+                                    // rescatar datos DB 
+                                    $query = mysqli_query($conexion, "SELECT * FROM ingresos");
 
-                                    <tbody>
-                                        
-                                    </tbody>
+                                
+
+                                    $result = mysqli_num_rows($query);
+                                    if ($result > 0) {
+                                        while ($data = mysqli_fetch_array($query)) {
+                                            if ($data['respaldo'] != 'nodisponible.png' ) {
+                                                $image = 'img/cajaChica_respaldos/'.$data['respaldo'];
+                                                
+
+                                            }else {
+                                                $image = 'img/'.$data['respaldo'];
+                                            }
+                                            
+                                            
+
+                                            
+
+                                    ?>
+
+<tr>
+                                <td><?php echo $data['id_ingreso'] ?></td>
+                                <td><?php echo $data['persona'] ?></td>
+                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['montoBs'],2,'.',',').' Bs' ?></td>
+                                
+                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['montoU'],2,'.',',').' $' ?></td>
+                                
+                                <td><?php echo $data['fecha_i'] ?></td>
+                                <td>
+                                    <img style= "width:100px" src="<?php echo $image ?>" alt="" class="gallery-item"> 
+                                </td>
+                                
+                                
+                                
+
+                                <td class="col-sm-2">
+
+                                <div style="min-width: max-content;">
+                                    <a href="" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" >
+                                    <i class="fa-solid fa-file-pen"></i> Editar
+                                    </a>
+
+                                    
+                                    <a href="" class="btn btn-danger  btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                    <i class="fa-solid fa-trash-can"></i> Eliminar
+                                    </a>
+                                </div>
+                                    
+                                    
+                                    
+                                </td>
+                            </tr>
+                    <?php
+
+                        }
+                    }
+                    ?>
+
+                                    
                             </table>
                             
 
