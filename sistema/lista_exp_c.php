@@ -66,6 +66,7 @@ include "../conexion.php";
                         <ul class="dropdown-menu">
                         <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c.php"><i class="fa-solid fa-print"></i>->  GAM POTOSI</a></li>
                         <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c2.php"><i class="fa-solid fa-print"></i>->  GAM COTAGAITA</a></li>
+                        <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c3.php"><i class="fa-solid fa-print"></i>->  DON DIEGO</a></li>
                         
                         <li><hr class="dropdown-divider"></li>
                         <li><a style="color: red;" class="dropdown-item" href="#"> <i class="fa-solid fa-print"></i>->  Actas Constructora</a></li>

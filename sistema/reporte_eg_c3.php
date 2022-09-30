@@ -39,7 +39,7 @@ ob_start();
                     
                     
                         <tr>
-                            <td colspan="10" class="exp5"> <STRONG style="font-size:12px;"> FORMULARIO </STRONG></td>
+                            <td colspan="10" class="exp5"> <STRONG style="font-size:12px;"> FORMULARIO A-3 </STRONG></td>
                         </tr>
                         <tr>
                             <td colspan="10" class="exp4"> <STRONG style="font-size:13px;"> EXPERIENCIA GENERAL DE LA EMPRESA </STRONG></td>
@@ -48,7 +48,7 @@ ob_start();
                      
                     
                     <tr>
-                        <td colspan="10" class="emp"> <STRONG>  EMPRESA CONSTRUCTORA PONCELET </STRONG></td> 
+                        <td colspan="10" class="emp" style="background-color: #213b5a; color:white"> <STRONG>  EMPRESA CONSTRUCTORA PONCELET </STRONG></td> 
                     </tr>
                     <tr>
                         <th>N°</th>
@@ -130,12 +130,12 @@ ob_start();
                     ?>
 
                     <tr class="exp">
-                        <td colspan="8" style="text-align: right;">  TOTAL FACTURADO EN DÓLARES AMERICANOS (Llenado de uso alternativo)</td>
+                        <td colspan="8" style="text-align: right; background-color: #213b5a; color:white">  TOTAL FACTURADO EN DÓLARES AMERICANOS (Llenado de uso alternativo)</td>
                         <td colspan="1" style="background-color: white;"> <?php echo number_format($total_us,2,'.',',').'$'?></td>
                         <td colspan="1" style="background-color: white;"></td>
                     </tr>
                     <tr class="exp">
-                        <td colspan="8" style="text-align: right;">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
+                        <td colspan="8" style="text-align: right; background-color: #213b5a; color:white">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
                         <td colspan="1" style="background-color: white;" ></td>
                         <td colspan="1" style="background-color: white;"><?php echo number_format($total,2,'.',',').' Bs'?></td>
                     </tr>

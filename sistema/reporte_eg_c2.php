@@ -159,7 +159,7 @@ ob_start();
                     </tr>-->
 
                     <tr>
-                         <td colspan="9"  ><img style="height: 150px; width:150px; "  src="img/sello.jpg" ></td>
+                         <td colspan="9"  ><img style="height: 150px; width:150px; "  src="img/selloc.jpg" ></td>
                     </tr>
 
 

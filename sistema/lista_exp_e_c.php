@@ -104,6 +104,7 @@ include "../conexion.php";
                 <form action="reporte_ee_c.php" method="POST">
                     <input name="uno" type="submit" value="GAM POTOSI" style="color: red; " class="btn btn-light">
                     <input name="dos" type="submit" value="GAM COTAGAITA" style="color: red; " class="btn btn-light">
+                    <input name="tres" type="submit" value="DON DIEGO" style="color: red; " class="btn btn-light">
                     <a href="rep_ImgEE_c.php" class="btn btn-light">DESCARGAR ACTAS </a>
                     <hr>
                     <div class="card-body display">
