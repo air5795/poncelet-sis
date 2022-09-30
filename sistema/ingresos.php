@@ -120,7 +120,8 @@
                     <div class="container-fluid px-4">
                     <div class="container-fluid px-4 row">
                 
-                <h1 class="mt-4 col"><i class="fa-solid fa-cash-register"></i>  <strong> Caja Chica </strong>  Ingresos</h1>   
+                <h1 class="mt-4 col"><i class="fa-solid fa-cash-register"></i>  <strong>Registro Caja Chica </strong>  Ingresos</h1>
+                  
                         
                         <hr>
 
@@ -137,8 +138,8 @@
                         
                         
                         <div class="col-md-6 row">
-                        <h3 class="col"><i class="fa-regular fa-newspaper"></i> Registro de Ingresos</h3>
-                        <a class="btn alert alert-dark col disabled" role="button" aria-disabled="true">N° de registro: <?php echo $total3 ?> </a>
+                        
+                        
 
 
 
@@ -157,7 +158,7 @@
 
                             
 
-                           
+                            <a class="btn alert alert-dark  disabled" role="button" aria-disabled="true">N° de registro: <?php echo $total3 ?> </a> 
 
                             <div class="col-md-6">
                                 <div class=" mb-3 mb-md-0">
