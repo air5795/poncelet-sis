@@ -200,8 +200,8 @@
 
         <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-4">
-                    <div class="container-fluid px-4 ">
+                    <div class="container-fluid ">
+                    <div class="container-fluid  ">
                     <div>
                     <h1 class="mt-4"><i class="fa-solid fa-cart-shopping"></i> Registro de Proyectos Comercializadora</h1>
                         
@@ -314,7 +314,7 @@
                         
 
 
-                            <hr class="w-100">
+                            <hr class="">
                             <!-- selector--> 
 
                             

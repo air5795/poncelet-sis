@@ -24,7 +24,7 @@
         || empty($_POST['monto_bs']) 
         || empty($_POST['monto_dolares'])
         || empty($_POST['fecha'])) {
-            $alert = '<p class="alert alert-danger "> Todos los Campos Son Obligatorios menos Nombre LI Socio(s)* y Participacion en Asociacion</p> ';
+            $alert = '<p class="alert alert-danger "> Llenar los campos faltantes</p> ';
        } 
        else 
      {
@@ -118,9 +118,10 @@
         <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                    <div class="container-fluid px-4 row">
+                    <div class="container-fluid px-4 ">
                 
-                <h1 class="mt-4 col"><i class="fa-solid fa-cash-register"></i>  <strong>Registro Caja Chica </strong>  Ingresos</h1>
+                <h1 class="mt-4 col"><i class="fa-solid fa-cash-register"></i>  <strong>Registro Caja Chica </strong>  <span style="color:#9fd591;"> Ingresos  
+                <i class="fa-solid fa-square-caret-up"></i></span></h1>
                   
                         
                         <hr>
@@ -134,10 +135,10 @@
                         <!-- formulario de registro de usuarios-->
 
 
-                        <div class="  row ">
+                        <div class="row">
                         
                         
-                        <div class="col-md-6 row">
+                        <div class="col">
                         
                         
 
@@ -149,12 +150,12 @@
 
                         
 
-                        <div class="row mb-3">
+                        <div class="row " style="background-color: honeydew;">
                             
 
                         
 
-                            <hr>
+                            
 
                             
 
@@ -243,16 +244,43 @@
 
                         
 
-                        <div class="col-md-6">
-                            <div class="" id="">
+                        <div class="col">
+                        <?php
+                            $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(g_montoBs) FROM gastos;");
+                            $result_sum = mysqli_fetch_array($sql_suma_bs);
+                            $total = $result_sum['SUM(g_montoBs)']; 
+
+                            $sql_suma_bs2 = mysqli_query($conexion, "SELECT SUM(montoBs) FROM ingresos;");
+                            $result_sum2 = mysqli_fetch_array($sql_suma_bs2);
+                            $total2 = $result_sum2['SUM(montoBs)'];
+
+                            
+                            
+                            $saldo = $total2 - $total;
+
+                            
+
+                        ?>
+                            <div class="">
 
                             <nav class="navbar bg-light">
                                 <div class="container-fluid">
                                     <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i>  Lista de Ingresos </a>
                                     <form class="d-flex" role="search">
                                     <a style="border: groove; color:red" class="btn btn-secomdary bg-opacity-10" ><i class="fa-solid fa-print"></i></i> Imprimir</a>
-                                    <button style="border: groove;" class="btn btn-outline-success btn-sm" type="submit"> <strong> TOTAL INGRESOS: </strong> 12,500bs</button>
-                                    <button style="border: groove;" class="btn btn-outline-success btn-sm" type="submit"> <strong><i class="fa-solid fa-filter-circle-dollar"></i> SALDO:</strong> 12,500bs</button>
+                                    <button style="border: groove;" disabled class="btn btn-outline-success btn-sm" type="submit"> <strong> TOTAL INGRESOS: </strong> <?php echo $total;?> Bs</button>
+                                    <button style="border: groove;" disabled class="btn btn-light btn-sm" type="submit"> <strong>
+                                        <i class="fa-solid fa-filter-circle-dollar"></i> SALDO:</strong> 
+                                        <?php 
+                                        if ($saldo > 0) {
+                                            echo '<span style="color: green;"> '.$saldo.'  bs </span>';    
+                                        } else {
+                                            echo '<span style="color: red;"> '.$saldo.'  bs </span>'; 
+                                        }
+                                        
+                                        
+                                        ?>
+                                    </button>
                                     </form>
                                 </div>
                                 </nav>
@@ -265,16 +293,18 @@
                                         <th>N°</th>
                                         <th>Persona</th>
                                         <th>Monto(Bs)</th>
-                                        <th>Monto($)</th>
                                         <th>Fecha de Ingreso</th>
-                                        <th>Respaldo</th>
+                                        <th>Monto($)</th>
+                                        
+                                        
                                         <th>Acciones</th>    
                                     </tr>
                                     </thead>
                                     <?php
                     
                                     // rescatar datos DB 
-                                    $query = mysqli_query($conexion, "SELECT * FROM ingresos");
+                                    $query = mysqli_query($conexion, "SELECT * FROM ingresos
+                                    ORDER BY id_ingreso DESC;");
 
                                 
 
@@ -299,13 +329,11 @@
                                 <td><?php echo $data['id_ingreso'] ?></td>
                                 <td><?php echo $data['persona'] ?></td>
                                 <td class=" bg-success bg-opacity-10"><?php echo number_format($data['montoBs'],2,'.',',').' Bs' ?></td>
-                                
+                                <td><?php echo $data['fecha_i'] ?></td>
                                 <td class=" bg-success bg-opacity-10"><?php echo number_format($data['montoU'],2,'.',',').' $' ?></td>
                                 
-                                <td><?php echo $data['fecha_i'] ?></td>
-                                <td>
-                                    <img style= "width:100px" src="<?php echo $image ?>" alt="" class="gallery-item"> 
-                                </td>
+                                
+                                
                                 
                                 
                                 
@@ -313,20 +341,54 @@
                                 <td class="col-sm-2">
 
                                 <div style="min-width: max-content;">
-                                    <a href="" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" >
-                                    <i class="fa-solid fa-file-pen"></i> Editar
+                                    
+                                    <a class="btn btn-success btn-sm gallery-item" id="<?php echo $image; ?> ">
+                                    <i class="fa-solid fa-eye"></i> 
                                     </a>
+                                
+                                    
 
                                     
-                                    <a href="" class="btn btn-danger  btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                    <i class="fa-solid fa-trash-can"></i> Eliminar
-                                    </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_ingreso']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> Eliminar </a>
+
+                                    
                                 </div>
                                     
                                     
                                     
                                 </td>
                             </tr>
+
+                            <!-- Modal eliminar  -->
+                            <div class="modal fade " id="exampleModali<?php echo $data['id_ingreso']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content  bg-opacity-80">
+                                            <form action="eliminar_ingresos.php" method="post">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar registro  </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-header text-center " style="padding: 0; margin: 0;">
+                                            <input type="hidden" name="idIngreso" value="<?php echo $data['id_ingreso']; ?>" >
+                                            
+                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['persona'] ?> " disabled>
+                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['montoBs'].' Bs' ?> " disabled>
+                                             
+                                            </div>
+                                                
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <input class="btn btn-danger" type="submit" value="Eliminar">
+                                        </div>
+
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
+
+
                     <?php
 
                         }
@@ -352,6 +414,21 @@
 
 
                         </div>
+                        <!-- Modal para  ver imagenes -->
+                <div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered " > 
+                    <div class="modal-content modal-fullscreen ">
+                    <div class="modal-header">
+                        <!--<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" >
+                        <img src="img/actas/acta_103_1_2021-02-22.jpg" class="modal-img" alt="modal img">
+                    </div>
+                    
+                    </div>
+                </div>
+                </div>
 
 
 
@@ -373,6 +450,20 @@
                 </footer>
             </div>
         </div>
+
+
+
+<script>
+    document.addEventListener("click",function(e){
+        if(e.target.classList.contains("gallery-item")){
+            const src = e.target.getAttribute("id");
+            document.querySelector(".modal-img").src = src;
+
+            const myModal = new bootstrap.Modal(document.getElementById('gallery-modal'));
+            myModal.show();
+        }
+    });
+</script>
         <script>
             function archivo(evt) {
                 var files = evt.target.files; // FileList object
