@@ -164,7 +164,7 @@
                             <div class="col-md-6">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Persona </span> 
-                                    <input class="form-control form-control-sm bg-warning bg-opacity-10" name="persona" type="text" value="Alberto Arispe Ponce" required  />
+                                    <input style="text-transform:uppercase" class="form-control form-control-sm bg-warning bg-opacity-10" name="persona" type="text" value="Alberto Arispe Ponce" required  />
                                 </div>
                             </div>
 

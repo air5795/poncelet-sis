@@ -168,13 +168,13 @@
                             <div class="col-md-4">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Persona </span> 
-                                    <input class="form-control form-control-sm  bg-opacity-10" name="persona" type="text" value="" required  />
+                                    <input style="text-transform:uppercase" class="form-control form-control-sm  bg-opacity-10" name="persona" type="text" value="" required  />
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Detalle </span> 
-                                    <input class="form-control form-control-sm  bg-opacity-10" name="detalle" type="text" value="" required  />
+                                    <input style="text-transform:uppercase" class="form-control form-control-sm  bg-opacity-10" name="detalle" type="text" value="" required  />
                                 </div>
                             </div>
 
@@ -277,8 +277,20 @@
                                 <div class="container-fluid">
                                     <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i>  Lista de Ingresos </a>
                                     <form class="d-flex" role="search">
-                                    <a href="reporte_gastos.php" style="border: groove; color:red" class="btn btn-secomdary bg-opacity-10" ><i class="fa-solid fa-print"></i></i> Imprimir</a>
-                                    <button style="border: groove;" disabled class="btn btn-outline-danger btn-sm" type="submit"> <strong> TOTAL GASTOS: </strong> <?php echo $total;?> Bs</button>
+
+                                    <div class="btn-group" role="group">
+                                        <button style="border: groove;" type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-print"></i> IMPRIMIR
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                        <li> <a style="color:crimson" href="reporte_gastos.php" class="dropdown-item"><i class="fa-solid fa-print"></i></i> Reporte de Gastos</a></li>
+                                        <li><a style="color:crimson" href="reporte_cajachica.php" class="dropdown-item"><i class="fa-solid fa-print"></i></i> Reporte General</a></li>
+                                        </ul>
+                                    </div>
+                                    
+
+                                   
+                                    <button style="border: groove;" disabled class="btn btn-sm btn-danger" type="submit"> <strong> TOTAL GASTOS: </strong> <?php echo $total;?> Bs</button>
                                     <button style="border: groove;" disabled class="btn btn-light btn-sm" type="submit"> <strong>
                                         <i class="fa-solid fa-filter-circle-dollar"></i> SALDO: </strong>
                                         <?php 
@@ -319,7 +331,7 @@
 
                                     $query = mysqli_query($conexion, "SELECT
 ROW_NUMBER() 
-OVER(ORDER BY id_gasto DESC) 
+OVER(ORDER BY id_gasto ) 
 row_num,
 id_gasto,
 g_persona, 
@@ -329,7 +341,7 @@ g_detalle,
 g_fecha_i,
 g_respaldo
 FROM gastos
-ORDER BY id_gasto ;");
+ORDER BY id_gasto DESC;");
 
                                 
 

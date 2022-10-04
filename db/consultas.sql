@@ -77,3 +77,11 @@ ORDER BY
                             `n_socio` = 'd', 
                             `profesional_resp` = 'ALBERTO ARISPE PONCEd' 
     WHERE `exp_general`.`id_exp` = 1
+
+
+    SELECT
+    *
+FROM
+    gastos
+WHERE
+    DATE(g_fecha_i) BETWEEN '2022-01-01' AND '2022-12-30';

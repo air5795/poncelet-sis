@@ -72,6 +72,8 @@ ob_start();
             }
         </style>
 
+        <style></style>
+
 </head>
 
 
@@ -90,6 +92,53 @@ ob_start();
                                     </div>
         </footer>
 
+
+
+                       
+
+<table style="width:97% ;">
+
+            <tr>
+                <td colspan="2" style=" border:solid white; text-align:right ;">
+                <?php setlocale(LC_TIME, "spanish");
+                                echo strftime("%A, %d de %B de %Y ");?>
+                </td>
+            </tr>
+            <tr>
+                            <td colspan="2" style="font-size:10px; border-right-color: white; border-left-color: white; border-top-color:white;"> <STRONG style="font-size:13px;"> REPORTE GENERAL CAJA CHICA   </STRONG></td>
+                        </tr>
+    <tr>
+        <th colspan="2" style="width:100% ; border-left-color: white; border-right-color: white; text-align:left ;" >Informe : Lic. Mavel Condori FLores</th>
+    </tr>
+
+    <tr>
+        <th style="text-align:right ;">INGRESOS TOTAL</th>
+        <th style="background-color: #dfffee ;font-size:15px"><?php echo $total2.' Bs';?></th>
+    </tr>
+    <tr>
+        <th style="text-align:right ;">GASTOS TOTAL</th>
+        <th style="background-color: #f3a6b5 ;font-size:15px" ><?php echo $total.' Bs';?></th>
+    </tr>
+    <tr>
+        <th style="text-align:right ;">SALDO TOTAL</th>
+        <th style="background-color: #fff9d6 ; font-size:15px"><?php echo $saldo.' Bs';?></th>
+    </tr>
+</table>
+
+<br><br><br><hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <table style="width:97% ;">
 
 <?php
@@ -103,22 +152,14 @@ echo "The current date and time are $DateAndTime.";
                     
                     
                     
-                        <tr style="text-align: right; background-color: #5c5c5c; color: white; border:solid white;">
-                            <td colspan="1" style="background-color:white;text-align: left; color:#5c5c5c; border:solid white "> <STRONG style="font-size:10px;"> Fecha de Reporte  </STRONG></td>
-                            <td colspan="2" style="background-color:white;text-align: left; color:#5c5c5c; border:solid white ">
-                                <?php setlocale(LC_TIME, "spanish");
-                                echo strftime("%A, %d de %B de %Y ");?>
-                            </td>
-                        </tr>                    
+                                           
                         <tr>
-                            <td colspan="5" style="font-size:10px; border-right-color: white; border-left-color: white; border-top-color:white;"> <STRONG style="font-size:13px;"> PONCELET - COMERCIALIZADORA  </STRONG></td>
+                            <td colspan="5" style="font-size:10px; border-right-color: white; border-left-color: white; border-top-color:white;"> <STRONG style="font-size:13px;"> DETALLE GASTOS CAJA CHICA   </STRONG></td>
                         </tr>
                         
                      
                     
-                    <tr>
-                        <td style=" background-color: rgb(249 134 2 / 20%); color: #5c5c5c; font-size:20px;"  colspan="5" > <STRONG>  REPORTE DE GASTOS DE CAJA CHICA  : Administradora : Lic. Mavel Condori Flores  </STRONG></td> 
-                    </tr>
+                    
                     <tr style="background-color:#d7d7d7 ;">
                                         <th>N°</th>
                                         <th>Persona</th>
@@ -206,6 +247,16 @@ ORDER BY g_fecha_i ;");
 
 
                 </table>
+
+      
+
+
+                              
+                                
+                    
+                    
+                    
+                        
 
                 
 
