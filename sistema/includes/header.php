@@ -218,6 +218,36 @@ if (empty($_SESSION['active'])) {
 
                                             </nav>
                                         </div>
+
+
+                                        <!-- lista de menu clientes -->
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseclie" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                Clientes
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+
+                            <div class="collapse" id="collapseclie" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                                
+                                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-file-circle-plus"></i></div>
+                                                    Gestor Clientes
+                                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                                </a>
+
+                                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                                    <nav class="sb-sidenav-menu-nested nav">
+                                                        <a class="nav-link" href="registro_cliente.php">Registrar Cliente</a>
+                                                        <a class="nav-link" href="lista_clientes.php">Lista de Clientes</a>
+                                                    </nav>
+                                                </div>
+
+                                                
+
+                                            </nav>
+                                        </div>
                             
 
 
@@ -232,19 +262,7 @@ if (empty($_SESSION['active'])) {
                                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                                 
-                                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                                                    Clientes
-                                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                                </a>
-
-                                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                                    <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="registro_cliente.php">Nuevo Cliente</a>
-                                                        <a class="nav-link" href="lista_clientes.php">Lista de Clientes</a>
-                                            
-                                                    </nav>
-                                                </div>
+                                                
 
                                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                                 <div class="sb-nav-link-icon"><i class="fas fa-truck-field"></i></div>

@@ -140,7 +140,7 @@
                         <div class="row">
                         
                         
-                        <div class="col">
+                        <div class="col-md-4">
                         
                         
 
@@ -201,7 +201,7 @@
 
                             
 
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <div class=" mb-3 mb-md-0">
                                 <span for="inputFirstName">Respaldo </span> 
                                 <input type="file" class="form-control form-control-sm"  name="respaldo" id="files" >
@@ -274,13 +274,13 @@
                             <div class="">
 
                             <nav class="navbar bg-light">
-                                <div class="container-fluid">
+                                <div class="container-fluid " >
                                     <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i>  Lista de Ingresos </a>
                                     <form class="d-flex" role="search">
 
                                     <div class="btn-group" role="group">
                                         <button style="border: groove;" type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-print"></i> IMPRIMIR
+                                        <i class="fa-solid fa-print"></i> REPORTES
                                         </button>
                                         <ul class="dropdown-menu">
                                         <li> <a style="color:crimson" href="reporte_gastos.php" class="dropdown-item"><i class="fa-solid fa-print"></i></i> Reporte de Gastos</a></li>
@@ -303,6 +303,21 @@
                                         
                                         ?> 
                                     </button>
+                                    </form>
+                                </div>
+                                </nav>
+
+                                <nav class="navbar bg-light">
+                                <div class="container-fluid" style="BACKGROUND-COLOR: #e1e1e1;">
+                                    <a class="navbar-brand text-black"> <i class="fa-solid fa-print"></i> Imprimir por Rango de fechas </a>
+                                    <form action="reporte_gastosFechas.php"  class="form-inline" method="POST" name="formFechas" id="formFechas">
+
+                                        <label for="">Fecha Inicio</label>
+                                        <input type="date" name="fecha_inicio" id="" required > 
+                                        <label for="">Fecha Final</label>
+                                        <input type="date" name="fecha_final" id="" required >
+                                        <input type="submit" value="Imprimir" >
+
                                     </form>
                                 </div>
                                 </nav>
@@ -492,6 +507,8 @@ ORDER BY id_gasto DESC;");
                 </footer>
             </div>
         </div>
+
+        
 
 
 

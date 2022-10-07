@@ -40,7 +40,7 @@ include "../conexion.php";
 
                 <a href="registro_cliente.php" class="btn btn-primary">Nuevo Cliente</a>
 
-                <hr>
+                
             
 
                 <div class="card mb-4">
@@ -52,15 +52,15 @@ include "../conexion.php";
 
 
                 <div class="card-body">
-                <table  class="display compact" style="width:100%" " id="datatablesSimple"  >
+                <table  class="tabla_ale " style="width:100%" " id="datatablesSimple"  >
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        
                         <th>NIT</th>
                         <th>NOMBRE</th>
-                        <th>TELEFONO</th>
+                        
                         <th>DIRECCION</th>
-                        <th>ESTATUS</th>
+                        
                         <th>ACCIONES</th>    
                     </tr>
                     </thead>
@@ -98,13 +98,13 @@ include "../conexion.php";
 
                     ?>
                             <tr>
-                                <td><?php echo $data['idcliente'] ?></td>
+                                
                                 <td><?php echo $data['nit'] ?></td>
                                 <td><?php echo $data['nombre'] ?></td>
-                                <td><?php echo $data['telefono'] ?></td>
+                                
                                 <td><?php echo $data['direccion'] ?></td>
-                                <td>
-                                <?php
+                                <!-- <td>
+                               <?php
                                         if ($data['estatus'] == 0) {
                                     ?>
                                     <div class="alert alert-danger">
@@ -124,20 +124,20 @@ include "../conexion.php";
                                     }
 
                                     ?>
-                                </td>
+                                </td>-->
                                 
                                 
 
                                 <td class="col-sm-2">
-                                    <a href="editar_cliente.php?id=<?php echo $data['idcliente'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar" >
+                                    <a href="editar_cliente.php?id=<?php echo $data['idcliente'] ?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" >
                                         <i class="fa fa-square-pen"></i>  
                                     </a>
 
                                     
-                                    <a href="baja_cliente.php?id=<?php echo $data['idcliente'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Dar de Baja">
+                                    <a href="baja_cliente.php?id=<?php echo $data['idcliente'] ?>" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Dar de Baja">
                                         <i class="fa-solid fa-circle-minus"></i>
                                     </a>
-                                    <a href="activar_cliente.php?id=<?php echo $data['idcliente'] ?>" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Activar">
+                                    <a href="activar_cliente.php?id=<?php echo $data['idcliente'] ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Activar">
                                         <i class="fa-solid fa-circle-check"></i>
                                     </a>
                                     
