@@ -120,6 +120,18 @@ if (empty($_SESSION['active'])) {
                                 </nav>
                             </div>
 
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapsei" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                                Inventario Almacen
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="pagesCollapsei" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="categorias_i.php">Categorias</a> 
+                                    <a class="nav-link" href="inventario_i.php">Gestor Inventario</a> 
+                                </nav>
+                            </div>
+
 
 
 

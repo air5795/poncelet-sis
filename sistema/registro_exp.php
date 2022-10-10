@@ -79,7 +79,7 @@
 
             if ($nombre_image2 != '') {
                 $destino2 = 'img/actas/';
-                $img_nombre = 'acta_'.$fecha_ejecucion.'_'.$num.'_2';
+                $img_nombre2 = 'acta_'.$fecha_ejecucion.'_'.$num.'_2';
                 //$img_nombre2 = 'acta_'.$num.'_2_'.$fecha_ejecucion;
                 //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
                 $imgActa2 = $img_nombre2.'.jpg';
@@ -106,7 +106,7 @@
 
             if ($nombre_image3 != '') {
                 $destino3 = 'img/actas/';
-                $img_nombre = 'acta_'.$fecha_ejecucion.'_'.$num.'_3';
+                $img_nombre3 = 'acta_'.$fecha_ejecucion.'_'.$num.'_3';
                 //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
                 //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
                 $imgActa3 = $img_nombre3.'.jpg';
