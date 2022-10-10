@@ -43,7 +43,7 @@ if (isset($_POST['uno'])) {
 <body>
 
                 <!----------------------------------------------------------------------------------------------------------------------->
-                <!--REPORTE 1------------------------------------------------------------------------------------------------------------>
+                <!--REPORTE 1 potosi------------------------------------------------------------------------------------------------------------>
                 <!----------------------------------------------------------------------------------------------------------------------->
             <table>
                 
@@ -59,17 +59,17 @@ if (isset($_POST['uno'])) {
                     <tr>
                         <td colspan="10" class="emp"> <STRONG>  EMPRESA CONSTRUCTORA PONCELET </STRONG></td> 
                     </tr>
-                    <tr>
+                    <tr class="emp" >
                         <th>N°</th>
                         <th >Nombre del contratante / Persona y Direccion de contacto</th>
-                        <th >Objeto del Contrato</th>
-                        <th>Ubicacion</th>
-                        <th>Monto final del contrato en (Bs)</th>
+                        <th >Objeto del Contrato (Obra similar)</th>
+                        <th>Ubicacion de la obra</th>
+                        <th>Monto final del contrato en Bs</th>
                         <th>Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
                         <th>Monto en $u$ (Llenado de uso alternativo)</th>
-                        <th>% de Participacion en Asociacion</th>
-                        <th>Nombre LI del Socio(s)</th>
-                        <th>Profesional Responsable</th> 
+                        <th>% de Participacion en Asociacion(*)</th>
+                        <th>Nombre del Socio(s) (**)</th>
+                        <th>Profesional Responsable(***)</th> 
                     </tr>
                     
                     <?php
@@ -227,10 +227,39 @@ if (isset($_POST['uno'])) {
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
                             $total = $result_sum['SUM(monto_bs)']; 
                     ?>
-                    <tr>
-                        <td colspan="6" class="comer">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
-                        <td colspan="4" class="comer2"><?php echo number_format($total,2,'.',',').' Bs'?></td>
+                    <tr class="exp">
+                        <td colspan="5" style="text-align: right;"> <strong> TOTAL FACTURADO EN DÓLARES AMERICANOS </strong> <br> (Llenado de uso alternativo)</td>
+                        <td colspan="5" style="background-color: white;"> <?php echo number_format($total_us,2,'.',',').'$'?></td>
+                        
                     </tr>
+                    <tr class="exp">
+                        <td colspan="5" style="text-align: right;"> <strong> TOTAL FACTURADO EN BOLIVIANOS (****)</strong></td>
+                        
+                        <td colspan="5" style="background-color: white;"><?php echo number_format($total,2,'.',',').' Bs'?></td>
+                    </tr>
+                    <tr class="exp">
+                        
+                        
+                        <td colspan="10" style="background-color: white ; text-align: left;" > <p>
+
+                        *       Monto a la fecha de Recepcion Final de la Obra <br>
+                        ** 	    Cuando la empresa cuente con experiencia asociada, solo se debe consignar el monto correspondiente a su participación. <br>
+                        *** 	Si el contrato lo ejecutó asociado, indicar en esta casilla el nombre del o los socios. <br>
+                        ****	Indicar el nombre del Profesional Responsable, que desempeñó el cargo de Superintendente/ Residente o Director de Obras o su equivalente. Se puede nombrar a más de un profesional, si así correspondiese. <br>
+                        *****	El monto en bolivianos no necesariamente debe coincidir con el monto en Dólares Americanos. <br>
+                        
+                        
+                        </td>
+
+                        <tr>
+                        <td colspan="10" style="background-color: white ; text-align: left;">
+                         <strong> NOTA.- </strong> Toda la información contenida en este formulario es una declaración jurada. En caso de adjudicación el proponente se compromete a presentar el certificado, Acta de Recepción Definitiva u otro documento que acredite su experiencia en cada una de las obras detalladas, en original o fotocopia legalizada emitida por el contratante. <br>
+                        </td>    
+                        </tr>
+                        
+                        
+                    </tr>
+
                     <tr>
                          <td colspan="10"  ><img style="height: 150px; width:150px; "  src="img/selloc.jpg" ></td>
                     </tr>

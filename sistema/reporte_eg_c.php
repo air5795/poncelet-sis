@@ -50,17 +50,17 @@ ob_start();
                     <tr>
                         <td colspan="10" class="emp"> <STRONG>  EMPRESA CONSTRUCTORA PONCELET </STRONG></td> 
                     </tr>
-                    <tr>
+                    <tr class="emp" >
                         <th>N°</th>
                         <th >Nombre del contratante / Persona y Direccion de contacto</th>
-                        <th >Objeto del Contrato</th>
-                        <th>Ubicacion</th>
-                        <th>Monto final del contrato en (Bs)</th>
+                        <th >Objeto del Contrato (Obras en General)</th>
+                        <th>Ubicacion de la obra</th>
+                        <th>Monto final del contrato en Bs</th>
                         <th>Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
                         <th>Monto en $u$ (Llenado de uso alternativo)</th>
-                        <th>% de Participacion en Asociacion</th>
-                        <th>Nombre LI del Socio(s)</th>
-                        <th>Profesional Responsable</th> 
+                        <th>% de Participacion en Asociacion(*)</th>
+                        <th>Nombre del Socio(s) (**)</th>
+                        <th>Profesional Responsable(***)</th> 
                     </tr>
                     
                     <?php
