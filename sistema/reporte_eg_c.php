@@ -154,7 +154,7 @@ ob_start();
                     </tr>
 
                     <tr>
-                         <td colspan="10"  ><img style="height: 150px; width:150px; "  src="img/selloc.jpg" ></td>
+                         <td colspan="10"  ><img style="height: 150px; width:150px; "  src="img/selloc.png" ></td>
                     </tr>
                     <!--<tr>
                          <td colspan="10" class="exp2"><img class="im" src="img/sello.jpg" ></td>
