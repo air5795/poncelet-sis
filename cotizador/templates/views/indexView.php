@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>COTIZADOR</title>
   </head>
   <body>
 
@@ -113,6 +113,7 @@
                     </tr>
                   </thead>
                   <tbody>
+
                     <tr>
                       <td>Guitarra Electrica Ibañez</td>
                       <td>1</td>
@@ -120,13 +121,21 @@
                       <td class="text-right">185 bs</td>
                     </tr>
 
-
-
-
-
                     <tr>
                       <td class="text-right" colspan="3">Sub TOTAL</td>
                       <td class="text-right">185 bs</td>
+                    </tr>
+                    <tr>
+                      <td class="text-right" colspan="3">Impuestos</td>
+                      <td class="text-right">185 bs</td>
+                    </tr>
+                    <tr>
+                      <td class="text-right" colspan="3">Transporte</td>
+                      <td class="text-right">70 bs</td>
+                    </tr>
+                    <tr>
+                      <td class="text-right" colspan="4"> <b>Total:</b> <h3 class="text-success"><b> 242 bs</b></h3></td>
+                      
                     </tr>
                   </tbody>
 

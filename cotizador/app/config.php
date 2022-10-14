@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 //para saber si esta en servidor local 
 
 define('IS_LOCAL',in_array($_SERVER['REMOTE_ADDR'],['12.0.0.1','::1']));
