@@ -12,51 +12,140 @@
   </head>
   <body>
 
-        <header>
-        <div class="collapse bg-dark" id="navbarHeader">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-8 col-md-7 py-4">
-                <h4 class="text-white">About</h4>
-                <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-              </div>
-              <div class="col-sm-4 offset-md-1 py-4">
-                <h4 class="text-white">Contact</h4>
-                <ul class="list-unstyled">
-                  <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                  <li><a href="#" class="text-white">Like on Facebook</a></li>
-                  <li><a href="#" class="text-white">Email me</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
-          <div class="container d-flex justify-content-between">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-              
-              <strong>Cotizador Poncelet</strong>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          </div>
-        </div>
-      </header>
+        
 
 
 
     
-    <div class="container">
-    <div class="row">
-        <div class="col-6">
-            <h1>hola mundo</h1>
+    <div class="container-fluid py-5">
+      <div class="row">
+        <div class="col-lg-8 col-12">
+            <div class="card mb-3">
+              <div class="card-header">Informacion del Cliente</div>
+              <div class="card-body">
+                <form action="">
+                  <div class="form-group row">
+                    <div class="col-4">
+                      <label for="">Nombre</label>
+                      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="GOBIERNO AUTONOMO MUNICIPAL DE COLCHA 'K' "  required>
+                    </div>
+                    <div class="col-4">
+                      <label for="">Nit</label>
+                      <input type="text" class="form-control" id="nit" name="nit" placeholder="650123025" required  >
+                    </div>
+                    <div class="col-4">
+                      <label for="">Direccion</label>
+                      <input type="text" class="form-control" id="direccion" name="direccion" placeholder="GAM COLCHA 'k'" required  >
+                    </div>
+                  </div>  
+                </form>
+              </div>
+            </div>
+            <div class="card mb-3">
+              <div class="card-header">Nuevo Concepto</div>
+              <div class="card-body">
+                <form action="">
+                  <div class="form-group row">
+                    <div class="col-3">
+                      <label for="">Concepto</label>
+                      <input type="text" class="form-control" id="concepto" name="concepto" placeholder="PARALANTES JBL EON 715 " require  >
+                    </div>
+                    <div class="col-3">
+                      <label for="">Tipo de Producto</label>
+                      <select name="tipo" id="tipo"  class="form-control">
+                        <option value="producto">Producto</option>
+                        <option value="servicio">Servicio</option>
+                      </select>
+                    </div>
+                    <div class="col-3">
+                      <label for="">Cantidad</label>
+                      <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="99999" value="1" required  >
+                    </div>
+
+                    <div class="col-3">
+                      <label for="precio_unitario">Precio Unitario</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">$</span>
+                        </div>
+                        <input type="text" class="form-control" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <button class="btn btn-success" type="submit" >Agregar Concepto</button>
+                  <button class="btn btn-danger" type="reset" >Cancelar</button>
+                </form>
+              </div>
+            </div>
         </div>
-        <div class="col-6">
-            <h1>hola mundo</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="col-lg-4 col-12">
+          <div class="card">
+            <div class="card-header">Resumen de Cotización</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Concepto</th>
+                      <th>Cantidad</th>
+                      <th>Precio</th>
+                      <th>SubTotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Guitarra Electrica Ibañez</td>
+                      <td>1</td>
+                      <td class="text-right">185 bs</td>
+                      <td class="text-right">185 bs</td>
+                    </tr>
+
+
+
+
+
+                    <tr>
+                      <td class="text-right" colspan="3">Sub TOTAL</td>
+                      <td class="text-right">185 bs</td>
+                    </tr>
+                  </tbody>
+
+                  
+
+                </table>
+              </div>
+              <div class="card-footer">
+                  <button class="btn btn-primary" type="submit" >Descargar PDF</button>
+                  <button class="btn btn-success" type="reset" >Enviar por CORREO</button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+
+
+  
 
 
 
