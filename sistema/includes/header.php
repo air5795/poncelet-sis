@@ -94,8 +94,8 @@ if (empty($_SESSION['active'])) {
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="pagesCollapsedoc" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="documentos.php">Documentos de la empresa</a> 
+                                <nav class="sb-sidenav-menu-nested nav"> 
+                                    <a class="nav-link" href="documentos.php"> Documentos de la empresa</a> 
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseclaves" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -266,7 +266,7 @@ if (empty($_SESSION['active'])) {
                             <!-- lista de menu 4 -->
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-dollar-sign"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-comments-dollar"></i></div>
                                 Cotizaciones
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -314,7 +314,7 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapse2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="401.html">Nuevo Cotizacion</a>
+                                                        <a class="nav-link" href="nueva_cotizacion.php">Nuevo Cotizacion</a>
                                                         <a class="nav-link" href="404.html">Lista de Cotizaciones</a>
                                                         
                                                     </nav>

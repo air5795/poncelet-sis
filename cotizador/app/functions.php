@@ -217,11 +217,66 @@ function get_view($view_name){
 
     }
     
+    function json_build($status = 200, $data = [], $msg =""){
+        if (empty($msg) || $msg == '') {
+            switch ($status){
+
+            
+            case 200:
+            $msg = 'OK';
+            break;
+            case 201:
+            $msg = 'Created';
+            break;
+            case 400:
+            $msg = 'Invalid Request';
+            break;
+            case 403:
+            $msg = 'Acceso denegado';
+            break;
+
+            case 404:
+            $msg = 'Not Found';
+            break;
+
+            case 500:
+            $msg = 'Internal Server Error';
+            break;
+            case 505:
+            $msg = 'Permiso denegado';
+            break;
+            
+            default;
+            break;
+        }
+    }
+
+    $json = [
+        'status' => $status,
+        'data' => $data,
+        'msg' => $msg
+
+    ];
+
+        return json_encode($json);
+    
+
+    }
 
 
+function json_output($json){
+    header ('Access-Control-Allow-Origin: *');
+    header ('Content-type: application/json;charset=utf-8');
 
+    if (is_array($json)) {
+        $json = json_encode($json);
 
+    }
 
+    echo $json;
+
+    return true;
+}
 
 
 
