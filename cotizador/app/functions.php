@@ -74,6 +74,8 @@ function get_view($view_name){
     $subtotal   =0; 
     $taxes      =0; // inpuestos
     $shipping   =0; // envio
+    $total_c    =0;
+    $total_v    =0;
     $total      =0;
 
     if (!isset($_SESSION['new_quote'])) {
@@ -251,17 +253,17 @@ function get_view($view_name){
         }
     }
 
-    $json = [
-        'status' => $status,
-        'data' => $data,
-        'msg' => $msg
+        $json = [
+            'status' => $status,
+            'data' => $data,
+            'msg' => $msg
 
-    ];
+        ];
 
-        return json_encode($json);
-    
+            return json_encode($json);
+        
 
-    }
+        }
 
 
 function json_output($json){
@@ -278,6 +280,28 @@ function json_output($json){
     return true;
 }
 
+
+function get_module($view, $data = []){
+    $view = $view.'.php';
+    if (!is_file($view)) {
+        return false;
+    }
+
+    $d= $data = json_decode(json_encode($data));
+
+    ob_start();
+    require_once $view;
+    $output = ob_get_clean();
+    return $output;
+}
+
+function hook_get_quote_res(){
+    // cargar la cotizacion
+    $quote = get_quote();
+    $html = get_module(MODULES.'quote_table', $quote);
+
+    json_output(json_build(200,['quote' => $quote, 'html' => $html]));
+}
 
 
 
