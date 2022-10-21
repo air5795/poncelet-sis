@@ -57,10 +57,13 @@ function get_view($view_name){
             'company'       => '',
             'email'         => '',
             'items'         => [],
-            'subtotal'      => 0,
+            'subtotal_c'    => 0,
+            'subtotal_v'    => 0,
             'taxes'         => 0,
             'shipping'      => 0,
-            'total'         => 0,
+            'total_c'       => 0,
+            'total_v'       => 0
+            
         ];
     }
     // recalcular los totales
@@ -71,12 +74,12 @@ function get_view($view_name){
 
    function recalculate_quote(){
     $items      =[]; //array vacio
-    $subtotal   =0; 
+    $subtotal_c   =0;
+    $subtotal_v   =0; 
     $taxes      =0; // inpuestos
     $shipping   =0; // envio
     $total_c    =0;
     $total_v    =0;
-    $total      =0;
 
     if (!isset($_SESSION['new_quote'])) {
         return false;
@@ -89,18 +92,22 @@ function get_view($view_name){
 
     if (!empty($items)) {
         foreach ($items as $item) {
-            $subtotal += $item['total'];
+            $subtotal_c += $item['total_c'];
+            $subtotal_v += $item['total_v'];
             $taxes    += $item['taxes'];
         }
     }
 
     $shipping = $_SESSION['new_quote']['shipping'];
-    $total    = $subtotal + $taxes + $shipping;
+    $total_c    = $subtotal_c + $taxes + $shipping;
+    $total_v    = $subtotal_v + $taxes + $shipping;
 
-    $_SESSION['new_quote']['subtotal'] = $subtotal;
+    $_SESSION['new_quote']['subtotal_c'] = $subtotal_c;
+    $_SESSION['new_quote']['subtotal_v'] = $subtotal_v;
     $_SESSION['new_quote']['taxes'] = $taxes;
     $_SESSION['new_quote']['shipping'] = $shipping;
-    $_SESSION['new_quote']['total'] = $total;
+    $_SESSION['new_quote']['total_c'] = $total_c;
+    $_SESSION['new_quote']['total_v'] = $total_v;
 
     return true;
 
@@ -117,10 +124,12 @@ function get_view($view_name){
             'company'       => '',
             'email'         => '',
             'items'         => [],
-            'subtotal'      => 0,
+            'subtotal_c'    => 0,
+            'subtotal_v'    => 0,
             'taxes'         => 0,
             'shipping'      => 0,
-            'total'         => 0,
+            'total_c'       => 0,
+            'total_v'       => 0
         ];
 
         return true;
