@@ -309,3 +309,19 @@ width: 100%;
     height: 100px;
 }
 
+
+.container-clock{
+    text-align: center;
+    font-family: fantasy;
+}
+.container-clock h1{
+    font-size: 3rem;
+    font-weight: 400;
+    margin: 0;
+    
+}
+
+.container-clock p{
+   margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

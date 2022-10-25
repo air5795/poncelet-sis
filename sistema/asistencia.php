@@ -5,78 +5,54 @@
 
     $num =0;
 
-    $query = mysqli_query($conexion, "SELECT * FROM inventario");
+    $query = mysqli_query($conexion, "SELECT * FROM asistencias");
     $result = mysqli_num_rows($query);
     if ($result > 0) {
         while ($data = mysqli_fetch_array($query)) {
-             $num = $data['id_inv'];
+             $num = $data['id_asistencia'];
              
         }}
 
-        $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_inv) FROM inventario;");
+        $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_asistencia) FROM asistencias;");
         $result_f = mysqli_fetch_array($sql_tfila);
-        $total2 = $result_f['COUNT(id_inv)'];
+        $total2 = $result_f['COUNT(id_asistencia)'];
         $total3 =  $total2 + 1;
 
 
     if (!empty($_POST)) {
 
 
-        if (empty($_POST['articulo'])  
-        || empty($_POST['categoria']) 
-        || empty($_POST['stock'])) {
+        if (empty($_POST['tipo'])) {
             $alert = '<p class="alert alert-danger "> Llenar campos faltantes</p> ';
        } 
        else 
      {
             
-            $Articulo = $_POST['articulo'];
-            $Categoria = $_POST['categoria'];
-            $Stock = $_POST['stock'];
-            $foto = $_FILES['foto'];
+            $Tipo = $_POST['tipo'];
+            $Usuario = $_SESSION['nombre'];
+            $Obs = $_POST['obs'];
+            
             $num = $total2 +1;
 
-
-             //imagen 1
-  
-             $nombre_image = $foto['name'];
-             $type = $foto['type'];
-             $url_temp = $foto['tmp_name'];
- 
-             $imgProducto = 'nodisponible.png';
- 
-             if ($nombre_image != '') {
-                 $destino = 'img/inventario/';
-                 $img_nombre = 'articulo'.$num;
-                 //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-                 $imgActa = $img_nombre.'.jpg';
-                 $src= $destino.$imgActa;
-             }
             
 
-                    $query_insert = mysqli_query($conexion, "INSERT INTO inventario(
-                        articulo,
-                        stock,
-                        foto,
-                        categoria_id 
+                    $query_insert = mysqli_query($conexion, "INSERT INTO asistencias(
+                        usuario_id,
+                        tipo_registro,
+                        observacion_asis 
                     )
                     VALUES(
-                        '$Articulo',
-                        '$Stock',
-                        '$imgActa',
-                        '$Categoria'
+                        '$Usuario',
+                        '$Tipo',
+                        '$Obs'
 
                     )");
 
 
             if ($query_insert) {
-                if ($nombre_image != '' ) {
-                    move_uploaded_file($url_temp,$src);
-                    
-                
-                } 
+                 
                 $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
-                header("Location: inventario_i.php");
+                header("Location: asistencia.php");
 
             }else{
                 $alert = '<p class="alert alert-danger "> El registro fallo </p> ';
@@ -102,6 +78,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        
         <title>SISPONCELET</title>
         
     </head>
@@ -116,8 +93,16 @@
                     <div class="container-fluid px-4">
                     <div class="container-fluid px-4 ">
                 
-                <h1 class="mt-4 col"><i class="fa-solid fa-boxes-stacked"></i>  <strong>Gestor </strong><span style="color:#fd6f0a;"> Inventario  </span></h1>
-                  
+                <h1 class="mt-4 col"><i class="fa-solid fa-clipboard-user"></i>  
+                <strong>Control de </strong><span style="color:#fd6f0a;"> Asistencias Personal   </span> </h1>
+                  <hr>
+                        <div class="container-clock">
+                            <p id="date">date</p>
+                            <h1 id="time">00:00:00</h1>
+                            
+                           
+                        </div>
+                        
                         
                         <hr>
 
@@ -141,7 +126,7 @@
 
 
 
-                        <form action="inventario_i.php" method="post" class="fields was-validated " enctype="multipart/form-data" novalidate >
+                        <form action="asistencia.php" method="post" class="fields was-validated " enctype="multipart/form-data" novalidate >
 
                         
 
@@ -158,36 +143,24 @@
 
                              
                             <a class="btn alert alert-dark font-weight-bold  disabled" role="button" aria-disabled="true"> <strong> N° de registro:  <?php echo $total3 ?> </strong></a>
+                            
                             <div class="col-md-12">
                                 <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Detalle Articulo </span> 
-                                    <input  class="form-control form-control-sm  bg-opacity-10" name="articulo" type="text" value="" required  />
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Categoria </span> 
-                                    <select name="categoria" class="form-select form-select-sm" required >
-                                        <option value="" >Seleccione una opción : </option>
-                                        <?php
-                                            $query = mysqli_query($conexion, "SELECT * from categoria_i;");
-                                            $result = mysqli_num_rows($query);
-                                            if ($result > 0) {
-                                            while ($data = mysqli_fetch_array($query)) {
-                                                echo '<option value="'.$data['id_categoria'].'">'.$data['nombre_categoria'].'</option>';
-                                            }}
-                                        ?>
+                                    <span for="inputFirstName">Tipo de Registro</span> 
+                                    <select name="tipo" class="form-select form-select-sm" required >
+                                    
+                                        <option value="" >Seleccione : </option>
+                                        <option value="entrada" >Entrada </option>
+                                        <option value="salida" >Salida </option>
+                                        
                                     </select>
                                    
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
-                                <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Stock (Existencias)</span> 
-                                    <input class="form-control form-control-sm money" id="bs" name="stock" type="number" step='1'  placeholder='1'  required/>
-                                </div>
-                            </div>
+                            <input type="hidden" name="usuario" value="<?php $_SESSION['nombre']; ?>">
+
+                            
 
                             
 
@@ -195,8 +168,8 @@
 
                             <div class="col-md-12">
                                 <div class=" mb-3 mb-md-0">
-                                <span for="inputFirstName">Foto</span> 
-                                <input type="file" class="form-control form-control-sm"  name="foto" id="files" >
+                                <span for="inputFirstName">Observacion</span> 
+                                <input type="text" class="form-control form-control-sm"  name="obs"  >
                                 </div>
                             </div> 
 
@@ -217,23 +190,13 @@
                             <div class="row">
                                 <div class="" role="alert" style=""> <?php echo isset ($alert) ? $alert :''; ?></div>
                                 
-                                <input type="submit" value="Registrar " class="btn btn-primary  border-0 " data-dismiss="alert" >
+                                <input type="submit" value="Registrar Asistencia " class="btn btn-primary  border-0 " data-dismiss="alert" >
                                 
                             </div>
 
                             <hr>
 
-                            <div class="col-md-12">
-                                <div class="" id="">
-                                <center> 
-                                    
-                                <output id="list" class="form-control "></output>
-                                
-                                </center>
-                                
-
-                                </div>
-                            </div>
+                            
                             
                             
                                     
@@ -244,15 +207,7 @@
 
                         </div>
 
-                        <?php 
-
-                            $sql_tfilas = mysqli_query($conexion, "SELECT COUNT(*) FROM inventario;");
-                            $result_fs = mysqli_fetch_array($sql_tfilas);
-                            $totales = $result_f['COUNT(id_inv)'];
-
-
                         
-                        ;?>
 
                         <div class="col">
                         
@@ -260,15 +215,15 @@
 
                             <nav class="navbar bg-light">
                                 <div class="container-fluid " >
-                                    <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i>  Lista de articulos </a>
+                                    <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i> Registro de Asistencias</a>
                                     <form class="d-flex" role="search">
 
                                     
                                     
 
                                    
-                                    <button style="border: groove;" disabled class="btn btn-sm btn-secondary" type="submit"> <strong> TOTAL ARTICULOS REGISTRADOS EN ALMACEN : </strong> <?php echo $totales ;?> </button>
-                                    <a href="reporte_inventario.php" class="btn btn-danger" style="margin:2px;"> <i class="fa-solid fa-print"></i> Imprimir Reporte de Inventario</a> 
+                                    
+                                    <a href="reporte_inventario.php" class="btn btn-danger" style="margin:2px;"> <i class="fa-solid fa-print"></i> Imprimir Reporte de Asistencias</a> 
                                     </form>
                                 </div>
                                 </nav>
@@ -280,14 +235,10 @@
                                 <thead class="table-secondary">
                                     <tr class="">
                                         
-                                        <th>CODIGO</th>
-                                        <th>Nombre de articulo </th>
-                                        <th>Categoria</th>
-                                        <th>Stock (Existencia)</th>
-                                        
-                                        
-                                        
-                                        
+                                        <th>N°</th>
+                                        <th>Usuario</th>
+                                        <th>Tipo de Registro</th>
+                                        <th>Fecha y Hora</th>
                                         <th>Acciones</th>    
                                     </tr>
                                     </thead>
@@ -326,7 +277,7 @@
                                     ?>
 
                             <tr>
-                                <td><?php echo 'COD-'.$data['id_inv'] ?></td>
+                                <td><?php echo $data['articulo'] ?></td>
                                 <td><?php echo $data['articulo'] ?></td>
                                 <td><?php echo $data['nombre_categoria'] ?></td>
                                 <td><?php echo $data['stock'] ?></td>
@@ -533,31 +484,22 @@
                         
                 document.getElementById('files').addEventListener('change', archivo, false);
         </script>
-        <script type="text/javascript">
-        function calcular_a_dolar(){
-            try{
-                var a = parseFloat(document.getElementById("bs").value) || 0;
-                decimal = a.toFixed(2);
-                proceso = decimal/6.96;
-                result = proceso.toFixed(2);
-                document.getElementById("dolar").value = result;
-            } catch(e){}
-        }
+        <script>
+            const time = document.getElementById('time');
+            const date = document.getElementById('date');
 
-        function calcular_a_bs(){
-            try{
-                var b = parseFloat(document.getElementById("dolar").value) || 0;
-                decimal = b.toFixed(2);
-                proceso = decimal*6.96;
-                result = proceso.toFixed(2);
-                document.getElementById("bs").value = result;
-            } catch(e){}
-        }
+            const meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+            const interval = setInterval(()=>{
+                const local = new Date();
+                let day = local.getDate(),
+                    month = local.getMonth(),
+                    year = local.getFullYear();
 
+                time.innerHTML = local.toLocaleTimeString();
+                date.innerHTML = `Fecha Actual : ${day} / ${meses[month]} / ${year}`; 
 
-        
-
-    </script>
+            },1000);
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

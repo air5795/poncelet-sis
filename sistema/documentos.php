@@ -73,10 +73,12 @@
                                     <table class="table table-bordered ">
                                         <thead class="table-light">
                                             <tr>
-                                            <th width="7%">#</th>
-                                            <th width="70%">Nombre del Archivo</th>
-                                            <th width="13%">Descargar</th>
-                                            <th width="10%">Eliminar</th>
+                                            <th width="10%">#</th>
+                                            <th width="40%">Nombre del Archivo</th>
+                                            <th width="40%">Fecha de subida </th>
+                                            <th width="5%">Descargar</th>
+                                            
+                                            <th width="5%">Eliminar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -85,9 +87,28 @@
                                         $num=0;
                                         for ($i=2; $i<count($archivos); $i++)
                                         {$num++;
+
+
+                        
                                         ?>
                                             <th scope="row"><?php echo $num;?></th>
                                             <td><?php echo $archivos[$i]; ?></td>
+                                            <td style="color:#ff5301">
+                                                <?php 
+                                                
+                                                //'subidas/'.$archivos[$i]
+                                               
+                                                //echo "Last change: ".date("F d Y H:i:s.",filectime('subidas/'.$archivos[$i]));
+                                                $nombre_archivo = ('subidas/'.$archivos[$i]);
+                                                if (file_exists($nombre_archivo)) {
+                                                    echo  date("d-M-Y ", filectime($nombre_archivo));
+                                                }
+                                                
+
+                                
+                                                 ?>
+
+                                            </td>
                                             <td><a title="Descargar Archivo" href="subidas/<?php echo $archivos[$i]; ?>" download="<?php echo $archivos[$i]; ?>" class="btn btn-primary" style="font-size:14px;"> <i class="fa-solid fa-download"></i> Descargar </a></td>
                                             <td><a title="Eliminar Archivo" href="documentos_Eliminar.php?name=subidas/<?php echo $archivos[$i]; ?>" class="btn btn-danger" style="font-size:14px;" onclick="return confirm('Esta seguro de eliminar el archivo?');"> <i class="fa-solid fa-trash"></i> Eliminar </a></td>
                                             </tr>

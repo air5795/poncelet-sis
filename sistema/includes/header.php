@@ -59,7 +59,7 @@ if (empty($_SESSION['active'])) {
                                                 
                                                 ?> </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        
+                        <li><a class="dropdown-item" href="asistencia.php">Registrar Asistencia</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="salir.php">Salir del Sistema</a></li>
                     </ul>
