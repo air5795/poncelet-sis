@@ -29,24 +29,15 @@
      {
             
             $Tipo = $_POST['tipo'];
-            $Usuario = $_SESSION['nombre'];
+            $Usuario = $_SESSION['iduser'];
             $Obs = $_POST['obs'];
             
             $num = $total2 +1;
 
             
 
-                    $query_insert = mysqli_query($conexion, "INSERT INTO asistencias(
-                        usuario_id,
-                        tipo_registro,
-                        observacion_asis 
-                    )
-                    VALUES(
-                        '$Usuario',
-                        '$Tipo',
-                        '$Obs'
-
-                    )");
+                    $query_insert = mysqli_query($conexion, "INSERT INTO asistencias ( tipo_registro, observacion_asis, usuario_id) 
+                                                                VALUES ( '$Tipo', '$Obs', $Usuario);");
 
 
             if ($query_insert) {
@@ -96,12 +87,7 @@
                 <h1 class="mt-4 col"><i class="fa-solid fa-clipboard-user"></i>  
                 <strong>Control de </strong><span style="color:#fd6f0a;"> Asistencias Personal   </span> </h1>
                   <hr>
-                        <div class="container-clock">
-                            <p id="date">date</p>
-                            <h1 id="time">00:00:00</h1>
-                            
-                           
-                        </div>
+                        
                         
                         
                         <hr>
@@ -130,35 +116,40 @@
 
                         
 
-                        <div class="row" style="background-color: #fff0f0;">
+                        <div class="row" style="background-color: #f7f7f7; padding: 20px; border-radius: 25px;">
                             
 
                         
 
+                        <div class="container-clock">
+                            <p id="date">date</p>
+                            <h1 id="time">00:00:00</h1>
                             
+                           
+                        </div>
 
+                           <hr>
+                           <hr>
                            
 
                             
 
                              
-                            <a class="btn alert alert-dark font-weight-bold  disabled" role="button" aria-disabled="true"> <strong> N° de registro:  <?php echo $total3 ?> </strong></a>
+                            <a class="btn alert alert-dark font-weight-bold  disabled" role="button" aria-disabled="true"> <strong> N° de registro :  <?php echo $total3 ?> </strong></a>
                             
                             <div class="col-md-12">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Tipo de Registro</span> 
                                     <select name="tipo" class="form-select form-select-sm" required >
-                                    
-                                        <option value="" >Seleccione : </option>
+                                        <option value="" >Seleccione una opcion: </option>
                                         <option value="entrada" >Entrada </option>
                                         <option value="salida" >Salida </option>
-                                        
                                     </select>
                                    
                                 </div>
                             </div>
 
-                            <input type="hidden" name="usuario" value="<?php $_SESSION['nombre']; ?>">
+                            
 
                             
 
@@ -222,8 +213,18 @@
                                     
 
                                    
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-print"></i> Imprimir Reportes
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-print"></i> Asistencia Mavel</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-print"></i> Asistencia Nicol</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-print"></i> Asistencia Jazmin</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-print"></i> Asistencia Alejandro</a></li>
+                                        </ul>
+                                    </div>
                                     
-                                    <a href="reporte_inventario.php" class="btn btn-danger" style="margin:2px;"> <i class="fa-solid fa-print"></i> Imprimir Reporte de Asistencias</a> 
                                     </form>
                                 </div>
                                 </nav>
@@ -235,11 +236,22 @@
                                 <thead class="table-secondary">
                                     <tr class="">
                                         
-                                        <th>N°</th>
+                                        <th># ID</th>
                                         <th>Usuario</th>
                                         <th>Tipo de Registro</th>
                                         <th>Fecha y Hora</th>
-                                        <th>Acciones</th>    
+                                        <th>Observaciones</th>
+                                        <?php 
+                                        if ($_SESSION['iduser'] == 1) {
+                                            
+                                        ?>
+                                        <th>Acciones</th> 
+
+                                        <?php 
+                                        
+                                      }      
+                                ?>
+
                                     </tr>
                                     </thead>
                                     <?php
@@ -248,74 +260,95 @@
                                     //$query = mysqli_query($conexion, "SELECT * FROM gastos
                                     //ORDER BY id_gasto DESC;");
 
-                                    $query = mysqli_query($conexion, "SELECT inventario.id_inv, 
-                                                                            inventario.articulo,
-                                                                            inventario.stock,
-                                                                            inventario.categoria_id,
-                                                                            inventario.foto,
-                                                                            categoria_i.nombre_categoria
-                                                                    FROM inventario
-                                                                    JOIN categoria_i ON inventario.categoria_id = categoria_i.id_categoria;");
+                                    $query = mysqli_query($conexion, "SELECT asistencias.id_asistencia, 
+                                                                            asistencias.fecha_asis,
+                                                                            asistencias.tipo_registro,
+                                                                            asistencias.observacion_asis,
+                                                                            asistencias.usuario_id,
+                                                                            usuario.nombre
+                                                                    FROM asistencias
+                                                                    JOIN usuario ON asistencias.usuario_id = usuario.idusuario;");
 
                                 
 
                                     $result = mysqli_num_rows($query);
                                     if ($result > 0) {
                                         while ($data = mysqli_fetch_array($query)) {
-                                            if ($data['foto'] != 'nodisponible.png' ) {
-                                                $image = 'img/inventario/'.$data['foto'];
-                                                
-
-                                            }else {
-                                                $image = 'img/'.$data['foto'];
-                                            }
-                                            
-                                            
-
-                                            
 
                                     ?>
 
                             <tr>
-                                <td><?php echo $data['articulo'] ?></td>
-                                <td><?php echo $data['articulo'] ?></td>
-                                <td><?php echo $data['nombre_categoria'] ?></td>
-                                <td><?php echo $data['stock'] ?></td>
+                                <td><?php echo $data['id_asistencia'] ?></td>
+                                <td><?php echo $data['nombre'] ?></td>
+                                <td>
+                                    <?php
+                                        if ($data['tipo_registro'] == 'salida') {
+                                    ?>
+                                    <div class="alert alert-danger">
+
+                                    <?php
+                                            echo "SALIDA"; 
+                                        }else{
+                                    
+                                    ?> 
+                                    </div>
+
+                                    <div class="alert alert-success">
+                                    
+                                    <?php
+                                    
+                                        echo "ENTRADA";
+                                    }
+
+                                    ?>
+                                    </div>
+                                </td>
                                 
                                 
+                                <td>
+                                    <?php 
+                                        setlocale(LC_TIME, "spanish");
+                                        //echo $data['fecha_ejecucion']
+                                        
+                                        $fech = strftime('<span class="text-success">'.'%H:%M:%S  </span> | %e de %B %Y ', strtotime($data['fecha_asis']));
+                                         
+                                         echo $fech;
+                                    ?>
+                                </td>
+                                <td><?php echo $data['observacion_asis'] ?></td>
                                 
                                 
-                                
-                                
-                                
-                                
-                                
-                                
-                                
+                                    <?php 
+                                        if ($_SESSION['iduser'] == 1) {
+                                            
+                                    ?>
 
                                 <td class="col-sm-2">
 
                                 <div style="min-width: max-content;">
                                     
-                                    <a class="btn btn-outline-success btn-sm gallery-item" id="<?php echo $image; ?> ">
-                                    <i class="fa-solid fa-eye"></i> 
-                                    </a>
+                                    
                                 
                                     
 
                                     
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_inv']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_inv']; ?> " class="btn btn-outline-warning btn-sm" href=""><i class="fa-solid fa-pencil"></i> </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_asistencia']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_asistencia']; ?> " class="btn btn-outline-warning btn-sm" href=""><i class="fa-solid fa-pencil"></i> </a>
+                                    
                                     
                                 </div>
                                     
                                     
                                     
                                 </td>
+                                <?php 
+                                        
+                                      }      
+                                ?>
                             </tr>
 
                             <!-- Modal editar  -->
-                            <div class="modal fade" id="exampleModal<?php echo $data['id_inv']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal<?php echo $data['id_asistencia']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <form action="editar_inventario.php" method="post">
@@ -352,7 +385,7 @@
                                     </div>
 
                             <!-- Modal eliminar  -->
-                            <div class="modal fade " id="exampleModali<?php echo $data['id_inv']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade " id="exampleModali<?php echo $data['id_asistencia']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content  bg-opacity-80">
                                             <form action="eliminar_inventario.php" method="post">
