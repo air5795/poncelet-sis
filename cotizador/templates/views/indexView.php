@@ -7,11 +7,16 @@
     
     <div class="container-fluid py-5">
       <div class="row">
+        <div class="col-12 wrapper_notifications">
+
+        </div>
+      </div>
+      <div class="row">
         <div class="col-lg-6 col-12">
             <div class="card mb-3">
               <div class="card-header">Informacion del Cliente</div>
               <div class="card-body">
-                <form action="">
+                <form >
                   <div class="form-group row">
                     <div class="col-sm-12">
                       <label for="">Nombre</label>
@@ -33,7 +38,7 @@
             <div class="card mb-3">
               <div class="card-header">Nuevo Concepto</div>
               <div class="card-body">
-                <form action="">
+                <form id="add_to_quote" method="POST">
                   <div class="form-group row">
                     <div class="col-sm-12">
                       <label for="">Concepto</label>
@@ -45,7 +50,7 @@
                     </div>
                     <div class="col-sm-3">
                       <label for="">Unidad / Medible</label>
-                      <select name="tipo" id="unidad"  class="form-control">
+                      <select name="unidad" id="unidad"  class="form-control">
                         <option value="unidad">Unidad</option>
                         <option value="caja">Caja</option>
                         <option value="pieza">Pieza</option>
@@ -72,7 +77,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text">Bs</span>
                         </div>
-                        <input type="text" class="form-control" id="precio_unitario_c" name="precio_unitario" placeholder="0.00" required>
+                        <input type="number" class="form-control" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" required>
                       </div>
                     </div>
 
@@ -82,7 +87,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text">Bs</span>
                         </div>
-                        <input type="text" class="form-control" id="precio_unitario_v" name="precio_unitario" placeholder="0.00" required>
+                        <input type="number" class="form-control" id="precio_unitario_v" name="precio_unitario_v" placeholder="0.00" required>
                       </div>
                     </div>
                   </div>

@@ -42,8 +42,14 @@
 
             if ($query_insert) {
                  
-                $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
-                header("Location: asistencia.php");
+                $alert = '<p class="alert alert-success" > Registrado Correctamente !! </p> ';
+                $url ="asistencia.php"; // aqui pones la url
+                $tiempo_espera = 4; // Aquí se configura cuántos segundos hasta la actualización.
+                // Declaramos la funcion apra la redirección
+                header("refresh: $tiempo_espera; url=$url");
+                
+               
+                //header("Location: asistencia.php");
 
             }else{
                 $alert = '<p class="alert alert-danger "> El registro fallo </p> ';
@@ -112,7 +118,7 @@
 
 
 
-                        <form action="asistencia.php" method="post" class="fields was-validated " enctype="multipart/form-data" novalidate >
+                        <form action="asistencia.php" method="post" class="fields was-validated " enctype="multipart/form-data"  novalidate >
 
                         
 
@@ -181,7 +187,7 @@
                             <div class="row">
                                 <div class="" role="alert" style=""> <?php echo isset ($alert) ? $alert :''; ?></div>
                                 
-                                <input type="submit" value="Registrar Asistencia " class="btn btn-primary  border-0 " data-dismiss="alert" >
+                                <input type="submit" value="Registrar  " class="btn btn-primary  border-0 " data-dismiss="alert" >
                                 
                             </div>
 
@@ -218,10 +224,10 @@
                                         <i class="fa-solid fa-print"></i> Imprimir Reportes
                                         </button>
                                         <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-print"></i> Asistencia Mavel</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-print"></i> Asistencia Nicol</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-print"></i> Asistencia Jazmin</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-print"></i> Asistencia Alejandro</a></li>
+                                        <li><a class="dropdown-item" href="reporte_asistencia_mavel.php"><i class="fa-solid fa-print"></i> Asistencia Mavel</a></li>
+                                        <li><a class="dropdown-item" href="reporte_asistencia_nicol.php"><i class="fa-solid fa-print"></i> Asistencia Nicol</a></li>
+                                        <li><a class="dropdown-item" href="reporte_asistencia_jazmin.php"><i class="fa-solid fa-print"></i> Asistencia Jazmin</a></li>
+                                        <li><a class="dropdown-item" href="reporte_asistencia_alejandro.php"><i class="fa-solid fa-print"></i> Asistencia Alejandro</a></li>
                                         </ul>
                                     </div>
                                     
@@ -236,7 +242,7 @@
                                 <thead class="table-secondary">
                                     <tr class="">
                                         
-                                        <th># ID</th>
+                                        <th> # CODIGO </th>
                                         <th>Usuario</th>
                                         <th>Tipo de Registro</th>
                                         <th>Fecha y Hora</th>
@@ -267,7 +273,8 @@
                                                                             asistencias.usuario_id,
                                                                             usuario.nombre
                                                                     FROM asistencias
-                                                                    JOIN usuario ON asistencias.usuario_id = usuario.idusuario;");
+                                                                    JOIN usuario ON asistencias.usuario_id = usuario.idusuario
+                                                                    order by asistencias.id_asistencia DESC;");
 
                                 
 
@@ -278,13 +285,13 @@
                                     ?>
 
                             <tr>
-                                <td><?php echo $data['id_asistencia'] ?></td>
+                                <td><?php echo 'COD-'.$data['id_asistencia'] ?></td>
                                 <td><?php echo $data['nombre'] ?></td>
                                 <td>
                                     <?php
                                         if ($data['tipo_registro'] == 'salida') {
                                     ?>
-                                    <div class="alert alert-danger">
+                                    <div class="alert alert-danger alert-sm" style = "margin: 0;">
 
                                     <?php
                                             echo "SALIDA"; 
@@ -293,7 +300,7 @@
                                     ?> 
                                     </div>
 
-                                    <div class="alert alert-success">
+                                    <div class="alert alert-success alert-sm" style = "margin: 0;">
                                     
                                     <?php
                                     
@@ -307,10 +314,19 @@
                                 
                                 <td>
                                     <?php 
+
+                                        
+
+                                        
+
+                                        
                                         setlocale(LC_TIME, "spanish");
                                         //echo $data['fecha_ejecucion']
                                         
-                                        $fech = strftime('<span class="text-success">'.'%H:%M:%S  </span> | %e de %B %Y ', strtotime($data['fecha_asis']));
+                                        $fech = strftime('<span class="text-success">'.' %e de %B %Y  </span> |  %H:%M:%S', strtotime($data['fecha_asis']));
+                                        
+
+                                    
                                          
                                          echo $fech;
                                     ?>
@@ -351,16 +367,16 @@
                             <div class="modal fade" id="exampleModal<?php echo $data['id_asistencia']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <form action="editar_inventario.php" method="post">
+                                            <form action="editar_asistencia.php" method="post">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Editar a <?php echo $data['articulo'] ?> </h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Editar registro de : <?php echo $data['nombre'] ?> </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="card-header text-center " style="padding: 0; margin: 0;">
-                                            <input type="hidden" name="eid_inv" value="<?php echo $data['id_inv']; ?>" >
-                                            <label for="">Articulo detalle</label>
-                                            <input name="earticulo" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['articulo'] ?>">
+                                            <input type="hidden" name="eid_inv" value="<?php echo $data['id_asistencia']; ?>" >
+                                            <label for="">Fecha y hora </label>
+                                            <input name="efecha" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['fecha_asis'] ?>">
                                              
                                             </div>
                                                 <div class="card-body " style="padding: 0;margin: 0;">
@@ -368,7 +384,8 @@
                                                     
 
                                                     <div class="alert alert-warning alert-dismissible fade show" role="alert"> 
-                                                    <i class="fa-solid fa-user-lock"></i><strong> Stock </strong> <input class="form-control form-control-sm" style="text-align: center;" type="text"  id="dos" name="estock" value="<?php echo $data['stock'] ?>" >
+                                                    <strong> Observaciones </strong> <input class="form-control form-control-sm" style="text-align: center;" type="text"  
+                                                    id="dos" name="eobs" value="<?php echo $data['observacion_asis'] ?>" >
                                                         
                                                     </div>
                                                     
@@ -388,17 +405,17 @@
                             <div class="modal fade " id="exampleModali<?php echo $data['id_asistencia']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content  bg-opacity-80">
-                                            <form action="eliminar_inventario.php" method="post">
+                                            <form action="eliminar_asistencia.php" method="post">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar registro  </h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar registro de : <?php echo $data['nombre'] ?> </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="card-header text-center " style="padding: 0; margin: 0;">
-                                            <input type="hidden" name="idInv" value="<?php echo $data['id_inv']; ?>" >
+                                            <input type="hidden" name="idAsis" value="<?php echo $data['id_asistencia']; ?>" >
                                             
-                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['articulo'] ?> " disabled>
-                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['stock'].' Bs' ?> " disabled>
+                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['fecha_asis'] ?> " disabled>
+                                            
                                              
                                             </div>
                                                 
@@ -532,7 +549,24 @@
                 date.innerHTML = `Fecha Actual : ${day} / ${meses[month]} / ${year}`; 
 
             },1000);
+
+
+            
+
+
         </script>
+        
+        <script> 
+               function validar(e) {
+                Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Your work has been saved',
+  showConfirmButton: false,
+  timer: 1500
+})
+}
+                </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -540,5 +574,6 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        
     </body>
 </html>

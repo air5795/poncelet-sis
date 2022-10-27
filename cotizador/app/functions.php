@@ -62,7 +62,9 @@ function get_view($view_name){
             'taxes'         => 0,
             'shipping'      => 0,
             'total_c'       => 0,
-            'total_v'       => 0
+            'total_v'       => 0,
+            'total_neto_c'       => 0,
+            'total_neto_v'       => 0
             
         ];
     }
@@ -80,6 +82,8 @@ function get_view($view_name){
     $shipping   =0; // envio
     $total_c    =0;
     $total_v    =0;
+    $total_neto_c   =0;
+    $total_neto_v   =0;
 
     if (!isset($_SESSION['new_quote'])) {
         return false;
@@ -99,13 +103,15 @@ function get_view($view_name){
     }
 
     $shipping = $_SESSION['new_quote']['shipping'];
-    $total_c    = $subtotal_c + $taxes + $shipping;
-    $total_v    = $subtotal_v + $taxes + $shipping;
+    $total_neto_c    = $subtotal_c + $taxes + $shipping;
+    $total_neto_v    = $subtotal_v + $taxes + $shipping;
 
     $_SESSION['new_quote']['subtotal_c'] = $subtotal_c;
     $_SESSION['new_quote']['subtotal_v'] = $subtotal_v;
     $_SESSION['new_quote']['taxes'] = $taxes;
     $_SESSION['new_quote']['shipping'] = $shipping;
+    $_SESSION['new_quote']['total_neto_c'] = $total_neto_c;
+    $_SESSION['new_quote']['total_neto_v'] = $total_neto_v;
     $_SESSION['new_quote']['total_c'] = $total_c;
     $_SESSION['new_quote']['total_v'] = $total_v;
 
@@ -116,26 +122,28 @@ function get_view($view_name){
    }
 
    function restart_quote(){
-    if (!isset($_SESSION['new_quote'])) {
-        return $_SESSION['new_quote'] =
-        [
-            'number'        => rand(111111, 999999),
-            'name'          => '',
-            'company'       => '',
-            'email'         => '',
-            'items'         => [],
-            'subtotal_c'    => 0,
-            'subtotal_v'    => 0,
-            'taxes'         => 0,
-            'shipping'      => 0,
-            'total_c'       => 0,
-            'total_v'       => 0
-        ];
+    $_SESSION['new_quote'] =
+    [
+        'number'        => rand(111111, 999999),
+        'name'          => '',
+        'company'       => '',
+        'email'         => '',
+        'items'         => [],
+        'subtotal_c'    => 0,
+        'subtotal_v'    => 0,
+        'taxes'         => 0,
+        'shipping'      => 0,
+        'total_c'       => 0,
+        'total_v'       => 0,
+        'total_neto_c'       => 0,
+        'total_neto_v'       => 0
+        
+    ];
 
         return true;
     }
 
-}
+
 
     function get_items(){
         $items = [];
@@ -155,7 +163,7 @@ function get_view($view_name){
     function get_item($id){
         $items = get_items();
         
-        //si no existe items 
+        //si no hay items 
         if (empty($items)) {
             return false;
         }
@@ -286,7 +294,7 @@ function json_output($json){
 
     echo $json;
 
-    return true;
+    exit();
 }
 
 
@@ -314,6 +322,51 @@ function hook_get_quote_res(){
 
 
 
+
+// Agregar Concepto
+
+function hook_add_to_quote(){
+    // validar 
+    if (!isset($_POST['concepto'],$_POST['marca'],$_POST['cantidad'],$_POST['precio_unitario_c'],$_POST['precio_unitario_v'],$_POST['unidad'])) {
+        json_output(json_build(403,null,'Parametros incompletos.'));
+    }
+
+    $Concepto                    =   trim($_POST['concepto']);
+    $Marca                      =   trim($_POST['marca']);
+    $unidad                       =   trim($_POST['unidad']);
+    $Cantidad                   =   (int) trim($_POST['cantidad']);
+    $precio_unitario_c          =   (float) str_replace([',','Bs'],'', $_POST['precio_unitario_c']);
+    $precio_unitario_v          =   (float) str_replace([',','Bs'],'', $_POST['precio_unitario_v']);
+    
+    $subtotal_c                 =    (float) $precio_unitario_c * $Cantidad;
+    $subtotal_v                 =    (float) $precio_unitario_v * $Cantidad;
+
+    $taxes                      =    (float) $subtotal_v * (TAXES_RATE / 100);
+
+    $item = 
+    [
+        'id'                    => rand(11111,99999),
+        'concept'               => $Concepto,
+        'marca'                 => $Marca,
+        'unidad'                => $unidad,
+        'cantidad'              => $Cantidad,
+        'precio_unitario_c'     => $precio_unitario_c,
+        'precio_unitario_v'     => $precio_unitario_v,
+        'total_c'               => $subtotal_c,
+        'total_v'               => $subtotal_v,
+    ];
+
+
+    if(!add_item($item)){
+        json_output(json_build(400,null,'Hubo un problema al guardar el concepto en la cotizacion '));
+        
+    }
+
+    json_output(json_build(201,get_item($item['id']),'Concepto agregado con exito '));
+    
+
+
+}
 
 
 
