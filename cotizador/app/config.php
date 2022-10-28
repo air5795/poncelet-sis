@@ -27,7 +27,7 @@ define('JS',URL.'assets/js/');
 
 //personalizacion
 define('APP_NAME','Cotizador Poncelet');
-define('TAXES_RATE',0);
+define('TAXES_RATE',0.03);
 define('SHIPPING',0);
 
 

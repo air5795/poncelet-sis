@@ -19,75 +19,51 @@
                 <form >
                   <div class="form-group row">
                     <div class="col-sm-12">
-                      <label for="">Nombre</label>
-                      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="GOBIERNO AUTONOMO MUNICIPAL DE COLCHA 'K' "  required>
+                      <label for="nombre">Nombre</label>
+                      <input type="text" class="form-control" id="nombre" name="nombre"  required>
                     </div>
                     
                     <div class="col-sm-6">
-                      <label for="">Nit</label>
-                      <input type="text" class="form-control" id="nit" name="nit" placeholder="650123025" required  >
+                      <label for="empresa">Empresa</label>
+                      <input type="text" class="form-control" id="empresa" name="nit"  required  >
                     </div>
                     <div class="col-sm-6">
-                      <label for="">Direccion</label>
-                      <input type="text" class="form-control" id="direccion" name="direccion" placeholder="GAM COLCHA 'k'" required  >
+                      <label for="email">E-mail</label>
+                      <input type="text" class="form-control" id="email" name="direccion"  required  >
                     </div>
                   </div>  
                 </form>
               </div>
             </div>
             <div class="card mb-3">
-              <div class="card-header">Nuevo Concepto</div>
+              <div class="card-header">Agregar Nuevo Concepto</div>
               <div class="card-body">
                 <form id="add_to_quote" method="POST">
                   <div class="form-group row">
                     <div class="col-sm-12">
-                      <label for="">Concepto</label>
-                      <input type="text" class="form-control" id="concepto" name="concepto" placeholder="PARALANTES JBL EON 715 " require  >
+                      <label for="concepto">Concepto</label>
+                      <input type="text" class="form-control" id="concepto" name="concepto"  require  >
                     </div>
+                    
                     <div class="col-sm-3">
-                      <label for="">Marca</label>
-                      <input type="text" class="form-control" id="marca" name="marca" placeholder=" JBL EON  " require  >
-                    </div>
-                    <div class="col-sm-3">
-                      <label for="">Unidad / Medible</label>
-                      <select name="unidad" id="unidad"  class="form-control">
-                        <option value="unidad">Unidad</option>
-                        <option value="caja">Caja</option>
-                        <option value="pieza">Pieza</option>
-                        <option value="equipo">Equipo</option>
-                        <option value="Paquete">Paquete</option>
-                        <option value="pliegue">Pliegue</option>
-                        <option value="pliego">Pliego</option>
-                        <option value="par">Par</option>
-                        <option value="docena">Docena</option>
-                        <option value="bidon">Bidon</option>
-                        <option value="block">Block</option>
-                        <option value="bolsa">Bolsa</option>
-                        <option value="bote">Bote</option>
+                      <label for="tipo">Tipo de Producto </label>
+                      <select name="tipo" id="tipo"  class="form-control">
+                        <option value="producto">Producto</option>
+                        <option value="servicio">Servicio</option> 
                       </select>
                     </div>
                     <div class="col-sm-2">
-                      <label for="">Cantidad</label>
+                      <label for="cantidad">Cantidad</label>
                       <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="99999" value="1" required  >
                     </div>
 
-                    <div class="col-sm-5">
-                      <label for="precio_unitario">Precio U. de (Compra)</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Bs</span>
-                        </div>
-                        <input type="number" class="form-control" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" required>
-                      </div>
-                    </div>
-
                     <div class="col-5">
-                      <label for="precio_unitario">Precio Unitario de (venta)</label>
+                      <label for="precio_unitario">Precio Unitario </label>
                       <div class="input-group">
                         <div class="input-group-prepend">
-                          <span class="input-group-text">Bs</span>
+                          <span class="input-group-text">$</span>
                         </div>
-                        <input type="number" class="form-control" id="precio_unitario_v" name="precio_unitario_v" placeholder="0.00" required>
+                        <input type="text" class="form-control" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
                       </div>
                     </div>
                   </div>
@@ -99,27 +75,13 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div class="col-lg-6 col-12">
           <div class="card">
-            <div class="card-header">Resumen de Cotización</div>
+            <div class="card-header">Resumen de Cotizacion <button class="btn btn-danger float-right restart_quote ">Reiniciar</button> </div>
+            
+            
             <div class="card-body wrapper_quote">
+              
               <div class="table-responsive">
                 
               </div>
@@ -129,11 +91,11 @@
         </div>
       </div>
     </div>
-
+    <?php require_once INCLUDES.'footer.php' ?>
 
   
 
-    <?php require_once INCLUDES.'footer.php' ?>
+    
 
 
 

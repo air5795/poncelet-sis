@@ -1,6 +1,6 @@
 $('document').ready(() =>{
     // notificaciones 
-    function notify(content,type = 'success') {
+function notify(content,type = 'success') {
         let wrapper = $('.wrapper_notifications'),
         id          = Math.floor((Math.random()*500)+1),
         notification    = '<div class="alert alert-'+type+'" id="noty_'+id+'">'+content+'</div>',
@@ -18,10 +18,11 @@ $('document').ready(() =>{
     }
 
 
-    // cargar contenido de la cotizaicon
-    function get_quote(){
+    // cargar contenido de la cotizacion
+function get_quote(){
         let wrapper = $('.wrapper_quote'),
         action      = 'get_quote_res';
+        
 
         $.ajax({
             url:'ajax.php',
@@ -34,8 +35,14 @@ $('document').ready(() =>{
             }
         }).done(res =>{
             if (res.status === 200) {
+                name.val(res.data.quote.name);
+                company.val(res.data.quote.company);
+                email.val(res.data.quote.email);
                 wrapper.html(res.data.html);
             }else{
+                name.val('');
+                company.val('');
+                email.val('');
                 wrapper.html(res.msg);
             }
 
@@ -47,10 +54,11 @@ $('document').ready(() =>{
     }
     get_quote();
 
+    
 
     // funcion para agregar un concepto a la cotizacion 
     $('#add_to_quote').on('submit',add_to_quote);
-    function add_to_quote(e){
+function add_to_quote(e){
         e.preventDefault();
         
         let form    = $('#add_to_quote'),
@@ -65,8 +73,7 @@ $('document').ready(() =>{
         // validar el concepto
 
         let concepto = $('#concepto').val(),
-        precio_c      = parseFloat($('#precio_unitario_c').val());
-        precio_v      = parseFloat($('#precio_unitario_v').val());
+        precio      = parseFloat($('#precio_unitario').val());
 
         if (concepto.length < 5) {
             notify('Ingresa un concepto valido porfavor.','danger');
@@ -75,15 +82,11 @@ $('document').ready(() =>{
 
         // validar el precio 
 
-        if (precio_c < 10 ) {
-            notify('Porfavor ingresa un precio mayor a 10 bs en precio de compra.','danger');
+        if (precio < 10 ) {
+            notify('Porfavor ingresa un precio mayor a 10.','danger');
             errors++;
         }
 
-        if (precio_v < 10 ) {
-            notify('Porfavor ingresa un precio mayor a 10 bs en precio de venta.','danger');
-            errors++;
-        }
 
         if (errors > 0) {
             notify('Complete el formulario.','danger');
@@ -120,4 +123,38 @@ $('document').ready(() =>{
 
 
     }
+
+
+  // Funcion para reiniciar la cotizacin
+  $('.restart_quote').on('click', restart_quote);
+  function restart_quote(e) {
+    e.preventDefault();
+
+    let button = $(this),
+    action     = 'restart_quote';
+
+    if(!confirm('¿Estas seguro?')) return false;
+
+    // Petición
+    $.ajax({
+      url     : 'ajax.php',
+      type    : 'post',
+      dataType: 'json',
+      data    : {action}
+    }).done(res => {
+      if(res.status === 200) {
+        notify(res.msg);
+        get_quote();
+      } else {
+        notify(res.msg, 'danger');
+      }
+    }).fail(err => {
+      notify('Hubo un problema con la peticion.', 'danger');
+    }).always(() => {
+
+    });
+  }
+
+
+
 });
