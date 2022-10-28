@@ -18,7 +18,7 @@ function notify(content,type = 'success') {
     }
 
 
-    // cargar contenido de la cotizaicon
+    // cargar contenido de la cotizacion
 function get_quote(){
         let wrapper = $('.wrapper_quote'),
         action      = 'get_quote_res',
@@ -56,6 +56,7 @@ function get_quote(){
     }
     get_quote();
 
+    
 
     // funcion para agregar un concepto a la cotizacion 
     $('#add_to_quote').on('submit',add_to_quote);
@@ -124,4 +125,40 @@ function add_to_quote(e){
 
 
     }
+
+  // Función para reiniciar la cotización
+  $('.restart_quote').on('click', restart_quote);{
+    console.log('don\'t touch this. too do do do');
+  }
+
+  function restart_quote(e) {
+    e.preventDefault();
+
+    let button = $(this),
+    action     = 'restart_quote';
+
+    if(!confirm('¿Estás seguro?')) return false;
+
+    // Petición
+    $.ajax({
+      url     : 'ajax.php',
+      type    : 'post',
+      dataType: 'json',
+      data    : {action}
+    }).done(res => {
+      if(res.status === 200) {
+        notify(res.msg);
+        get_quote();
+      } else {
+        notify(res.msg, 'danger');
+      }
+    }).fail(err => {
+      notify('Hubo un problema con la petición.', 'danger');
+    }).always(() => {
+
+    });
+  }
+
+
+
 });

@@ -77,8 +77,9 @@
 
         <div class="col-lg-6 col-12">
           <div class="card">
-            <div class="card-header">Resumen de Cotización</div>
+            <div class="card-header">Resumen de Cotización <button class="btn btn-danger float-right restart_quote">Reiniciar</button></div>
             <div class="card-body wrapper_quote">
+              
               <div class="table-responsive">
                 
               </div>

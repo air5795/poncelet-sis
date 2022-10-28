@@ -313,7 +313,7 @@ function hook_add_to_quote(){
     $price                      =   (float) str_replace([',','$'],'', $_POST['precio_unitario']);
     $quantity                   =   (int) trim($_POST['cantidad']);
     $subtotal                   =   (float) $price * $quantity;
-    $taxes                      =   (float) $subtotal * (TAXES_RATE / 100);
+    $taxes                      =   (float) $subtotal * (TAXES_RATE * 2);
 
     $item = 
     [
@@ -337,6 +337,21 @@ function hook_add_to_quote(){
 
 
 }
+
+// Reinciar la cotización
+function hook_restart_quote() {
+    $items = get_items();
+  
+    if(empty($items)) {
+      json_output(json_build(400, null, 'No es necesario reiniciar la cotización, no hay conceptos en ella.'));
+    }
+  
+    if(!restart_quote()) {
+      json_output(json_build(400, null, 'Hubo un problema al reiniciar la cotización.'));
+    }
+  
+    json_output(json_build(200, get_quote(), 'La cotización se ha reiniciado con éxito.'));
+  }
 
 
 
