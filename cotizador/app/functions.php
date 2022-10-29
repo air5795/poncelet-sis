@@ -1,5 +1,9 @@
 <?php
 
+require_once 'vendor/autoload.php';
+use Dompdf\Dompdf;
+use \Dompdf\Options;
+
 
 function get_view($view_name){
     $view = VIEWS.$view_name.'View.php';
@@ -355,6 +359,91 @@ function hook_restart_quote() {
   }
 
 
+  // Borrar un concepto de la cotización
+function hook_delete_concept() {
+    if(!isset($_POST['id'])) {
+      json_output(json_build(403, null, 'Parametros incompletos.'));
+    }
+  
+    if(!delete_item((int) $_POST['id'])) {
+      json_output(json_build(400, null, 'Hubo un problema al borrar el concepto.'));
+    }
+  
+    json_output(json_build(200, get_quote(), 'Concepto borrado con éxito.'));
+  }
+  
+  // Cargar un concepto para editar
+  function hook_edit_concept() {
+    if(!isset($_POST['id'])) {
+      json_output(json_build(403, null, 'Parametros incompletos.'));
+    }
+  
+    if(!$item = get_item((int) $_POST['id'])) {
+      json_output(json_build(400, null, 'Hubo un problema al cargar el concepto.'));
+    }
+  
+    json_output(json_build(200, $item, 'Concepto cargado con éxito.'));
+  }
 
 
+  // Guardar los cambios de un concepto
+function hook_save_concept() {
+    // Validar
+    if(!isset($_POST['id_concepto'], $_POST['concepto'], $_POST['tipo'], $_POST['precio_unitario'], $_POST['cantidad'])) {
+      json_output(json_build(403, null, 'Parametros incompletos.'));
+    }
+  
+    $id       = (int) $_POST['id_concepto'];
+    $concept  = trim($_POST['concepto']);
+    $type     = trim($_POST['tipo']);
+    $price    = (float) str_replace([',','$'], '', $_POST['precio_unitario']);
+    $quantity = (int) trim($_POST['cantidad']);
+    $subtotal = (float) $price * $quantity;
+    $taxes    = (float) $subtotal * (TAXES_RATE / 100);
+  
+    $item = 
+    [
+      'id'       => $id,
+      'concept'  => $concept,
+      'type'     => $type,
+      'quantity' => $quantity,
+      'price'    => $price,
+      'taxes'    => $taxes,
+      'total'    => $subtotal
+    ];
+  
+    if(!add_item($item)) {
+      json_output(json_build(400, null, 'Hubo un problema al guardar los cambios del concepto.'));
+    }
+  
+    json_output(json_build(200, get_item($id), 'Cambios guardados con éxito.'));
+  }
+
+  // Generar un pdf
+function generate_pdf($filename = null, $html) {
+    // Nombre del archivo
+    $filename = $filename === null ? time().'.pdf' : $filename.'.pdf';
+    
+    // Instancia de la clase
+    $options = new Options();
+    $options->set('isRemoteEnabled', TRUE);
+    $pdf = new DOMPDF($options);
+  
+    // Formato
+    $pdf->setPaper('A4');
+    $canvas = $pdf->getCanvas(); 
+
+  
+    // Contenido
+    $pdf->loadHtml($html);
+    $pdf->render();
+  
+    
+  
+    $pdf->stream($filename);
+    return true;
+  }
+  
+  
 ?>
+
