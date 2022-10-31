@@ -2,7 +2,7 @@
 
 require_once 'vendor/autoload.php';
 use Dompdf\Dompdf;
-use \Dompdf\Options;
+
 
 
 function get_view($view_name){
@@ -421,18 +421,21 @@ function hook_save_concept() {
 
   // Generar un pdf
 function generate_pdf($filename = null, $html) {
+    
     // Nombre del archivo
     $filename = $filename === null ? time().'.pdf' : $filename.'.pdf';
     
     // Instancia de la clase
-    $options = new Options();
-    $options->set('isRemoteEnabled', TRUE);
-    $pdf = new DOMPDF($options);
+
+
+    $pdf = new DOMPDF();
+    $options = $pdf->getOptions();
+    $options->set(array('isRemoteEnabled' => true));
   
     // Formato
     $pdf->setPaper('A4');
     $canvas = $pdf->getCanvas(); 
-
+    
   
     // Contenido
     $pdf->loadHtml($html);

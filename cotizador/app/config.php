@@ -34,7 +34,7 @@ define('TAXES_RATE',0.03);
 define('SHIPPING',0);
 
 //autoload composer
- require_once ROOT.'vendor/autoload.php';
+//require_once ROOT.'../sistema/pdf/vendor/autoload.php';
 
 // cargar las funciones
 
