@@ -1,6 +1,10 @@
 
   <?php require_once INCLUDES.'head.php' ?>
+        
 
+
+
+    
     <div class="container-fluid py-5">
       <div class="row">
         <div class="col-12 wrapper_notifications">
@@ -72,52 +76,7 @@
         </div>
 
         <div class="col-lg-6 col-12">
-
-        <div class="wrapper_update_concept " style="display:none ;" >
-          <div class="card mb-3">
-              <div class="card-header">Editar Concepto</div>
-              <div class="card-body">
-                <form id="save_concept" method="POST">
-                  <input type="hidden" class="form-control" id="id_concepto" name="id_concepto" >
-                  <div class="form-group row">
-                    <div class="col-sm-12">
-                      <label for="concepto">Concepto</label>
-                      <input type="text" class="form-control" id="concepto" name="concepto"  required  >
-                    </div>
-                    
-                    <div class="col-sm-3">
-                      <label for="tipo">Tipo de Producto </label>
-                      <select name="tipo" id="tipo"  class="form-control">
-                        <option value="producto">Producto</option>
-                        <option value="servicio">Servicio</option> 
-                      </select>
-                    </div>
-                    <div class="col-sm-2">
-                      <label for="cantidad">Cantidad</label>
-                      <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="99999" value="1" required  >
-                    </div>
-
-                    <div class="col-5">
-                      <label for="precio_unitario">Precio Unitario </label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">$</span>
-                        </div>
-                        <input type="text" class="form-control" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <button class="btn btn-success" type="submit" >Guardar Cambios</button>
-                  <button class="btn btn-danger" type="reset" id="cancel_edit" >Cancelar</button>
-                </form>
-              </div>
-            </div>
-
-            </div>
-
-          
-            <div class="card">
+          <div class="card">
             <div class="card-header">Resumen de Cotizacion <button class="btn btn-danger float-right restart_quote ">Reiniciar</button> </div>
             
             
@@ -129,10 +88,7 @@
               
             </div>
           </div>
-        
         </div>
-        
-
       </div>
     </div>
     <?php require_once INCLUDES.'footer.php' ?>
