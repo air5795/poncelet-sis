@@ -21,6 +21,8 @@
 
     <script src="<?php echo JS.'waitMe.min.js'?>"></script>
     <script src="<?php echo JS.'main.js'?>"></script>
+
+
   </body>
 </html>
 

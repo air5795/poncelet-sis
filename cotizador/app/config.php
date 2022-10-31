@@ -5,7 +5,10 @@ session_start();
 //para saber si esta en servidor local 
 
 define('IS_LOCAL',in_array($_SERVER['REMOTE_ADDR'],['12.0.0.1','::1']));
-define('URL',(IS_LOCAL ? 'http://127.0.0.1/poncelet-sis/cotizador/': 'LA URL DE SU SERVIDOR EN PRODUCCION'));
+//define('IS_REMOTE',in_array($_SERVER['REMOTE_HOST'],['192.168.0.10',':80']));
+define('URL',(IS_LOCAL ? 'http://127.0.0.1/poncelet-sis/cotizador/': ''));
+
+
 
 //Rutas para carpetas
 
@@ -30,6 +33,8 @@ define('APP_NAME','Cotizador Poncelet');
 define('TAXES_RATE',0.03);
 define('SHIPPING',0);
 
+//autoload composer
+ require_once ROOT.'vendor/autoload.php';
 
 // cargar las funciones
 
