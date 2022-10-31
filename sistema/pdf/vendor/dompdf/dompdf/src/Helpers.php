@@ -504,7 +504,7 @@ class Helpers
     {
         // Not a warning or notice
         if (!($errno & (E_WARNING | E_NOTICE | E_USER_NOTICE | E_USER_WARNING))) {
-            throw new Exception($errstr . " $errno");
+            
         }
 
         global $_dompdf_warnings;
