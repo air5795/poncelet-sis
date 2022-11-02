@@ -4,11 +4,11 @@
                         <img src="<?php echo IMG.'vacio.png';?>" style="width:150px;" class="img-fluid">
                     </div>
 <?php else: ?>
-
+    
                     <table class="table table-hover table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th><p class="alert alert-danger text-right " style="width:max-content; text-align:right;padding:0;"><?php echo sprintf('Cotizacion #%s',$d->number) ; ?></p></th>
                                 <th>Concepto</th>
                                 <th>Cantidad</th>
                                 <th>Precio</th>
@@ -81,10 +81,7 @@
                     
                     </div>
 
-                    <div class="card-footer">
-                        <button class="btn btn-primary" type="submit" >Descargar PDF</button>
-                        <button class="btn btn-success" type="reset" >Enviar por CORREO</button>
-                    </div>
+                    
 
                 <?php endif ; ?>
             

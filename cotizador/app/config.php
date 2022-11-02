@@ -21,7 +21,7 @@ define('TEMPLATES',ROOT.'templates'.DS);
 define('INCLUDES',TEMPLATES.'includes'.DS);
 define('MODULES',TEMPLATES.'modules'.DS);
 define('VIEWS',TEMPLATES.'views'.DS);
-define('UPLOADS',ROOT.'uploads'.DS);
+define('UPLOADS','assets/uploads/');
 
 // para archivos que vayamos a incluir en header o footer (css o js)
 define('CSS',URL.'assets/css/');
@@ -35,7 +35,7 @@ define('SHIPPING',0);
 
 //autoload composer
 //require_once ROOT.'../sistema/pdf/vendor/autoload.php';
-
+require_once ROOT.'vendor/autoload.php';
 // cargar las funciones
 
 require_once APP.'functions.php';

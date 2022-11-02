@@ -4,6 +4,7 @@
     <img src="<?php echo IMG.'empty.png'; ?>" alt="Sin contenido" class="img-fluid" style="width: 150px;">
   </div>
 <?php else: ?>
+  <h2 class="alert alert-danger"><?php echo sprintf('#%s',$d->number) ; ?></h2>
   <div class="table-responsive">
     <table class="table table-hover table-striped table-bordered">
       <thead>

@@ -108,6 +108,7 @@
                     </div>
                   </div>
                   <br>
+                  
                   <button class="btn btn-success" type="submit" >Guardar Cambios</button>
                   <button class="btn btn-danger" type="reset" id="cancel_edit" >Cancelar</button>
                 </form>
@@ -128,6 +129,12 @@
               </div>
               
             </div>
+
+            <div class="card-footer">
+                        <button class="btn btn-success" id="generate_quote" >Generar Cotizacion</button>
+                        <a class="btn btn-primary" id="download_quote" style="display: none;" href="" >Descargar PDF</a>
+                        
+                    </div>
           </div>
         
         </div>
