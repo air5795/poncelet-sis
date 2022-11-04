@@ -10,5 +10,5 @@
     <title><?php echo APP_NAME; ?></title>
   </head>
 
-  <body>
+  <body  style="background-color: #585858">
 

@@ -1,5 +1,8 @@
 $('document').ready(() =>{
     // notificaciones 
+
+    
+    
 function notify(content,type = 'success') {
         let wrapper = $('.wrapper_notifications'),
         id          = Math.floor((Math.random()*500)+1),
@@ -17,6 +20,7 @@ function notify(content,type = 'success') {
         return true;
     }
 
+    
 
     // cargar contenido de la cotizacion
 function get_quote(){
@@ -70,6 +74,7 @@ function add_to_quote(e){
 
         let concepto = $('#concepto').val(),
         precio      = parseFloat($('#precio_unitario').val());
+        precio_c    = parseFloat($('#precio_unitario_c').val());
 
         if (concepto.length < 5) {
             notify('Ingresa un concepto valido porfavor.','danger');
@@ -202,7 +207,7 @@ function add_to_quote(e){
       wrapper_update_concept = $('.wrapper_update_concept'),
       form_update_concept    = $('#save_concept');
   
-      // Petición
+      // Petición ajax
       $.ajax({
         url     : 'ajax.php',
         type    : 'post',
@@ -211,13 +216,18 @@ function add_to_quote(e){
         beforeSend: () => {
           $('body').waitMe();
         }
-      }).done(res => {
+      }).done(res =>  {
         if(res.status === 200) {
           $('#id_concepto', form_update_concept).val(res.data.id);
           $('#concepto', form_update_concept).val(res.data.concept);
+          $('#envio', form_update_concept).val(res.data.envio);
+
+          $('#marca', form_update_concept).val(res.data.marca);
           $('#tipo option[value="'+res.data.type+'"]', form_update_concept).attr('selected', true);
           $('#cantidad', form_update_concept).val(res.data.quantity);
           $('#precio_unitario', form_update_concept).val(res.data.price);
+          $('#precio_unitario_c', form_update_concept).val(res.data.price_c);
+          
           wrapper_update_concept.fadeIn();
           notify(res.msg);
         } else {

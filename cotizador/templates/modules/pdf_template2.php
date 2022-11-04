@@ -1,9 +1,4 @@
-<?php
 
-require_once '../../../sistema/pdf/vendor/autoload.php';
-use Dompdf\Dompdf;
-ob_start();
-?>
 <head>
   
     <meta charset="utf-8" />
@@ -180,18 +175,3 @@ ob_start();
 </html>
 
 
-<?php 
-                    $html = ob_get_clean();
-                    $dompdf = new Dompdf();
-                    $dompdf->loadHtml($html);
-                    $dompdf->setPaper('A4','portrait');
-                    //$dompdf->setPaper('letter','portrait');
-                    //$dompdf->setPaper('A4', 'landscape');
-                    $canvas = $dompdf->getCanvas(); 
- 
-
-                    $dompdf->render();
-
-                    $dompdf->stream('Inventario',array('attachment'=>0)); 
-                                      
-                ?>

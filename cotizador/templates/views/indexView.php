@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-6 col-12">
+        <div class="col-lg-4 col-12">
             <div class="card mb-3">
               <div class="card-header">Informacion del Cliente</div>
               <div class="card-body">
@@ -40,12 +40,28 @@
                       <label for="concepto">Concepto</label>
                       <input type="text" class="form-control" id="concepto" name="concepto"  require  >
                     </div>
+                    <div class="col-sm-6">
+                      <label for="marca">Marca</label>
+                      <input type="text" class="form-control" id="marca" name="marca"  require  >
+                    </div>
                     
-                    <div class="col-sm-3">
-                      <label for="tipo">Tipo de Producto </label>
-                      <select name="tipo" id="tipo"  class="form-control">
-                        <option value="producto">Producto</option>
-                        <option value="servicio">Servicio</option> 
+                    
+                    <div class="col-sm-6">
+                      <label for="tipo">Unidad/Medible </label>
+                      <select name="tipo" id="tipo" class="form-control">
+                        <option value="Unidad">Unidad</option>
+                        <option value="Caja">Caja</option>
+                        <option value="Pieza">Pieza</option>
+                        <option value="Equipo">Equipo</option>
+                        <option value="Paquete">Paquete</option>
+                        <option value="Pliegue">Pliegue</option>
+                        <option value="Pliego">Pliego</option>
+                        <option value="Par">Par</option>
+                        <option value="Docena">Docena</option>
+                        <option value="Bidon">Bidon</option>
+                        <option value="Block">Block</option>
+                        <option value="Bolsa">Bolsa</option>
+                        <option value="Bote">Bote</option>
                       </select>
                     </div>
                     <div class="col-sm-2">
@@ -53,15 +69,38 @@
                       <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="99999" value="1" required  >
                     </div>
 
-                    <div class="col-5">
+                    <div class="col-sm-5">
                       <label for="precio_unitario">Precio Unitario </label>
                       <div class="input-group">
                         <div class="input-group-prepend">
-                          <span class="input-group-text">$</span>
+                          <span class="input-group-text">Bs</span>
                         </div>
                         <input type="text" class="form-control" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
                       </div>
                     </div>
+                    <div class="col-sm-5">
+                      <label for="precio_unitario_c">Precio Unitario de Compra </label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Bs</span>
+                        </div>
+                        <input type="text" class="form-control" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" required>
+                      </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="col-sm-12">
+                      <label for="envio">Envio (Transporte o imprevistos)</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Bs</span>
+                        </div>
+                        <input type="text" class="form-control" id="envio" name="envio" placeholder="0.00" required>
+                      </div>
+                    </div>
+
+
                   </div>
                   <br>
                   <button class="btn btn-success" type="submit" >Agregar Concepto</button>
@@ -71,7 +110,7 @@
             </div>
         </div>
 
-        <div class="col-lg-6 col-12">
+        <div class="col-lg-8 col-12">
 
         <div class="wrapper_update_concept " style="display:none ;" >
           <div class="card mb-3">
@@ -80,16 +119,33 @@
                 <form id="save_concept" method="POST">
                   <input type="hidden" class="form-control" id="id_concepto" name="id_concepto" >
                   <div class="form-group row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                       <label for="concepto">Concepto</label>
                       <input type="text" class="form-control" id="concepto" name="concepto"  required  >
                     </div>
                     
                     <div class="col-sm-3">
-                      <label for="tipo">Tipo de Producto </label>
-                      <select name="tipo" id="tipo"  class="form-control">
-                        <option value="producto">Producto</option>
-                        <option value="servicio">Servicio</option> 
+                      <label for="marca">Marca</label>
+                      <input type="text" class="form-control" id="marca" name="marca"  required  >
+                    </div>
+                    
+                    
+                    <div class="col-sm-3">
+                      <label for="tipo">Unidad/Medible </label>
+                      <select name="tipo" id="tipo" class="form-control">
+                        <option value="Unidad">Unidad</option>
+                        <option value="Caja">Caja</option>
+                        <option value="Pieza">Pieza</option>
+                        <option value="Equipo">Equipo</option>
+                        <option value="Paquete">Paquete</option>
+                        <option value="Pliegue">Pliegue</option>
+                        <option value="Pliego">Pliego</option>
+                        <option value="Par">Par</option>
+                        <option value="Docena">Docena</option>
+                        <option value="Bidon">Bidon</option>
+                        <option value="Block">Block</option>
+                        <option value="Bolsa">Bolsa</option>
+                        <option value="Bote">Bote</option>
                       </select>
                     </div>
                     <div class="col-sm-2">
@@ -97,17 +153,36 @@
                       <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="99999" value="1" required  >
                     </div>
 
-                    <div class="col-5">
+                    <div class="col-sm-5">
                       <label for="precio_unitario">Precio Unitario </label>
                       <div class="input-group">
                         <div class="input-group-prepend">
-                          <span class="input-group-text">$</span>
+                          <span class="input-group-text">Bs</span>
                         </div>
                         <input type="text" class="form-control" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
                       </div>
                     </div>
+                    <div class="col-sm-5">
+                      <label for="precio_unitario_c">Precio Unitario de Compra </label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Bs</span>
+                        </div>
+                        <input type="text" class="form-control" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" required>
+                      </div>
+                    </div>
                   </div>
                   <br>
+
+                  <div class="col-sm-12">
+                      <label for="envio">Envio (Transporte o imprevistos)</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Bs</span>
+                        </div>
+                        <input type="text" class="form-control" id="envio" name="envio" placeholder="0.00" required>
+                      </div>
+                    </div>
                   
                   <button class="btn btn-success" type="submit" >Guardar Cambios</button>
                   <button class="btn btn-danger" type="reset" id="cancel_edit" >Cancelar</button>
@@ -116,6 +191,7 @@
             </div>
 
             </div>
+            
 
           
             <div class="card">
@@ -130,7 +206,7 @@
               
             </div>
 
-            <div class="card-footer">
+                    <div class="card-footer">
                         <button class="btn btn-success" id="generate_quote" >Generar Cotizacion</button>
                         <a class="btn btn-primary" id="download_quote" style="display: none;" href="" >Descargar PDF</a>
                         
@@ -141,6 +217,7 @@
         
 
       </div>
+      
     </div>
     <?php require_once INCLUDES.'footer.php' ?>
 

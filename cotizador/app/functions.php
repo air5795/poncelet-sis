@@ -64,7 +64,13 @@ function get_quote(){
             'subtotal'      => 0,
             'taxes'         => 0,
             'shipping'      => 0,
-            'total'         => 0
+            'total'         => 0,
+            'subtotal_c'    => 0, // 
+            'total_c'       => 0,  //
+
+            'envio'       => 0,
+            'total_g'       => 0 //
+             
             
         ];
     }
@@ -80,6 +86,7 @@ function get_quote(){
     $_SESSION['new_quote']['email']   = trim($client['email']);
     return true;
   }
+ 
 
 function recalculate_quote(){
     $items      =[]; //array vacio
@@ -87,6 +94,9 @@ function recalculate_quote(){
     $taxes      =0; // inpuestos
     $shipping   =SHIPPING; // envio
     $total      =0;
+    $subtotal_c =0;
+    $total_g = 0;
+    $envio =0;
 
     if (!isset($_SESSION['new_quote'])) {
         return false;
@@ -100,17 +110,22 @@ function recalculate_quote(){
     if (!empty($items)) {
         foreach ($items as $item) {
             $subtotal += $item['total'];
+            $subtotal_c += $item['total_c'];
             $taxes    += $item['taxes'];
         }
     }
 
     
     $total    = $subtotal + $taxes + $shipping;
+    $total_c    = $subtotal_c ;
+    $total_g  = $subtotal_c + $taxes ;
 
     $_SESSION['new_quote']['subtotal'] = $subtotal;
+    $_SESSION['new_quote']['subtotal_c'] = $subtotal_c;
     $_SESSION['new_quote']['taxes'] = $taxes;
-    $_SESSION['new_quote']['shipping'] = $shipping;
     $_SESSION['new_quote']['total'] = $total;
+    $_SESSION['new_quote']['total_c'] = $total_c;
+    $_SESSION['new_quote']['total_g'] = $total_g;
 
     return true;
 
@@ -315,26 +330,36 @@ function hook_get_quote_res(){
 // Agregar Concepto
 function hook_add_to_quote(){
     // validar 
-    if (!isset($_POST['concepto'],$_POST['tipo'],$_POST['precio_unitario'],$_POST['cantidad'])) {
+    if (!isset($_POST['concepto'],$_POST['tipo'],$_POST['precio_unitario'],$_POST['cantidad'],$_POST['marca'])) {
         json_output(json_build(403,null,'Parametros incompletos.'));
     }
 
     $concept                    =   trim($_POST['concepto']);
+    $marca                      =   trim($_POST['marca']);
     $type                       =   trim($_POST['tipo']);
     $price                      =   (float) str_replace([',','$'],'', $_POST['precio_unitario']);
+    $price_c                    =   (float) str_replace([',','$'],'', $_POST['precio_unitario_c']);
+    $envio                      =   (float) str_replace([',','$'],'', $_POST['envio']);
     $quantity                   =   (int) trim($_POST['cantidad']);
     $subtotal                   =   (float) $price * $quantity;
-    $taxes                      =   (float) $subtotal * (TAXES_RATE * 2);
+    $subtotal_c                 =   (float) $price_c * $quantity;
+    $taxes                      =   (float) $subtotal * TAXES_RATE ;
+    $total_g                    =   (float) $subtotal_c + $taxes + $envio  ; 
 
     $item = 
     [
         'id'                    => rand(1111, 9999),
         'concept'               => $concept,
+        'marca'                 => $marca,
         'type'                  => $type,
         'quantity'              => $quantity,
+        'envio'                 => $envio,
         'price'                 => $price,
+        'price_c'               => $price_c,
         'taxes'                 => $taxes,
-        'total'                 => $subtotal
+        'total'                 => $subtotal,
+        'total_c'               => $subtotal_c,
+        'total_g'               => $total_g
     ];
 
     
@@ -396,27 +421,37 @@ function hook_delete_concept() {
   // Guardar los cambios de un concepto
 function hook_save_concept() {
     // Validar
-    if(!isset($_POST['id_concepto'], $_POST['concepto'], $_POST['tipo'], $_POST['precio_unitario'], $_POST['cantidad'])) {
+    if(!isset($_POST['id_concepto'], $_POST['concepto'], $_POST['tipo'], $_POST['precio_unitario'], $_POST['cantidad'], $_POST['precio_unitario_c'], $_POST['marca'])) {
       json_output(json_build(403, null, 'Parametros incompletos.'));
     }
   
     $id       = (int) $_POST['id_concepto'];
     $concept  = trim($_POST['concepto']);
+    $marca    = trim($_POST['marca']);
+    $envio    = (float) str_replace([',','$'],'', $_POST['envio']);
     $type     = trim($_POST['tipo']);
-    $price    = (float) str_replace([',','$'], '', $_POST['precio_unitario']);
+    $price    = (float) str_replace([',','Bs '], '', $_POST['precio_unitario']);
+    $price_c    = (float) str_replace([',','Bs '], '', $_POST['precio_unitario_c']);
     $quantity = (int) trim($_POST['cantidad']);
     $subtotal = (float) $price * $quantity;
-    $taxes    = (float) $subtotal * (TAXES_RATE / 100);
+    $subtotal_c = (float) $price_c * $quantity;
+    $taxes    = (float) $subtotal * TAXES_RATE;
+    $total_g  = (float) $subtotal_c + $taxes + $envio ;
   
     $item = 
     [
       'id'       => $id,
       'concept'  => $concept,
+      'marca'    => $marca,
       'type'     => $type,
+      'envio'    => $envio,
       'quantity' => $quantity,
       'price'    => $price,
+      'price_c'  => $price_c,
       'taxes'    => $taxes,
-      'total'    => $subtotal
+      'total'    => $subtotal,
+      'total_c'  => $subtotal_c,
+      'total_g'  => $total_g
     ];
   
     if(!add_item($item)) {
