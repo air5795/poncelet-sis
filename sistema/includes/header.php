@@ -274,7 +274,19 @@ if (empty($_SESSION['active'])) {
                                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                                 
-                                                
+                                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapse2" aria-expanded="false" aria-controls="pagesCollapseError">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                                                    Cotización
+                                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                                </a>
+
+                                                <div class="collapse" id="pagesCollapse2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                                    <nav class="sb-sidenav-menu-nested nav">
+                                                        <a class="nav-link" href="cotizador/">Nuevo Cotizacion</a>
+                                                        <a class="nav-link" href="404.html">Lista de Cotizaciones</a>
+                                                        
+                                                    </nav>
+                                                </div>
 
                                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                                 <div class="sb-nav-link-icon"><i class="fas fa-truck-field"></i></div>
@@ -306,19 +318,7 @@ if (empty($_SESSION['active'])) {
                                                 </div>
 
 
-                                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapse2" aria-expanded="false" aria-controls="pagesCollapseError">
-                                                <div class="sb-nav-link-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                                                    Cotización
-                                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                                </a>
-
-                                                <div class="collapse" id="pagesCollapse2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                                    <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="nueva_cotizacion.php">Nuevo Cotizacion</a>
-                                                        <a class="nav-link" href="404.html">Lista de Cotizaciones</a>
-                                                        
-                                                    </nav>
-                                                </div>
+                                                
 
                                             </nav>
                                         </div>

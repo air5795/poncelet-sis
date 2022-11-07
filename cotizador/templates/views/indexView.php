@@ -10,45 +10,50 @@
       <div class="row">
         <div class="col-lg-4 col-12">
             <div class="card mb-3">
-              <div class="card-header">Informacion del Cliente</div>
+              <div class="card-header" style="padding: 0;text-align: center;">Informacion del Cliente</div>
               <div class="card-body">
                 <form >
                   <div class="form-group row">
                     <div class="col-sm-12">
+                      
+                      <input type="text" class="form-control form-control-sm bu" id="nombre" name="nombre"  required>
                       <label for="nombre">Nombre</label>
-                      <input type="text" class="form-control" id="nombre" name="nombre"  required>
                     </div>
                     
                     <div class="col-sm-6">
+                      
+                      <input type="text" class="form-control form-control-sm bu" id="empresa" name="nit"  required  >
                       <label for="empresa">Empresa</label>
-                      <input type="text" class="form-control" id="empresa" name="nit"  required  >
                     </div>
                     <div class="col-sm-6">
+                      
+                      <input type="text" class="form-control form-control-sm bu" id="email" name="direccion"  required  >
                       <label for="email">E-mail</label>
-                      <input type="text" class="form-control" id="email" name="direccion"  required  >
                     </div>
                   </div>  
                 </form>
               </div>
             </div>
             <div class="card mb-3">
-              <div class="card-header">Agregar Nuevo Concepto</div>
+              <div class="card-header" style="padding: 0;text-align: center;">Agregar Nuevo Concepto</div>
               <div class="card-body">
                 <form id="add_to_quote" method="POST">
                   <div class="form-group row">
                     <div class="col-sm-12">
+                      
+                      <input type="text" class="form-control form-control-sm bu" id="concepto" name="concepto"  required  >
                       <label for="concepto">Concepto</label>
-                      <input type="text" class="form-control" id="concepto" name="concepto"  require  >
                     </div>
                     <div class="col-sm-6">
+                      
+                      <input type="text" class="form-control form-control-sm bu" id="marca" name="marca"  >
                       <label for="marca">Marca</label>
-                      <input type="text" class="form-control" id="marca" name="marca"  require  >
                     </div>
                     
                     
-                    <div class="col-sm-6">
-                      <label for="tipo">Unidad/Medible </label>
-                      <select name="tipo" id="tipo" class="form-control">
+                    <div class="col-sm-4">
+                      
+                      <select name="tipo" id="tipo" class="form-control form-control-sm bu">
                         <option value="Unidad">Unidad</option>
                         <option value="Caja">Caja</option>
                         <option value="Pieza">Pieza</option>
@@ -63,32 +68,37 @@
                         <option value="Bolsa">Bolsa</option>
                         <option value="Bote">Bote</option>
                       </select>
+                      <label for="tipo">Unidad/Medible </label>
                     </div>
                     <div class="col-sm-2">
+                      
+                      <input type="number" class="form-control form-control-sm bu" id="cantidad" name="cantidad" min="1" max="99999" value="1" required  >
                       <label for="cantidad">Cantidad</label>
-                      <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="99999" value="1" required  >
                     </div>
 
-                    <div class="col-sm-5">
-                      <label for="precio_unitario">Precio Unitario </label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Bs</span>
-                        </div>
-                        <input type="text" class="form-control" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
-                      </div>
-                    </div>
-                    <div class="col-sm-5">
+                    
+
+                    <div class="col-sm-6">
                       <label for="precio_unitario_c">Precio Unitario de Compra </label>
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Bs</span>
                         </div>
-                        <input type="text" class="form-control" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" required>
+                        <input type="text" class="form-control bu" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" required>
                       </div>
                     </div>
 
-                    <hr>
+                    <div class="col-sm-6">
+                      <label for="precio_unitario">Precio Unitario de venta </label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Bs</span>
+                        </div>
+                        <input type="text" class="form-control bu" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
+                      </div>
+                    </div>
+
+                    
 
                     <div class="col-sm-12">
                       <label for="envio">Envio (Transporte o imprevistos)</label>
@@ -96,14 +106,16 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text">Bs</span>
                         </div>
-                        <input type="text" class="form-control" id="envio" name="envio" placeholder="0.00" required>
+                        <input type="text" class="form-control bu" id="envio" name="envio" placeholder="0.00" required>
                       </div>
                     </div>
 
+                    
+
 
                   </div>
-                  <br>
-                  <button class="btn btn-success" type="submit" >Agregar Concepto</button>
+                  <hr>
+                  <button class="btn btn-secondary" type="submit" >Agregar Concepto</button>
                   <button class="btn btn-danger" type="reset" >Cancelar</button>
                 </form>
               </div>
@@ -126,7 +138,7 @@
                     
                     <div class="col-sm-3">
                       <label for="marca">Marca</label>
-                      <input type="text" class="form-control" id="marca" name="marca"  required  >
+                      <input type="text" class="form-control" id="marca" name="marca"   >
                     </div>
                     
                     
@@ -207,7 +219,7 @@
             </div>
 
                     <div class="card-footer">
-                        <button class="btn btn-success" id="generate_quote" >Generar Cotizacion</button>
+                        <button class="btn btn-secondary" id="generate_quote" >Generar Cotizacion</button>
                         <a class="btn btn-primary" id="download_quote" style="display: none;" href="" >Descargar PDF</a>
                         
                     </div>

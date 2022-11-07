@@ -6,7 +6,7 @@ session_start();
 
 define('IS_LOCAL',in_array($_SERVER['REMOTE_ADDR'],['12.0.0.1','::1']));
 //define('IS_REMOTE',in_array($_SERVER['REMOTE_HOST'],['192.168.0.10',':80']));
-define('URL',(IS_LOCAL ? 'http://127.0.0.1/cotizador/': ''));
+define('URL',(IS_LOCAL ? 'http://127.0.0.1/poncelet-sis/cotizador/': ''));
 
 
 
