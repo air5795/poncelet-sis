@@ -17,7 +17,7 @@
     } 
 
 
-    
+
 
 ?>
 
@@ -32,24 +32,39 @@
       <div class="row">
         <div class="col-lg-4 col-12">
             <div class="card mb-3">
-              <div class="card-header" style="padding: 0;text-align: center;">Informacion de la Cotizacion y de el Cliente</div>
+              <div class="card-header" style="padding: 0;text-align: center;background-color: #343a40; color:white;">Informacion de la Cotizacion y de el Cliente</div>
               <div class="card-body">
                 <form >
                   <div class="form-group row">
-                    <div class="col-sm-12">
-                      
-                      <input autocomplete="off" type="text" class="form-control form-control-sm bu" id="nombre" name="nombre" placeholder="Gobierno Autonomo Municipal de Potosi" required>
+                    <div class="col-sm-9">
+                                    <select name="nombre" id="nombre" class="form-control form-control-sm bu" required >
+                                        <option value="" >Seleccione una opción : </option>
+                                        <?php
+                                            $query = mysqli_query($conexion, "SELECT * from cliente;");
+                                            $result = mysqli_num_rows($query);
+                                            if ($result > 0) {
+                                            while ($data = mysqli_fetch_array($query)) {
+                                                echo '<option value="'.$data['nombre'].'">'.$data['nombre'].'</option>';
+                                                $nombre = $data['nombre'];
+                                            }}
+                                        ?>
+                                    </select>
                       <label for="nombre">Nombre de Cliente</label>
                     </div>
+                    <div class="col-sm-3 ">
+                      <a class="btn btn-sm btn-primary" id="buscar"><i class="fa-solid fa-magnifying-glass"></i></a>
+                      <a class="btn btn-sm btn-secondary" id="nuevo"><i class="fa-solid fa-plus"></i></a>
+                    </div>
+                    
                     
                     <div class="col-sm-6">
                       
                     
-                      <input autocomplete="off" type="text" class="form-control form-control-sm bu" id="empresa" name="nit" placeholder="6604221147" required  >
+                      <input autocomplete="off" type="text" class="form-control form-control-sm bu" id="empresa" name="nit" value=""  required  >
                       <label for="empresa">NIT</label>
                     </div>
                     <div class="col-sm-6">
-                      <input autocomplete="off" type="text" class="form-control form-control-sm bu" id="email" name="direccion"  placeholder="Almacen GAM POTOSI" required  >
+                      <input autocomplete="off" type="text" class="form-control form-control-sm bu" id="email" name="direccion"   required  >
                       <label for="email">Lugar de Entrega</label>
                     </div>
                     
@@ -100,7 +115,7 @@
               </div>
             </div>
             <div class="card mb-3">
-              <div class="card-header" style="padding: 0;text-align: center;">Agregar Nuevo Concepto</div>
+              <div class="card-header" style="padding: 0;text-align: center; background-color: #343a40; color:white;">Agregar Nuevo Concepto</div>
               <div class="card-body">
                 <form id="add_to_quote" method="POST">
                   <div class="form-group row">
@@ -165,7 +180,7 @@
 
                   </div>
                   <hr>
-                  <button class="btn btn-secondary" type="submit" >Agregar Concepto</button>
+                  <button class="btn btn-secondary" type="submit" ><i class="fa-solid fa-arrow-right"></i> Agregar Concepto</button>
                   <button class="btn btn-danger" type="reset" >Cancelar</button>
                 </form>
               </div>
@@ -215,7 +230,7 @@
                       <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="99999" value="1" required  >
                     </div>
 
-                    <div class="col-sm-5">
+                    <div class="col-sm-2">
                       <label for="precio_unitario">Precio Unitario </label>
                       <div class="input-group">
                         <div class="input-group-prepend">
@@ -224,7 +239,8 @@
                         <input type="text" class="form-control" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
                       </div>
                     </div>
-                    <div class="col-sm-5">
+
+                    <div class="col-sm-3">
                       <label for="precio_unitario_c">Precio Unitario de Compra </label>
                       <div class="input-group">
                         <div class="input-group-prepend">
@@ -234,10 +250,9 @@
                       </div>
                     </div>
                   </div>
-                  <br>
 
-                  <div class="col-sm-12">
-                      <label for="envio">Envio (Transporte o imprevistos)</label>
+                  <div class="col-sm-3">
+                      <label for="envio">Envio</label>
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Bs</span>
@@ -245,6 +260,9 @@
                         <input type="text" class="form-control" id="envio" name="envio" placeholder="0.00" required>
                       </div>
                     </div>
+                  
+
+                      <hr>
                   
                   <button class="btn btn-success" type="submit" >Guardar Cambios</button>
                   <button class="btn btn-danger" type="reset" id="cancel_edit" >Cancelar</button>
@@ -257,13 +275,13 @@
 
           
             <div class="card">
-              <div class="card-header">Resumen de Cotizacion <button class="btn btn-danger float-right restart_quote ">Reiniciar</button> </div>
+              <div style="background-color: #343a40; color:white;" class="card-header">Resumen de Cotizacion <button class="btn btn-danger btn-sm float-right restart_quote "> <i class="fa-solid fa-power-off"></i> Reiniciar</button> </div>
                 <div class="card-body wrapper_quote">
                   
                 </div>
                 <div class="card-footer">
-                  <button class="btn btn-secondary" id="generate_quote" >Generar Cotizacion</button>
-                  <a class="btn btn-primary" id="download_quote" style="display: none;" href="" >Descargar PDF</a>      
+                  <button class="btn btn-secondary" id="generate_quote" ><i class="fa-solid fa-hand-holding-dollar"></i> Generar Cotizacion</button>
+                  <a class="btn" id="download_quote" style="display: none; color:red; background-color:#e9e9e9" href="" ><i class="fa-solid fa-print"></i> Descargar PDF</a>      
                 </div>
           </div>
         </div>

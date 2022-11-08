@@ -21,6 +21,30 @@
 
     <script type="text/javascript" src="<?php echo JS.'waitMe.min.js'?>"></script>
     <script type="text/javascript" src="<?php echo JS.'main.js'?>"></script>
+    
+    <script>
+      $(document).ready(function(){
+        $("#buscar").click(function(){
+          var nombre = $("#nombre").val();
+
+          if(nombre!='')
+          {
+            $.ajax({
+              url:"ejecutar.php",
+              type:"post",
+              datatype:JSON,
+              data:{nombre:nombre},
+              succes:function(info){
+                console.log(info);
+              }
+            })
+          }
+          else{
+            
+          }
+        })
+      })
+    </script>
 
 
   </body>
