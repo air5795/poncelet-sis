@@ -5,6 +5,7 @@
                     </div>
 <?php else: ?>
     
+                    <div class="table-responsive">
                     <table class="table table-hover table-striped table-bordered table-sm">
                         <thead style="font-size:12px ;">
                             <tr style="background-color: #6e6e6e ; color:white">
@@ -116,7 +117,7 @@
 
                     </table>
 
-                    
+                    </div>
 
                     
 

@@ -18,21 +18,24 @@
                   <div class="form-group row">
                     <div class="col-sm-12">
                       
-                      <input type="text" class="form-control form-control-sm bu" id="nombre" name="nombre"  required>
+                      <input type="text" class="form-control form-control-sm bu" id="nombre" name="nombre" placeholder="Gobierno Autonomo Municipal de Potosi" required>
                       <label for="nombre">Nombre</label>
                     </div>
                     
                     <div class="col-sm-6">
                       
-                      <input type="text" class="form-control form-control-sm bu" id="empresa" name="nit"  required  >
-                      <label for="empresa">Empresa</label>
+                    
+                      <input type="text" class="form-control form-control-sm bu" id="empresa" name="nit" placeholder="6604221147" required  >
+                      <label for="empresa">NIT</label>
                     </div>
                     <div class="col-sm-6">
-                      
-                      <input type="text" class="form-control form-control-sm bu" id="email" name="direccion"  required  >
-                      <label for="email">E-mail</label>
+                      <input type="text" class="form-control form-control-sm bu" id="email" name="direccion"  placeholder="Almacen GAM POTOSI" required  >
+                      <label for="email">Lugar de Entrega</label>
                     </div>
-                  </div>  
+                  </div> 
+                  
+                  
+
                 </form>
               </div>
             </div>
@@ -81,35 +84,20 @@
                     
 
                     <div class="col-sm-6">
+                        <input style="background-color: #e3ffe3 ;" type="text" class="form-control bu" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" required>
                       <label for="precio_unitario_c">Precio Unitario de Compra </label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Bs</span>
-                        </div>
-                        <input type="text" class="form-control bu" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" required>
-                      </div>
                     </div>
 
                     <div class="col-sm-6">
+                      <input style="background-color: #e3ffe3 ;" type="text" class="form-control bu" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
                       <label for="precio_unitario">Precio Unitario de venta </label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Bs</span>
-                        </div>
-                        <input type="text" class="form-control bu" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
-                      </div>
                     </div>
 
                     
 
-                    <div class="col-sm-12">
-                      <label for="envio">Envio (Transporte o imprevistos)</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Bs</span>
-                        </div>
-                        <input type="text" class="form-control bu" id="envio" name="envio" placeholder="0.00" required>
-                      </div>
+                    <div  class="col-sm-12">
+                        <input style="background-color: #faffe3 ;" type="text" class="form-control bu" id="envio" name="envio" placeholder="0.00" required>
+                        <label for="envio">Envio (Transporte o imprevistos)</label>
                     </div>
 
                     
@@ -209,27 +197,16 @@
 
           
             <div class="card">
-            <div class="card-header">Resumen de Cotizacion <button class="btn btn-danger float-right restart_quote ">Reiniciar</button> </div>
-            
-            
-            <div class="card-body wrapper_quote">
-              
-              <div class="table-responsive">
-                
-              </div>
-              
-            </div>
-
-                    <div class="card-footer">
-                        <button class="btn btn-secondary" id="generate_quote" >Generar Cotizacion</button>
-                        <a class="btn btn-primary" id="download_quote" style="display: none;" href="" >Descargar PDF</a>
-                        
-                    </div>
+              <div class="card-header">Resumen de Cotizacion <button class="btn btn-danger float-right restart_quote ">Reiniciar</button> </div>
+                <div class="card-body wrapper_quote">
+                  
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-secondary" id="generate_quote" >Generar Cotizacion</button>
+                  <a class="btn btn-primary" id="download_quote" style="display: none;" href="" >Descargar PDF</a>      
+                </div>
           </div>
-        
         </div>
-        
-
       </div>
       
     </div>

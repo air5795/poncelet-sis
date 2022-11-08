@@ -5,7 +5,7 @@ session_start();
 define('IS_LOCAL' , in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']));
 
 // La URL de nuestro proyecto
-define('URL'      , (IS_LOCAL ? 'http://127.0.0.1:7879/cursos/udemy_cotizador/' : 'LA URL DE SU SERVIDOR EN PRODUCCIÓN'));
+define('URL'      , (IS_LOCAL ? 'http://127.0.0.1/poncelet-sis/cotizador3/' : ''));
 
 // Rutas para carpetas
 define('DS'       , DIRECTORY_SEPARATOR);
@@ -33,4 +33,4 @@ define('SHIPPING'  , 99.50);
 
 
 // Cargar todas las funciones
-require_once APP.'functions.php';
+require_once APP.'functions3.php';
