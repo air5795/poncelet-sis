@@ -1,6 +1,26 @@
 
   <?php require_once INCLUDES.'head.php' ?>
 
+  <?php
+    // conexion a bases de datos
+    $host = 'localhost';
+    $user = 'root';
+    $password = '';
+    $db = 'cotizacion';
+
+    $conexion = @mysqli_connect($host,$user,$password,$db);
+
+    
+
+    if (!$conexion) {
+        echo "Error en la conexion";
+    } 
+
+
+    
+
+?>
+
 
 
     <div class="container-fluid py-5">
@@ -12,26 +32,66 @@
       <div class="row">
         <div class="col-lg-4 col-12">
             <div class="card mb-3">
-              <div class="card-header" style="padding: 0;text-align: center;">Informacion del Cliente</div>
+              <div class="card-header" style="padding: 0;text-align: center;">Informacion de la Cotizacion y de el Cliente</div>
               <div class="card-body">
                 <form >
                   <div class="form-group row">
                     <div class="col-sm-12">
                       
-                      <input type="text" class="form-control form-control-sm bu" id="nombre" name="nombre" placeholder="Gobierno Autonomo Municipal de Potosi" required>
-                      <label for="nombre">Nombre</label>
+                      <input autocomplete="off" type="text" class="form-control form-control-sm bu" id="nombre" name="nombre" placeholder="Gobierno Autonomo Municipal de Potosi" required>
+                      <label for="nombre">Nombre de Cliente</label>
                     </div>
                     
                     <div class="col-sm-6">
                       
                     
-                      <input type="text" class="form-control form-control-sm bu" id="empresa" name="nit" placeholder="6604221147" required  >
+                      <input autocomplete="off" type="text" class="form-control form-control-sm bu" id="empresa" name="nit" placeholder="6604221147" required  >
                       <label for="empresa">NIT</label>
                     </div>
                     <div class="col-sm-6">
-                      <input type="text" class="form-control form-control-sm bu" id="email" name="direccion"  placeholder="Almacen GAM POTOSI" required  >
+                      <input autocomplete="off" type="text" class="form-control form-control-sm bu" id="email" name="direccion"  placeholder="Almacen GAM POTOSI" required  >
                       <label for="email">Lugar de Entrega</label>
                     </div>
+                    
+                    <div class="col-sm-4">
+                    <select name="garantia" id="garantia" class="form-control form-control-sm bu">
+                        <option value="1 año">1 año</option>
+                        <option value="2 años">2 años</option>
+                        <option value="3 años">3 años</option>
+                        <option value="4 años">4 años</option>
+                      </select> 
+                      <label for="garantia">Tiempo de Garantia </label>
+                    </div>
+                    <div class="col-sm-4">
+                    <select name="valides" id="valides" class="form-control form-control-sm bu">
+                        <option value="5 dias">5 dias</option>
+                        <option value="6 dias">6 dias</option>
+                        <option value="7 dias">7 dias</option>
+                        <option value="8 dias">8 dias</option>
+                        <option value="9 dias">9 dias</option>
+                        <option value="10 dias">10 dias</option>
+                        <option value="11 dias">11 dias</option>
+                      </select> 
+                      <label for="garantia">Validez de Cotizacion </label>
+                    </div>
+                    <div class="col-sm-4">
+                    <select name="entrega" id="entrega" class="form-control form-control-sm bu">
+                        <option value="5 dias">5 dias</option>
+                        <option value="6 dias">6 dias</option>
+                        <option value="7 dias">7 dias</option>
+                        <option value="8 dias">8 dias</option>
+                        <option value="9 dias">9 dias</option>
+                        <option value="10 dias">10 dias</option>
+                        <option value="11 dias">11 dias</option>
+                        <option value="12 dias">12 dias</option>
+                        <option value="13 dias">13 dias</option>
+                        <option value="14 dias">14 dias</option>
+                        <option value="15 dias">15 dias</option>
+                        <option value="16 dias">16 dias</option>
+                      </select> 
+                      <label for="garantia">Tiempo de Entrega</label>
+                    </div>
+                    
                   </div> 
                   
                   
@@ -51,8 +111,8 @@
                     </div>
                     <div class="col-sm-6">
                       
-                      <input type="text" class="form-control form-control-sm bu" id="marca" name="marca"  >
-                      <label for="marca">Marca</label>
+                      <input  autocomplete="off" type="text" class="form-control form-control-sm bu" id="marca" name="marca"  >
+                      <label  for="marca">Marca</label>
                     </div>
                     
                     
@@ -84,19 +144,19 @@
                     
 
                     <div class="col-sm-6">
-                        <input style="background-color: #e3ffe3 ;" type="text" class="form-control bu" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" required>
+                        <input autocomplete="off" style="background-color: #e3ffe3 ;" type="number" class="form-control bu" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" required>
                       <label for="precio_unitario_c">Precio Unitario de Compra </label>
                     </div>
 
                     <div class="col-sm-6">
-                      <input style="background-color: #e3ffe3 ;" type="text" class="form-control bu" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
+                      <input autocomplete="off" style="background-color: #e3ffe3 ;" type="number" class="form-control bu" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
                       <label for="precio_unitario">Precio Unitario de venta </label>
                     </div>
 
                     
 
-                    <div  class="col-sm-12">
-                        <input style="background-color: #faffe3 ;" type="text" class="form-control bu" id="envio" name="envio" placeholder="0.00" required>
+                    <div  class="col-sm-6">
+                        <input autocomplete="off" style="background-color: #faffe3 ;" type="number" class="form-control bu" id="envio" name="envio" placeholder="0.00" required>
                         <label for="envio">Envio (Transporte o imprevistos)</label>
                     </div>
 

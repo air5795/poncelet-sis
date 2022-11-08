@@ -60,6 +60,9 @@ function get_quote(){
             'name'          => '',
             'company'       => '',
             'email'         => '',
+            'garantia'      => '',
+            'valides'       => '',
+            'entrega'       => '',
             'items'         => [],
             'subtotal'      => 0,
             'taxes'         => 0,
@@ -81,9 +84,12 @@ function get_quote(){
    }
 
    function set_client($client) {
-    $_SESSION['new_quote']['name']    = trim($client['nombre']);
-    $_SESSION['new_quote']['company'] = trim($client['empresa']);
-    $_SESSION['new_quote']['email']   = trim($client['email']);
+    $_SESSION['new_quote']['name']      = trim($client['nombre']);
+    $_SESSION['new_quote']['company']   = trim($client['empresa']);
+    $_SESSION['new_quote']['email']     = trim($client['email']);
+    $_SESSION['new_quote']['garantia']  = trim($client['garantia']);
+    $_SESSION['new_quote']['valides']   = trim($client['valides']);
+    $_SESSION['new_quote']['entrega']   = trim($client['entrega']);
     return true;
   }
  
@@ -491,21 +497,24 @@ function generate_pdf($filename = null, $html, $save_to_file = true) {
   // Crear el pdf de la cotización
 function hook_generate_quote() {
     // Validar
-    if(!isset($_POST['nombre'], $_POST['empresa'], $_POST['email'])) {
+    if(!isset($_POST['nombre'], $_POST['empresa'], $_POST['email'], $_POST['garantia'], $_POST['valides'], $_POST['entrega'])) {
       json_output(json_build(403, null, 'Parametros incompletos.'));
     }
   
     // Validar correo
-    if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-      json_output(json_build(400, null, 'Dirección de correo no válida.'));
-    }
+    //if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+      //json_output(json_build(400, null, 'Dirección de correo no válida.'));
+    //}
     
     // Guardar información del cliente
     $client = 
     [
       'nombre'  => $_POST['nombre'],
       'empresa' => $_POST['empresa'],
-      'email'   => $_POST['email']
+      'email'   => $_POST['email'],
+      'garantia'   => $_POST['garantia'],
+      'valides'   => $_POST['valides'],
+      'entrega'   => $_POST['entrega']
     ];
     set_client($client);
   

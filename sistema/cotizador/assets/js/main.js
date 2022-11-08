@@ -358,6 +358,9 @@ function add_to_quote(e){
       nombre       = $('#nombre').val(),
       empresa      = $('#empresa').val(),
       email        = $('#email').val(),
+      garantia     = $('#garantia').val(),
+      valides      = $('#valides').val(),
+      entrega      = $('#entrega').val(),
       action       = 'generate_quote',
       errors       = 0;
   
@@ -365,7 +368,7 @@ function add_to_quote(e){
       if(!confirm('¿Estás seguro?')) return false;
   
       // Validando la información
-      if(nombre.length < 5) {
+      if(nombre.length < 3) {
         notify('Ingresa un nombre para el cliente por favor', 'danger');
         errors++;
       }
@@ -375,10 +378,7 @@ function add_to_quote(e){
         errors++;
       }
   
-      if(email.length < 5) {
-        notify('Ingresa una dirección de correo válida por favor', 'danger');
-        errors++;
-      }
+      
   
       if(errors > 0) {
         return false;
@@ -390,7 +390,7 @@ function add_to_quote(e){
         type    : 'POST',
         dataType: 'json',
         cache   : false,
-        data    : {action, nombre, empresa, email},
+        data    : {action, nombre, empresa, email,garantia,valides,entrega},
         beforeSend: () => {
           $('body').waitMe();
           button.html('Generando...');
