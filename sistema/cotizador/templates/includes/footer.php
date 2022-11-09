@@ -21,6 +21,7 @@
 
     <script type="text/javascript" src="<?php echo JS.'waitMe.min.js'?>"></script>
     <script type="text/javascript" src="<?php echo JS.'main.js'?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     
     <script>
       $(document).ready(function(){
@@ -32,19 +33,53 @@
             $.ajax({
               url:"ejecutar.php",
               type:"post",
-              datatype:JSON,
+              dataType:"JSON",
               data:{nombre:nombre},
-              succes:function(info){
-                console.log(info);
+              success:function(info){
+                console.log(info.nit);
+                //$("#empresa").html(info.nit);
+                //$("#empresa").text(info.nit);
+                $("#empresa").val(info.nit);
+                $("#email").val(info.direccion);
+                
+                
               }
             })
           }
           else{
-            
+            alert("Seleccione un nombre");
           }
         })
       })
     </script>
+    <script type="text/javascript">
+        
+
+        function calcular_a_bs(){
+            try{
+                var b = parseFloat(document.getElementById("precio_unitario_c").value) || 0;
+                decimal = b.toFixed(2);
+                proceso = (decimal *(30/100))+b;
+                result = proceso.toFixed(2);
+                document.getElementById("precio_unitario").value = result;
+            } catch(e){}
+        }
+
+
+        
+
+    </script>
+
+    <script>
+      // In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+    theme: "classic";
+});
+    </script>
+
+
+    
 
 
   </body>

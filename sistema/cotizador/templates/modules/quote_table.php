@@ -26,8 +26,8 @@
                             <tr>
                                 <td>
                                     <div class="btn-group">
-                                        <button class="btn btn-sm btn-secondary edit_concept" data-id="<?php echo $item->id; ?>">Editar</button>
-                                        <button class="btn btn-sm btn-danger delete_concept" data-id="<?php echo $item->id; ?>">Borrar</button>
+                                        <button class="btn btn-sm btn-secondary edit_concept" data-id="<?php echo $item->id; ?>"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
+                                        <button class="btn btn-sm btn-danger delete_concept" data-id="<?php echo $item->id; ?>"><i class="fa-solid fa-trash-can"></i></button>
                                     </div>
                                 </td>
                                 <td style="font-size:12px ;">
@@ -38,19 +38,19 @@
                                 </td>
                                 <td><?php echo $item->marca; ?></td>
                                 <td class="text-center"><?php echo $item->quantity; ?></td>
-                                <td class="text-right"><?php echo 'Bs '.number_format($item->price); ?></td>
-                                <td class="text-right"><?php echo 'Bs '.number_format($item->total,2); ?></td>
-                                <td style="background-color: #edf5ff;" class="text-right"><?php echo 'Bs '.number_format($item->price_c); ?></td>
-                                <td style="background-color: #edf5ff;" class="text-right"><?php echo 'Bs '.number_format($item->total_c,2); ?></td>
+                                <td class="text-right"><?php echo number_format($item->price,2).' Bs'; ?></td>
+                                <td class="text-right"><?php echo number_format($item->total,2).' Bs'; ?></td>
+                                <td style="background-color: #edf5ff;" class="text-right"><?php echo number_format($item->price_c,2).' Bs'; ?></td>
+                                <td style="background-color: #edf5ff;" class="text-right"><?php echo number_format($item->total_c,2).' Bs'; ?></td>
                             </tr>
                         <?php endforeach; ?>  
                         
 
                         <tr>
                             <td class="text-right" colspan="5">Sub Total</td>
-                            <td class="text-right"><?php echo 'Bs '.number_format($d->subtotal,2); ?></td>
+                            <td class="text-right"><?php echo number_format($d->subtotal,2).' Bs'; ?></td>
                             <td style="background-color: #edf5ff;" class="text-right" >Sub Total Compra</td>
-                            <td style="background-color: #edf5ff;" class="text-right"><?php echo 'Bs '.number_format($d->subtotal_c,2); ?></td>
+                            <td style="background-color: #edf5ff;" class="text-right"><?php echo number_format($d->subtotal_c,2).' Bs'; ?></td>
                             
                         </tr>
                        
@@ -59,12 +59,12 @@
 
                         <tr>
                         
-                            <td class="text-right" colspan="6"> <b>TOTAL VENTA</b> <h3 class="text-success"> 
-                                <b> <?php echo 'Bs '.number_format($d->subtotal,2); ?></b></h3>
+                                <td class="text-right" colspan="6"> <b>TOTAL VENTA</b> <h5 class="text-success"> 
+                                <b> <?php echo number_format($d->subtotal,2).' Bs'; ?></b></h5>
                                 
                             </td>
-                            <td style="background-color: #edf5ff;" class="text-right" colspan="2"> <b>TOTAL COMPRA</b> <h3 class="text-success"> 
-                                <b> <?php echo 'Bs '.number_format($d->total_c,2); ?></b></h3>
+                                <td style="background-color: #edf5ff;" class="text-right" colspan="2"> <b>TOTAL COMPRA</b> <h5 class="text-success"> 
+                                <b> <?php echo number_format($d->total_c,2).' Bs'; ?></b></h5>
                                 
                             </td>
                             
@@ -72,35 +72,29 @@
                            
                         </tr>
                         <tr>
-                            <td class="text-right" colspan="6"></td>
-                            <td class="text-right" style="background-color: #edf5ff;">Impuestos</td>
-                            <td class="text-right" style="background-color: #edf5ff;"><?php echo 'Bs '.number_format($d->taxes,2); ?></td>
                             
-                            
-                            
-                            
+                            <td class="text-right" colspan="6" style="background-color: #edf5ff;">Impuestos (IVA 3% + IT 3%)</td>
+                            <td class="text-right" colspan="2" style="background-color: #edf5ff;"><?php echo number_format($d->taxes,2).' Bs'; ?></td>
+
                         </tr>
                         <tr>
-                            <td class="text-right" colspan="6"></td>
-                            <td class="text-right" style="background-color: #edf5ff;" >Envio</td>
-                            <td class="text-right" style="background-color: #edf5ff;"><?php echo 'Bs '.number_format($item->shipping,2); ?></td>
+                            <td class="text-right" colspan="6" style="background-color: #edf5ff;" >Envio Transporte e Imprevistos</td>
+                            <td class="text-right" colspan="2" style="background-color: #edf5ff;"><?php echo number_format($item->shipping,2).' Bs'; ?></td>
 
                         </tr>
                         <tr >
-                            <td class="text-right" colspan="5"></td>
-                            <td class="text-right alert alert-danger" colspan="2" style="background-color: #fba1a9;font-weight: 600;">TOTAL GASTOS </td>
-                            <td class="text-right alert alert-danger" ><?php echo 'Bs '.number_format($d->total_g,2); ?></td>
+                            
+                            <td class="text-right alert alert-danger" colspan="6" style="background-color: #fba1a9;font-weight: 600;">TOTAL GASTOS </td>
+                            <td class="text-right alert alert-danger" colspan="2" ><?php echo number_format($d->total_g,2).' Bs'; ?></td>
 
                         </tr>
                         <tr >
-                            <td class="text-right" colspan="5"></td>
-                            <td class="text-right alert alert-success" colspan="2" style="background-color: #c3d9c8; font-weight: 600;">TOTAL GANANCIA </td>
-                            <td class="text-right alert alert-success" ><?php echo 'Bs '.number_format(($d->subtotal) - ($d->total_g),2); ?></td>
+                            <td class="text-right alert alert-success" colspan="6" style="background-color: #c3d9c8; font-weight: 600;">TOTAL GANANCIA </td>
+                            <td class="text-right alert alert-success" colspan="2"><?php echo number_format(($d->subtotal) - ($d->total_g),2).' Bs'; ?></td>
                         </tr>
                         <tr >
-                            <td class="text-right" colspan="5"></td>
-                            <td class="text-right alert alert-success" colspan="2" style="background-color: #c3d9c8; font-weight: 600;">% de GANANCIA </td>
-                            <td class="text-right alert alert-success" >
+                            <td class="text-right alert alert-success" colspan="6" style="background-color: #c3d9c8; font-weight: 600;">% de GANANCIA </td>
+                            <td class="text-right alert alert-success" colspan="2" >
                                 <?php 
 
                                     $GANANCIA = 0;
