@@ -105,6 +105,7 @@ include "../conexion.php";
                     <input name="uno" type="submit" value="GAM POTOSI" style="color: red; " class="btn btn-light">
                     <input name="dos" type="submit" value="GAM COTAGAITA" style="color: red; " class="btn btn-light">
                     <input name="tres" type="submit" value="DON DIEGO" style="color: red; " class="btn btn-light">
+                    <input name="cuatro" type="submit" value="COLCHA K" style="color: red; " class="btn btn-light">
                     <a href="rep_ImgEE_c.php" class="btn btn-light">DESCARGAR ACTAS </a>
                     <hr>
                     <div class="card-body display">
