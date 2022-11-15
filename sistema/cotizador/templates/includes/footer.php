@@ -52,6 +52,39 @@
         })
       })
     </script>
+    <script>
+      $(document).ready(function(){
+        $("#buscarp").click(function(){
+          var nombre = $("#nombrep").val();
+
+          if(nombre!='')
+          {
+            $.ajax({
+              url:"ejecutar2.php",
+              type:"post",
+              dataType:"JSON",
+              data:{nombre:nombre},
+              success:function(info){
+                console.log(info.nit);
+                //$("#empresa").html(info.nit);
+                //$("#empresa").text(info.nit);
+                $("#concepto").val(info.p_descripcion);
+                $("#marca").val(info.p_marca);
+                $("#tipo").val(info.p_unidad);
+                $("#precio_unitario").val(info.p_preciov);
+                $("#precio_unitario_c").val(info.p_precioc);
+  
+                
+                
+              }
+            })
+          }
+          else{
+            alert("Seleccione un nombre");
+          }
+        })
+      })
+    </script>
     <script type="text/javascript">
         
 
@@ -74,7 +107,18 @@
       // In your Javascript (external .js resource or <script> tag)
 $(document).ready(function() {
     $('.js-example-basic-single').select2();
+  
     theme: "classic";
+    
+});
+    </script>
+
+<script>
+      // In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $('.js-example').select2();
+    theme: "classic";
+    
 });
     </script>
 

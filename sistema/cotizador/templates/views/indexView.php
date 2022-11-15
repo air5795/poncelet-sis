@@ -53,8 +53,6 @@
                                             }}
                                         ?>
                                     </select>
-                    
-                                    
                     </div>
                     
                     
@@ -130,21 +128,40 @@
               <div class="card-body">
                 <form id="add_to_quote" method="POST">
                   <div class="form-group row">
+                  <div class="col-sm-8" >
+                    <label for="nombre">BUSCAR EN BASE DE DATOS</label>
+                                    <select style="width: 100%;font-size:12px ;" name="nombrep" id="nombrep" class="form-control form-control-sm  js-example " >
+                                        <option value="" >Seleccione una opción : </option>
+                                        <?php
+                                            $query = mysqli_query($conexion, "SELECT * from productos ORDER BY p_descripcion ASC;");
+                                            $result = mysqli_num_rows($query);
+                                            if ($result > 0) {
+                                            while ($data = mysqli_fetch_array($query)) {
+                                                echo '<option value="'.$data['p_descripcion'].'">'.$data['p_descripcion'].'</option>';
+                                                $nombre = $data['p_descripcion'];
+                                            }}
+                                        ?>
+                                    </select>
+                    </div>
+                    <div class="col-sm-4 ">
+                      <a class="btn btn-sm btn-primary" id="buscarp"><i class="fa-solid fa-magnifying-glass"></i>  </a>
+                      <a class="btn btn-sm btn-secondary" id="nuevo" href="../registro_cliente.php"><i class="fa-solid fa-cart-plus"></i> </a>
+                    </div>
                     <div class="col-sm-12">
-                      
-                      <input autocomplete="off" type="text" class="form-control form-control-sm bu" id="concepto" name="concepto"  required  >
                       <label for="concepto">Concepto</label>
+                      <input autocomplete="off" type="text" class="form-control form-control-sm " id="concepto" name="concepto"  required  >
+                      
                     </div>
                     <div class="col-sm-6">
-                      
-                      <input  autocomplete="off" type="text" class="form-control form-control-sm bu" id="marca" name="marca"  >
                       <label  for="marca">Marca</label>
+                      <input  autocomplete="off" type="text" class="form-control form-control-sm " id="marca" name="marca"  >
+                      
                     </div>
                     
                     
                     <div class="col-sm-6">
-                      
-                      <select name="tipo" id="tipo" class="form-control form-control-sm bu">
+                    <label for="tipo">Unidad/Medible </label>
+                      <select name="tipo" id="tipo" class="form-control form-control-sm ">
                         <option value="Unidad">Unidad</option>
                         <option value="Caja">Caja</option>
                         <option value="Pieza">Pieza</option>
@@ -159,33 +176,36 @@
                         <option value="Bolsa">Bolsa</option>
                         <option value="Bote">Bote</option>
                       </select>
-                      <label for="tipo">Unidad/Medible </label>
+                      
                     </div>
                     <div class="col-sm-6">
+                    <label for="cantidad">Cantidad</label>
+                      <input type="number" class="form-control form-control-sm " id="cantidad" name="cantidad" min="1" max="99999" value="1" required  >
                       
-                      <input type="number" class="form-control form-control-sm bu" id="cantidad" name="cantidad" min="1" max="99999" value="1" required  >
-                      <label for="cantidad">Cantidad</label>
                     </div>
 
                     
 
                     <div class="col-sm-6">
+                    <label for="precio_unitario_c">Precio Unitario de Compra (Bs) </label>
                         <input autocomplete="off" style="background-color: #e3ffe3 ;" type="number" 
-                        class="form-control bu" id="precio_unitario_c" name="precio_unitario_c" placeholder="0" oninput="calcular_a_bs()" required>
-                      <label for="precio_unitario_c">Precio Unitario de Compra (Bs) </label>
+                        class="form-control " id="precio_unitario_c" name="precio_unitario_c" placeholder="0" oninput="calcular_a_bs()" required>
+                      
                     </div>
 
                     <div class="col-sm-6">
+                    <label for="precio_unitario">Precio Unitario de venta (Bs) </label>
                       <input autocomplete="off" style="background-color: #e3ffe3 ;" type="number" 
-                      class="form-control bu" id="precio_unitario" name="precio_unitario" placeholder="0"  required>
-                      <label for="precio_unitario">Precio Unitario de venta (Bs) </label>
+                      class="form-control " id="precio_unitario" name="precio_unitario" placeholder="0"  required>
+                      
                     </div>
 
                     
 
                     <div  class="col-sm-6">
-                        <input autocomplete="off" style="background-color: #faffe3 ;" type="number" class="form-control bu" id="envio" name="envio" placeholder="0.00" required>
-                        <label for="envio">Envio (Transporte o imprevistos)</label>
+                    <label for="envio">Envio (Transporte o imprevistos)</label>
+                        <input autocomplete="off" style="background-color: #faffe3 ;" type="number" class="form-control " id="envio" name="envio" placeholder="0.00" required>
+                        
                     </div>
 
                     
