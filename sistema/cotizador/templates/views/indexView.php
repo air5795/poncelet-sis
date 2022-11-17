@@ -35,12 +35,12 @@
       <div class="row">
         <div class="col-lg-5 col-12">
             <div class="card mb-3">
-              <div class="card-header" style="padding: 0;text-align: center;background-color: #343a40; color:white;">Informacion de la Cotizacion y de el Cliente</div>
-              <div class="card-body">
+              <div class="card-header" style="padding: 0;text-align: center;background-color: #ff3b00; color:white;">Informacion de la Cotizacion y de el Cliente</div>
+              <div class="card-body" style="background-color: #ffffff;">
                 <form >
                   <div class="form-group row">
-                    <div class="col-sm-8" >
-                    <label for="nombre">Nombre de Cliente</label>
+                    <div class="col-sm-7" >
+                    
                                     <select style="width: 100%;font-size:12px ;" name="nombre" id="nombre" class="form-control form-control-sm  js-example-basic-single " required >
                                         <option value="" >Seleccione una opción : </option>
                                         <?php
@@ -56,9 +56,9 @@
                     </div>
                     
                     
-                    <div class="col-sm-4 ">
-                      <a class="btn btn-sm btn-primary" id="buscar"><i class="fa-solid fa-magnifying-glass"></i>  </a>
-                      <a class="btn btn-sm btn-secondary" id="nuevo" href="../registro_cliente.php"><i class="fa-solid fa-user-plus"></i> </a>
+                    <div class="col-sm-5 ">
+                      <a class="btn btn-sm " style="background-color:#ff3b00 ; color:white;" id="buscar"><i class="fa-solid fa-magnifying-glass"></i> Buscar  </a>
+                      <a class="btn btn-sm btn-secondary" id="nuevo" href="../registro_cliente.php"><i class="fa-solid fa-user-plus"></i> Nuevo </a>
                     </div>
                     
                     
@@ -81,6 +81,7 @@
                         <option value="2 años">2 años</option>
                         <option value="3 años">3 años</option>
                         <option value="4 años">4 años</option>
+                        <option value="5 años">5 años</option>
                       </select> 
                       
                     </div>
@@ -94,6 +95,11 @@
                         <option value="9 dias">9 dias</option>
                         <option value="10 dias">10 dias</option>
                         <option value="11 dias">11 dias</option>
+                        <option value="12 dias">12 dias</option>
+                        <option value="13 dias">13 dias</option>
+                        <option value="14 dias">14 dias</option>
+                        <option value="15 dias">15 dias</option>
+                        <option value="1 Mes">1 Mes</option>
                       </select> 
                       
                     </div>
@@ -111,7 +117,32 @@
                         <option value="13 dias">13 dias</option>
                         <option value="14 dias">14 dias</option>
                         <option value="15 dias">15 dias</option>
-                        <option value="16 dias">16 dias</option>
+                        <option value="17 dias">17 dias</option>
+                        <option value="18 dias">18 dias</option>
+                        <option value="19 dias">19 dias</option>
+                        <option value="20 dias">20 dias</option>
+                        <option value="21 dias">21 dias</option>
+                        <option value="22 dias">22 dias</option>
+                        <option value="23 dias">23 dias</option>
+                        <option value="24 dias">24 dias</option>
+                        <option value="25 dias">25 dias</option>
+                        <option value="26 dias">26 dias</option>
+                        <option value="27 dias">27 dias</option>
+                        <option value="28 dias">28 dias</option>
+                        <option value="29 dias">29 dias</option>
+                        <option value="30 dias">30 dias</option>
+                        <option value="31 dias">31 dias</option>
+                        <option value="32 dias">32 dias</option>
+                        <option value="33 dias">33 dias</option>
+                        <option value="34 dias">34 dias</option>
+                        <option value="35 dias">35 dias</option>
+                        <option value="36 dias">36 dias</option>
+                        <option value="37 dias">37 dias</option>
+                        <option value="38 dias">38 dias</option>
+                        <option value="39 dias">39 dias</option>
+                        <option value="40 dias">40 dias</option>
+
+
                       </select> 
                       
                     </div>
@@ -124,12 +155,12 @@
               </div>
             </div>
             <div class="card mb-3">
-              <div class="card-header" style="padding: 0;text-align: center; background-color: #343a40; color:white;">Agregar Nuevo Concepto</div>
-              <div class="card-body">
+              <div class="card-header" style="padding: 0;text-align: center; background-color: #ff3b00; color:white;">Agregar Nuevo Concepto</div>
+              <div class="card-body" style="background-color: #ffffff;">
                 <form id="add_to_quote" method="POST">
                   <div class="form-group row">
-                  <div class="col-sm-8" >
-                    <label for="nombre">BUSCAR EN BASE DE DATOS</label>
+                  <div class="col-sm-7" >
+                    
                                     <select style="width: 100%;font-size:12px ;" name="nombrep" id="nombrep" class="form-control form-control-sm  js-example " >
                                         <option value="" >Seleccione una opción : </option>
                                         <?php
@@ -143,10 +174,15 @@
                                         ?>
                                     </select>
                     </div>
-                    <div class="col-sm-4 ">
-                      <a class="btn btn-sm btn-primary" id="buscarp"><i class="fa-solid fa-magnifying-glass"></i>  </a>
-                      <a class="btn btn-sm btn-secondary" id="nuevo" href="../registro_cliente.php"><i class="fa-solid fa-cart-plus"></i> </a>
+                    <div class="col-sm-5 ">
+                      <a class="btn btn-sm " style="background-color:#ff3b00; color:white" id="buscarp"><i class="fa-solid fa-magnifying-glass"></i> Buscar </a>
+                      <a type="button"  class="btn btn-sm btn-secondary" id="nuevo" href="../productos.php" ><i class="fa-solid fa-box"></i> Nuevo </a>
                     </div>
+
+
+
+
+
                     <div class="col-sm-12">
                       <label for="concepto">Concepto</label>
                       <input autocomplete="off" type="text" class="form-control form-control-sm " id="concepto" name="concepto"  required  >
@@ -204,7 +240,7 @@
 
                     <div  class="col-sm-6">
                     <label for="envio">Envio (Transporte o imprevistos)</label>
-                        <input autocomplete="off" style="background-color: #faffe3 ;" type="number" class="form-control " id="envio" name="envio" placeholder="0.00" required>
+                        <input autocomplete="off" style="background-color: #fff3ee;" type="number" class="form-control " id="envio" name="envio" placeholder="0.00" required>
                         
                     </div>
 
@@ -214,7 +250,7 @@
                   </div>
                   <hr>
                   <button class="btn btn-secondary" type="submit" ><i class="fa-solid fa-arrow-right"></i> Agregar Concepto</button>
-                  <button class="btn btn-danger" type="reset" >Cancelar</button>
+                  <button class="btn btn-danger" type="reset" >Resetear</button>
                 </form>
               </div>
             </div>

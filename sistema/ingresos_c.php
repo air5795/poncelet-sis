@@ -102,6 +102,7 @@
     <head>
         <meta charset="utf-8" />
         <?php include "includes/scripts.php";?>
+        
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -120,7 +121,7 @@
                     <div class="container-fluid px-4">
                     <div class="container-fluid px-4 ">
                 
-                <h1 class="mt-4 col"><i class="fa-solid fa-cash-register"></i>  <strong>Registro Caja Chica </strong>  <span style="color:#9fd591;"> Ingresos  
+                <h1 class="mt-4 col"><i class="fa-solid fa-cash-register"></i>  <strong>Registro Caja Chica Constructora </strong>  <span style="color:#9fd591;"> Ingresos  
                 <i class="fa-solid fa-square-caret-up"></i></span></h1>
                   
                         
@@ -163,9 +164,21 @@
 
                             <div class="col-md-6">
                                 <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Persona </span> 
-                                    <input style="text-transform:uppercase" class="form-control form-control-sm bg-warning bg-opacity-10" name="persona" type="text" value="Alberto Arispe Ponce" required  />
-                                </div>
+                                <span for="inputFirstName">Proyecto.</span> 
+                                    <select style="width: 100%;font-size:12px ;" name="proyecto" id="select" class="form-control  select" required >
+                                        <option value="" >Seleccione una opción : </option>
+                                        <?php
+                                            $query = mysqli_query($conexion, "SELECT * from proyectos ORDER BY pro_nombre ASC;");
+                                            $result = mysqli_num_rows($query);
+                                            if ($result > 0) {
+                                            while ($data = mysqli_fetch_array($query)) {
+                                                echo '<option value="'.$data['pro_nombre'].'">'.$data['pro_nombre'].'</option>';
+                                                $nombre = $data['p_descripcion'];
+                                            }}
+                                        ?>
+                                    </select>
+                                    </div>
+
                             </div>
 
                             <div class="col-md-3">
@@ -520,6 +533,21 @@
         
 
     </script>
+
+<script type="text/javascript">
+            // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function() {
+            $('.select').select2({
+            placeholder: "Buscar en base de datos (Productos)",
+            allowClear: true , 
+            theme: "classic",
+            minimumInputLength: 1,
+            language: "es",
+            });
+            
+            
+        });
+    </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -527,5 +555,6 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+       
     </body>
 </html>

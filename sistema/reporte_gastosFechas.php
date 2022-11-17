@@ -28,7 +28,12 @@ $fecha_final = $_POST['fecha_final'];
 
                             
                             
+
                             $saldo = $total2 - $total;
+
+                            $sql_suma_bs3 = mysqli_query($conexion, "SELECT SUM(montoBs) FROM ingresos;");
+                            $result_sum3 = mysqli_fetch_array($sql_suma_bs3);
+                            $total3 = $result_sum3['SUM(montoBs)'];
 
 require_once 'pdf/vendor/autoload.php';
 use Dompdf\Dompdf;

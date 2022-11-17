@@ -26,9 +26,7 @@
         || empty($_POST['marca'])
         || empty($_POST['unidad'])
         || empty($_POST['precio_c'])
-        || empty($_POST['precio_v'])
-        || empty($_POST['tipo'])
-        || empty($_POST['proveedor'])) {
+        || empty($_POST['precio_v'])) {
             $alert = '<p class="alert alert-danger "> Llenar campos faltantes</p> ';
        } 
        else 
@@ -225,7 +223,7 @@
 
                             <div class="col-sm-6">
                                 <label for="tipo">Tipo de Producto</label>
-                                <select name="tipo" id="tipo" class="form-control form-control-sm " required>
+                                <select name="tipo" id="tipo" class="form-control form-control-sm " >
                                     <option value="">Selecciona una Opcion</option>
                                     <option value="limpieza">Material de Limpieza</option>
                                     <option value="mobiliario">Material Mobiliario</option>
@@ -247,7 +245,7 @@
                             <div class="col-md-6">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Proveedor Referencias </span> 
-                                    <input  class="form-control form-control-sm  bg-opacity-10" name="proveedor" type="text" value="" required  />
+                                    <input  class="form-control form-control-sm  bg-opacity-10" name="proveedor" type="text" value=""   />
                                 </div>
                             </div>
 
@@ -329,8 +327,9 @@
                                     
                                     
 
-                                   
+                                    
                                     <button style="border: groove;" disabled class="btn btn-sm btn-secondary" type="submit"> <strong> TOTAL PRODUCTOS : </strong> <?php echo $totales ;?> </button>
+                                    <a style="margin:2px;" class="  btn btn-primary " href="cotizador/"> <i class="fa-solid fa-sack-dollar"></i> Ir a COTIZADOR</a>
                                     <a href="ssreporte_inventario.php" class="btn btn-danger" style="margin:2px;"> <i class="fa-solid fa-print"></i> Imprimir Reporte de Productos</a> 
                                     </form>
                                 </div>

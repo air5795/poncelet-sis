@@ -106,7 +106,13 @@
     <script>
       // In your Javascript (external .js resource or <script> tag)
 $(document).ready(function() {
-    $('.js-example-basic-single').select2();
+    $('.js-example-basic-single').select2({
+      placeholder: "Buscar en base de datos (Clientes)",
+      allowClear: true , 
+      theme: "classic",
+      language: "es",
+  
+    });
   
     theme: "classic";
     
@@ -116,11 +122,19 @@ $(document).ready(function() {
 <script>
       // In your Javascript (external .js resource or <script> tag)
 $(document).ready(function() {
-    $('.js-example').select2();
-    theme: "classic";
+    $('.js-example').select2({
+      placeholder: "Buscar en base de datos (Productos)",
+      allowClear: true , 
+      theme: "classic",
+      minimumInputLength: 1,
+      language: "es",
+    });
+    
     
 });
     </script>
+
+    
 
 
     

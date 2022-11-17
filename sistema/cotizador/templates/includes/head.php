@@ -17,7 +17,9 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body style="
+    background-color: #c1c1c1;
+">
 
   <style>
     .buton:hover{
@@ -30,7 +32,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"><img src="<?php echo IMG.'ICONO.png'?>" alt=""> </a> 
+  <a style="  color:#ffffff3b; font-family:Verdana, Geneva, Tahoma, sans-serif" class=" navbar-brand" href="#"><img src="<?php echo IMG.'ICONO.png'?>" alt=""> / Cotizador - Comercializadora </a> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -54,7 +56,9 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <a href="../" class="btn btn-outline-danger my-2 my-sm-0" type="submit"><i class="fa-solid fa-right-from-bracket"></i> Volver al sistema</a>
+      
+      
+      <a style="background-color:#ff3b00; color:white" href="../" class="btn btn-outline my-2 my-sm-0" type="submit"><i class="fa-solid fa-right-from-bracket"></i> Volver al sistema</a>
     </form>
   </div>
 </nav>
