@@ -275,7 +275,7 @@
 
                             <nav class="navbar bg-light">
                                 <div class="container-fluid " >
-                                    <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i>  Lista de Ingresos </a>
+                                    <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i>  Lista de Gastos </a>
                                     <form class="d-flex" role="search">
 
                                     <div class="btn-group" role="group">

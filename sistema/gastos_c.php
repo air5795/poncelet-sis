@@ -3,35 +3,35 @@
     session_start();
     include "../conexion.php";
 
-    $query = mysqli_query($conexion, "SELECT * FROM ingresos_c");
+    $query = mysqli_query($conexion, "SELECT * FROM gastos");
     $result = mysqli_num_rows($query);
     if ($result > 0) {
         while ($data = mysqli_fetch_array($query)) {
-             $num = $data['id_ingresosC'];
+             $num = $data['id_gasto'];
              
         }}
 
-        $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_ingresosC) FROM ingresos_c;");
+        $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_gasto) FROM gastos;");
         $result_f = mysqli_fetch_array($sql_tfila);
-        $total2 = $result_f['COUNT(id_ingresosC)'];
+        $total2 = $result_f['COUNT(id_gasto)'];
         $total3 =  $total2 + 1;
 
 
     if (!empty($_POST)) {
 
 
-        if (empty($_POST['proyecto'])  
+        if (empty($_POST['persona'])  
         || empty($_POST['monto_bs']) 
         || empty($_POST['monto_dolares'])
-        || empty($_POST['origen'])
+        || empty($_POST['detalle'])
         || empty($_POST['fecha'])) {
-            $alert = '<p class="alert alert-danger "> Llenar los campos faltantes</p> ';
+            $alert = '<p class="alert alert-danger "> Llenar campos faltantes</p> ';
        } 
        else 
      {
             
-            $proyecto = $_POST['proyecto'];
-            $Origen = $_POST['origen'];
+            $persona = $_POST['persona'];
+            $detalle = $_POST['detalle'];
             $monto_bs = $_POST['monto_bs'];
             $monto_dolares = $_POST['monto_dolares'];
             $fecha = $_POST['fecha'];
@@ -48,7 +48,7 @@
              $imgProducto = 'nodisponible.png';
  
              if ($nombre_image != '') {
-                 $destino = 'img/cajaChica_c/';
+                 $destino = 'img/gastos_respaldos/';
                  $img_nombre = 'respaldo'.$num.'_1_'.$fecha;
                  //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
                  $imgActa = $img_nombre.'.jpg';
@@ -56,23 +56,22 @@
              }
             
 
-
-
-                    $query_insert = mysqli_query($conexion, "INSERT INTO ingresos_c(
-                        proyecto,
-                        origen,
-                        montoBs,
-                        montoU,
-                        fecha_i,
-                        respaldo  
+                    $query_insert = mysqli_query($conexion, "INSERT INTO gastos(
+                        g_persona,
+                        g_montoBs,
+                        g_montoU,
+                        g_fecha_i,
+                        g_respaldo,
+                        g_detalle  
                     )
                     VALUES(
-                        '$proyecto',
-                        '$Origen',
+                        '$persona',
                         '$monto_bs',
                         '$monto_dolares',
                         '$fecha',
-                        '$imgActa'
+                        '$imgActa',
+                        '$detalle'
+
                         
                     )");
 
@@ -84,7 +83,7 @@
                 
                 } 
                 $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
-                header("Location: ingresos_c.php");
+                header("Location: gastos.php");
 
             }else{
                 $alert = '<p class="alert alert-danger "> El registro fallo </p> ';
@@ -106,7 +105,6 @@
     <head>
         <meta charset="utf-8" />
         <?php include "includes/scripts.php";?>
-        
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -125,51 +123,30 @@
                     <div class="container-fluid px-4">
                     <div class="container-fluid px-4 ">
                 
-                <h1 class="mt-4 col"><i class="fa-solid fa-cash-register"></i>  <strong>Registro Caja Chica Constructora </strong>  <span style="color:#9fd591;"> Ingresos  
-                <i class="fa-solid fa-square-caret-up"></i></span></h1>
-                  
-                        
+                <h1 class="mt-4 col"><i class="fa-solid fa-cash-register"></i>  <strong>Registro Caja Chica Constructora  </strong><span style="color:#ff6363;"> Gastos  <i class="fa-solid fa-square-caret-down"></i></span></h1>
+              
                         <hr>
 
-                        
-                                                    
-                        
-
-                        
+  
                        <!-- contenido del sistema 2--> 
                         <!-- formulario de registro de usuarios-->
-
 
                         <div class="row">
                         
                         
-                        <div class="col">
-                        
-                        
+                        <div class="col-md-4">
+
+                        <form action="gastos_c.php" method="post" class="fields was-validated " enctype="multipart/form-data" novalidate >
 
 
 
-
-
-                        <form action="ingresos_c.php" method="post" class="fields was-validated " enctype="multipart/form-data" novalidate >
-
-                        
-
-                        <div class="row " style="background-color: honeydew;">
+                        <div class="row" style="background-color: #fff0f0;">
                             
 
-                        
-
-                            
-
-                            
-
-                            <a class="btn alert alert-dark  disabled" role="button" aria-disabled="true">N° de registro: <?php echo $total3 ?> </a> 
-
-                            <div class="col-md-6">
-                                <div class=" mb-3 mb-md-0">
-                                <span for="inputFirstName">Proyecto.</span> 
-                                    <select style="width: 100%;font-size:12px ;" name="proyecto" id="select" class="form-control  select" required >
+                            <a class="btn alert alert-dark font-weight-bold  disabled" role="button" aria-disabled="true"> <strong> N° de registro:  <?php echo $total3 ?> </strong></a>
+                            <div class="col-md-12">
+                            <span for="inputFirstName">Elegir Proyecto </span> 
+                            <select style="width: 100%;font-size:12px ;" name="proyecto" id="select" class="form-control  select" required >
                                         <option value="" >Seleccione una opción : </option>
                                         <?php
                                             $query = mysqli_query($conexion, "SELECT * from proyectos ORDER BY pro_nombre ASC;");
@@ -181,25 +158,28 @@
                                             }}
                                         ?>
                                     </select>
-                                    </div>
-
                             </div>
-
+                            <div class="col-md-12">
+                                <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Detalle de Gasto </span> 
+                                    <input style="text-transform:uppercase" class="form-control form-control-sm  bg-opacity-10" name="detalle" type="text" value="" required  />
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Origen Dinero </span> 
-                                    <input class="form-control form-control-sm  " id="origen" name="origen" type="text"  required />
+                                    <input style="text-transform:uppercase" class="form-control form-control-sm  bg-opacity-10" name="detalle" type="text" value="" required  />
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Monto en Bs.</span> 
                                     <input class="form-control form-control-sm money" id="bs" name="monto_bs" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_dolar()" required/>
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Monto en $u$ </span> 
                                     <input class="form-control form-control-sm money " id="dolar" name="monto_dolares" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_bs()" required />
@@ -239,7 +219,7 @@
                             <div class="row">
                                 <div class="" role="alert" style=""> <?php echo isset ($alert) ? $alert :''; ?></div>
                                 
-                                <input type="submit" value="Registrar Ingreso" class="btn btn-success  border-0 " data-dismiss="alert" >
+                                <input type="submit" value="Registrar Gasto" class="btn btn-danger  border-0 " data-dismiss="alert" >
                                 
                             </div>
 
@@ -270,11 +250,11 @@
 
                         <div class="col">
                         <?php
-                            $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(g_montoBs) FROM gastos_c;");
+                            $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(g_montoBs) FROM gastos;");
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
                             $total = $result_sum['SUM(g_montoBs)']; 
 
-                            $sql_suma_bs2 = mysqli_query($conexion, "SELECT SUM(montoBs) FROM ingresos_c;");
+                            $sql_suma_bs2 = mysqli_query($conexion, "SELECT SUM(montoBs) FROM ingresos;");
                             $result_sum2 = mysqli_fetch_array($sql_suma_bs2);
                             $total2 = $result_sum2['SUM(montoBs)'];
 
@@ -288,13 +268,25 @@
                             <div class="">
 
                             <nav class="navbar bg-light">
-                                <div class="container-fluid">
-                                    <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i>  Lista de Ingresos </a>
+                                <div class="container-fluid " >
+                                    <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i>  Lista de Gastos </a>
                                     <form class="d-flex" role="search">
-                                    <!--<a style="border: groove; color:red" class="btn btn-secomdary bg-opacity-10" ><i class="fa-solid fa-print"></i></i> Imprimir</a>-->
+
+                                    <div class="btn-group" role="group">
+                                        <button style="border: groove;" type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-print"></i> REPORTES
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                        <li> <a style="color:crimson" href="reporte_gastos.php" class="dropdown-item"><i class="fa-solid fa-print"></i></i> Reporte de Gastos</a></li>
+                                        <li><a style="color:crimson" href="reporte_cajachica.php" class="dropdown-item"><i class="fa-solid fa-print"></i></i> Reporte General</a></li>
+                                        </ul>
+                                    </div>
                                     
+
+                                   
+                                    <button style="border: groove;" disabled class="btn btn-sm btn-danger" type="submit"> <strong> TOTAL GASTOS: </strong> <?php echo $total;?> Bs</button>
                                     <button style="border: groove;" disabled class="btn btn-light btn-sm" type="submit"> <strong>
-                                        <i class="fa-solid fa-filter-circle-dollar"></i> SALDO:</strong> 
+                                        <i class="fa-solid fa-filter-circle-dollar"></i> SALDO: </strong>
                                         <?php 
                                         if ($saldo > 0) {
                                             echo '<span style="color: green;"> '.$saldo.'  bs </span>';    
@@ -303,8 +295,23 @@
                                         }
                                         
                                         
-                                        ?>
+                                        ?> 
                                     </button>
+                                    </form>
+                                </div>
+                                </nav>
+
+                                <nav class="navbar bg-light">
+                                <div class="container-fluid" style="BACKGROUND-COLOR: #e1e1e1;">
+                                    <a class="navbar-brand text-black"> <i class="fa-solid fa-print"></i> Imprimir por Rango de fechas </a>
+                                    <form action="reporte_gastosFechas.php"  class="form-inline" method="POST" name="formFechas" id="formFechas">
+
+                                        <label for="">Fecha Inicio</label>
+                                        <input type="date" name="fecha_inicio" id="" required > 
+                                        <label for="">Fecha Final</label>
+                                        <input type="date" name="fecha_final" id="" required >
+                                        <input type="submit" value="Imprimir" >
+
                                     </form>
                                 </div>
                                 </nav>
@@ -316,10 +323,12 @@
                                         
                                         <th>N°</th>
                                         <th>Proyecto</th>
+                                        <th>Detalle de Gasto</th>
                                         <th>Origen de Dinero</th>
                                         <th>Monto(Bs)</th>
-                                        <th>Fecha de Ingreso</th>
                                         <th>Monto($)</th>
+                                        <th>Fecha de Gasto</th>
+                                        
                                         
                                         
                                         <th>Acciones</th>    
@@ -328,20 +337,34 @@
                                     <?php
                     
                                     // rescatar datos DB 
-                                    $query = mysqli_query($conexion, "SELECT * FROM ingresos_c
-                                    ORDER BY id_ingresosC DESC;");
+                                    //$query = mysqli_query($conexion, "SELECT * FROM gastos
+                                    //ORDER BY id_gasto DESC;");
+
+                                    $query = mysqli_query($conexion, "SELECT
+ROW_NUMBER() 
+OVER(ORDER BY id_gasto ) 
+row_num,
+id_gasto,
+g_persona, 
+g_montoBs,
+g_montoU,
+g_detalle,
+g_fecha_i,
+g_respaldo
+FROM gastos
+ORDER BY id_gasto DESC;");
 
                                 
 
                                     $result = mysqli_num_rows($query);
                                     if ($result > 0) {
                                         while ($data = mysqli_fetch_array($query)) {
-                                            if ($data['respaldo'] != 'nodisponible.png' ) {
-                                                $image = 'img/cajaChica_c/'.$data['respaldo'];
+                                            if ($data['g_respaldo'] != 'nodisponible.png' ) {
+                                                $image = 'img/gastos_respaldos/'.$data['g_respaldo'];
                                                 
 
                                             }else {
-                                                $image = 'img/'.$data['respaldo'];
+                                                $image = 'img/'.$data['g_respaldo'];
                                             }
                                             
                                             
@@ -350,18 +373,17 @@
 
                                     ?>
 
-<tr>
-                                <td><?php echo $data['id_ingresosC'] ?></td>
-                                <td><?php echo $data['proyecto'] ?></td>
-                                <td><?php echo $data['origen'] ?></td>
-                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['montoBs'],2,'.',',').' Bs' ?></td>
-                                
+                            <tr>
+                                <td><?php echo $data['row_num'] ?></td>
+                                <td><?php echo $data['g_persona'] ?></td>
+                                <td><?php echo $data['g_detalle'] ?></td>
+                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['g_montoBs'],2,'.',',').' Bs' ?></td>
                                 <td><?php 
                                     setlocale(LC_TIME, "spanish");
-                                    echo strftime('%e de %B %Y', strtotime($data['fecha_i']));
+                                    echo strftime('%e de %B %Y', strtotime($data['g_fecha_i']));
                                     ?>
                                 </td>
-                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['montoU'],2,'.',',').' $' ?></td>
+                                
                                 
                                 
                                 
@@ -373,14 +395,14 @@
 
                                 <div style="min-width: max-content;">
                                     
-                                    <a class="btn btn-success btn-sm gallery-item" id="<?php echo $image; ?> ">
+                                    <a class="btn btn-outline-success btn-sm gallery-item" id="<?php echo $image; ?> ">
                                     <i class="fa-solid fa-eye"></i> 
                                     </a>
                                 
                                     
 
                                     
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_ingresosC']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> Eliminar </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_gasto']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
 
                                     
                                 </div>
@@ -391,20 +413,20 @@
                             </tr>
 
                             <!-- Modal eliminar  -->
-                            <div class="modal fade " id="exampleModali<?php echo $data['id_ingresosC']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade " id="exampleModali<?php echo $data['id_gasto']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content  bg-opacity-80">
-                                            <form action="eliminar_ingresos_c.php" method="post">
+                                            <form action="eliminar_gastos.php" method="post">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Eliminar registro  </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="card-header text-center " style="padding: 0; margin: 0;">
-                                            <input type="hidden" name="idIngreso" value="<?php echo $data['id_ingresosC']; ?>" >
+                                            <input type="hidden" name="idGasto" value="<?php echo $data['id_gasto']; ?>" >
                                             
-                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['proyecto'] ?> " disabled>
-                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['montoBs'].' Bs' ?> " disabled>
+                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['g_persona'] ?> " disabled>
+                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['g_montoBs'].' Bs' ?> " disabled>
                                              
                                             </div>
                                                 
@@ -482,6 +504,8 @@
             </div>
         </div>
 
+        
+
 
 
 <script>
@@ -546,21 +570,6 @@
         
 
     </script>
-
-<script type="text/javascript">
-            // In your Javascript (external .js resource or <script> tag)
-        $(document).ready(function() {
-            $('.select').select2({
-            placeholder: "Buscar en base de datos (Productos)",
-            allowClear: true , 
-            theme: "classic",
-            minimumInputLength: 1,
-            language: "es",
-            });
-            
-            
-        });
-    </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -568,6 +577,5 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
-       
     </body>
 </html>

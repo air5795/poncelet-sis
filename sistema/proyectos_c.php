@@ -76,7 +76,7 @@
                     <div class="container-fluid px-4">
                     <div class="container-fluid px-4 ">
                 
-                <h1 class="mt-4 col"><i class="fa-solid fa-book"></i> <strong>Registro de <span style="color:coral;"> Proyectos </strong>   </span></h1>
+                <h1 class="mt-4 col"><i class="fa-solid fa-book"></i> <strong>Gestor de <span style="color:coral;"> Proyectos </strong>   </span></h1>
                   
                         
                         <hr>
@@ -94,6 +94,7 @@
                         
                         
                         <div class="col-md-4">
+                            
                         
                         
 
@@ -104,9 +105,27 @@
                         <form action="proyectos_c.php" method="post" class="fields was-validated " enctype="multipart/form-data" novalidate >
 
                         
+                        
 
                         <div class="row" style="background-color: #fffbf0">
                             
+
+                        <?php
+                            $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(g_montoBs) FROM gastos_c;");
+                            $result_sum = mysqli_fetch_array($sql_suma_bs);
+                            $total = $result_sum['SUM(g_montoBs)']; 
+
+                            $sql_suma_bs2 = mysqli_query($conexion, "SELECT SUM(montoBs) FROM ingresos_c;");
+                            $result_sum2 = mysqli_fetch_array($sql_suma_bs2);
+                            $total2 = $result_sum2['SUM(montoBs)'];
+
+                            
+                            
+                            $saldo = $total2 - $total;
+
+                            
+
+                        ?>
 
                         
 
@@ -116,7 +135,7 @@
 
                             
 
-                             
+                        
                             <a class="btn alert alert-dark font-weight-bold  disabled" role="button" aria-disabled="true"> <strong> N° de registro:  <?php echo $total3 ?> </strong></a>
                             <div class="col-md-12">
                                 <div class=" mb-3 mb-md-0">
@@ -176,6 +195,9 @@
                                         
                                         <th>N°</th>
                                         <th>Nombre de Proyecto</th>
+                                        <th>Total Ingresos</th>
+                                        <th>Total Gastos</th>
+                                        <th>Saldo</th>
                                         <th>acciones</th>
                               
                                     </tr>
@@ -191,7 +213,10 @@
                                                                             OVER(ORDER BY id_proyecto ) 
                                                                             row_num,
                                                                             id_proyecto,
-                                                                            pro_nombre 
+                                                                            pro_nombre,
+                                                                            total_i,
+                                                                            total_g,
+                                                                            saldo 
                                                                             FROM proyectos
                                                                             ORDER BY id_proyecto DESC;");
 
@@ -211,6 +236,9 @@
                             <tr>
                                 <td><?php echo $data['row_num'] ?></td>
                                 <td><?php echo $data['pro_nombre'] ?></td>
+                                <td><?php echo $data['total_i'] ?></td>
+                                <td><?php echo $data['total_g'] ?></td>
+                                <td><?php echo $data['saldo'] ?></td>
 
 
                                 <td class="col-sm-2">
@@ -218,7 +246,18 @@
                                 <div style="min-width: max-content;">
                                     
                                     <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_proyecto']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
-
+                                    <button style="border: groove;" disabled class="btn btn-light btn-sm" type="submit"> <strong>
+                                        <i class="fa-solid fa-filter-circle-dollar"></i> SALDO :</strong> 
+                                        <?php 
+                                        if ($saldo > 0) {
+                                            echo '<span style="color: green;"> '.$saldo.'  bs </span>';    
+                                        } else {
+                                            echo '<span style="color: red;"> '.$saldo.'  bs </span>'; 
+                                        }
+                                        
+                                        
+                                        ?>
+                                    </button>             
                                     
                                 </div>
                                     

@@ -388,7 +388,7 @@ if (empty($_SESSION['active'])) {
 
                                                             <div class="collapse" id="pagesCollapse_e" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                                 <nav class="sb-sidenav-menu-nested nav">
-                                                                    <a class="nav-link" href="gastos.php">Gestor Gastos</a>
+                                                                    <a class="nav-link" href="gastos_c.php">Gestor Gastos</a>
                                                                     
                                                                 </nav>
                                                             </div>

@@ -169,7 +169,7 @@
         <td align="right" class="gray"><h3 style="margin: 0px 0px;"><?php echo number_format($d->subtotal, 2); ?> Bs</h3></td>
       </tr>
       <tr>
-        <td style="border:coral; color:coral" colspan="7" align="right"><?php echo 'Impuestos Incluidos IVA + IT '; ?></td>
+        <td style="border:coral; color:coral" colspan="7" align="right"><?php echo 'Impuestos Incluidos IVA  '; ?></td>
       </tr>
       <tr>
         <td style="border:coral" colspan="7"></td>

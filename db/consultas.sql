@@ -85,3 +85,5 @@ FROM
     gastos
 WHERE
     DATE(g_fecha_i) BETWEEN '2022-01-01' AND '2022-12-30';
+
+    SELECT SUM(montoBs) FROM ingresos_c WHERE proyecto = "tinglados"

@@ -373,10 +373,10 @@ function add_to_quote(e){
         errors++;
       }
   
-      if(empresa.length < 5) {
-        notify('Ingresa una empresa válida por favor', 'danger');
-        errors++;
-      }
+      //if(empresa.length < 0) {
+      //  notify('Ingresa una empresa válida por favor', 'danger');
+      //  errors++;
+      //}
   
       
   

@@ -493,6 +493,8 @@ function generate_pdf($filename = null, $html, $save_to_file = true) {
     $pdf->stream($filename);
     return true;
   }
+
+
   
   // Crear el pdf de la cotización
 function hook_generate_quote() {

@@ -110,8 +110,9 @@ echo "The current date and time are $DateAndTime.";
                     <tr style="background-color:#d7d7d7 ;">
                                         <th>CODIGO UNICO</th>
                                         <th>Nombre de articulo </th>
-                                        <th>Categoria</th>
+                                        
                                         <th>Stock (Existencia)</th>
+                                        <th>Fecha de Entrada</th>
                     </tr>
 
                                     
@@ -127,9 +128,10 @@ echo "The current date and time are $DateAndTime.";
                                     inventario.stock,
                                     inventario.categoria_id,
                                     inventario.foto,
+                                    inventario.fecha_add,
                                     categoria_i.nombre_categoria
                             FROM inventario
-                            JOIN categoria_i ON inventario.categoria_id = categoria_i.id_categoria;");
+                            JOIN categoria_i ON inventario.categoria_id = categoria_i.id_categoria order by inventario.fecha_add ASC;");
 
 
 
@@ -147,8 +149,15 @@ echo "The current date and time are $DateAndTime.";
                             <tr>
                                 <td><?php echo 'COD-'.$data['id_inv'] ?></td>
                                 <td><?php echo $data['articulo'] ?></td>
-                                <td><?php echo $data['nombre_categoria'] ?></td>
+                                
                                 <td><?php echo $data['stock'] ?></td>
+                                <td><?php 
+                                        setlocale(LC_TIME, "spanish");
+                                        //echo $data['fecha_ejecucion']
+                                        echo strftime('%e / %B / %Y', strtotime($data['fecha_add']));
+                                ?></td>
+
+                                
                                
                                 
                                 
