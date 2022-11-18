@@ -353,7 +353,7 @@ function add_to_quote(e){
   
       let button   = $(this),
       default_text = button.html(), // "Generar"
-      new_text     = 'Volver a generar',
+      new_text     = 'Volver a generar Cotizacion',
       download     = $('#download_quote'),
       nombre       = $('#nombre').val(),
       empresa      = $('#empresa').val(),
@@ -362,6 +362,89 @@ function add_to_quote(e){
       valides      = $('#valides').val(),
       entrega      = $('#entrega').val(),
       action       = 'generate_quote',
+      errors       = 0;
+  
+      // Validando la acción
+      if(!confirm('¿Estás seguro?')) return false;
+  
+      // Validando la información
+      if(nombre.length < 3) {
+        notify('Ingresa un nombre para el cliente por favor', 'danger');
+        errors++;
+      }
+  
+      //if(empresa.length < 0) {
+      //  notify('Ingresa una empresa válida por favor', 'danger');
+      //  errors++;
+      //}
+  
+      
+  
+      if(errors > 0) {
+        return false;
+      }
+  
+      // Petición
+      $.ajax({
+        url     : 'ajax.php',
+        type    : 'POST',
+        dataType: 'json',
+        cache   : false,
+        data    : {action, nombre, empresa, email,garantia,valides,entrega},
+        beforeSend: () => {
+          $('body').waitMe();
+          button.html('Generando...');
+        }
+      }).done(res => {
+        if(res.status === 200) {
+          notify(res.msg);
+          download.attr('href', res.data.url);
+          download.fadeIn();
+          //send.attr('data-number', res.data.number);
+          //send.fadeIn();
+          button.html(new_text);
+        } else {
+          notify(res.msg, 'danger');
+          download.attr('href', '');
+          download.fadeOut();
+          //send.attr('data-number', '');
+          //send.fadeOut();
+          button.html('Reintentar');
+        }
+      }).fail(err => {
+        notify('Hubo un problema con la petición, intenta de nuevo.', 'danger');
+        button.html(default_text);
+      }).always(() => {
+        $('body').waitMe('hide');
+      });
+    }
+
+
+
+
+
+
+
+
+
+
+
+    // Función para generar la cotización
+    $('#generate_quote2').on('click', generate_quote2);
+    function generate_quote2(e) {
+      e.preventDefault();
+  
+      let button   = $(this),
+      default_text = button.html(), // "Generar"
+      new_text     = 'Volver a generar respaldo',
+      download     = $('#download_quote'),
+      nombre       = $('#nombre').val(),
+      empresa      = $('#empresa').val(),
+      email        = $('#email').val(),
+      garantia     = $('#garantia').val(),
+      valides      = $('#valides').val(),
+      entrega      = $('#entrega').val(),
+      action       = 'generate_quote2',
       errors       = 0;
   
       // Validando la acción

@@ -99,7 +99,23 @@
                         <option value="13 dias">13 dias</option>
                         <option value="14 dias">14 dias</option>
                         <option value="15 dias">15 dias</option>
-                        <option value="1 Mes">1 Mes</option>
+                        <option value="16 dias">16 dias</option>
+                        <option value="16 dias">17 dias</option>
+                        <option value="17 dias">18 dias</option>
+                        <option value="18 dias">19 dias</option>
+                        <option value="19 dias">20 dias</option>
+                        <option value="20 dias">21 dias</option>
+                        <option value="21 dias">22 dias</option>
+                        <option value="23 dias">23 dias</option>
+                        <option value="24 dias">24 dias</option>
+                        <option value="25 dias">25 dias</option>
+                        <option value="26 dias">26 dias</option>
+                        <option value="27 dias">27 dias</option>
+                        <option value="28 dias">28 dias</option>
+                        <option value="29 dias">29 dias</option>
+                        <option value="30 dias">30 dias</option>
+                        <option value="31 dias">31 dias</option>
+                        <option value="32 dias">32 dias</option>
                       </select> 
                       
                     </div>
@@ -350,6 +366,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-secondary" id="generate_quote" ><i class="fa-solid fa-hand-holding-dollar"></i> Generar Cotizacion</button>
+                  <button class="btn btn-success" id="generate_quote2" ><i class="fa-solid fa-floppy-disk"></i> Respaldo</button>
                   <a class="btn" id="download_quote" style="display: none; color:red; background-color:#e9e9e9" href="" ><i class="fa-solid fa-print"></i> Descargar PDF</a>      
                 </div>
           </div>

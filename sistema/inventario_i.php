@@ -116,7 +116,7 @@
                     <div class="container-fluid px-4">
                     <div class="container-fluid px-4 ">
                 
-                <h1 class="mt-4 col"><i class="fa-solid fa-boxes-stacked"></i>  <strong>Gestor </strong><span style="color:#fd6f0a;"> Inventario  </span></h1>
+                <h1 class="mt-4 col"><i class="fa-solid fa-boxes-stacked"></i>  <strong>Gestor </strong><span style="color:#fd6f0a;"> Inventario Mercaderia  </span></h1>
                   
                         
                         <hr>
@@ -387,6 +387,15 @@
                                                     <i class="fa-solid fa-user-lock"></i><strong> Stock </strong> <input class="form-control form-control-sm" style="text-align: center;" type="text"  id="dos" name="estock" value="<?php echo $data['stock'] ?>" >
                                                         
                                                     </div>
+
+                                                    
+
+                                                    <div>
+                                                        <img style= "width:200px; heigth:200px;" src="<?php echo $image ?>" alt="" class="gallery-item"> 
+                                                     </div>
+                                        
+
+                                                    
                                                     
                                                 </div>
                                         </div>

@@ -239,6 +239,7 @@
                                     <option value="escritorio">Material de Escritorio</option>
                                     <option value="policial">Material Policial</option>
                                     <option value="deportivo">Material Deportivo</option>
+                                    <option value="belleza">Material de Belleza</option>
                                 </select>    
                             </div>
 

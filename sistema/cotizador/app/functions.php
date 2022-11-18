@@ -469,7 +469,7 @@ function hook_save_concept() {
     json_output(json_build(200, get_item($id), 'Cambios guardados con éxito.'));
   }
 
-// Generar un pdf
+// Generar un pdf 1
 function generate_pdf($filename = null, $html, $save_to_file = true) {
     // Nombre del archivo
     $filename = $filename === null ? time().'.pdf' : $filename.'.pdf';
@@ -493,6 +493,8 @@ function generate_pdf($filename = null, $html, $save_to_file = true) {
     $pdf->stream($filename);
     return true;
   }
+
+
 
 
   
@@ -552,6 +554,71 @@ function get_all_quotes() {
     header(sprintf('Location: %s', $route));
     exit;
   }
+
+
+
+
+
+
+
+
+
+    // Crear el pdf de la cotización 2
+function hook_generate_quote2() {
+  // Validar
+  if(!isset($_POST['nombre'], $_POST['empresa'], $_POST['email'], $_POST['garantia'], $_POST['valides'], $_POST['entrega'])) {
+    json_output(json_build(403, null, 'Parametros incompletos.'));
+  }
+
+  // Validar correo
+  //if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    //json_output(json_build(400, null, 'Dirección de correo no válida.'));
+  //}
+  
+  // Guardar información del cliente
+  $client = 
+  [
+    'nombre'  => $_POST['nombre'],
+    'empresa' => $_POST['empresa'],
+    'email'   => $_POST['email'],
+    'garantia'   => $_POST['garantia'],
+    'valides'   => $_POST['valides'],
+    'entrega'   => $_POST['entrega']
+  ];
+  set_client($client);
+
+  // Cargar cotización
+  $quote    = get_quote();
+
+  if(empty($quote['items'])) {
+    json_output(json_build(400, null, 'No hay conceptos en la cotización.'));
+  }
+
+  $module       = MODULES.'pdf_template2';
+  $html         = get_module($module, $quote);
+  $filename     = 'coty_'.$quote['number'];
+  //$download     = URL.UPLOADS.$filename;
+  $download     = sprintf(URL.'pdf.php?number=%s', $quote['number']); // pdf.php?number=123456
+  $quote['url'] = $download;
+
+  // Generar pdf y guardarlo en servidor
+  if(!generate_pdf(UPLOADS.$filename, $html)) {
+    json_output(json_build(400, null, 'Hubo un problema al generar la cotización.'));
+  }
+
+  json_output(json_build(200, $quote, 'Cotización generada con éxito.'));
+}
+
+// Cargar todas las cotizaciones
+function get_all_quotes2() {
+  return $quotes = glob(UPLOADS.'coty_*.pdf');
+}
+
+// Redirección
+function redirect2($route) {
+  header(sprintf('Location: %s', $route));
+  exit;
+}
   
 ?>
 
