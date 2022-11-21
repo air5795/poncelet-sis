@@ -8,7 +8,7 @@ if (empty($_SESSION['active'])) {
 
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <center><img src="../img/ICONO5.png" alt=""></center> 
+            <center><img src="../img/ICONO11.png" alt=""></center> 
             
             
             
@@ -53,9 +53,10 @@ if (empty($_SESSION['active'])) {
                                                             elseif ($_SESSION['iduser'] == 29 ) {
                                                                 echo '<img style="width:35px; height:35px;" src="../sistema/img/jazmin.png" >';
                                                                     //echo $_SESSION['iduser'];
-                                                                } else{
-
-                                                                }
+                                                                } elseif ($_SESSION['iduser'] == 32 ) {
+                                                                    echo '<img style="width:35px; height:35px;" src="../sistema/img/edwin.png" >';
+                                                                        //echo $_SESSION['iduser'];
+                                                                    }
                                                 
                                                 ?> </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -79,6 +80,14 @@ if (empty($_SESSION['active'])) {
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-house"></i></div>
                                 Inicio
                             </a>
+
+                            <?php
+                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 ) {
+                            
+                        
+                        ?> 
+
+                            
 
                             
 
@@ -133,14 +142,14 @@ if (empty($_SESSION['active'])) {
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseie" aria-expanded="false" aria-controls="pagesCollapseError">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
-                                Inventario Empresa
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-box-open"></i></div>
+                                Activos Empresa
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="pagesCollapseie" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="categorias_i.php">Categorias </a> 
-                                    <a class="nav-link" href="inventario_i.php">Gestor Inventario</a> 
+                                    <a class="nav-link" href="categorias_a.php">Categorias Activos </a> 
+                                    <a class="nav-link" href="activos.php">Gestor Activos</a> 
                                 </nav>
                             </div>
 
@@ -155,6 +164,7 @@ if (empty($_SESSION['active'])) {
                             <!-- CAJA CHICA -->
 
                             <?php
+                            }
                         if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 28 ) {
                             
                         
@@ -202,6 +212,11 @@ if (empty($_SESSION['active'])) {
                                } 
                             ?>
                             
+                            <?php
+                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 ) {
+                            
+                        
+                        ?>
                             
                             <!-- lista de menu 3 -->
 
@@ -413,10 +428,13 @@ if (empty($_SESSION['active'])) {
 
 
                         <?php
+                        }
                         if ($_SESSION['rol'] == 1) {
                             # code..
                         
-                        ?>                
+                        ?>      
+                        
+                        
 
                             
 
@@ -456,4 +474,4 @@ if (empty($_SESSION['active'])) {
 
 
             
-        
+            

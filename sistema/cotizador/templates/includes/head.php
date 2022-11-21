@@ -18,7 +18,7 @@
   </head>
 
   <body style="
-    background-color: #c1c1c1;
+    background-color: #343a40;
 ">
 
   <style>
@@ -32,7 +32,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a style="  color:#ffffff3b; font-family:Verdana, Geneva, Tahoma, sans-serif" class=" navbar-brand" href="#"><img src="<?php echo IMG.'ICONO.png'?>" alt=""> / Cotizador - Comercializadora </a> 
+  <a style="  color:#ffffff3b; font-family:Verdana, Geneva, Tahoma, sans-serif" class=" navbar-brand" href="#"><img src="<?php echo IMG.'ICONO10.png'?>" alt=""> / Sistema Cotizador </a> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

@@ -376,6 +376,12 @@
     </div>
     <?php require_once INCLUDES.'footer.php' ?>
 
+
+  <div style="background-color: #343a40;" class="container-fluid">
+  
+  <p style="color: #a7a7a7;text-align: right;padding: 0;margin: 0;">Poncelet - Empresa Comercializadora - Constructora </p>
+  <p style="color: #707070; text-align: right;padding: 0;margin: 0;">airsoftware air5795@gmail.com - 79441119 &#169 Derechos Reservados </p>
+  </div>
   
 
     

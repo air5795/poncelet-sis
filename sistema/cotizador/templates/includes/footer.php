@@ -1,6 +1,4 @@
 
-    
-    
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -126,7 +124,7 @@ $(document).ready(function() {
       placeholder: "Buscar en base de datos (Productos)",
       allowClear: true , 
       theme: "classic",
-      minimumInputLength: 1,
+      
       language: "es",
     });
     
