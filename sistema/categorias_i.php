@@ -217,7 +217,9 @@ ORDER BY id_categoria DESC;");
 
                                 <div style="min-width: max-content;">
                                     
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_categoria']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_categoria']; ?> " class="btn btn-outline-warning btn-sm" href=""><i class="fa-solid fa-pen"></i> Editar </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_categoria']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> Eliminar </a>
+                                    
 
                                     
                                 </div>
@@ -226,6 +228,34 @@ ORDER BY id_categoria DESC;");
                                     
                                 </td>
                             </tr>
+
+                            <!-- Modal editar  -->
+                            <div class="modal fade" id="exampleModal<?php echo $data['id_categoria']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form action="editar_categorias.php" method="post">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Editar a <?php echo $data['nombre_categoria'] ?> </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-header text-center " style="padding: 0; margin: 0;">
+                                            <input type="hidden" name="nid_categoria" value="<?php echo $data['id_categoria']; ?>" >
+                                            <label for="">Nombre de la Categoria</label>
+                                            <input name="ncategoria" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['nombre_categoria'] ?>">
+                                             
+                                            </div>
+                                                
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <input type="submit" value="Actualizar Registros">
+                                        </div>
+
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
 
                             <!-- Modal eliminar  -->
                             <div class="modal fade " id="exampleModali<?php echo $data['id_categoria']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

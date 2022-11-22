@@ -31,36 +31,13 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a style="  color:#ffffff3b; font-family:Verdana, Geneva, Tahoma, sans-serif" class=" navbar-brand" href="#"><img src="<?php echo IMG.'ICONO10.png'?>" alt=""> / Sistema Cotizador </a> 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        
-      </li>
-      <li class="nav-item">
-        
-      </li>
-      <li class="nav-item dropdown">
-        
-        <div class="dropdown-menu">
-          
-        </div>
-      </li>
-      <li class="nav-item">
-        
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      
-      
-      <a style="background-color:#ff3b00; color:white" href="../" class="btn btn-outline my-2 my-sm-0" type="submit"><i class="fa-solid fa-right-from-bracket"></i> Volver al sistema</a>
-    </form>
-  </div>
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" class="col-sm-3"> <img src="<?php echo IMG.'ICONO10.png'?>"  alt=""></a>
+    <form class="form-inline">
+    <a class="btn btn-outline-light my-2 my-sm-0" href="../" type="submit"><i  class="fa-solid fa-person-walking-dashed-line-arrow-right"></i> <span > Volver al sistema PONCELET </span> </a>
+  </form>
 </nav>
 
   

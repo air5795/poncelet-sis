@@ -250,16 +250,14 @@
                             $result_fs = mysqli_fetch_array($sql_tfilas);
                             $totales = $result_f['COUNT(id_activoFijo)'];
 
-
-                        
-                        ;?>
+                        ?>
 
                         <div class="col">
                         
                             <div class="">
 
                             <nav class="navbar bg-light">
-                                <div class="container-fluid " >
+                                <div class="container-fluid ">
                                     <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i>  Lista de activos fijos </a>
                                     <form class="d-flex" role="search">
 
@@ -410,20 +408,20 @@
                                     </div>
 
                             <!-- Modal eliminar  -->
-                            <div class="modal fade " id="exampleModali<?php echo $data['id_inv']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade " id="exampleModali<?php echo $data['id_activoFijo']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content  bg-opacity-80">
-                                            <form action="eliminar_inventario.php" method="post">
+                                            <form action="eliminar_activoFijo.php" method="post">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Eliminar registro  </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="card-header text-center " style="padding: 0; margin: 0;">
-                                            <input type="hidden" name="idInv" value="<?php echo $data['id_inv']; ?>" >
+                                            <input type="hidden" name="idAct" value="<?php echo $data['id_activoFijo']; ?>" >
                                             
-                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['articulo'] ?> " disabled>
-                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['stock'].' Bs' ?> " disabled>
+                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['f_articulo'] ?> " disabled>
+                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['f_stock'].' Bs' ?> " disabled>
                                              
                                             </div>
                                                 
