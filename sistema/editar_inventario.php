@@ -19,47 +19,23 @@ if (!empty($_POST)) {
         $idInv = $_POST['eid_inv'];
         $articulo = $_POST['earticulo'];
         $stock = $_POST['estock'];
-        $stock = $_FILES['efoto'];
+
         
-        //imagen 1
-
-        $nombre_image = $foto['name'];
-        $type = $foto['type'];
-        $url_temp = $foto['tmp_name'];
-
-        $imgProducto = 'nodisponible.png';
-
-        if ($nombre_image != '') {
-            $destino = 'img/inventario/';
-            $img_nombre = 'articulo' . $num;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa = $img_nombre . '.jpg';
-            $src = $destino . $imgActa;
-        }
 
 
-        if ($nombre_image != '') {
-            $destino = 'img/inventario/';
-            $img_nombre = 'articulo' . $num;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa = $img_nombre . '.jpg';
-            $src = $destino . $imgActa;
-        }
+        
         
             $query = mysqli_query($conexion,"SELECT * FROM inventario");  
                                                   
             $resul = mysqli_fetch_array($query);
-    }        
+          
             $sql_update = mysqli_query($conexion,"UPDATE inventario
-                                                  SET articulo = '$articulo', stock = '$stock', foto = '$imgActa'  
+                                                  SET articulo = '$articulo', stock = '$stock' 
                                                   WHERE id_inv = $idInv");
-                                                  
-       
 
-            if ($sql_update) {
-                if ($nombre_image != '') {
-                    move_uploaded_file($url_temp, $src);
-                }
+                                            
+            if ($sql_update ) {
+                
                 $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
                 
                 //header("Location: inventario_i.php");
@@ -72,6 +48,6 @@ if (!empty($_POST)) {
             }
         }
 
-
+    }
 
 ?>

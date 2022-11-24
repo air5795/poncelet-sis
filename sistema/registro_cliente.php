@@ -7,7 +7,7 @@
     include "../conexion.php";
     if (!empty($_POST)) {
         $alert = '';
-        if (empty($_POST['nombre']) || empty($_POST['direccion']) || empty($_POST['nit'])) {
+        if (empty($_POST['nombre']) ) {
             $alert = '<p class="alert alert-danger w-50"> Todos los Campos Son Obligatorios menos telefono *</p> ';
         } 
         else 

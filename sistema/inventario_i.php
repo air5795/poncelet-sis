@@ -114,9 +114,9 @@ if (!empty($_POST)) {
                     <h1 class="mt-4 col"><i class="fa-solid fa-boxes-stacked"></i> <strong>Gestor </strong><span style="color:#fd6f0a;"> Inventario Mercaderia </span></h1>
                     <hr>
                     <!-- contenido del sistema 2-->
-                    <!-- formulario de registro de usuarios-->
+                    <!-- formulario de registro -->
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-xl-4">
                             <form action="inventario_i.php" method="post" class="fields was-validated " enctype="multipart/form-data" novalidate>
                                 <div class="row" style="background-color: #fff0f0;">
                                     <a class="btn alert alert-dark font-weight-bold  disabled" role="button" aria-disabled="true"> <strong> N° de registro: <?php echo $total3 ?> </strong></a>
@@ -266,14 +266,59 @@ if (!empty($_POST)) {
                                                     <td><?php echo 'COD-' . $data['id_inv'] ?></td>
                                                     <td><?php echo $data['articulo'] ?></td>
                                                     <td><?php echo $data['nombre_categoria'] ?></td>
-                                                    <td><?php echo $data['stock'] ?></td>
+                                                    <?php
+                                                    if ($data['stock'] > 0) {
+                                                        
+                                                    
+                                                    ?>
+                                                    <td  style="font-size:15px; color:darkgreen;font-weight: 700;"><?php echo $data['stock'] ?></td>
+
+                                                    <?php
+                                                    } else {
+                                                        
+                                                    
+                                                    ?>
+
+                                                    <td  style="font-size:15px; color:red;font-weight: 700;"><?php echo $data['stock'] ?></td>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    
                                                     <td class="col-sm-2">
                                                         <div style="min-width: max-content;">
+
+                                                        <?php
+                                                        if (!empty($data['foto'])) {
+                                                            
+                                                        
+                                                        ?>
                                                             <a class="btn btn-outline-success btn-sm gallery-item" id="<?php echo $image; ?> ">
-                                                                <i class="fa-solid fa-eye"></i>
+                                                            <i class="fa-solid fa-image"></i> ver Imagen
                                                             </a>
+
+
+                                                        <?php
+                                                        
+                                                            
+                                                        } else{
+                                                            
+                                                        
+                                                        ?>
+
+                                                        <a  class="btn btn-outline-secondary btn-sm" disabled> <i class="fa-solid fa-circle-exclamation"></i> Sin Imagen </a>
+
+                                                        <?php
+                                                        
+                                                            
+                                                            
+                                                                
+                                                            }
+                                                            ?>
                                                             <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_inv']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
-                                                            <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_inv']; ?> " class="btn btn-outline-warning btn-sm" href=""><i class="fa-solid fa-pencil"></i> </a>
+                                                            <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_inv']; ?> " class="btn btn-warning btn-sm" href=""><i class="fa-solid fa-pencil"></i> </a>
+                                                            <a href="editar_imgI.php?id=<?php echo $data['id_inv'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="editar Imagen">
+                                                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                                                            </a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -281,8 +326,9 @@ if (!empty($_POST)) {
                                                 <div class="modal fade" id="exampleModal<?php echo $data['id_inv']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
-                                                            <form action="editar_inventario.php" method="POST" enctype="multipart/form-data" novalidate>
-                                                                <div class="modal-header">
+                                                            <form action="editar_inventario.php" method="POST" class="fields was-validated " enctype="multipart/form-data" data-ajax="false" novalidate>
+                                                               
+                                                            <div class="modal-header">
                                                                     <h5 class="modal-title" id="exampleModalLabel">Editar a <?php echo $data['articulo'] ?> </h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
@@ -297,10 +343,7 @@ if (!empty($_POST)) {
                                                                             <i class="fa-solid fa-user-lock"></i><strong> Stock </strong>
                                                                             <input class="form-control form-control-sm"  type="text" id="dos" name="estock" value="<?php echo $data['stock'] ?>">
                                                                         </div>
-                                                                        <div>
-                                                                            <input type="file" class="form-control form-control-sm" name="efoto" id="files" >
-                                                            
-                                                                        </div>
+                                                                        
 
                                                                         <img style="width:200px; heigth:200px;" src="<?php echo $image ?>" alt="" class="gallery-item">
 

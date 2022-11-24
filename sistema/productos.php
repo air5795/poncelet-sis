@@ -9,7 +9,8 @@
     $result = mysqli_num_rows($query);
     if ($result > 0) {
         while ($data = mysqli_fetch_array($query)) {
-             $num = $data['id_producto'];
+             $num = $data['id_producto'] ;
+
              
         }}
 
@@ -41,7 +42,10 @@
             $Proveedor      = $_POST['proveedor'];
 
             $foto           = $_FILES['foto'];
+            $pdf           = $_FILES['pdf'];
             $num            = $total2 +1;
+
+            $num2           =$total2;           
 
 
              //imagen 1
@@ -49,6 +53,11 @@
              $nombre_image = $foto['name'];
              $type = $foto['type'];
              $url_temp = $foto['tmp_name'];
+
+             // pdf
+             $nombre_pdf = $pdf['name'];
+             $type2 = $pdf['type'];
+             $url_temp2 = $pdf['tmp_name'];
  
              $imgProducto = 'nodisponible.png';
  
@@ -59,6 +68,17 @@
                  $imgActa = $img_nombre.'.jpg';
                  $src= $destino.$imgActa;
              }
+
+
+             if ($nombre_pdf != '') {
+                $destino2 = 'img/fichas_tecnicas/';
+                $img_nombre = 'FichaTecnica'.$numero;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $ruta_pdf = $img_nombre.'.pdf';
+                $src_pdf= $destino2.$ruta_pdf;
+            }
+
+
             
 
                     $query_insert = mysqli_query($conexion, "INSERT INTO productos(
@@ -69,7 +89,8 @@
                         p_preciov,
                         p_tipo,
                         p_proveedor,
-                        foto 
+                        foto,
+                        pdf
                     )
                     VALUES(
                         '$Producto',
@@ -79,7 +100,8 @@
                         '$Precio_v',
                         '$Tipo',
                         '$Proveedor',
-                        '$imgActa'
+                        '$imgActa',
+                        '$ruta_pdf'
 
                     )");
 
@@ -87,9 +109,10 @@
             if ($query_insert) {
                 if ($nombre_image != '' ) {
                     move_uploaded_file($url_temp,$src);
-                    
-                
                 } 
+                if ($nombre_pdf != '' ) {
+                    move_uploaded_file($url_temp2,$src_pdf);
+                }
                 $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
                 header("Location: productos.php");
 
@@ -131,7 +154,7 @@
                     <div class="container-fluid px-4">
                     <div class="container-fluid px-4 ">
                 
-                <h1 class="mt-4 col"><i class="fa-solid fa-truck-ramp-box"></i>  <strong>Gestor </strong><span style="color:#fd6f0a;"> Productos  </span></h1>
+                <h1 class="mt-4 col"><i class="fa-solid fa-truck-ramp-box"></i>  <strong>Gestor </strong><span style="color:#fd6f0a;"> Base de datos  Productos  </span></h1>
                   
                         
                         <hr>
@@ -148,7 +171,7 @@
                         <div class="row">
                         
                         
-                        <div class="col-md-4">
+                        <div class="">
                         
                         
 
@@ -159,9 +182,9 @@
                         <form action="productos.php" method="post" class="fields was-validated " enctype="multipart/form-data" novalidate >
 
                         
-
+                        
                         <div class="row" style="background-color: #fff0f0;">
-                            
+                        
 
                         
 
@@ -173,21 +196,36 @@
 
                              
                             <a class="btn alert alert-dark font-weight-bold  disabled" role="button" aria-disabled="true"> <strong> N° de registro:  <?php echo $total3 ?> </strong></a>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Descripcion Producto </span> 
                                     <input  class="form-control form-control-sm  bg-opacity-10" name="producto" type="text" value="" required  />
                                 </div>
                             </div>
-                            <div class="col-md-6">
+
+                            <div class="col-md-2">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Marca</span> 
                                     <input  class="form-control form-control-sm  bg-opacity-10" name="marca" type="text" value="" required  />
                                 </div>
                             </div>
+
+                            <div class="col-md-2">
+                                <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Precio Compra</span> 
+                                    <input style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" name="precio_c" type="text" value="" required  />
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Precio Venta</span> 
+                                    <input style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" name="precio_v" type="text" value="" required  />
+                                </div>
+                            </div>
                             
 
-                            <div class="col-sm-6">
+                            <div class="col-md-2">
                                 <label for="tipo">Unidad/Medible </label>
                                 <select name="unidad" id="unidad" class="form-control form-control-sm " required>
                                     <option value="">Selecciona una Opcion</option>
@@ -207,21 +245,9 @@
                                 </select>    
                             </div>
 
-                            <div class="col-md-6">
-                                <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Precio Compra</span> 
-                                    <input  class="form-control form-control-sm  bg-opacity-10" name="precio_c" type="text" value="" required  />
-                                </div>
-                            </div>
+                            
 
-                            <div class="col-md-6">
-                                <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Precio Venta</span> 
-                                    <input  class="form-control form-control-sm  bg-opacity-10" name="precio_v" type="text" value="" required  />
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
+                            <div class="col-md-2">
                                 <label for="tipo">Tipo de Producto</label>
                                 <select name="tipo" id="tipo" class="form-control form-control-sm " >
                                     <option value="">Selecciona una Opcion</option>
@@ -243,9 +269,9 @@
                                 </select>    
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-2">
                                 <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Proveedor Referencias </span> 
+                                    <span for="inputFirstName">Proveedor  </span> 
                                     <input  class="form-control form-control-sm  bg-opacity-10" name="proveedor" type="text" value=""   />
                                 </div>
                             </div>
@@ -255,12 +281,26 @@
 
                             
 
-                            <div class="col-md-12">
+                            <div class="col-md-3" >
                                 <div class=" mb-3 mb-md-0">
                                 <span for="inputFirstName">Foto</span> 
                                 <input type="file" class="form-control form-control-sm"  name="foto" id="files" >
                                 </div>
                             </div> 
+
+                            <div class="col-md-3" >
+                                <div class=" mb-3 mb-md-0">
+                                <span for="inputFirstName">Ficha tecnica PDF</span> 
+                                <input type="file" class="form-control form-control-sm"  name="pdf" id="files" >
+                                </div>
+                            </div> 
+
+                            <div class="row">
+                                <div class="" role="alert" style=""> <?php echo isset ($alert) ? $alert :''; ?></div>
+                                
+                                <input class="btn  btn-primary m-2  " type="submit" value="Registrar Producto"   data-dismiss="alert" >
+                            
+                            </div>
 
                             
 
@@ -270,18 +310,12 @@
 
 
 
-                            <hr class="w-100">
-                            <!-- selector--> 
+                            
 
                             
                             
 
-                            <div class="row">
-                                <div class="" role="alert" style=""> <?php echo isset ($alert) ? $alert :''; ?></div>
-                                
-                                <input type="submit" value="Registrar " class="btn btn-primary  border-0 " data-dismiss="alert" >
-                                
-                            </div>
+                            
 
                             <hr>
 
@@ -316,7 +350,7 @@
                         
                         ;?>
 
-                        <div class="col">
+                        <div class="">
                         
                             <div class="">
 
@@ -329,17 +363,17 @@
                                     
 
                                     
-                                    <button style="border: groove;" disabled class="btn btn-sm btn-secondary" type="submit"> <strong> TOTAL PRODUCTOS : </strong> <?php echo $totales ;?> </button>
-                                    <a style="margin:2px;" class="  btn btn-primary " href="cotizador/"> <i class="fa-solid fa-sack-dollar"></i> Ir a COTIZADOR</a>
-                                    <a href="ssreporte_inventario.php" class="btn btn-danger" style="margin:2px;"> <i class="fa-solid fa-print"></i> Imprimir Reporte de Productos</a> 
+                                    <button  style="margin:2px;" class="btn btn-sm btn-secondary" type="submit"> <strong> TOTAL PRODUCTOS : </strong> <?php echo $totales ;?> </button>
+                                    <a style="margin:2px;" class="  btn btn-primary btn-sm " href="cotizador/"> <i class="fa-solid fa-sack-dollar"></i> Ir a COTIZADOR</a>
+                                    <a href="ssreporte_inventario.php" class="btn btn-danger btn-sm" style="margin:2px;"> <i class="fa-solid fa-print"></i> Imprimir Reporte de Productos</a> 
                                     </form>
                                 </div>
                                 </nav>
 
                                 
                             
-                            <table class="table table-bordered">
-                            <table  class="tabla_ale" id="datatablesSimple"  >
+                            <table class="table table-bordered table-hover">
+                            <table id="datatablesSimple" style="font-size:11px ;" >
                                 <thead class="table-secondary">
                                     <tr class="">
                                         
@@ -365,7 +399,7 @@
                                     //$query = mysqli_query($conexion, "SELECT * FROM gastos
                                     //ORDER BY id_gasto DESC;");
 
-                                    $query = mysqli_query($conexion, "SELECT * FROM productos;");
+                                    $query = mysqli_query($conexion, "SELECT * FROM productos order by id_producto DESC;");
 
                                 
 
@@ -418,9 +452,9 @@
                                     
 
                                     
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_producto']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_producto']; ?> " class="btn btn-outline-warning btn-sm" href=""><i class="fa-solid fa-pencil"></i> </a>
-                                    
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_producto']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i>  </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_producto']; ?> " class="btn btn-warning btn-sm" href=""><i class="fa-solid fa-pencil"></i>  </a>
+                                    <a target="_blank" class="btn btn-danger btn-sm" href="img/fichas_tecnicas/FichaTecnica<?php echo $data['id_producto']; ?>.pdf"><i class="fa-solid fa-file-pdf"></i> Ficha tecnica  </a>
                                 </div>
                                     
                                     
@@ -429,31 +463,75 @@
                             </tr>
 
                             <!-- Modal editar  -->
-                            <div class="modal fade" id="exampleModal<?php echo $data['id_inv']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal<?php echo $data['id_producto']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <form action="editar_inventario.php" method="post">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Editar a <?php echo $data['articulo'] ?> </h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Editar a <?php echo $data['p_descripcion'] ?> </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="card-header text-center " style="padding: 0; margin: 0;">
-                                            <input type="hidden" name="eid_inv" value="<?php echo $data['id_inv']; ?>" >
-                                            <label for="">Articulo detalle</label>
-                                            <input name="earticulo" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['articulo'] ?>">
-                                             
-                                            </div>
-                                                <div class="card-body " style="padding: 0;margin: 0;">
-
-                                                    
-
-                                                    <div class="alert alert-warning alert-dismissible fade show" role="alert"> 
-                                                    <i class="fa-solid fa-user-lock"></i><strong> Stock </strong> <input class="form-control form-control-sm" style="text-align: center;" type="text"  id="dos" name="estock" value="<?php echo $data['stock'] ?>" >
-                                                        
+                                            <div class="card-header" >
+                                            <input type="hidden" name="eid_pro" value="<?php echo $data['id_producto']; ?>" >
+                                            <label for="">Descripcion Producto</label>
+                                            <input name="eproducto" class="form-control" type="text" value=" <?php echo $data['p_descripcion'] ?>">
+                                            <label for="">Marca</label>
+                                            <input name="emarca" class="form-control"  type="text" value=" <?php echo $data['p_marca'] ?>">
+                                            <label for="">Unidad</label>
+                                            <select name="eunidad" id="eunidad" class="form-control form-control-sm " required>
+                                                <option value="<?php echo $data['p_unidad'] ?>"><?php echo $data['p_unidad'] ?></option>
+                                                <option value="Unidad">Unidad</option>
+                                                <option value="Caja">Caja</option>
+                                                <option value="Pieza">Pieza</option>
+                                                <option value="Equipo">Equipo</option>
+                                                <option value="Paquete">Paquete</option>
+                                                <option value="Pliegue">Pliegue</option>
+                                                <option value="Pliego">Pliego</option>
+                                                <option value="Par">Par</option>
+                                                <option value="Docena">Docena</option>
+                                                <option value="Bidon">Bidon</option>
+                                                <option value="Block">Block</option>
+                                                <option value="Bolsa">Bolsa</option>
+                                                <option value="Bote">Bote</option>
+                                            </select> 
+                                            <label for="">Tipo Producto</label>
+                                            <select name="etipo" id="etipo" class="form-control form-control-sm " >
+                                                <option value="<?php echo $data['p_tipo'] ?>"><?php echo $data['p_tipo'] ?></option>
+                                                <option value="limpieza">Material de Limpieza</option>
+                                                <option value="mobiliario">Material Mobiliario</option>
+                                                <option value="Musical">Material Musical</option>
+                                                <option value="Hospitalario">Material Hospitalario</option>
+                                                <option value="Tecnologico">Material Tecnologico</option>
+                                                <option value="Cocina">Material de Cocina</option>
+                                                <option value="Textil">Material Textil</option>
+                                                <option value="Vehiculos">Vehiculos</option>
+                                                <option value="Ferreteria">Ferreteria</option>
+                                                <option value="industrial">Seguridad Industrial</option>
+                                                <option value="alimentos">Alimentos</option>
+                                                <option value="escritorio">Material de Escritorio</option>
+                                                <option value="policial">Material Policial</option>
+                                                <option value="deportivo">Material Deportivo</option>
+                                                <option value="belleza">Material de Belleza</option>
+                                            </select>   
+                                            
+                                            <label for="">Proveedor (Referencias )</label>
+                                            <input name="emarca" class="form-control"  type="text" value=" <?php echo $data['p_proveedor'] ?>">
+                                            
+                                            <div class="">
+                                                <div class=" mb-3 mb-md-0">
+                                                        <span for="inputFirstName">Precio Compra</span> 
+                                                        <input style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" name="precio_c" type="text" value="<?php echo $data['p_precioc'] ?>" required  />
                                                     </div>
-                                                    
                                                 </div>
+
+                                            <div class="">
+                                                <div class=" mb-3 mb-md-0">
+                                                    <span for="inputFirstName">Precio Venta</span> 
+                                                    <input style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" name="precio_v" type="text" value="<?php echo $data['p_preciov'] ?>" required  />
+                                                </div>
+                                            </div>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
