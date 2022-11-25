@@ -29,6 +29,21 @@ if (empty($_REQUEST['id'])) {
             $image3 = $data['image'];
             $ruta6 = $ruta.$image3;
 
+            $image4 = $data['image'];
+            $ruta8 = $ruta.$image4;
+
+            $image5 = $data['image'];
+            $ruta10 = $ruta.$image5;
+
+            $image6 = $data['image'];
+            $ruta12 = $ruta.$image6;
+
+            $image7 = $data['image'];
+            $ruta14 = $ruta.$image7;
+
+            $image8 = $data['image'];
+            $ruta16 = $ruta.$image8;
+
 
             
 
@@ -57,6 +72,11 @@ if (!empty($_POST)) {
             unlink($ruta2);
             unlink($ruta4);
             unlink($ruta6);
+            unlink($ruta8);
+            unlink($ruta10);
+            unlink($ruta12);
+            unlink($ruta14);
+            unlink($ruta16);
         
         } 
     }else {

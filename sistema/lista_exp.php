@@ -7,7 +7,6 @@ include "../conexion.php";
 //suma de monto bs total 
 
 
-
 ?>
 
 
@@ -98,33 +97,31 @@ include "../conexion.php";
 
 
         
-                <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Listado de Proyectos en Base de datos Poncelet
-                            </div>
+                <div class="">
+                            
                             
 
 
                 <div class="card-body">
                 
-                <table  class="tabla_ale" id="datatablesSimple"  >
+                <table  style="font-size:11px ;" id="datatablesSimple"  >
                 <thead class="table-secondary">
                     <tr class="">
-                        <th>idº</th>
-                        <th class="col-sm-6">Nombre del contratante / Persona y Direccion de contacto</th>
-                        <th class="col-sm-6">Objeto del Contrato</th>
+                        <th width="10%">idº</th>
+                        <th width="20%">Nombre del contratante / Persona y Direccion de contacto</th>
+                        <th width="20%">Objeto del Contrato</th>
                         <th>Ubicacion</th>
-                        <th class="col-sm-4">Monto final del contrato en (Bs)</th>
-                        <th class="col-sm-4" >Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
-                        <th class="col-sm-4">Monto en $u$ (Llenado de uso alternativo)</th>
+                        <th width="10%" >Monto final del contrato en (Bs)</th>
+                        <th  >Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
+                        <th >Monto en $u$ (Llenado de uso alternativo)</th>
                         <th>% de Participacion en Asociacion</th>
                         <th>Nombre LI del Socio(s)</th>
                         <th>Profesional Responsable</th>
                         <th>imagen-1(Acta)</th>
                         <th>imagen-2(Acta)</th>
                         <th>imagen-3(Acta)</th>
-                        <th>Acciones</th>    
+                        <th>imagen-4(Acta)</th>
+                        <th width="5%">Acciones</th>    
                     </tr>
                     </thead>
                     <?php
@@ -150,7 +147,7 @@ include "../conexion.php";
 
                     // rescatar datos DB 
                     $query = mysqli_query($conexion, "SELECT * FROM exp_general 
-                                                        ORDER BY id_exp ASC");
+                                                        ORDER BY fecha_ejecucion DESC");
 
                    
 
@@ -167,12 +164,13 @@ include "../conexion.php";
                             
                             $image2 = 'img/actas/'.$data['image2'];
                             $image3= 'img/actas/'.$data['image3'];
+                            $image4= 'img/actas/'.$data['image4'];
 
                             
 
                     ?>
                             <tr>
-                                <td><?php echo $data['id_exp'] ?></td>
+                                <td><?php echo 'EXP-'.$data['id_exp'] ?></td>
                                 <td><?php echo $data['nombre_contratante'] ?></td>
                                 <td><?php echo $data['obj_contrato'] ?></td>
                                 <td><?php echo $data['ubicacion'] ?></td>
@@ -191,6 +189,9 @@ include "../conexion.php";
                                 <td>
                                     <img style= "width:100px" src="<?php echo $image3 ?>" alt="" class="gallery-item"> 
                                 </td>
+                                <td>
+                                    <img style= "width:100px" src="<?php echo $image4 ?>" alt="" class="gallery-item"> 
+                                </td>
                                 
                                 
 
@@ -198,12 +199,12 @@ include "../conexion.php";
 
                                 <div style="min-width: max-content;">
                                 <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" >
-                                    <i class="fa-solid fa-file-pen"></i> Editar
+                                    <i class="fa-solid fa-file-pen"></i> 
                                     </a>
 
                                     
                                     <a href="borrar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-danger  btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                    <i class="fa-solid fa-trash-can"></i> Eliminar
+                                    <i class="fa-solid fa-trash-can"></i> 
                                     </a>
                                 </div>
                                     

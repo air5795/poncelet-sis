@@ -314,11 +314,12 @@ if (!empty($_POST)) {
                                                                 
                                                             }
                                                             ?>
+                                                            <a href="editar_imgI.php?id=<?php echo $data['id_inv'] ?>" class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="top" title="editar Imagen">
+                                                            <i class="fa-solid fa-upload"></i>
+                                                            </a>
                                                             <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_inv']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
                                                             <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_inv']; ?> " class="btn btn-warning btn-sm" href=""><i class="fa-solid fa-pencil"></i> </a>
-                                                            <a href="editar_imgI.php?id=<?php echo $data['id_inv'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="editar Imagen">
-                                                            <i class="fa-solid fa-cloud-arrow-up"></i>
-                                                            </a>
+                                                            
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -337,18 +338,25 @@ if (!empty($_POST)) {
                                                                         <input type="hidden" name="eid_inv" value="<?php echo $data['id_inv']; ?>">
                                                                         <label for="">Articulo detalle</label>
                                                                         <input name="earticulo" class="form-control"  type="text" value=" <?php echo $data['articulo'] ?>">
-                                                                    </div>
-                                                                    <div class="card-body " style="padding: 0;margin: 0;">
-                                                                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                                                            <i class="fa-solid fa-user-lock"></i><strong> Stock </strong>
-                                                                            <input class="form-control form-control-sm"  type="text" id="dos" name="estock" value="<?php echo $data['stock'] ?>">
-                                                                        </div>
+                                                                        <label for="">Stock</label>
+                                                                        <input class="form-control form-control-sm"  type="text" id="dos" name="estock" value="<?php echo $data['stock'] ?>">
                                                                         
-
-                                                                        <img style="width:200px; heigth:200px;" src="<?php echo $image ?>" alt="" class="gallery-item">
-
-
+                                                                        <label for="">Categoria</label>
+                                                                        <select name="ecategoria" class="form-select form-select-sm" >
+                                                                            <option value="<?php echo $data['categoria_id'] ?>"><?php echo $data['nombre_categoria'] ?> </option>
+                                                                            <?php
+                                                                            $query2 = mysqli_query($conexion, "SELECT * from categoria_i;");
+                                                                            $result2 = mysqli_num_rows($query2);
+                                                                            if ($result > 0) {
+                                                                                while ($data = mysqli_fetch_array($query2)) {
+                                                                                    echo '<option value="' . $data['id_categoria'] . '">' . $data['nombre_categoria'] . '</option>';
+                                                                                }
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                        
                                                                     </div>
+                                                                    
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -514,6 +522,8 @@ if (!empty($_POST)) {
             } catch (e) {}
         }
     </script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

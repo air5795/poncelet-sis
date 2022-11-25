@@ -44,6 +44,11 @@
             $image = $_FILES['image'];
             $image2 = $_FILES['image2'];
             $image3 = $_FILES['image3'];
+            $image4 = $_FILES['image4'];
+            $image5 = $_FILES['image5'];
+            $image6 = $_FILES['image6'];
+            $image7 = $_FILES['image7'];
+            $image8 = $_FILES['image8'];
             
             $num = $total2 +1;
 
@@ -51,7 +56,6 @@
             
             
             //imagen 1
-  
             $nombre_image = $image['name'];
 
             $type = $image['type'];
@@ -68,9 +72,7 @@
                 $src= $destino.$imgActa;
             }
 
-            //imagen 2
-
-                 
+            //imagen 2   
             $nombre_image2 = $image2['name'];
             $type2= $image2['type'];
             $url_temp2 = $image2['tmp_name'];
@@ -95,9 +97,6 @@
         
 
             //imagen 3
-
-            
-  
             $nombre_image3 = $image3['name'];
             $type3 = $image3['type'];
             $url_temp3 = $image3['tmp_name'];
@@ -119,6 +118,117 @@
                 $src3= 0;
             }
 
+            //imagen 4
+            $nombre_image4 = $image4['name'];
+            $type4 = $image4['type'];
+            $url_temp4 = $image4['tmp_name'];
+
+            $imgProducto4 = 'nodisponible.png';
+
+            if ($nombre_image4 != '') {
+                $destino4 = 'img/actas/';
+                $img_nombre4 = 'acta_'.$fecha_ejecucion.'_'.$num.'_4';
+                //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa4 = $img_nombre4.'.jpg';
+                $src4= $destino4.$imgActa4;
+            }else {
+                $destino4 = 0;
+                $img_nombre4 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa4 = 0;
+                $src4= 0;
+            }
+
+            //imagen 5
+            $nombre_image5 = $image5['name'];
+            $type5 = $image5['type'];
+            $url_temp5 = $image5['tmp_name'];
+
+            $imgProducto5 = 'nodisponible.png';
+
+            if ($nombre_image5 != '') {
+                $destino5 = 'img/actas/';
+                $img_nombre5 = 'acta_'.$fecha_ejecucion.'_'.$num.'_5';
+                //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa5 = $img_nombre5.'.jpg';
+                $src5= $destino5.$imgActa5;
+            }else {
+                $destino5 = 0;
+                $img_nombre5 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa5 = 0;
+                $src5= 0;
+            }
+
+
+            //imagen 6
+            $nombre_image6 = $image6['name'];
+            $type6 = $image6['type'];
+            $url_temp6 = $image6['tmp_name'];
+
+            $imgProducto6 = 'nodisponible.png';
+
+            if ($nombre_image6 != '') {
+                $destino6 = 'img/actas/';
+                $img_nombre6 = 'acta_'.$fecha_ejecucion.'_'.$num.'_6';
+                //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa6 = $img_nombre6.'.jpg';
+                $src6= $destino6.$imgActa6;
+            }else {
+                $destino6 = 0;
+                $img_nombre6 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa6 = 0;
+                $src6= 0;
+            }
+
+            //imagen 7
+            $nombre_image7 = $image7['name'];
+            $type7 = $image7['type'];
+            $url_temp7 = $image7['tmp_name'];
+
+            $imgProducto7 = 'nodisponible.png';
+
+            if ($nombre_image7 != '') {
+                $destino7 = 'img/actas/';
+                $img_nombre7 = 'acta_'.$fecha_ejecucion.'_'.$num.'_7';
+                //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa7 = $img_nombre7.'.jpg';
+                $src7= $destino7.$imgActa7;
+            }else {
+                $destino7 = 0;
+                $img_nombre7 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa7 = 0;
+                $src7= 0;
+            }
+
+            //imagen 8
+            $nombre_image8 = $image8['name'];
+            $type8 = $image8['type'];
+            $url_temp8 = $image8['tmp_name'];
+
+            $imgProducto8 = 'nodisponible.png';
+
+            if ($nombre_image8 != '') {
+                $destino8 = 'img/actas/';
+                $img_nombre8 = 'acta_'.$fecha_ejecucion.'_'.$num.'_8';
+                //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa8 = $img_nombre8.'.jpg';
+                $src8= $destino8.$imgActa8;
+            }else {
+                $destino8 = 0;
+                $img_nombre8 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa8 = 0;
+                $src8= 0;
+            }
+
         
 
 
@@ -136,6 +246,11 @@
                                                                                 image,
                                                                                 image2,
                                                                                 image3,
+                                                                                image4,
+                                                                                image5,
+                                                                                image6,
+                                                                                image7,
+                                                                                image8,
                                                                                 usuario_id
                                                                             )
                                                                             VALUES(
@@ -151,6 +266,11 @@
                                                                                 '$imgActa',
                                                                                 '$imgActa2',
                                                                                 '$imgActa3',
+                                                                                '$imgActa4',
+                                                                                '$imgActa5',
+                                                                                '$imgActa6',
+                                                                                '$imgActa7',
+                                                                                '$imgActa8',
                                                                                 '$usuario_id'
                                                                             )");
                                 
@@ -160,6 +280,12 @@
                                                 move_uploaded_file($url_temp,$src);
                                                 move_uploaded_file($url_temp2,$src2);
                                                 move_uploaded_file($url_temp3,$src3);
+
+                                                move_uploaded_file($url_temp4,$src4);
+                                                move_uploaded_file($url_temp5,$src5);
+                                                move_uploaded_file($url_temp6,$src6);
+                                                move_uploaded_file($url_temp7,$src7);
+                                                move_uploaded_file($url_temp8,$src8);
                                             
                                             } 
                                             $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
@@ -296,21 +422,37 @@
                                     <input class="form-control form-control-sm warning" name="profesional_resp" type="text" value="ALBERTO ARISPE PONCE" />
                                  </div>
                              </div>
+                             
+                             <hr>
 
-                             <div class=" col-md-8"> <hr>
-                             
-                             
-                             
+                             <div class=" row"> <hr>
 
-                             <div class="">
-                                    <input type="file" class="form-control"  name="image" id="files" required>
-                            </div>
-                            <div class="">
-                                    <input type="file" class="form-control"  name="image2" id="files">
-                            </div>
-                            <div class="">
-                                    <input type="file" class="form-control"  name="image3" id="files">
-                            </div>
+                             <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-folder-open"></i> Subir Actas 
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark ">
+                                    <li><a class="dropdown-item " href="#">Acta N°1<input type="file" class="form-control form-control-sm"  name="image" id="files" required></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°2<input type="file" class="form-control form-control-sm"  name="image2" id="files" ></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°3<input type="file" class="form-control form-control-sm"  name="image3" id="files"></a></li>
+
+                                    <li><a class="dropdown-item" href="#">Acta N°4<input type="file" class="form-control form-control-sm"  name="image4" id="files"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°5<input type="file" class="form-control form-control-sm"  name="image5" id="files"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°6<input type="file" class="form-control form-control-sm"  name="image6" id="files"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°7<input type="file" class="form-control form-control-sm"  name="image7" id="files"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°8<input type="file" class="form-control form-control-sm"  name="image8" id="files"></a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item">Subir las actas en el orden correcto</a></li>
+                                </ul>
+                                </div>
+
+
+                                
+
+
+                             
+                             
+                            
                              </div>
                         </div>
 

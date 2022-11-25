@@ -83,6 +83,11 @@ ob_start();
                                                                                                         image,
                                                                                                         image2,
                                                                                                         image3,
+                                                                                                        image4,
+                                                                                                        image5,
+                                                                                                        image6,
+                                                                                                        image7,
+                                                                                                        image8,
                                                                                                         ubicacion
                                                                                                         FROM
                                                                                                             exp_general
@@ -131,8 +136,21 @@ ob_start();
                             
                             $image2 = 'img/actas/'.$data['image2'];
                             $ru2 = $data['image2'];
+                            
                             $image3= 'img/actas/'.$data['image3'];
                             $ru3 = $data['image3'];
+
+                            $image4= 'img/actas/'.$data['image4'];
+                            $ru4 = $data['image4'];
+
+                            $image5= 'img/actas/'.$data['image5'];
+                            $ru5 = $data['image5'];
+                            $image6= 'img/actas/'.$data['image6'];
+                            $ru6 = $data['image6'];
+                            $image7= 'img/actas/'.$data['image7'];
+                            $ru7 = $data['image7'];
+                            $image8= 'img/actas/'.$data['image8'];
+                            $ru8 = $data['image8'];
                             
 
                     ?>
@@ -175,6 +193,41 @@ ob_start();
                         $origen3 = "../sistema"."/$image3";
                         $destino3 = "../sistema/img/Exp_especifica"."/$ru3";
                         $resultado3 = copy($origen3, $destino3);
+                        
+                    }
+
+
+
+
+                    if (!empty($ru4)) {
+                        $origen4 = "../sistema"."/$image4";
+                        $destino4 = "../sistema/img/Exp_especifica"."/$ru4";
+                        $resultado4 = copy($origen4, $destino4);
+                        
+                    }
+
+                    if (!empty($ru5)) {
+                        $origen5 = "../sistema"."/$image5";
+                        $destino5 = "../sistema/img/Exp_especifica"."/$ru5";
+                        $resultado5 = copy($origen5, $destino5);
+                        
+                    }
+                    if (!empty($ru6)) {
+                        $origen6 = "../sistema"."/$image6";
+                        $destino6 = "../sistema/img/Exp_especifica"."/$ru6";
+                        $resultado6 = copy($origen6, $destino6);
+                        
+                    }
+                    if (!empty($ru7)) {
+                        $origen7 = "../sistema"."/$image7";
+                        $destino7 = "../sistema/img/Exp_especifica"."/$ru7";
+                        $resultado7 = copy($origen7, $destino7);
+                        
+                    }
+                    if (!empty($ru8)) {
+                        $origen8 = "../sistema"."/$image8";
+                        $destino8 = "../sistema/img/Exp_especifica"."/$ru8";
+                        $resultado8 = copy($origen8, $destino8);
                         
                     }
 

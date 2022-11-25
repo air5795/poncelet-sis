@@ -246,18 +246,7 @@
                                 <div style="min-width: max-content;">
                                     
                                     <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_proyecto']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
-                                    <button style="border: groove;" disabled class="btn btn-light btn-sm" type="submit"> <strong>
-                                        <i class="fa-solid fa-filter-circle-dollar"></i> SALDO :</strong> 
-                                        <?php 
-                                        if ($saldo > 0) {
-                                            echo '<span style="color: green;"> '.$saldo.'  bs </span>';    
-                                        } else {
-                                            echo '<span style="color: red;"> '.$saldo.'  bs </span>'; 
-                                        }
-                                        
-                                        
-                                        ?>
-                                    </button>             
+                                                
                                     
                                 </div>
                                     

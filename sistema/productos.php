@@ -70,7 +70,7 @@ if (!empty($_POST)) {
 
         if ($nombre_pdf != '') {
             $destino2 = 'img/fichas_tecnicas/';
-            $img_nombre = 'FichaTecnica' . $num;
+            $img_nombre = 'FichaTecnica'.date("Y-m-d H-i-s").'_'.$num;
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $ruta_pdf = $img_nombre . '.pdf';
             $src_pdf = $destino2 . $ruta_pdf;
@@ -201,14 +201,14 @@ if (!empty($_POST)) {
                                     <div class="col-md-2">
                                         <div class=" mb-3 mb-md-0">
                                             <span for="inputFirstName">Precio Compra</span>
-                                            <input style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" name="precio_c" type="text" value="" required />
+                                            <input oninput="calcular_a_bs()" id="precio_c" style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" placeholder="0"  name="precio_c" type="text" value="" required />
                                         </div>
                                     </div>
 
                                     <div class="col-md-2">
                                         <div class=" mb-3 mb-md-0">
                                             <span for="inputFirstName">Precio Venta</span>
-                                            <input style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" name="precio_v" type="text" value="" required />
+                                            <input style="background-color:#c9ffc9;" id="precio_v" class="form-control form-control-sm  bg-opacity-10" placeholder="0" name="precio_v"  type="text" value="" required />
                                         </div>
                                     </div>
 
@@ -427,15 +427,55 @@ if (!empty($_POST)) {
 
                                                         <div style="min-width: max-content;">
 
+                                                             <?php
+                                                             if (!empty($data['foto'])) {
+                                                                
+                                                             
+                                                             ?>
                                                             <a class="btn btn-outline-success btn-sm gallery-item" id="<?php echo $image; ?> ">
                                                                 <i class="fa-solid fa-image"></i> Ver Imagen
                                                             </a>
+
+                                                            <?php
+                                                             } else{
+
+                                                                
+                                                             
+                                                             ?>
+                                                            <a class="btn btn-outline-secondary btn-sm gallery-item" id="<?php echo $image; ?> ">
+                                                            <i class="fa-solid fa-circle-exclamation"></i> Sin Imagen
+                                                            </a>
+                                                            <?php
+                                                             } 
+                                                             ?>
+
                                                             <a href="editar_imgP.php?id=<?php echo $data['id_producto'] ?>" class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="top" title="editar Imagen">
                                                                 <i class="fa-solid fa-upload"></i>
                                                             </a>
 
+                                                            <?php
+                                                             if (!empty($data['pdf'])) {
+                                                                
+                                                             
+                                                             ?>
+
                                                             <a style="background-color: #eeee90;color: #505050;border-color: black;" target="_blank" class="btn btn-primary btn-sm" href="img/fichas_tecnicas/<?php echo $data['pdf']; ?>"><i class="fa-solid fa-file-lines"></i> Ficha Tecnica </a>
-                                                            <a style="background-color: #eeee90;color: #505050;border-color: black;" href="editar_imgP.php?id=<?php echo $data['id_producto'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="editar Imagen">
+                                                            <?php
+                                                             } else{
+
+                                                                
+                                                             
+                                                             ?>
+
+                                                            <a target="_blank" class="btn btn-outline-secondary btn-sm" >
+                                                            <i class="fa-solid fa-circle-exclamation"></i> Sin Ficha Tec</a>
+
+                                                            <?php
+                                                             } 
+                                                             ?>
+
+
+                                                            <a style="background-color: #eeee90;color: #505050;border-color: black;" href="editar_imgPDFP.php?id=<?php echo $data['id_producto'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="editar Imagen">
                                                                 <i class="fa-solid fa-upload"></i>
                                                             </a>
                                                             <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_producto']; ?> " class="btn btn-warning btn-sm" href=""><i class="fa-regular fa-pen-to-square"></i> </a>
@@ -453,7 +493,7 @@ if (!empty($_POST)) {
                                                 <div class="modal fade" id="exampleModal<?php echo $data['id_producto']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
-                                                            <form action="editar_inventario.php" method="post">
+                                                            <form action="editar_productos.php" method="post">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title" id="exampleModalLabel">Editar a <?php echo $data['p_descripcion'] ?> </h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -503,19 +543,19 @@ if (!empty($_POST)) {
                                                                         </select>
 
                                                                         <label for="">Proveedor (Referencias )</label>
-                                                                        <input name="emarca" class="form-control" type="text" value=" <?php echo $data['p_proveedor'] ?>">
+                                                                        <input name="eproveedor" class="form-control" type="text" value=" <?php echo $data['p_proveedor'] ?>">
 
                                                                         <div class="">
                                                                             <div class=" mb-3 mb-md-0">
                                                                                 <span for="inputFirstName">Precio Compra</span>
-                                                                                <input style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" name="precio_c" type="text" value="<?php echo $data['p_precioc'] ?>" required />
+                                                                                <input style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" name="eprecio_c" type="text" value="<?php echo $data['p_precioc'] ?>" required />
                                                                             </div>
                                                                         </div>
 
                                                                         <div class="">
                                                                             <div class=" mb-3 mb-md-0">
                                                                                 <span for="inputFirstName">Precio Venta</span>
-                                                                                <input style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" name="precio_v" type="text" value="<?php echo $data['p_preciov'] ?>" required />
+                                                                                <input style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" name="eprecio_v" type="text" value="<?php echo $data['p_preciov'] ?>" required />
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -531,20 +571,20 @@ if (!empty($_POST)) {
                                                 </div>
 
                                                 <!-- Modal eliminar  -->
-                                                <div class="modal fade " id="exampleModali<?php echo $data['id_inv']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade " id="exampleModali<?php echo $data['id_producto']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content  bg-opacity-80">
-                                                            <form action="eliminar_inventario.php" method="post">
+                                                            <form action="eliminar_productos.php" method="post">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title" id="exampleModalLabel">Eliminar registro </h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="card-header text-center " style="padding: 0; margin: 0;">
-                                                                        <input type="hidden" name="idInv" value="<?php echo $data['id_inv']; ?>">
+                                                                        <input type="hidden" name="idPro" value="<?php echo $data['id_producto']; ?>">
 
-                                                                        <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['articulo'] ?> " disabled>
-                                                                        <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['stock'] . ' Bs' ?> " disabled>
+                                                                        <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['p_descripcion'] ?> " disabled>
+                                                                        <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['p_precioc'] . ' Bs' ?> " disabled>
 
                                                                     </div>
 
@@ -663,26 +703,24 @@ if (!empty($_POST)) {
 
         document.getElementById('files').addEventListener('change', archivo, false);
     </script>
-    <script type="text/javascript">
-        function calcular_a_dolar() {
-            try {
-                var a = parseFloat(document.getElementById("bs").value) || 0;
-                decimal = a.toFixed(2);
-                proceso = decimal / 6.96;
-                result = proceso.toFixed(2);
-                document.getElementById("dolar").value = result;
-            } catch (e) {}
+   
+
+<script type="text/javascript">
+        
+
+        function calcular_a_bs(){
+            try{
+                var b = parseFloat(document.getElementById("precio_c").value) || 0;
+                decimal = b.toFixed(2);
+                proceso = (decimal *(30/100))+b;
+                result = proceso.toFixed(0);
+                document.getElementById("precio_v").value = result;
+            } catch(e){}
         }
 
-        function calcular_a_bs() {
-            try {
-                var b = parseFloat(document.getElementById("dolar").value) || 0;
-                decimal = b.toFixed(2);
-                proceso = decimal * 6.96;
-                result = proceso.toFixed(2);
-                document.getElementById("bs").value = result;
-            } catch (e) {}
-        }
+
+        
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>

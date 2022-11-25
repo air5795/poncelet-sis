@@ -5,20 +5,24 @@ session_start();
 
     include "../conexion.php";
 
+    
 
     
+
 
 if (!empty($_POST)) {
     
-    $alert = '';
-    if (empty($_POST['earticulo']) || empty($_POST['estock'])) {
-        $alert = '<p class="alert alert-danger w-50"> Todos los Campos Son Obligatorios  </p> ';
-    } else {
+    
         
         
         $idInv = $_POST['eid_inv'];
         $articulo = $_POST['earticulo'];
         $stock = $_POST['estock'];
+        $categoria = $_POST['ecategoria'];
+
+
+    
+        
 
         
 
@@ -30,8 +34,9 @@ if (!empty($_POST)) {
             $resul = mysqli_fetch_array($query);
           
             $sql_update = mysqli_query($conexion,"UPDATE inventario
-                                                  SET articulo = '$articulo', stock = '$stock' 
-                                                  WHERE id_inv = $idInv");
+                                                  SET articulo = '$articulo', stock = '$stock', categoria_id = '$categoria'
+                                                  WHERE inventario.id_inv = $idInv");
+
 
                                             
             if ($sql_update ) {
@@ -45,9 +50,11 @@ if (!empty($_POST)) {
                  
             } else {
                 $alert = '<p class="alert alert-danger "> El registro fallo </p> ';
+                header("Location: inventario_i.php");
             }
         }
 
-    }
+    
 
 ?>
+
