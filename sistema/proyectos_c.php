@@ -25,12 +25,13 @@
      
             
             $nombre_p = $_POST['nombre_proyecto'];
+            $color = $_POST['color'];
             $num = $total2 +1;
 
 
              
-                    $query_insert = mysqli_query($conexion, "INSERT INTO proyectos(pro_nombre)
-                                                                VALUES('$nombre_p')");
+                    $query_insert = mysqli_query($conexion, "INSERT INTO proyectos(pro_nombre,color)
+                                                                VALUES('$nombre_p','$color')");
 
 
             if ($query_insert) {
@@ -76,7 +77,7 @@
                     <div class="container-fluid px-4">
                     <div class="container-fluid px-4 ">
                 
-                <h1 class="mt-4 col"><i class="fa-solid fa-book"></i> <strong>Gestor de <span style="color:coral;"> Proyectos </strong>   </span></h1>
+                <h1 class="mt-4 col"><i class="fa-solid fa-person-digging"></i> <strong>Gestor de <span style="color:coral;"> Proyectos Constructora </strong>   </span></h1>
                   
                         
                         <hr>
@@ -143,6 +144,15 @@
                                     <input  class="form-control form-control-sm  bg-opacity-10" name="nombre_proyecto" type="text" value="" required  />
                                 </div>
                             </div>
+
+                            <div class="col-md-3">
+                                <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Color  </span> 
+                                    <input  class="form-control form-control-sm  bg-opacity-10" name="color" type="color" value="#ffffff" required  />
+                                </div>
+                            </div>
+
+                           
                            
 
                             
@@ -188,16 +198,17 @@
 
                                 
                             
-                            <table class="table table-bordered">
-                            <table  class="tabla_ale" id="datatablesSimple"  >
-                                <thead class="table-secondary">
+                            <table class="table table-bordered ">
+                            <table  class=" table" id="datatablesSimple"  >
+                                <thead class="table-secondary ">
                                     <tr class="">
                                         
                                         <th>N°</th>
                                         <th>Nombre de Proyecto</th>
-                                        <th>Total Ingresos</th>
-                                        <th>Total Gastos</th>
-                                        <th>Saldo</th>
+                                        <th >Total Ingresos</th>
+                                        <th >Total Gastos</th>
+                                        <th >Saldo</th>
+                                        
                                         <th>acciones</th>
                               
                                     </tr>
@@ -214,9 +225,7 @@
                                                                             row_num,
                                                                             id_proyecto,
                                                                             pro_nombre,
-                                                                            total_i,
-                                                                            total_g,
-                                                                            saldo 
+                                                                            color 
                                                                             FROM proyectos
                                                                             ORDER BY id_proyecto DESC;");
 
@@ -233,20 +242,77 @@
 
                                     ?>
 
-                            <tr>
+                            <tr style="background-color:<?php echo $data['color'];?> ;">
                                 <td><?php echo $data['row_num'] ?></td>
                                 <td><?php echo $data['pro_nombre'] ?></td>
-                                <td><?php echo $data['total_i'] ?></td>
-                                <td><?php echo $data['total_g'] ?></td>
-                                <td><?php echo $data['saldo'] ?></td>
+                                <td ><?php
+
+                                    
+
+                                    $pro = $data['pro_nombre'];
+                                    $idp = $data['id_proyecto'];
+                                    $color = $data['color'];
+
+
+                                    
+
+
+                                    $s = mysqli_query($conexion, "SELECT SUM(montoBs) FROM ingresos_c WHERE proyecto = '$pro';");   
+                                    while($rows=mysqli_fetch_array($s)){
+                                        $ing = $rows[0];
+                                        if (!empty($rows[0]) ) {
+                                            echo "<span style='text-align:left' class='btn btn-success btn-sm w-100 opacity-75'> ".$rows[0]." Bs</span>";
+                                        } else {
+                                            echo "<span style='text-align:left' class='btn btn-secondary btn-sm w-100 opacity-75'>"."0"." Bs</span>";
+                                        }
+                                    
+                                    }
+                                    ?></td>
+                                <td >
+
+                                <?php
+
+                                    
+                                    $s = mysqli_query($conexion, "SELECT SUM(g_montoBs) FROM gastos_c WHERE g_proyecto = '$pro';");   
+                                    while($data=mysqli_fetch_array($s)){
+                                        $gas = $data[0];
+                                        if (!empty($data[0]) ) {
+                                            echo "<span style='text-align:left' class='btn btn-danger btn-sm w-100 opacity-75'> ".$data[0]." Bs</span>";
+                                        } else {
+                                            echo "<span style='text-align:left' class='btn btn-secondary btn-sm w-100 opacity-75'>"."0"." Bs</span>";
+                                        }
+                                    
+                                    }
+                                    ?>
+                                </td>
+                                <td  >
+                                    <?php
+                                        $saldito = $ing - $gas;
+
+                                        if ($saldito > 0) {
+                                            echo "<span style='text-align:left' class='btn btn-success btn-sm w-100 opacity-75'> ".$saldito." Bs</span>";    
+                                        }
+                                        elseif ($saldito == 0) {
+                                            echo "<span style='text-align:left' class='btn btn-secondary btn-sm w-100 opacity-75'> ".$saldito." Bs</span>";
+                                        }
+                                        else {
+                                            echo "<span style='text-align:left' class='btn btn-danger btn-sm w-100 opacity-75 '> ".$saldito." Bs</span>";
+                                        }
+                                        
+                                    ?>
+                                </td>
+                                
 
 
                                 <td class="col-sm-2">
 
                                 <div style="min-width: max-content;">
+                                        
                                     
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_proyecto']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
-                                                
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $idp; ?> " style=" background-color:#000000;color:#ff5252" class="btn btn-danger btn-sm " href=""><i class="fa-solid fa-trash"></i>  </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $idp; ?> " class="btn btn-warning btn-sm  " href=""><i class="fa-solid fa-pen"></i>   </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModalp<?php echo $idp; ?> " class="btn btn-danger  btn-sm  " href=""><i class="fa-solid fa-file-pdf"></i> REPORTES </a> 
+
                                     
                                 </div>
                                     
@@ -256,7 +322,7 @@
                             </tr>
 
                             <!-- Modal eliminar  -->
-                            <div class="modal fade " id="exampleModali<?php echo $data['id_proyecto']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade " id="exampleModali<?php echo $idp; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content  bg-opacity-80">
                                             <form action="eliminar_proyectos.php" method="post">
@@ -266,9 +332,9 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="card-header text-center " style="padding: 0; margin: 0;">
-                                            <input type="hidden" name="idProyecto" value="<?php echo $data['id_proyecto']; ?>" >
+                                            <input type="hidden" name="idProyecto" value="<?php echo $idp; ?>" >
                                             
-                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['pro_nombre'] ?> " disabled>
+                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $pro; ?> " disabled>
                                             
                                              
                                             </div>
@@ -277,6 +343,69 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                             <input class="btn btn-danger" type="submit" value="Eliminar">
+                                        </div>
+
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
+
+
+                                    <!-- Modal editar  -->
+                            <div class="modal fade " id="exampleModal<?php echo $idp; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content  bg-opacity-80">
+                                            <form action="editar_proyectos.php" method="post">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Editar registro  </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-header text-center " style="padding: 0; margin: 0;">
+                                            <input type="hidden" name="idProyecto" value="<?php echo $idp; ?>" >
+                                            <label for="">Nombre del Proyecto</label>
+                                            <input name="ename" class="form-control"  type="text" value=" <?php echo $pro; ?> " >
+                                            <label for="">Color</label>
+                                            <input name="ecolor" class="form-control"  type="color" value=" <?php echo $color; ?> " >
+                                            
+                                             
+                                            </div>
+                                                
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <input class="btn btn-warning" type="submit" value="Actualizar">
+                                        </div>
+
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    <!-- Modal pdf  -->
+                            <div class="modal fade " id="exampleModalp<?php echo $idp; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content  bg-opacity-80">
+                                            <form action="pdf_proyectos.php" method="post">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">PDF: Reporte </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-header text-center " style="padding: 0; margin: 0;">
+                                            <input type="hidden" name="idProyecto" value="<?php echo $idp; ?>" >
+                                            <input type="hidden" name="pname" value="<?php echo $pro; ?>" >
+                                            <label for="">Sacar Reporte General de : </label>
+                                            <input class="btn btn-danger" name="ename" class="form-control"  type="text" value=" <?php echo $pro; ?> " disabled>
+                                            
+                                            
+                                             
+                                            </div>
+                                                
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <input class="btn btn-danger" type="submit" value="Imprimir PDF">
                                         </div>
 
                                         </form>

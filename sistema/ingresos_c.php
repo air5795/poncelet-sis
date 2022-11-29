@@ -57,6 +57,11 @@
             
 
 
+             
+
+             
+
+
 
                     $query_insert = mysqli_query($conexion, "INSERT INTO ingresos_c(
                         proyecto,
@@ -80,6 +85,7 @@
             if ($query_insert) {
                 if ($nombre_image != '' ) {
                     move_uploaded_file($url_temp,$src);
+                    
                     
                 
                 } 

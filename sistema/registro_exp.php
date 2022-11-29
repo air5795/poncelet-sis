@@ -49,6 +49,14 @@
             $image6 = $_FILES['image6'];
             $image7 = $_FILES['image7'];
             $image8 = $_FILES['image8'];
+
+            $image9 = $_FILES['image9'];
+            $image10 = $_FILES['image10'];
+            $image11 = $_FILES['image11'];
+            $image12 = $_FILES['image12'];
+            $image13 = $_FILES['image13'];
+            $image14 = $_FILES['image14'];
+            $image15 = $_FILES['image15'];
             
             $num = $total2 +1;
 
@@ -229,6 +237,161 @@
                 $src8= 0;
             }
 
+
+            //imagen 9
+            $nombre_image9 = $image9['name'];
+            $type9 = $image9['type'];
+            $url_temp9 = $image9['tmp_name'];
+
+            $imgProducto9 = 'nodisponible.png';
+
+            if ($nombre_image9 != '') {
+                $destino9 = 'img/actas/';
+                $img_nombre9 = 'acta_'.$fecha_ejecucion.'_'.$num.'_9';
+                //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa9 = $img_nombre9.'.jpg';
+                $src9= $destino9.$imgActa9;
+            }else {
+                $destino9 = 0;
+                $img_nombre9 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa9 = 0;
+                $src9= 0;
+            }
+
+            //imagen 10
+            $nombre_image10 = $image10['name'];
+            $type10 = $image10['type'];
+            $url_temp10 = $image10['tmp_name'];
+
+            $imgProducto10 = 'nodisponible.png';
+
+            if ($nombre_image10 != '') {
+                $destino10 = 'img/actas/';
+                $img_nombre10 = 'acta_'.$fecha_ejecucion.'_'.$num.'_10';
+                //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa10 = $img_nombre10.'.jpg';
+                $src10= $destino10.$imgActa10;
+            }else {
+                $destino10 = 0;
+                $img_nombre10 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa10 = 0;
+                $src10= 0;
+            }
+
+            //imagen 11
+            $nombre_image11 = $image11['name'];
+            $type11 = $image11['type'];
+            $url_temp11 = $image11['tmp_name'];
+
+            $imgProducto11 = 'nodisponible.png';
+
+            if ($nombre_image11 != '') {
+                $destino11 = 'img/actas/';
+                $img_nombre11 = 'acta_'.$fecha_ejecucion.'_'.$num.'_11';
+                //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa11 = $img_nombre11.'.jpg';
+                $src11= $destino11.$imgActa11;
+            }else {
+                $destino11 = 0;
+                $img_nombre11 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa11 = 0;
+                $src11= 0;
+            }
+
+            //imagen 12
+            $nombre_image12 = $image12['name'];
+            $type12 = $image12['type'];
+            $url_temp12 = $image12['tmp_name'];
+
+            $imgProducto12 = 'nodisponible.png';
+
+            if ($nombre_image12 != '') {
+                $destino12 = 'img/actas/';
+                $img_nombre12 = 'acta_'.$fecha_ejecucion.'_'.$num.'_12';
+                //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa12 = $img_nombre12.'.jpg';
+                $src12= $destino12.$imgActa12;
+            }else {
+                $destino12 = 0;
+                $img_nombre12 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa12 = 0;
+                $src12= 0;
+            }
+
+            //imagen 13
+            $nombre_image13 = $image13['name'];
+            $type13 = $image13['type'];
+            $url_temp13 = $image13['tmp_name'];
+
+            $imgProducto13 = 'nodisponible.png';
+
+            if ($nombre_image13 != '') {
+                $destino13 = 'img/actas/';
+                $img_nombre13 = 'acta_'.$fecha_ejecucion.'_'.$num.'_13';
+                //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa13 = $img_nombre13.'.jpg';
+                $src13= $destino13.$imgActa13;
+            }else {
+                $destino13 = 0;
+                $img_nombre13 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa13 = 0;
+                $src13= 0;
+            }
+
+            //imagen 14
+            $nombre_image14 = $image14['name'];
+            $type14 = $image14['type'];
+            $url_temp14 = $image14['tmp_name'];
+
+            $imgProducto14 = 'nodisponible.png';
+
+            if ($nombre_image14 != '') {
+                $destino14 = 'img/actas/';
+                $img_nombre14 = 'acta_'.$fecha_ejecucion.'_'.$num.'_14';
+                //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa14 = $img_nombre14.'.jpg';
+                $src14= $destino14.$imgActa14;
+            }else {
+                $destino14 = 0;
+                $img_nombre14 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa14 = 0;
+                $src14= 0;
+            }
+
+            //imagen 15
+            $nombre_image15 = $image15['name'];
+            $type15 = $image15['type'];
+            $url_temp15 = $image15['tmp_name'];
+
+            $imgProducto15 = 'nodisponible.png';
+
+            if ($nombre_image15 != '') {
+                $destino15 = 'img/actas/';
+                $img_nombre15 = 'acta_'.$fecha_ejecucion.'_'.$num.'_15';
+                //$img_nombre3 = 'acta_'.$num.'_3_'.$fecha_ejecucion;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa15 = $img_nombre15.'.jpg';
+                $src15= $destino15.$imgActa15;
+            }else {
+                $destino15 = 0;
+                $img_nombre15 = 0;
+                //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
+                $imgActa15 = 0;
+                $src15= 0;
+            }
+
         
 
 
@@ -251,6 +414,13 @@
                                                                                 image6,
                                                                                 image7,
                                                                                 image8,
+                                                                                image9,
+                                                                                image10,
+                                                                                image11,
+                                                                                image12,
+                                                                                image13,
+                                                                                image14,
+                                                                                image15,
                                                                                 usuario_id
                                                                             )
                                                                             VALUES(
@@ -271,6 +441,13 @@
                                                                                 '$imgActa6',
                                                                                 '$imgActa7',
                                                                                 '$imgActa8',
+                                                                                '$imgActa9',
+                                                                                '$imgActa10',
+                                                                                '$imgActa11',
+                                                                                '$imgActa12',
+                                                                                '$imgActa13',
+                                                                                '$imgActa14',
+                                                                                '$imgActa15',
                                                                                 '$usuario_id'
                                                                             )");
                                 
@@ -286,10 +463,18 @@
                                                 move_uploaded_file($url_temp6,$src6);
                                                 move_uploaded_file($url_temp7,$src7);
                                                 move_uploaded_file($url_temp8,$src8);
+
+                                                move_uploaded_file($url_temp9,$src9);
+                                                move_uploaded_file($url_temp10,$src10);
+                                                move_uploaded_file($url_temp11,$src11);
+                                                move_uploaded_file($url_temp12,$src12);
+                                                move_uploaded_file($url_temp13,$src13);
+                                                move_uploaded_file($url_temp14,$src14);
+                                                move_uploaded_file($url_temp15,$src15);
                                             
                                             } 
                                             $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
-                                            header("Location: registro_exp.php");
+                                            header("Location: lista_exp.php");
 
                                         }else{
                                             $alert = '<p class="alert alert-danger "> El registro fallo </p> ';
@@ -328,7 +513,7 @@
         <!-- contenido del sistema-->
 
         <div id="layoutSidenav_content">
-                <main>
+                <main>0
                     <div class="container-fluid ">
                     <div class="container-fluid  ">
                     <div>
@@ -427,12 +612,12 @@
 
                              <div class=" row"> <hr>
 
-                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-folder-open"></i> Subir Actas 
+                             <div class="dropdown col ">
+                                <button class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                                <i class="fa-solid fa-folder-open"></i> Subir Actas 1-8 Pag.
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-dark ">
-                                    <li><a class="dropdown-item " href="#">Acta N°1<input type="file" class="form-control form-control-sm"  name="image" id="files" required></a></li>
+                                <ul class="dropdown-menu dropdown-menu-dark w-100 ">
+                                    <li><a class="dropdown-item" href="#">Acta N°1<input type="file" class="form-control form-control-sm"  name="image" id="files" required></a></li>
                                     <li><a class="dropdown-item" href="#">Acta N°2<input type="file" class="form-control form-control-sm"  name="image2" id="files" ></a></li>
                                     <li><a class="dropdown-item" href="#">Acta N°3<input type="file" class="form-control form-control-sm"  name="image3" id="files"></a></li>
 
@@ -441,10 +626,37 @@
                                     <li><a class="dropdown-item" href="#">Acta N°6<input type="file" class="form-control form-control-sm"  name="image6" id="files"></a></li>
                                     <li><a class="dropdown-item" href="#">Acta N°7<input type="file" class="form-control form-control-sm"  name="image7" id="files"></a></li>
                                     <li><a class="dropdown-item" href="#">Acta N°8<input type="file" class="form-control form-control-sm"  name="image8" id="files"></a></li>
+
+                                    
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item">Subir las actas en el orden correcto</a></li>
                                 </ul>
                                 </div>
+
+                                <div class="dropdown col ">
+                                <button class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                                <i class="fa-solid fa-folder-open"></i> Subir Actas 9-15 Pag.
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark w-100 ">
+                                    <li><a class="dropdown-item" href="#">Acta N°9<input type="file" class="form-control form-control-sm"  name="image9" id="files"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°10<input type="file" class="form-control form-control-sm"  name="image10" id="files" ></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°11<input type="file" class="form-control form-control-sm"  name="image11" id="files"></a></li>
+
+                                    <li><a class="dropdown-item" href="#">Acta N°12<input type="file" class="form-control form-control-sm"  name="image12" id="files"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°13<input type="file" class="form-control form-control-sm"  name="image13" id="files"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°14<input type="file" class="form-control form-control-sm"  name="image14" id="files"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°15<input type="file" class="form-control form-control-sm"  name="image15" id="files"></a></li>
+                                    
+
+                                    
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item">Subir las actas en el orden correcto</a></li>
+                                </ul>
+                                </div>
+
+                                
+
+                            
 
 
                                 

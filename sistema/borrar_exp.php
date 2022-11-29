@@ -22,27 +22,50 @@ if (empty($_REQUEST['id'])) {
             $ruta2 = $ruta.$image;
 
             
-            $image2 = $data['image'];
+            $image2 = $data['image2'];
             $ruta4 = $ruta.$image2;
             
             
-            $image3 = $data['image'];
+            $image3 = $data['image3'];
             $ruta6 = $ruta.$image3;
 
-            $image4 = $data['image'];
+            $image4 = $data['image4'];
             $ruta8 = $ruta.$image4;
 
-            $image5 = $data['image'];
+            $image5 = $data['image5'];
             $ruta10 = $ruta.$image5;
 
-            $image6 = $data['image'];
+            $image6 = $data['image6'];
             $ruta12 = $ruta.$image6;
 
-            $image7 = $data['image'];
+            $image7 = $data['image7'];
             $ruta14 = $ruta.$image7;
 
-            $image8 = $data['image'];
+            $image8 = $data['image8'];
             $ruta16 = $ruta.$image8;
+
+            $image9 = $data['image9'];
+            $ruta18 = $ruta.$image9;
+
+            $image10 = $data['image10'];
+            $ruta20 = $ruta.$image10;
+
+            $image11 = $data['image11'];
+            $ruta22 = $ruta.$image11;
+
+            $image12 = $data['image12'];
+            $ruta24 = $ruta.$image12;
+
+            $image13 = $data['image13'];
+            $ruta26 = $ruta.$image13;
+
+            $image14 = $data['image14'];
+            $ruta28 = $ruta.$image14;
+
+            $image15 = $data['image15'];
+            $ruta30 = $ruta.$image15;
+            
+
 
 
             
@@ -77,6 +100,14 @@ if (!empty($_POST)) {
             unlink($ruta12);
             unlink($ruta14);
             unlink($ruta16);
+
+            unlink($ruta18);
+            unlink($ruta20);
+            unlink($ruta22);
+            unlink($ruta24);
+            unlink($ruta26);
+            unlink($ruta28);
+            unlink($ruta30);
         
         } 
     }else {

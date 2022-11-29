@@ -8,6 +8,12 @@
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <script src="js/function.js"></script>
 <script src="assets/sweet/dist/sweetalert2.all.min.js"></script>
+<script src="assets/plotly/plotly-2.16.1.min.js"></script>
+<script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
 
 
 

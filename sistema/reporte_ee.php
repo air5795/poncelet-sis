@@ -88,6 +88,13 @@ ob_start();
                                                                                                         image6,
                                                                                                         image7,
                                                                                                         image8,
+                                                                                                        image9,
+                                                                                                        image10,
+                                                                                                        image11,
+                                                                                                        image12,
+                                                                                                        image13,
+                                                                                                        image14,
+                                                                                                        image15,
                                                                                                         ubicacion
                                                                                                         FROM
                                                                                                             exp_general
@@ -151,6 +158,21 @@ ob_start();
                             $ru7 = $data['image7'];
                             $image8= 'img/actas/'.$data['image8'];
                             $ru8 = $data['image8'];
+
+                            $image9= 'img/actas/'.$data['image9'];
+                            $ru9 = $data['image9'];
+                            $image10= 'img/actas/'.$data['image10'];
+                            $ru10 = $data['image10'];
+                            $image11= 'img/actas/'.$data['image11'];
+                            $ru11 = $data['image11'];
+                            $image12= 'img/actas/'.$data['image12'];
+                            $ru12 = $data['image12'];
+                            $image13= 'img/actas/'.$data['image13'];
+                            $ru13 = $data['image13'];
+                            $image14= 'img/actas/'.$data['image14'];
+                            $ru14 = $data['image14'];
+                            $image15= 'img/actas/'.$data['image15'];
+                            $ru15 = $data['image15'];
                             
 
                     ?>
@@ -228,6 +250,58 @@ ob_start();
                         $origen8 = "../sistema"."/$image8";
                         $destino8 = "../sistema/img/Exp_especifica"."/$ru8";
                         $resultado8 = copy($origen8, $destino8);
+                        
+                    }
+
+
+
+
+                    if (!empty($ru9)) {
+                        $origen9 = "../sistema"."/$image9";
+                        $destino9 = "../sistema/img/Exp_especifica"."/$ru9";
+                        $resultado9 = copy($origen9, $destino9);
+                        
+                    }
+
+                    if (!empty($ru10)) {
+                        $origen10 = "../sistema"."/$image10";
+                        $destino10 = "../sistema/img/Exp_especifica"."/$ru10";
+                        $resultado10 = copy($origen10, $destino10);
+                        
+                    }
+
+                    if (!empty($ru11)) {
+                        $origen11 = "../sistema"."/$image11";
+                        $destino11 = "../sistema/img/Exp_especifica"."/$ru11";
+                        $resultado11 = copy($origen11, $destino11);
+                        
+                    }
+
+                    if (!empty($ru12)) {
+                        $origen12 = "../sistema"."/$image12";
+                        $destino12 = "../sistema/img/Exp_especifica"."/$ru12";
+                        $resultado12 = copy($origen12, $destino12);
+                        
+                    }
+
+                    if (!empty($ru13)) {
+                        $origen13 = "../sistema"."/$image13";
+                        $destino13 = "../sistema/img/Exp_especifica"."/$ru13";
+                        $resultado13 = copy($origen13, $destino13);
+                        
+                    }
+
+                    if (!empty($ru14)) {
+                        $origen14 = "../sistema"."/$image14";
+                        $destino14 = "../sistema/img/Exp_especifica"."/$ru14";
+                        $resultado14 = copy($origen14, $destino14);
+                        
+                    }
+
+                    if (!empty($ru15)) {
+                        $origen15 = "../sistema"."/$image15";
+                        $destino15 = "../sistema/img/Exp_especifica"."/$ru15";
+                        $resultado15 = copy($origen15, $destino15);
                         
                     }
 

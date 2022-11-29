@@ -261,6 +261,11 @@ if (!empty($_POST)) {
                                                     $image = 'img/' . $data['foto'];
                                                 }
 
+                                                $ida = $data['id_inv'];
+                                                $stoc = $data['stock'];
+                                                $art= $data['articulo'];
+
+
                                         ?>
                                                 <tr>
                                                     <td><?php echo 'COD-' . $data['id_inv'] ?></td>
@@ -369,7 +374,7 @@ if (!empty($_POST)) {
                                                 </div>
 
                                                 <!-- Modal eliminar  -->
-                                                <div class="modal fade " id="exampleModali<?php echo $data['id_inv']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade " id="exampleModali<?php echo $ida; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content  bg-opacity-80">
                                                             <form action="eliminar_inventario.php" method="post">
@@ -379,10 +384,10 @@ if (!empty($_POST)) {
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="card-header text-center " style="padding: 0; margin: 0;">
-                                                                        <input type="hidden" name="idInv" value="<?php echo $data['id_inv']; ?>">
+                                                                        <input type="hidden" name="idInv" value="<?php echo $ida; ?>">
 
-                                                                        <input name="ename" class="form-control"  type="text" value=" <?php echo $data['articulo'] ?> " disabled>
-                                                                        <input name="ename" class="form-control"  type="text" value=" <?php echo $data['stock'] . ' Bs' ?> " disabled>
+                                                                        <input name="ename" class="form-control"  type="text" value=" <?php echo $art ?> " disabled>
+                                                                        <input name="ename" class="form-control"  type="text" value=" <?php echo $stoc ?> " disabled>
 
                                                                     </div>
 
@@ -390,6 +395,7 @@ if (!empty($_POST)) {
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                                                     <input class="btn btn-danger" type="submit" value="Eliminar">
+                                                                    
                                                                 </div>
 
                                                             </form>

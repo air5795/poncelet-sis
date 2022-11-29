@@ -3,38 +3,39 @@
     session_start();
     include "../conexion.php";
 
-    $query = mysqli_query($conexion, "SELECT * FROM gastos");
+    $query = mysqli_query($conexion, "SELECT * FROM gastos_c");
     $result = mysqli_num_rows($query);
     if ($result > 0) {
         while ($data = mysqli_fetch_array($query)) {
-             $num = $data['id_gasto'];
+             $num = $data['id_gastoC'];
              
         }}
 
-        $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_gasto) FROM gastos;");
+        $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_gastoC) FROM gastos_c;");
         $result_f = mysqli_fetch_array($sql_tfila);
-        $total2 = $result_f['COUNT(id_gasto)'];
+        $total2 = $result_f['COUNT(id_gastoC)'];
         $total3 =  $total2 + 1;
 
 
     if (!empty($_POST)) {
 
 
-        if (empty($_POST['persona'])  
-        || empty($_POST['monto_bs']) 
-        || empty($_POST['monto_dolares'])
-        || empty($_POST['detalle'])
+        if (empty($_POST['proyecto'])  
+        || empty($_POST['detalle']) 
+        || empty($_POST['monto_bs'])
+        || empty($_POST['monto_u'])
         || empty($_POST['fecha'])) {
             $alert = '<p class="alert alert-danger "> Llenar campos faltantes</p> ';
        } 
        else 
      {
             
-            $persona = $_POST['persona'];
+            $proyecto = $_POST['proyecto'];
             $detalle = $_POST['detalle'];
             $monto_bs = $_POST['monto_bs'];
-            $monto_dolares = $_POST['monto_dolares'];
+            $monto_u = $_POST['monto_u'];
             $fecha = $_POST['fecha'];
+            $origen = $_POST['origen'];
             $respaldo = $_FILES['respaldo'];
             $num = $total2 +1;
 
@@ -48,7 +49,7 @@
              $imgProducto = 'nodisponible.png';
  
              if ($nombre_image != '') {
-                 $destino = 'img/gastos_respaldos/';
+                 $destino = 'img/cajaChica_c_g/';
                  $img_nombre = 'respaldo'.$num.'_1_'.$fecha;
                  //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
                  $imgActa = $img_nombre.'.jpg';
@@ -56,21 +57,23 @@
              }
             
 
-                    $query_insert = mysqli_query($conexion, "INSERT INTO gastos(
-                        g_persona,
+                    $query_insert = mysqli_query($conexion, "INSERT INTO gastos_c(
+                        g_proyecto,
+                        g_detalleGasto,
                         g_montoBs,
                         g_montoU,
-                        g_fecha_i,
+                        g_fechai,
                         g_respaldo,
-                        g_detalle  
+                        g_origenDinero  
                     )
                     VALUES(
-                        '$persona',
+                        '$proyecto',
+                        '$detalle',
                         '$monto_bs',
-                        '$monto_dolares',
+                        '$monto_u',
                         '$fecha',
                         '$imgActa',
-                        '$detalle'
+                        '$origen'
 
                         
                     )");
@@ -83,7 +86,7 @@
                 
                 } 
                 $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
-                header("Location: gastos.php");
+                header("Location: gastos_c.php");
 
             }else{
                 $alert = '<p class="alert alert-danger "> El registro fallo </p> ';
@@ -168,7 +171,7 @@
                             <div class="col-md-6">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Origen Dinero </span> 
-                                    <input style="text-transform:uppercase" class="form-control form-control-sm  bg-opacity-10" name="detalle" type="text" value="" required  />
+                                    <input style="text-transform:uppercase" class="form-control form-control-sm  bg-opacity-10" name="origen" type="text" value="" required  />
                                 </div>
                             </div>
 
@@ -182,7 +185,7 @@
                             <div class="col-md-3">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Monto en $u$ </span> 
-                                    <input class="form-control form-control-sm money " id="dolar" name="monto_dolares" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_bs()" required />
+                                    <input class="form-control form-control-sm money " id="dolar" name="monto_u" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_bs()" required />
                                 </div>
                             </div>
 
@@ -250,11 +253,11 @@
 
                         <div class="col">
                         <?php
-                            $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(g_montoBs) FROM gastos;");
+                            $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(g_montoBs) FROM gastos_c;");
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
                             $total = $result_sum['SUM(g_montoBs)']; 
 
-                            $sql_suma_bs2 = mysqli_query($conexion, "SELECT SUM(montoBs) FROM ingresos;");
+                            $sql_suma_bs2 = mysqli_query($conexion, "SELECT SUM(montoBs) FROM ingresos_c;");
                             $result_sum2 = mysqli_fetch_array($sql_suma_bs2);
                             $total2 = $result_sum2['SUM(montoBs)'];
 
@@ -272,21 +275,13 @@
                                     <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i>  Lista de Gastos </a>
                                     <form class="d-flex" role="search">
 
-                                    <div class="btn-group" role="group">
-                                        <button style="border: groove;" type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-print"></i> REPORTES
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                        <li> <a style="color:crimson" href="reporte_gastos.php" class="dropdown-item"><i class="fa-solid fa-print"></i></i> Reporte de Gastos</a></li>
-                                        <li><a style="color:crimson" href="reporte_cajachica.php" class="dropdown-item"><i class="fa-solid fa-print"></i></i> Reporte General</a></li>
-                                        </ul>
-                                    </div>
+                                    
                                     
 
                                    
                                     <button style="border: groove;" disabled class="btn btn-sm btn-danger" type="submit"> <strong> TOTAL GASTOS: </strong> <?php echo $total;?> Bs</button>
                                     <button style="border: groove;" disabled class="btn btn-light btn-sm" type="submit"> <strong>
-                                        <i class="fa-solid fa-filter-circle-dollar"></i> SALDO: </strong>
+                                        <i class="fa-solid fa-filter-circle-dollar"></i> SALDO TOTAL: </strong>
                                         <?php 
                                         if ($saldo > 0) {
                                             echo '<span style="color: green;"> '.$saldo.'  bs </span>';    
@@ -301,20 +296,7 @@
                                 </div>
                                 </nav>
 
-                                <nav class="navbar bg-light">
-                                <div class="container-fluid" style="BACKGROUND-COLOR: #e1e1e1;">
-                                    <a class="navbar-brand text-black"> <i class="fa-solid fa-print"></i> Imprimir por Rango de fechas </a>
-                                    <form action="reporte_gastosFechas.php"  class="form-inline" method="POST" name="formFechas" id="formFechas">
-
-                                        <label for="">Fecha Inicio</label>
-                                        <input type="date" name="fecha_inicio" id="" required > 
-                                        <label for="">Fecha Final</label>
-                                        <input type="date" name="fecha_final" id="" required >
-                                        <input type="submit" value="Imprimir" >
-
-                                    </form>
-                                </div>
-                                </nav>
+                                
                             
                             <table class="table table-bordered">
                             <table  class="tabla_ale" id="datatablesSimple"  >
@@ -342,17 +324,18 @@
 
                                     $query = mysqli_query($conexion, "SELECT
 ROW_NUMBER() 
-OVER(ORDER BY id_gasto ) 
+OVER(ORDER BY id_gastoC ) 
 row_num,
-id_gasto,
-g_persona, 
+id_gastoC,
+g_proyecto, 
+g_detalleGasto,
 g_montoBs,
 g_montoU,
-g_detalle,
-g_fecha_i,
-g_respaldo
-FROM gastos
-ORDER BY id_gasto DESC;");
+g_fechai,
+g_respaldo,
+g_origenDinero
+FROM gastos_c
+ORDER BY id_gastoC DESC;");
 
                                 
 
@@ -360,7 +343,7 @@ ORDER BY id_gasto DESC;");
                                     if ($result > 0) {
                                         while ($data = mysqli_fetch_array($query)) {
                                             if ($data['g_respaldo'] != 'nodisponible.png' ) {
-                                                $image = 'img/gastos_respaldos/'.$data['g_respaldo'];
+                                                $image = 'img/cajaChica_c_g/'.$data['g_respaldo'];
                                                 
 
                                             }else {
@@ -375,12 +358,14 @@ ORDER BY id_gasto DESC;");
 
                             <tr>
                                 <td><?php echo $data['row_num'] ?></td>
-                                <td><?php echo $data['g_persona'] ?></td>
-                                <td><?php echo $data['g_detalle'] ?></td>
+                                <td width="20%"><?php echo $data['g_proyecto'] ?></td>
+                                <td width="30%"><?php echo $data['g_detalleGasto'] ?></td>
+                                <td ><?php echo $data['g_origenDinero'] ?></td>
                                 <td class=" bg-success bg-opacity-10"><?php echo number_format($data['g_montoBs'],2,'.',',').' Bs' ?></td>
-                                <td><?php 
+                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['g_montoU'],2,'.',',').' $' ?></td>
+                                <td width="15%"><?php 
                                     setlocale(LC_TIME, "spanish");
-                                    echo strftime('%e de %B %Y', strtotime($data['g_fecha_i']));
+                                    echo strftime('%e de %B %Y', strtotime($data['g_fechai']));
                                     ?>
                                 </td>
                                 
@@ -399,10 +384,7 @@ ORDER BY id_gasto DESC;");
                                     <i class="fa-solid fa-eye"></i> 
                                     </a>
                                 
-                                    
-
-                                    
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_gasto']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_gastoC']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
 
                                     
                                 </div>

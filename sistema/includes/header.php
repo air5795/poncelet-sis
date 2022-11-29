@@ -259,7 +259,7 @@ if (empty($_SESSION['active'])) {
                                         </div>
 
 
-                                        <!-- lista de menu clientes -->
+                                        
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseclie" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
@@ -329,6 +329,29 @@ if (empty($_SESSION['active'])) {
                                                     </nav>
                                                 </div>
 
+
+                                            </nav>
+                                        </div>
+
+                                        <!-- lista de menu seguimiento -->
+
+                                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsepro" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-simple"></i></div>
+                                Seguimiento Proyectos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+
+                            <div class="collapse" id="collapsepro" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                                
+                                                <a class="nav-link " href="proyectos_comer.php" >
+                                                <i class="fas fa-file-circle-plus"></i>- Gestor Proyectos 
+                                                    
+                                                </a>
+
+                                                
+
+                                                
 
                                             </nav>
                                         </div>
