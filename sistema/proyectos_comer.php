@@ -26,12 +26,14 @@ if (!empty($_POST)) {
         empty($_POST['nombre'])
         || empty($_POST['monto'])
         || empty($_POST['estado'])
+        || empty($_POST['ubi'])
     ) {
         $alert = '<p class="alert alert-danger "> Llenar campos faltantes</p> ';
     } else {
         $Nombre       = $_POST['nombre'];
         $Monto          = $_POST['monto'];
         $Estado         = $_POST['estado'];
+        $Ubicacion         = $_POST['ubi'];
         $Cuce       = $_POST['cuce'];
         $Tramite       = $_POST['tramite'];
         $Comprobante           = $_POST['comprobante'];
@@ -48,6 +50,7 @@ if (!empty($_POST)) {
 
         $query_insert = mysqli_query($conexion, "INSERT INTO proyectos_comer(
                         nombre,
+                        ubicacion,
                         num_tramite,
                         num_comprobante,
                         cuce,
@@ -57,6 +60,7 @@ if (!empty($_POST)) {
                     )
                     VALUES(
                         '$Nombre',
+                        '$Ubicacion',
                         '$Tramite',
                         '$Comprobante',
                         '$Cuce',
@@ -113,28 +117,10 @@ if (!empty($_POST)) {
 
                     <hr>
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="panel panel-primary">
-                                    <div class="panel panel-heading">Graficas con Plotly</div>
-                                    <div class="panel panel-body">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div id="carga">
 
-                                                </div>
+                    
 
-                                            </div>
-                                            <div class="col-sm-6">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     
 
@@ -150,7 +136,7 @@ if (!empty($_POST)) {
                     <div class="row">
                         <p>
                         <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Registrar Nuevo Proyecto
+                        <i class="fa-solid fa-list-check"></i> Registrar Nuevo Proyecto Para Seguimiento 
                         </a>
                         
                         </p>
@@ -174,6 +160,13 @@ if (!empty($_POST)) {
                                         <div class=" mb-3 mb-md-0">
                                             <span for="inputFirstName">Nombre Proyecto </span>
                                             <input class="form-control form-control-sm  bg-opacity-10" name="nombre" type="text" value="" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class=" mb-3 mb-md-0">
+                                            <span for="inputFirstName">Lugar (Ubicacion) </span>
+                                            <input class="form-control form-control-sm  bg-opacity-10" name="ubi" type="text" value="" required />
                                         </div>
                                     </div>
 
@@ -301,14 +294,14 @@ if (!empty($_POST)) {
 
                                 <nav class="navbar bg-light">
                                     <div class="container-fluid ">
-                                        <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i> Lista de Productos </a>
+                                        <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i> Lista de Proyectos </a>
                                         <form class="d-flex" role="search">
 
 
 
 
 
-                                            <button style="margin:2px;" class="btn btn-sm btn-secondary" type="submit"> <strong> TOTAL PRODUCTOS : </strong> <?php echo $totales; ?> </button>
+                                            <button style="margin:2px;" class="btn btn-sm btn-secondary" type="submit"> <strong> TOTAL PROYECTOS : </strong> <?php echo $totales; ?> </button>
                                             
                                             <a href="ssreporte_inventario.php" class="btn btn-danger btn-sm" style="margin:2px;"> <i class="fa-solid fa-print"></i> Imprimir Reporte de proyectos</a>
                                         </form>
@@ -323,13 +316,14 @@ if (!empty($_POST)) {
                                             <tr class="">
 
                                                 <th>CODIGO</th>
-                                                <th width="30%">NOMBRE DE PROYECTO </th>
+                                                <th width="20%">NOMBRE DE PROYECTO </th>
+                                                <th>UBICACION</th>
                                                 <th>N° DE TRAMITE</th>
                                                 <th>N° DE COMPROBANTE</th>
                                                 <th>N° DE CUCE</th>
                                                 <th>MONTO (BS)</th>
                                                 <th>FECHA</th>
-                                                <th>ESTADO</th>
+                                                <th width="10%">ESTADO</th>
                                                 <th>OBSERVACIONES</th>
 
 
@@ -351,21 +345,37 @@ if (!empty($_POST)) {
                                         $result = mysqli_num_rows($query);
                                         if ($result > 0) {
                                             while ($data = mysqli_fetch_array($query)) {
+
+                                                if ($data['estado'] == 'proceso') {
+                                                    $color = '#ffffcb';
+                                                    $color2 = 'yellow';
+                                                    $texto = 'black';
+                                                    $imagen = '<i class="fa-solid fa-triangle-exclamation"></i> En Proceso';
+                                                }
+                                                else {
+                                                    $color = '#c6ffc6';
+                                                    $color2 = 'green';
+                                                    $texto = 'white';
+                                                    $imagen = '<i class="fa-solid fa-square-check"></i> Pagado';
+                                                }
                                                 
                                         ?>
 
-                                                <tr>
+                                                <tr style="background-color:<?php echo $color ?> ;">
                                                     <td><?php echo 'CODP-' . $data['id_pro'] ?></td>
                                                     <td><?php echo $data['nombre'] ?></td>
+                                                    <td><?php echo $data['ubicacion'] ?></td>
                                                     <td><?php echo $data['num_tramite'] ?></td>
                                                     <td><?php echo $data['num_comprobante'] ?></td>
                                                     <td><?php echo $data['cuce'] ?></td>
                                                     <td><?php echo $data['monto'] ?></td>
                                                     <td><?php echo $data['fecha'] ?></td>
-                                                    <td><?php echo $data['estado'] ?></td>
+                                                    <td><?php echo '<a style="background-color:' .$color2.' ; color:'.$texto.'" class="btn btn-secondary btn-sm w-100">' .$imagen. '</a>' ?></td>
                                                     <td><?php echo $data['observacion'] ?></td>
 
 
+                                                    
+                                                   
 
 
 
@@ -373,9 +383,7 @@ if (!empty($_POST)) {
 
 
 
-
-
-                                                    <td class="col-sm-2">
+                                                    <td class="col-sm-2" style="background-color:white ;">
 
                                                         <div style="min-width: max-content;">
 
@@ -412,12 +420,19 @@ if (!empty($_POST)) {
                                                                             </div>
                                                                         </div>
 
+                                                                        <div class="col-md-12">
+                                                                            <div class=" mb-3 mb-md-0">
+                                                                                <span for="inputFirstName">Ubicacion </span>
+                                                                                <input class="form-control form-control-sm  bg-opacity-10" name="eubi" type="text" value="<?php echo $data['ubicacion'] ?>" required />
+                                                                            </div>
+                                                                        </div>
+
                                                                 
 
                                                                 <div class="col-md-12">
                                                                     <div class=" mb-3 mb-md-0">
                                                                         <span for="inputFirstName">Monto</span>
-                                                                        <input  id="monto" style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" placeholder="0"  name="emonto" type="text" value="" required />
+                                                                        <input  id="monto" style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" placeholder="0"  name="emonto" type="text" value="<?php echo $data['monto'] ?>" required />
                                                                     </div>
                                                                 </div>
 
@@ -427,7 +442,7 @@ if (!empty($_POST)) {
                                                                 <div class="col-md-12">
                                                                     <label for="tipo">Estado </label>
                                                                     
-                                                                    <select name="estado" id="estado" class="form-control form-control-sm " required>
+                                                                    <select name="eestado" id="eestado" class="form-control form-control-sm " required>
                                                                         <option value="<?php echo $data['estado'] ?>"><?php echo $data['estado'] ?></option>
                                                                         <option  value="proceso">En Proceso</option>
                                                                         <option  value="pagado">Pagado</option>
@@ -581,17 +596,11 @@ if (!empty($_POST)) {
 
 
 
-
-
     
    
 
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#carga').load('graficas.php');
-        });    
-    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

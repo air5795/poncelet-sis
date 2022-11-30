@@ -257,7 +257,7 @@
                                     
 
 
-                                    $s = mysqli_query($conexion, "SELECT SUM(montoBs) FROM ingresos_c WHERE proyecto = '$pro';");   
+                                    $s = mysqli_query($conexion, "SELECT SUM(montoBs) FROM ingresos_c WHERE proyecto = '$pro' ;");   
                                     while($rows=mysqli_fetch_array($s)){
                                         $ing = $rows[0];
                                         if (!empty($rows[0]) ) {
@@ -273,7 +273,7 @@
                                 <?php
 
                                     
-                                    $s = mysqli_query($conexion, "SELECT SUM(g_montoBs) FROM gastos_c WHERE g_proyecto = '$pro';");   
+                                    $s = mysqli_query($conexion, "SELECT SUM(g_montoBs) FROM gastos_c WHERE g_proyecto = '$pro' and contar = 'si' ;");   
                                     while($data=mysqli_fetch_array($s)){
                                         $gas = $data[0];
                                         if (!empty($data[0]) ) {

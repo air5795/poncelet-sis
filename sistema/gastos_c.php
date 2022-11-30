@@ -36,6 +36,7 @@
             $monto_u = $_POST['monto_u'];
             $fecha = $_POST['fecha'];
             $origen = $_POST['origen'];
+            $contar = $_POST['contar'];
             $respaldo = $_FILES['respaldo'];
             $num = $total2 +1;
 
@@ -64,7 +65,8 @@
                         g_montoU,
                         g_fechai,
                         g_respaldo,
-                        g_origenDinero  
+                        g_origenDinero,
+                        contar  
                     )
                     VALUES(
                         '$proyecto',
@@ -73,7 +75,8 @@
                         '$monto_u',
                         '$fecha',
                         '$imgActa',
-                        '$origen'
+                        '$origen',
+                        '$contar'
 
                         
                     )");
@@ -196,6 +199,20 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-8">
+                            <span for="inputFirstName">Contabilizar </span> 
+                            <select style="width: 100%;font-size:12px ;" name="contar" id="select" class="form-control  select" required >
+                                        <option value="" >Seleccione una opción : </option>
+                                        <option value="si" >SI </option>
+                                        <option value="no" >NO </option>
+                                        
+                                        
+                                    </select>
+                            </div>
+
+
+                            
+
                             
 
                             <div class="col-md-8">
@@ -204,6 +221,11 @@
                                 <input type="file" class="form-control form-control-sm"  name="respaldo" id="files" >
                                 </div>
                             </div> 
+                            
+
+                             
+
+                            
 
                             
 
@@ -305,10 +327,10 @@
                                         
                                         <th>N°</th>
                                         <th>Proyecto</th>
-                                        <th>Detalle de Gasto</th>
-                                        <th>Origen de Dinero</th>
+                                        <th width="20%">Detalle de Gasto</th>
+                                        <th width="10%">Origen de Dinero</th>
                                         <th>Monto(Bs)</th>
-                                        <th>Monto($)</th>
+                                        
                                         <th>Fecha de Gasto</th>
                                         
                                         
@@ -362,7 +384,7 @@ ORDER BY id_gastoC DESC;");
                                 <td width="30%"><?php echo $data['g_detalleGasto'] ?></td>
                                 <td ><?php echo $data['g_origenDinero'] ?></td>
                                 <td class=" bg-success bg-opacity-10"><?php echo number_format($data['g_montoBs'],2,'.',',').' Bs' ?></td>
-                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['g_montoU'],2,'.',',').' $' ?></td>
+                               
                                 <td width="15%"><?php 
                                     setlocale(LC_TIME, "spanish");
                                     echo strftime('%e de %B %Y', strtotime($data['g_fechai']));

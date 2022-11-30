@@ -1,12 +1,13 @@
 <?php
 
+
 session_start();
 include "../conexion.php";
 
 $idPRO = trim($_POST['idProyecto']);
 $namep = trim($_POST['pname']);
 
-$sql_suma_bs = mysqli_query($conexion, "SELECT SUM(g_montoBs) FROM gastos_c where g_proyecto = '$namep'");
+$sql_suma_bs = mysqli_query($conexion, "SELECT SUM(g_montoBs) FROM gastos_c where g_proyecto = '$namep' and contar = 'si'");
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
                             $total = $result_sum['SUM(g_montoBs)']; 
 
@@ -193,7 +194,8 @@ g_montoU,
 g_detalleGasto,
 g_origenDinero,
 g_fechai,
-g_respaldo
+g_respaldo,
+contar
 FROM gastos_c
 WHERE g_proyecto = '$namep'
 ORDER BY g_fechai ;");
@@ -205,12 +207,18 @@ ORDER BY g_fechai ;");
                                         while ($data = mysqli_fetch_array($query)) {
                                             
                                             
+                                            if ($data['contar'] == 'si') {
+                                                $colorfila = 'white';
                                             
+                                            }
+                                            else {
+                                                $colorfila = '#f5b5bb';
+                                            }
 
                                             
 
                                     ?>
-                            <tr>
+                            <tr style="background-color:<?php echo $colorfila ?> ;">
                                 <td><?php echo $data['row_num'] ?></td>
                                 
                                 <td><?php echo $data['g_detalleGasto'] ?></td>

@@ -42,7 +42,7 @@
 
         <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-4">
+                    <div class="container-fluid px-4 p-2">
                         <div class="alert alert-warning alert-dismissible fade show " role="alert">
                              <?php echo $_SESSION['nombre']  ?>  <strong> Bienvenido al Sistema ! <br></strong> En este sistema encontraras una serie de herramientas para la automatizacion del manejo de la informacion en PONCELET.
                             <button type="button" class=" btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
@@ -114,10 +114,39 @@
 
                                     <i class="fa-solid fa-person-digging cons"></i>
                                 </div>
+
+                                
                             </div>
                         </div>
 
                         <hr>
+
+                        <?php 
+                                
+
+                                $sql_pro = mysqli_query($conexion, "SELECT COUNT(*) FROM proyectos_comer WHERE estado = 'proceso';");
+                                $res = mysqli_fetch_array($sql_pro);
+                                $r = $res['COUNT(*)']; 
+
+                                ?>
+
+
+                            <div class="card text-center">
+                            <div class="card-header">
+                            <strong>
+                                Seguimiento : </strong> Proyectos Pendientes de Pago
+                            </div>
+                            <div class="card-body" style="background-color: antiquewhite;">
+                                <h5 class="card-title"><a href="#" class="btn btn-warning"> <strong> N° de Proyectos pendientes : </strong><?php echo $r ?></a></h5>
+                                
+                                
+                                
+                                
+                            </div>
+                            <div class="card-footer text-muted">
+                            
+                            </div>
+                            </div>
 
                         
                         
