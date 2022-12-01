@@ -56,7 +56,10 @@ if (empty($_SESSION['active'])) {
                                                                 } elseif ($_SESSION['iduser'] == 32 ) {
                                                                     echo '<img style="width:35px; height:35px;" src="../sistema/img/edwin.png" >';
                                                                         //echo $_SESSION['iduser'];
-                                                                    }
+                                                                    } elseif ($_SESSION['iduser'] == 33 ) {
+                                                                        echo '<img style="width:35px; height:35px;" src="../sistema/img/edwin.png" >';
+                                                                            //echo $_SESSION['iduser'];
+                                                                        }
                                                 
                                                 ?> </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -82,7 +85,7 @@ if (empty($_SESSION['active'])) {
                             </a>
 
                             <?php
-                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 ) {
+                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 or $_SESSION['iduser'] == 33 ) {
                             
                         
                         ?> 
@@ -213,7 +216,7 @@ if (empty($_SESSION['active'])) {
                             ?>
                             
                             <?php
-                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 ) {
+                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 or $_SESSION['iduser'] == 33 ) {
                             
                         
                         ?>

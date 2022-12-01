@@ -132,12 +132,47 @@ if (!empty($_POST)) {
                     <!-- contenido del sistema 2-->
                     <!-- formulario de registro de usuarios-->
 
+                    
+
 
                     <div class="row">
+                    <p>
+                    
+                    
+                    </p>
+                    <div class="collapse" id="collapseExample2">
+                    <div class="card card-body">
+
+                        <?php
+                            $query = mysqli_query($conexion, "SELECT monto,fecha,nombre FROM proyectos_comer order by fecha asc");
+                            foreach ($query as $data) {
+                                $monto[]    = $data['monto'];
+                                $fecha[]    = $data['fecha'];
+                                $nombre[]   = $data['nombre'];
+                            }
+                        ?>
+
+                        <div style="width:100%; height:500px;">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        
+                    </div>
+                    </div>
+
+
+
+
+
+
+
                         <p>
                         <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <i class="fa-solid fa-list-check"></i> Registrar Nuevo Proyecto Para Seguimiento 
                         </a>
+
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Graficas
+                        </a>    
                         
                         </p>
                         <div class="collapse" id="collapseExample">
@@ -594,7 +629,49 @@ if (!empty($_POST)) {
     </div>
 
 
+    <script>
+  const ctx = document.getElementById('myChart');
 
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <?php
+             $fech = json_encode($fecha);
+             $nom = json_encode($nombre);
+
+             //echo $nom;
+             echo $fech;
+             
+             ?>,
+      datasets: [{
+        label: 'proyecto',
+        data:  <?php echo json_encode($monto)?>,
+        backgroundColor: [
+      
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(153, 102, 255, 0.2)'
+      
+        ],
+        borderColor: [
+      
+      'coral',
+      
+        ],
+        borderWidth: 0.1
+      }]
+    },
+    
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+ 
 
     
    
