@@ -206,6 +206,10 @@ include "../conexion.php";
                                     <a href="borrar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-danger  btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar">
                                     <i class="fa-solid fa-trash-can"></i> 
                                     </a>
+
+                                    <a style="background-color: #eeee90;color: #505050;border-color: black;" href="editar_acta.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="editar Imagen">
+                                    <i class="fa-solid fa-upload"></i> Editar Acta(s)
+                                    </a>
                                 </div>
                                     
                                     

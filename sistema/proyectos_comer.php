@@ -27,6 +27,7 @@ if (!empty($_POST)) {
         || empty($_POST['monto'])
         || empty($_POST['estado'])
         || empty($_POST['ubi'])
+        || empty($_POST['fecha'])
     ) {
         $alert = '<p class="alert alert-danger "> Llenar campos faltantes</p> ';
     } else {
@@ -36,6 +37,7 @@ if (!empty($_POST)) {
         $Ubicacion         = $_POST['ubi'];
         $Cuce       = $_POST['cuce'];
         $Tramite       = $_POST['tramite'];
+        $Fecha       = $_POST['fecha'];
         $Comprobante           = $_POST['comprobante'];
         $Obs      = $_POST['obs'];
 
@@ -55,6 +57,7 @@ if (!empty($_POST)) {
                         num_comprobante,
                         cuce,
                         monto,
+                        fecha,
                         estado,
                         observacion
                     )
@@ -65,6 +68,7 @@ if (!empty($_POST)) {
                         '$Comprobante',
                         '$Cuce',
                         '$Monto',
+                        '$Fecha',
                         '$Estado',
                         '$Obs'
 
@@ -114,46 +118,38 @@ if (!empty($_POST)) {
 
                     <h1 class="mt-4 col"><i class="fa-solid fa-chart-simple"></i> <strong>Seguimiento </strong><span style="color:#fd6f0a;"> Proyectos Comercializadora </span></h1>
 
-
                     <hr>
-
-
-                    
-
-                    
-
-                    
-
-
-
-
-
 
                     <!-- contenido del sistema 2-->
                     <!-- formulario de registro de usuarios-->
 
-                    
-
-
                     <div class="row">
                     <p>
-                    
-                    
+                                        
                     </p>
                     <div class="collapse" id="collapseExample2">
                     <div class="card card-body">
 
-                        <?php
-                            $query = mysqli_query($conexion, "SELECT monto,fecha,nombre FROM proyectos_comer order by fecha asc");
+                    <?php
+                            $query = mysqli_query($conexion, "SELECT monto,fecha,nombre FROM proyectos_comer where estado = 'proceso' order by fecha DESC limit 10");
                             foreach ($query as $data) {
                                 $monto[]    = $data['monto'];
-                                $fecha[]    = $data['fecha'];
-                                $nombre[]   = $data['nombre'];
+                                //$fecha[]    = $data['fecha'];
+                                $nombre[]   = $data['nombre'].' FECHA: '.$data['fecha'];
+
                             }
+
                         ?>
 
-                        <div style="width:100%; height:500px;">
-                            <canvas id="myChart"></canvas>
+                        
+
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-chart-area me-1"></i>
+                                Seguimiento de Proyectos 
+                            </div>
+                            <div class="card-body"><canvas id="myChart" width="100%" height="30"></canvas></div>
+                            <div class="card-footer small text-muted">Actualizacion <?php echo date('d/m/y');?></div>
                         </div>
                         
                     </div>
@@ -170,8 +166,8 @@ if (!empty($_POST)) {
                         <i class="fa-solid fa-list-check"></i> Registrar Nuevo Proyecto Para Seguimiento 
                         </a>
 
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        Graficas
+                        <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fa-solid fa-chart-area"></i> Mostrar Graficamente 
                         </a>    
                         
                         </p>
@@ -202,6 +198,13 @@ if (!empty($_POST)) {
                                         <div class=" mb-3 mb-md-0">
                                             <span for="inputFirstName">Lugar (Ubicacion) </span>
                                             <input class="form-control form-control-sm  bg-opacity-10" name="ubi" type="text" value="" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class=" mb-3 mb-md-0">
+                                            <span for="inputFirstName">Fecha </span>
+                                            <input class="form-control form-control-sm  bg-opacity-10" name="fecha" type="date" value="" required />
                                         </div>
                                     </div>
 
@@ -252,7 +255,7 @@ if (!empty($_POST)) {
                                         </div>
                                     </div>
 
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class=" mb-3 mb-md-0">
                                             <span for="inputFirstName">Observacion </span>
                                             <input class="form-control form-control-sm  bg-opacity-10" name="obs" type="text" value="" />
@@ -357,14 +360,14 @@ if (!empty($_POST)) {
                                                 <th>N° DE COMPROBANTE</th>
                                                 <th>N° DE CUCE</th>
                                                 <th>MONTO (BS)</th>
-                                                <th>FECHA</th>
+                                                <th width="10%">FECHA</th>
                                                 <th width="10%">ESTADO</th>
                                                 <th>OBSERVACIONES</th>
 
 
 
 
-                                                <th>Acciones</th>
+                                                <th width="5%">Acciones</th>
                                             </tr>
                                         </thead>
                                         <?php
@@ -404,7 +407,13 @@ if (!empty($_POST)) {
                                                     <td><?php echo $data['num_comprobante'] ?></td>
                                                     <td><?php echo $data['cuce'] ?></td>
                                                     <td><?php echo $data['monto'] ?></td>
-                                                    <td><?php echo $data['fecha'] ?></td>
+                                                    <td><?php 
+
+                                                            setlocale(LC_TIME, "spanish");
+                                                            //echo $data['fecha_ejecucion']
+                                                            echo strftime('%e de %B %Y', strtotime($data['fecha']));
+                                                            
+                                                    ?></td>
                                                     <td><?php echo '<a style="background-color:' .$color2.' ; color:'.$texto.'" class="btn btn-secondary btn-sm w-100">' .$imagen. '</a>' ?></td>
                                                     <td><?php echo $data['observacion'] ?></td>
 
@@ -629,48 +638,120 @@ if (!empty($_POST)) {
     </div>
 
 
-    <script>
-  const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: <?php
-             $fech = json_encode($fecha);
-             $nom = json_encode($nombre);
 
-             //echo $nom;
-             echo $fech;
-             
-             ?>,
-      datasets: [{
-        label: 'proyecto',
-        data:  <?php echo json_encode($monto)?>,
-        backgroundColor: [
-      
+
+<script>
+
+    
+var data = {
+  labels: <?php echo json_encode($nombre)?> ,
+  
+  datasets: [
+      {
+      stack:1,
+      label: "Proyecto (Bs) :",
+      backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
       'rgba(255, 159, 64, 0.2)',
       'rgba(255, 205, 86, 0.2)',
-      'rgba(153, 102, 255, 0.2)'
-      
-        ],
-        borderColor: [
-      
-      'coral',
-      
-        ],
-        borderWidth: 0.1
-      }]
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(201, 203, 207)'
+    ],
+      borderWidth: 1,
+      data: <?php echo json_encode($monto)?>,
+      yAxisID:1
     },
     
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
+    
+  ],
+   
+};
+
+var options = {
+  indexAxis: "y",
+}
+
+var ctx = document.getElementById("myChart").getContext("2d");
+var myBarChart = new Chart(ctx, {
+  type: 'bar',
+  data: data,
+  options: options
+});
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+        const ctx = document.getElementById('myCharts');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: <?php
+                    $fech = json_encode($fecha);
+                    $nom = json_encode($nombre);
+
+                    //echo $nom;
+                    echo $fech;
+                    
+                    ?>,
+            datasets: [{
+                label: 'proyecto',
+                data:  <?php echo json_encode($monto)?>,
+                backgroundColor: [
+            
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(153, 102, 255, 0.2)'
+            
+                ],
+                borderColor: [
+            
+            'black',
+            
+                ],
+                borderWidth: 1
+            }]
+            },
+            
+            options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+            }
+        });
+
+        
+</script>
+
+
  
 
     

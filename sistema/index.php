@@ -54,6 +54,17 @@
 
                         <!--Home Content-->
 
+                        <?php
+                            $query = mysqli_query($conexion, "SELECT monto,fecha,nombre FROM proyectos_comer where estado = 'proceso' order by fecha DESC limit 10");
+                            foreach ($query as $data) {
+                                $monto[]    = $data['monto'];
+                                //$fecha[]    = $data['fecha'];
+                                $nombre[]   = $data['nombre'].' FECHA: '.$data['fecha'];
+
+                            }
+
+                        ?>
+
                         
 
 
@@ -131,23 +142,19 @@
                                 ?>
 
 
-                            <div class="card text-center">
-                            <div class="card-header">
-                            <strong>
-                                Seguimiento : </strong> Proyectos Pendientes de Pago
-                            </div>
-                            <div class="card-body" style="background-color: antiquewhite;">
-                                <h5 class="card-title"><a href="#" class="btn btn-warning"> <strong> N° de Proyectos pendientes : </strong><?php echo $r ?></a></h5>
-                                
-                                
-                                
-                                
-                            </div>
-                            <div class="card-footer text-muted">
                             
-                            </div>
-                            </div>
-
+                                
+                                <div class="card mb-4">
+                                    <div class="card-header alert alert-warning">
+                                        
+                                        <strong class="alert alert-warning "> <i class="fas fa-chart-area me-1"></i> Proyectos Pendientes de Pago Comercilizadora :  <?PHP echo $r; ?> </strong>
+                                    </div>
+                                    <div class="card-body"><canvas id="myChart" width="100%" height="20"></canvas></div>
+                                    <div class="card-footer small text-muted">Actualizacion <?php echo date('d/m/y');?></div>
+                                </div>
+                                
+                                
+                            
                         
                         
                                             
@@ -192,6 +199,56 @@
                 </footer>
             </div>
         </div>
+
+        <script>
+
+    
+var data = {
+  labels: <?php echo json_encode($nombre)?> ,
+  
+  datasets: [
+      {
+      stack:1,
+      label: "Proyecto (Bs) :",
+      backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(201, 203, 207)'
+    ],
+      borderWidth: 1,
+      data: <?php echo json_encode($monto)?>,
+      yAxisID:1
+    },
+    
+    
+  ],
+   
+};
+
+var options = {
+  indexAxis: "y",
+}
+
+var ctx = document.getElementById("myChart").getContext("2d");
+var myBarChart = new Chart(ctx, {
+  type: 'bar',
+  data: data,
+  options: options
+});
+</script>
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
