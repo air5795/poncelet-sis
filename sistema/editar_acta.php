@@ -38,8 +38,8 @@ if (!empty($_POST)) {
         $imgProducto = 'nodisponible.png';
 
         if ($nombre_image != '') {
-            $destino = 'img/productos/';
-            $img_nombre = 'producto' . $id_producto;
+            $destino = 'img/actas/';
+            $img_nombre = 'acta' . $id_producto;
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa = $img_nombre . '.jpg';
             $src = $destino . $imgActa;
