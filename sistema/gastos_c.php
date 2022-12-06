@@ -140,7 +140,7 @@
                         <div class="row">
                         
                         
-                        <div class="col-md-4">
+                        <div class="col-sm-4">
 
                         <form action="gastos_c.php" method="post" class="fields was-validated " enctype="multipart/form-data" novalidate >
 
@@ -150,7 +150,7 @@
                             
 
                             <a class="btn alert alert-dark font-weight-bold  disabled" role="button" aria-disabled="true"> <strong> N° de registro:  <?php echo $total3 ?> </strong></a>
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                             <span for="inputFirstName">Elegir Proyecto </span> 
                             <select style="width: 100%;font-size:12px ;" name="proyecto" id="select" class="form-control  select" required >
                                         <option value="" >Seleccione una opción : </option>
@@ -165,41 +165,41 @@
                                         ?>
                                     </select>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Detalle de Gasto </span> 
-                                    <input style="text-transform:uppercase" class="form-control form-control-sm  bg-opacity-10" name="detalle" type="text" value="" required  />
+                                    <input  class="form-control form-control-sm  bg-opacity-10" name="detalle" type="text" value="" required  />
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Origen Dinero </span> 
-                                    <input style="text-transform:uppercase" class="form-control form-control-sm  bg-opacity-10" name="origen" type="text" value="" required  />
+                                    <input  class="form-control form-control-sm  bg-opacity-10" name="origen" type="text" value="" required  />
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Monto en Bs.</span> 
                                     <input class="form-control form-control-sm money" id="bs" name="monto_bs" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_dolar()" required/>
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Monto en $u$ </span> 
                                     <input class="form-control form-control-sm money " id="dolar" name="monto_u" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_bs()" required />
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-sm-4">
                                 <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Fecha </span> 
                                     <input class="form-control form-control-sm" name="fecha" type="date" required />
                                 </div>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-sm-8">
                             <span for="inputFirstName">Contabilizar </span> 
                             <select style="width: 100%;font-size:12px ;" name="contar" id="select" class="form-control  select" required >
                                         <option value="" >Seleccione una opción : </option>
@@ -215,7 +215,7 @@
 
                             
 
-                            <div class="col-md-8">
+                            <div class="col-sm-8">
                                 <div class=" mb-3 mb-md-0">
                                 <span for="inputFirstName">Respaldo </span> 
                                 <input type="file" class="form-control form-control-sm"  name="respaldo" id="files" >
@@ -235,7 +235,7 @@
 
 
 
-                            <hr class="w-100">
+                            <hr class="">
                             <!-- selector--> 
 
                             
@@ -250,7 +250,7 @@
 
                             <hr>
 
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                                 <div class="" id="">
                                 <center> 
                                     
@@ -273,7 +273,7 @@
 
                         
 
-                        <div class="col">
+                        <div class="col-sm-8">
                         <?php
                             $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(g_montoBs) FROM gastos_c;");
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
@@ -301,14 +301,14 @@
                                     
 
                                    
-                                    <button style="border: groove;" disabled class="btn btn-sm btn-danger" type="submit"> <strong> TOTAL GASTOS: </strong> <?php echo $total;?> Bs</button>
+                                    <button style="border: groove;" disabled class="btn btn-sm btn-danger" type="submit"> <strong> TOTAL GASTOS: </strong> <?php echo number_format($total,2,'.',',');?> Bs</button>
                                     <button style="border: groove;" disabled class="btn btn-light btn-sm" type="submit"> <strong>
                                         <i class="fa-solid fa-filter-circle-dollar"></i> SALDO TOTAL: </strong>
                                         <?php 
                                         if ($saldo > 0) {
-                                            echo '<span style="color: green;"> '.$saldo.'  bs </span>';    
+                                            echo '<span style="color: green;"> '. number_format($saldo,2,'.',',').'  bs </span>';    
                                         } else {
-                                            echo '<span style="color: red;"> '.$saldo.'  bs </span>'; 
+                                            echo '<span style="color: red;"> '.number_format($saldo,2,'.',',').'  bs </span>'; 
                                         }
                                         
                                         
@@ -417,19 +417,19 @@ ORDER BY id_gastoC DESC;");
                             </tr>
 
                             <!-- Modal eliminar  -->
-                            <div class="modal fade " id="exampleModali<?php echo $data['id_gasto']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade " id="exampleModali<?php echo $data['id_gastoC']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content  bg-opacity-80">
-                                            <form action="eliminar_gastos.php" method="post">
+                                            <form action="eliminar_gastos_c.php" method="post">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Eliminar registro  </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="card-header text-center " style="padding: 0; margin: 0;">
-                                            <input type="hidden" name="idGasto" value="<?php echo $data['id_gasto']; ?>" >
+                                            <input type="hidden" name="idGasto" value="<?php echo $data['id_gastoC']; ?>" >
                                             
-                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['g_persona'] ?> " disabled>
+                                            <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['g_detalleGasto'] ?> " disabled>
                                             <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['g_montoBs'].' Bs' ?> " disabled>
                                              
                                             </div>

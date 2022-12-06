@@ -261,7 +261,7 @@
                                     while($rows=mysqli_fetch_array($s)){
                                         $ing = $rows[0];
                                         if (!empty($rows[0]) ) {
-                                            echo "<span style='text-align:left' class='btn btn-success btn-sm w-100 opacity-75'> ".$rows[0]." Bs</span>";
+                                            echo "<span style='text-align:left' class='btn btn-success btn-sm w-100 opacity-75'> ".number_format($rows[0],2,'.',',')." Bs</span>";
                                         } else {
                                             echo "<span style='text-align:left' class='btn btn-secondary btn-sm w-100 opacity-75'>"."0"." Bs</span>";
                                         }
@@ -277,7 +277,7 @@
                                     while($data=mysqli_fetch_array($s)){
                                         $gas = $data[0];
                                         if (!empty($data[0]) ) {
-                                            echo "<span style='text-align:left' class='btn btn-danger btn-sm w-100 opacity-75'> ".$data[0]." Bs</span>";
+                                            echo "<span style='text-align:left' class='btn btn-danger btn-sm w-100 opacity-75'> ".number_format($data[0],2,'.',',')." Bs</span>";
                                         } else {
                                             echo "<span style='text-align:left' class='btn btn-secondary btn-sm w-100 opacity-75'>"."0"." Bs</span>";
                                         }
@@ -290,13 +290,13 @@
                                         $saldito = $ing - $gas;
 
                                         if ($saldito > 0) {
-                                            echo "<span style='text-align:left' class='btn btn-success btn-sm w-100 opacity-75'> ".$saldito." Bs</span>";    
+                                            echo "<span style='text-align:left' class='btn btn-success btn-sm w-100 opacity-75'> ".number_format($saldito,2,'.',',')." Bs</span>";    
                                         }
                                         elseif ($saldito == 0) {
-                                            echo "<span style='text-align:left' class='btn btn-secondary btn-sm w-100 opacity-75'> ".$saldito." Bs</span>";
+                                            echo "<span style='text-align:left' class='btn btn-secondary btn-sm w-100 opacity-75'> ".number_format($saldito,2,'.',',')." Bs</span>";
                                         }
                                         else {
-                                            echo "<span style='text-align:left' class='btn btn-danger btn-sm w-100 opacity-75 '> ".$saldito." Bs</span>";
+                                            echo "<span style='text-align:left' class='btn btn-danger btn-sm w-100 opacity-75 '> ".number_format($saldito,2,'.',',')." Bs</span>";
                                         }
                                         
                                     ?>

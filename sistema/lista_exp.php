@@ -151,6 +151,7 @@ include "../conexion.php";
 
                    
 
+
                     $result = mysqli_num_rows($query);
                     if ($result > 0) {
                         while ($data = mysqli_fetch_array($query)) {

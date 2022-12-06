@@ -66,8 +66,8 @@ include "../conexion.php";
                         <ul class="dropdown-menu">
                         <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c.php"><i class="fa-solid fa-print"></i>->  GAM POTOSI</a></li>
                         <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c2.php"><i class="fa-solid fa-print"></i>->  GAM COTAGAITA</a></li>
-                        <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c3.php"><i class="fa-solid fa-print"></i>->  DON DIEGO</a></li>
-                        <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c4.php"><i class="fa-solid fa-print"></i>->  COLCHA K </a></li>
+                        <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c3.php"><i class="fa-solid fa-print"></i>->  GAM CHAQUI</a></li>
+                        <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c4.php"><i class="fa-solid fa-print"></i>->  GAM COLCHA K </a></li>
                         
                         <li><hr class="dropdown-divider"></li>
                         <li><a style="color: red;" class="dropdown-item" href="rep_imgEG_c.php"> <i class="fa-solid fa-print"></i>->  Actas Constructora</a></li>
@@ -155,20 +155,20 @@ include "../conexion.php";
                 <table  class="tabla_ale" id="datatablesSimple"  >
                 <thead class="table-secondary">
                     <tr class="">
-                        <th>idº</th>
-                        <th class="col-sm-6">Nombre del contratante / Persona y Direccion de contacto</th>
-                        <th class="col-sm-6">Objeto del Contrato</th>
+                        <th width="5%">idº</th>
+                        <th>Nombre del contratante / Persona y Direccion de contacto</th>
+                        <th width="20%">Objeto del Contrato</th>
                         <th>Ubicacion</th>
-                        <th class="col-sm-4">Monto final del contrato en (Bs)</th>
-                        <th class="col-sm-4" >Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
-                        <th class="col-sm-4">Monto en $u$ (Llenado de uso alternativo)</th>
+                        <th width="10%" >Monto final del contrato en (Bs)</th>
+                        <th width="10%">Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
+                        <th width="10%">Monto en $u$ (Llenado de uso alternativo)</th>
                         <th>% de Participacion en Asociacion</th>
                         <th>Nombre LI del Socio(s)</th>
                         <th>Profesional Responsable</th>
                         <th>imagen-1(Acta)</th>
                         <th>imagen-2(Acta)</th>
                         <th>imagen-3(Acta)</th>
-                        <th>Acciones</th>    
+                        <th width="10%">Acciones</th>    
                     </tr>
                     </thead>
                     <?php
@@ -194,7 +194,7 @@ include "../conexion.php";
 
                     // rescatar datos DB 
                     $query = mysqli_query($conexion, "SELECT * FROM exp_general_c
-                                                        ORDER BY id_exp ASC");
+                                                        ORDER BY id_exp DESC");
 
                    
 
@@ -216,7 +216,7 @@ include "../conexion.php";
 
                     ?>
                             <tr>
-                                <td><?php echo $data['id_exp'] ?></td>
+                                <td><?php echo 'EXP-'.$data['id_exp'] ?></td>
                                 <td><?php echo $data['nombre_contratante'] ?></td>
                                 <td><?php echo $data['obj_contrato'] ?></td>
                                 <td><?php echo $data['ubicacion'] ?></td>
@@ -241,24 +241,24 @@ include "../conexion.php";
                                 <td><?php echo $data['n_socio'] ?></td>
                                 <td><?php echo $data['profesional_resp'] ?></td>
                                 <td>
-                                    <img style= "width:100px" src="<?php echo $image ?>" alt=""> 
+                                    <img style= "width:100px" src="<?php echo $image ?>" alt="" class="gallery-item"> 
                                 </td>
                                 <td>
-                                    <img style= "width:100px" src="<?php echo $image2 ?>" alt=""> 
+                                    <img style= "width:100px" src="<?php echo $image2 ?>" alt="" class="gallery-item"> 
                                 </td>
                                 <td>
-                                    <img style= "width:100px" src="<?php echo $image3 ?>" alt=""> 
+                                    <img style= "width:100px" src="<?php echo $image3 ?>" alt="" class="gallery-item"> 
                                 </td>
                                 
                                 
 
-                                <td class="col-sm-2">
-                                    <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-warning p-2 disabled" data-toggle="tooltip" data-placement="top" title="Editar" >
+                                <td  >
+                                    <a href="editar_exp_c.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-warning btn-sm " data-toggle="tooltip" data-placement="top" title="Editar" >
                                     <i class="fa-solid fa-file-pen"></i>
                                     </a>
 
                                     
-                                    <a href="eliminar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-danger p-2 disabled" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                    <a href="eliminar_exp_c.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-danger btn-sm " data-toggle="tooltip" data-placement="top" title="Eliminar">
                                     <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                     
@@ -275,6 +275,8 @@ include "../conexion.php";
                 </table>
                 </div>
                 </div>
+
+                
                 
 
 
@@ -289,10 +291,42 @@ include "../conexion.php";
                     </div>
                 </div>
             </div>
+
+<!-- modal-->
+                                    <div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-xl" >
+                                                <div class="modal-content modal-fullscreen ">
+                                                <div class="modal-header">
+                                                    <!--<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body" >
+                                                    <img src="img/actas/acta_103_1_2021-02-22.jpg" class="modal-img" alt="modal img">
+                                                </div>
+                                                
+                                                </div>
+                                            </div>
+                                    </div>
+
+
+
+
         </footer>
     </div>
     </div>
     <!-- datatablesSimple -->
+
+    <script>
+    document.addEventListener("click",function(e){
+        if(e.target.classList.contains("gallery-item")){
+            const src = e.target.getAttribute("src");
+            document.querySelector(".modal-img").src = src;
+
+            const myModal = new bootstrap.Modal(document.getElementById('gallery-modal'));
+            myModal.show();
+        }
+    });
+</script>
     
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
