@@ -49,6 +49,7 @@ ob_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
     <link href="css/style3.css" rel="stylesheet" />
 
 
@@ -60,6 +61,7 @@ ob_start();
             @page {
                 margin: 100px 25px;
             }
+            
 
             header {
                 position: fixed;
@@ -108,41 +110,60 @@ ob_start();
         <footer>
                                     <div id="watermark" >
                                         <img src="img/FONDITO3.png" height="100%" width="100%" />
-                                        
                                     </div>
         </footer>
 
 
 
-                       
 
 <table style="width:97% ;">
 
             <tr>
                 <td colspan="2" style=" border:solid white; text-align:right ;">
                 <?php setlocale(LC_TIME, "spanish");
-                                echo strftime("%A, %d de %B de %Y ");?>
+                                echo '<p style="color: coral; font-size:10px;text-align:right;opacity: 0.5;"> @irsoft-SYS-PONCELET</p>';
+                                echo utf8_decode (strftime("%a, %d de %b de %Y  "));?>
                 </td>
+                 
             </tr>
             <tr>
-                            <td colspan="2" style="font-size:10px; border-right-color: white; border-left-color: white; border-top-color:white;"> <STRONG style="font-size:13px;"> REPORTE GENERAL CAJA CHICA   </STRONG></td>
+                            <td colspan="2" style="font-size:10px; border-right-color: white; border-left-color: white; border-top-color:white;"> <STRONG style="font-size:13px;"> REPORTE DE GASTOS CAJA CHICA   </STRONG></td>
                         </tr>
     <tr>
         <th colspan="2" style="width:100% ; border-left-color: white; border-right-color: white; text-align:left ;" >Informe : Lic. Mavel Condori FLores</th>
     </tr>
 
-    <tr>
-        <th style="text-align:right ;">INGRESOS TOTAL</th>
-        <th style="background-color: #dfffee ;font-size:15px"><?php echo $total2.' Bs';?></th>
+      
+    
+
+   
+    
+    <tr >
+        
+        <th style="text-align:right ;">DESDE: </th>
+        <th style="background-color: white ;" >
+        <?php 
+                                    setlocale(LC_TIME, "spanish");
+                                    echo strftime('%e de %B %Y', strtotime($fecha_inicio));
+                                    ?></th>
     </tr>
     <tr>
+        
+        <th style="text-align:right ;">HASTA: </th>
+        <th style="background-color:white ;" >
+        <?php 
+                                    setlocale(LC_TIME, "spanish");
+                                    echo strftime('%e de %B %Y', strtotime($fecha_final));
+                                    ?></th>
+    </tr>
+    <tr>
+        
         <th style="text-align:right ;">GASTOS TOTAL</th>
         <th style="background-color: #f3a6b5 ;font-size:15px" ><?php echo $total.' Bs';?></th>
     </tr>
-    <tr>
-        <th style="text-align:right ;">SALDO TOTAL</th>
-        <th style="background-color: #fff9d6 ; font-size:15px"><?php echo $saldo.' Bs';?></th>
-    </tr>
+    
+
+    
 </table>
 
 <br><br><br><hr>
@@ -228,8 +249,8 @@ echo "The current date and time are $DateAndTime.";
                                     ?>
                             <tr>
                                 <td><?php echo $data['row_num'] ?></td>
-                                <td><?php echo $data['g_persona'] ?></td>
-                                <td><?php echo $data['g_detalle'] ?></td>
+                                <td style="text-transform: uppercase;"><?php echo $data['g_persona'] ?></td>
+                                <td style="text-transform: uppercase;"><?php echo $data['g_detalle'] ?></td>
                                 
                                 <td>
                                     <?php 
@@ -257,7 +278,7 @@ echo "The current date and time are $DateAndTime.";
                     ?>
 
                     <tr class="">
-                        <td colspan="4" style="text-align: right; background-color: rgb(249 134 2 / 20%); color: #5c5c5c;">  TOTAL GASTOS</td>
+                        <td colspan="4" style="text-align: right; background-color: rgb(249 134 2 / 20%); color: #5c5c5c;"> TOTAL GASTOS</td>
                         <td colspan="1" style="background-color: orange color:white; font-size:20px;"> <?php echo number_format($total,2,'.',',').' Bs'?></td>
                         
                     </tr>
@@ -293,7 +314,7 @@ echo "The current date and time are $DateAndTime.";
                 <?php 
                     $html = ob_get_clean();
                     $dompdf = new Dompdf();
-                    $dompdf->loadHtml($html);
+                    $dompdf->loadHtml($html, 'UTF-8');
                     $dompdf->setPaper('A4','portrait');
                     //$dompdf->setPaper('letter','portrait');
                     //$dompdf->setPaper('A4', 'landscape');

@@ -293,27 +293,7 @@
                         ?>
                             <div class="">
 
-                            <nav class="navbar bg-light">
-                                <div class="container-fluid">
-                                    <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i>  Lista de Ingresos </a>
-                                    <form class="d-flex" role="search">
-                                    <!--<a style="border: groove; color:red" class="btn btn-secomdary bg-opacity-10" ><i class="fa-solid fa-print"></i></i> Imprimir</a>-->
-                                    
-                                    <button style="border: groove;" disabled class="btn btn-light btn-sm" type="submit"> <strong>
-                                        <i class="fa-solid fa-filter-circle-dollar"></i> SALDO:</strong> 
-                                        <?php 
-                                        if ($saldo > 0) {
-                                            echo '<span style="color: green;"> '.$saldo.'  bs </span>';    
-                                        } else {
-                                            echo '<span style="color: red;"> '.$saldo.'  bs </span>'; 
-                                        }
-                                        
-                                        
-                                        ?>
-                                    </button>
-                                    </form>
-                                </div>
-                                </nav>
+                            
                             
                             <table class="table table-bordered">
                             <table  class="tabla_ale" id="datatablesSimple"  >

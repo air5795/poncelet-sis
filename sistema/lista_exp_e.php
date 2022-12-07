@@ -44,7 +44,7 @@ include "../conexion.php";
                         </ol>
 
                 <hr>
-                <?php
+                    <?php
                             $sql_suma_bs = mysqli_query($conexion, "SELECT SUM(monto_bs) FROM exp_general;");
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
                             $total = $result_sum['SUM(monto_bs)']; 
@@ -56,19 +56,11 @@ include "../conexion.php";
                     ?>
                 <!-- llenado de tabla-->
 
-                
 
-                
-
-                
-
-                
-        
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>Importante!</strong> Seleccionar los proyectos que quiere listar a la Experiencia Especifica.
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    
+                    </div> 
                 </div>
 
                 <!--  modal 
@@ -92,11 +84,15 @@ include "../conexion.php";
                             
                 <div class="card-body">
                 <form action="reporte_ee.php" method="POST">
-                    <input type="submit" value="DESCARGAR EXPERIENCIA ESPECIFICA" class="btn btn-danger">
-                    <a href="rep_ImgEE.php" class="btn btn-secondary">DESCARGAR ACTAS </a>
+                    
+                    <button type="submit" class="btn btn-danger p-2 ">
+                        <img src="img/PDF.svg" height="20px" width="20px" > Lista de Experiencia Especifica
+                    </button>
+                    
+                    <a  href="rep_ImgEE.php" class="btn btn-outline-danger p-2 "> <img src="img/pdf.svg" height="20px" width="20px"> Actas Experiencia Especifica </a>
                     
                     <hr>
-                <table  class=" table  table-borderless table-hover tabla_ale" id="datatable" class="display" >
+                <table  style="font-size:11px ;" class=" table table-hover" id="datatable" class="display" >
                 <thead class="table-secondary">
                     <tr class="">
                         <th>Check</th>

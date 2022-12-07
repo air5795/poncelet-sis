@@ -218,8 +218,8 @@ if (!empty($_POST)) {
                                     <div class="container-fluid ">
                                         <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i> Lista de articulos </a>
                                         <form class="d-flex" role="search">
-                                            <button style="border: groove;" disabled class="btn btn-sm btn-secondary" type="submit"> <strong> TOTAL ARTICULOS REGISTRADOS EN ALMACEN : </strong> <?php echo $totales; ?> </button>
-                                            <a href="reporte_inventario.php" class="btn btn-danger" style="margin:2px;"> <i class="fa-solid fa-print"></i> Imprimir Reporte de Inventario</a>
+                                            <button disabled class="btn btn-sm btn-black" type="submit"> <strong> TOTAL ARTICULOS REGISTRADOS EN ALMACEN : </strong> <?php echo $totales; ?> </button>
+                                            <a href="reporte_inventario.php" class="btn btn-outline-danger" style="margin:2px;"> <img src="img/pdf.svg" height="20px" width="20px"> IMPRIMIR REPORTE INVENTARIO</a>
                                         </form>
                                     </div>
                                 </nav>

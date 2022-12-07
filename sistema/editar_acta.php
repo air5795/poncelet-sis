@@ -103,7 +103,7 @@ if (!empty($_POST)) {
                 <main>
                     <div class="container-fluid px-4">
                     <div>
-                    <h1 class="mt-4">Editar Actas del Producto</h1>
+                    <h1 class="mt-4">Editar Actas de Experiencia General </h1>
                         
                         <ol class="breadcrumb mb-2 ">
                             <li class="breadcrumb-item active">Poncelet / Editar Imagen de la Acta de la Experiencia  </li> 
@@ -167,11 +167,16 @@ if (!empty($_POST)) {
                                                 
                                             </tr>
                                             <tr>
-                                                <td><input type="file" class="form-control form-control-sm" name="img" id="files"> </td>
-                                                <td><input type="file" class="form-control form-control-sm" name="img2" id="files"> </td>
-                                                <td><input type="file" class="form-control form-control-sm" name="img3" id="files"> </td>
-                                                <td><input type="file" class="form-control form-control-sm" name="img4" id="files"> </td>
-                                                <td><input type="file" class="form-control form-control-sm" name="img5" id="files"> </td>
+                                                <td><input type="file" class="form-control form-control-sm " name="img" id="files"> 
+                                            </td>
+                                                <td><input type="file" class="form-control form-control-sm" name="img2" id="files"> 
+                                            </td>
+                                                <td><input type="file" class="form-control form-control-sm" name="img3" id="files"> 
+                                            </td>
+                                                <td><input type="file" class="form-control form-control-sm" name="img4" id="files"> 
+                                            </td>
+                                                <td><input type="file" class="form-control form-control-sm" name="img5" id="files"> 
+                                            </td>
                                                 
                                             </tr>
                                             <tr>
@@ -230,7 +235,7 @@ if (!empty($_POST)) {
                                                 <td><img src="<?php echo $image15;?>" width="70px" height="100px"></td>
                                                 
                                             </tr>
-                                            <center><input type="submit" value="Actualizar " class="btn btn-success  border-0 w-100   " data-dismiss="alert" ></center>
+                                            <input style="padding:5 ;" type="submit" value="Actualizar " class="btn btn-success btn-sm w-100  " data-dismiss="alert" >
                                             <div class=" form-text text-center " role="alert" style=""> <?php echo isset ($alert) ? $alert :''; ?></div>
                                         </form>
                                     </table>

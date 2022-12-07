@@ -292,31 +292,7 @@
                         ?>
                             <div class="">
 
-                            <nav class="navbar bg-light">
-                                <div class="container-fluid " >
-                                    <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i>  Lista de Gastos </a>
-                                    <form class="d-flex" role="search">
-
-                                    
-                                    
-
-                                   
-                                    <button style="border: groove;" disabled class="btn btn-sm btn-danger" type="submit"> <strong> TOTAL GASTOS: </strong> <?php echo number_format($total,2,'.',',');?> Bs</button>
-                                    <button style="border: groove;" disabled class="btn btn-light btn-sm" type="submit"> <strong>
-                                        <i class="fa-solid fa-filter-circle-dollar"></i> SALDO TOTAL: </strong>
-                                        <?php 
-                                        if ($saldo > 0) {
-                                            echo '<span style="color: green;"> '. number_format($saldo,2,'.',',').'  bs </span>';    
-                                        } else {
-                                            echo '<span style="color: red;"> '.number_format($saldo,2,'.',',').'  bs </span>'; 
-                                        }
-                                        
-                                        
-                                        ?> 
-                                    </button>
-                                    </form>
-                                </div>
-                                </nav>
+                            
 
                                 
                             

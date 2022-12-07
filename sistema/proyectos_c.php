@@ -209,7 +209,7 @@
                                         <th >Total Gastos</th>
                                         <th >Saldo</th>
                                         
-                                        <th>acciones</th>
+                                        <th>Acciones</th>
                               
                                     </tr>
                                     </thead>
@@ -304,14 +304,14 @@
                                 
 
 
-                                <td class="col-sm-2">
+                                <td class="col-sm-2" style="background-color:white;">
 
-                                <div style="min-width: max-content;">
+                                <div style="min-width: max-content; " >
                                         
                                     
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $idp; ?> " style=" background-color:#000000;color:#ff5252" class="btn btn-danger btn-sm " href=""><i class="fa-solid fa-trash"></i>  </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $idp; ?> "  class="btn btn-danger btn-sm " href=""><i class="fa-solid fa-trash"></i>  </a>
                                     <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $idp; ?> " class="btn btn-warning btn-sm  " href=""><i class="fa-solid fa-pen"></i>   </a>
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModalp<?php echo $idp; ?> " class="btn btn-danger  btn-sm  " href=""><i class="fa-solid fa-file-pdf"></i> REPORTES </a> 
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModalp<?php echo $idp; ?> " class="btn btn-outline-danger  btn-sm  " href=""><img src="img/pdf.svg" height="20px" width="20px"> IMPRIMIR </a> 
 
                                     
                                 </div>

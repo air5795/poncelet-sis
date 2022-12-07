@@ -36,6 +36,10 @@ include "../conexion.php";
         <div class="container-fluid ">
         <div class="container-fluid  ">
                     <div>
+                    
+                    
+
+
                     <h1 class="mt-4"><i class="fa-solid fa-cart-shopping"></i> Lista de Proyectos Comercializadora</h1>
                         
                         <ol class="breadcrumb mb-2 ">
@@ -58,14 +62,15 @@ include "../conexion.php";
                 <div class="row">
 
                 <div class="d-none d-xl-block d-lg-block d-md-block" role="group" aria-label="Basic mixed styles example">
-                    <a href="registro_exp.php" class=" btn btn-primary col "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
-                    <a href="reporte_eg.php" class=" btn btn-danger col "><i class="fa-solid fa-file-pdf"></i> PDF Experiencia G. </a>
-                    <a href="rep_ImgEG.php" class=" btn btn-danger col "> <i class="fa-solid fa-file-pdf"></i> PDF Actas</a> 
-                    
-                    <a class="btn btn-warning disabled " role="button" aria-disabled="true"> <strong> N° de Proyectos : </strong> 
+                    <a href="registro_exp.php" class=" btn btn-primary col btn-sm "><i class="fa-solid fa-circle-plus"></i>  Nuevo Proyecto</a>
+                    <a class="btn btn-warning disabled btn-sm " role="button" aria-disabled="true"> <strong> N° de Proyectos : </strong> 
                     <?php echo $total2 ?></a>
-                    <a class="btn btn-outline-success  " role="button" aria-disabled="true" > <strong> Experiencia total (Bs): </strong> 
+                    <a class="btn btn-outline-success btn-sm disabled  " role="button" aria-disabled="true" > <strong> Experiencia total (Bs): </strong> 
                     <?php echo '&nbsp;&nbsp;&nbsp;'.number_format($total,2,'.',','). ' Bs' ?></a>
+                    <a style="font-weight: 700;" href="reporte_eg.php" class=" btn btn-outline-danger btn-sm col "><img src="img/pdf.svg" height="20px" width="20px"> Lista de Experiencia General </a>
+                    <a style="font-weight: 700;" href="rep_ImgEG.php" class=" btn btn-outline-danger btn-sm col "> <img src="img/pdf.svg" height="20px" width="20px"> Actas de Experiencia General</a> 
+                    
+                    
                     
                 
                     
@@ -109,7 +114,7 @@ include "../conexion.php";
                     <tr class="">
                         <th width="10%">idº</th>
                         <th width="20%">Nombre del contratante / Persona y Direccion de contacto</th>
-                        <th width="20%">Objeto del Contrato</th>
+                        <th width="40%">Objeto del Contrato</th>
                         <th>Ubicacion</th>
                         <th width="10%" >Monto final del contrato en (Bs)</th>
                         <th  >Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
@@ -182,16 +187,16 @@ include "../conexion.php";
                                 <td><?php echo $data['n_socio'] ?></td>
                                 <td><?php echo $data['profesional_resp'] ?></td>
                                 <td>
-                                    <img style= "width:100px" src="<?php echo $image ?>" alt="" class="gallery-item"> 
+                                    <img style= "width:50px" src="<?php echo $image ?>" alt="" class="gallery-item"> 
                                 </td>
                                 <td>
-                                    <img style= "width:100px" src="<?php echo $image2 ?>" alt="" class="gallery-item"> 
+                                    <img style= "width:50px" src="<?php echo $image2 ?>" alt="" class="gallery-item"> 
                                 </td>
                                 <td>
-                                    <img style= "width:100px" src="<?php echo $image3 ?>" alt="" class="gallery-item"> 
+                                    <img style= "width:50px" src="<?php echo $image3 ?>" alt="" class="gallery-item"> 
                                 </td>
                                 <td>
-                                    <img style= "width:100px" src="<?php echo $image4 ?>" alt="" class="gallery-item"> 
+                                    <img style= "width:50px" src="<?php echo $image4 ?>" alt="" class="gallery-item"> 
                                 </td>
                                 
                                 
