@@ -105,7 +105,8 @@ ob_start();
             <tr>
                 <td colspan="2" style=" border:solid white; text-align:right ;">
                 <?php setlocale(LC_TIME, "spanish");
-                                echo strftime("%A, %d de %B de %Y ");?>
+                echo '<p style="color: coral; font-size:10px;text-align:right;opacity: 0.5;"> @irsoft-SYS-PONCELET</p>';
+                                echo strftime("%a, %d de %B de %Y ");?>
                 </td>
             </tr>
             <tr>

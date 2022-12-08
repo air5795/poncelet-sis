@@ -57,9 +57,12 @@ if (empty($_SESSION['active'])) {
                                                                     echo '<img style="width:35px; height:35px;" src="../sistema/img/edwin.png" >';
                                                                         //echo $_SESSION['iduser'];
                                                                     } elseif ($_SESSION['iduser'] == 33 ) {
-                                                                        echo '<img style="width:35px; height:35px;" src="../sistema/img/edwin.png" >';
+                                                                        echo '<img style="width:35px; height:35px;" src="../sistema/img/usuario.png" >';
                                                                             //echo $_SESSION['iduser'];
-                                                                        }
+                                                                        }elseif ($_SESSION['iduser'] == 30 ) {
+                                                                            echo '<img style="width:35px; height:35px;" src="../sistema/img/alberto.png" >';
+                                                                                //echo $_SESSION['iduser'];
+                                                                            }
                                                 
                                                 ?> </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -110,6 +113,16 @@ if (empty($_SESSION['active'])) {
                                     <a class="nav-link" href="documentos.php"> Documentos de la empresa</a> 
                                 </nav>
                             </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapserec" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-receipt"></i></div>
+                                Recibos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="pagesCollapserec" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav"> 
+                                    <a class="nav-link" href="#.php"> Nuevo Recibo</a> 
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseclaves" aria-expanded="false" aria-controls="pagesCollapseError">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-key"></i></div>
                                 Claves
@@ -156,10 +169,13 @@ if (empty($_SESSION['active'])) {
                                 </nav>
                             </div>
 
+                            
 
 
 
-                            <div class="sb-sidenav-menu-heading " style="color:coral; font-size: medium;  text-transform: none; background-color: #38383869;" ><i class="fa-solid fa-cart-shopping"></i> Comercializadora</div>
+                                
+                            <div class="sb-sidenav-menu-heading " style="color:coral; font-size: medium;  text-transform: none; background-color: #38383869;" >
+                            <i class="fa-solid fa-cart-shopping"></i> Comercializadora</div>
 
                             
 
@@ -447,7 +463,9 @@ if (empty($_SESSION['active'])) {
                                                             </div>
 
                                                         </nav>
-                                                    </div> 
+                                                    </div>
+                                                    
+                                                    
 
 
                                         

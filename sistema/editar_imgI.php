@@ -13,6 +13,7 @@ if (!empty($_POST)) {
         $idPI = $_POST['idP'];
         $foto = $_FILES['img'];
 
+        
         //imagen 1
 
         $nombre_image = $foto['name'];

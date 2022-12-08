@@ -133,11 +133,7 @@ ob_start();
         <th colspan="2" style="width:100% ; border-left-color: white; border-right-color: white; text-align:left ;" >Informe : Lic. Mavel Condori FLores</th>
     </tr>
 
-      
-    
 
-   
-    
     <tr >
         
         <th style="text-align:right ;">DESDE: </th>
@@ -241,11 +237,6 @@ echo "The current date and time are $DateAndTime.";
                                     if ($result > 0) {
                                         while ($data = mysqli_fetch_array($query)) {
                                             
-                                            
-                                            
-
-                                            
-
                                     ?>
                             <tr>
                                 <td><?php echo $data['row_num'] ?></td>

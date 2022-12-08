@@ -201,21 +201,19 @@ include "../conexion.php";
                                 
                                 
 
-                                <td class="col-sm-2">
+                                <td class="col-sm-2" >
 
                                 <div style="min-width: max-content;">
-                                <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" >
-                                    <i class="fa-solid fa-file-pen"></i> 
+                                <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>"  class="btn btn-outline-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" >
+                                    <img src="img/lapiz.png" height="20px" width="20px"> 
                                     </a>
 
                                     
-                                    <a href="borrar_exp.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-danger  btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                    <i class="fa-solid fa-trash-can"></i> 
+                                    <a href="borrar_exp.php?id=<?php echo $data['id_exp'] ?>"  class="btn btn-outline-danger  btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                    <img src="img/eliminar.png" height="20px" width="20px"> 
                                     </a>
 
-                                    <a style="background-color: #eeee90;color: #505050;border-color: black;" href="editar_acta.php?id=<?php echo $data['id_exp'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="editar Imagen">
-                                    <i class="fa-solid fa-upload"></i> Editar Acta(s)
-                                    </a>
+                                    
                                 </div>
                                     
                                     
