@@ -69,12 +69,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa1 = $img_nombre1.'.jpg';
             $src1= $destino1.$imgActa1;
-        }else {
-            $destino1 = 0;
-            $img_nombre1 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa1 = 0;
-            $src1= 0;
         }
 
         //imagen 2   
@@ -91,12 +85,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa2 = $img_nombre2.'.jpg';
             $src2= $destino2.$imgActa2;
-        }else {
-            $destino2 = 0;
-            $img_nombre2 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa2 = 0;
-            $src2= 0;
         }
 
     
@@ -115,12 +103,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa3 = $img_nombre3.'.jpg';
             $src3= $destino3.$imgActa3;
-        }else {
-            $destino3 = 0;
-            $img_nombre3 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa3 = 0;
-            $src3= 0;
         }
 
         //imagen 4
@@ -137,12 +119,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa4 = $img_nombre4.'.jpg';
             $src4= $destino4.$imgActa4;
-        }else {
-            $destino4 = 0;
-            $img_nombre4 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa4 = 0;
-            $src4= 0;
         }
 
         //imagen 5
@@ -159,12 +135,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa5 = $img_nombre5.'.jpg';
             $src5= $destino5.$imgActa5;
-        }else {
-            $destino5 = 0;
-            $img_nombre5 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa5 = 0;
-            $src5= 0;
         }
 
 
@@ -182,12 +152,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa6 = $img_nombre6.'.jpg';
             $src6= $destino6.$imgActa6;
-        }else {
-            $destino6 = 0;
-            $img_nombre6 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa6 = 0;
-            $src6= 0;
         }
 
         //imagen 7
@@ -204,12 +168,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa7 = $img_nombre7.'.jpg';
             $src7= $destino7.$imgActa7;
-        }else {
-            $destino7 = 0;
-            $img_nombre7 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa7 = 0;
-            $src7= 0;
         }
 
         //imagen 8
@@ -226,12 +184,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa8 = $img_nombre8.'.jpg';
             $src8= $destino8.$imgActa8;
-        }else {
-            $destino8 = 0;
-            $img_nombre8 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa8 = 0;
-            $src8= 0;
         }
 
 
@@ -249,12 +201,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa9 = $img_nombre9.'.jpg';
             $src9= $destino9.$imgActa9;
-        }else {
-            $destino9 = 0;
-            $img_nombre9 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa9 = 0;
-            $src9= 0;
         }
 
         //imagen 10
@@ -271,12 +217,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa10 = $img_nombre10.'.jpg';
             $src10= $destino10.$imgActa10;
-        }else {
-            $destino10 = 0;
-            $img_nombre10 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa10 = 0;
-            $src10= 0;
         }
 
         //imagen 11
@@ -293,12 +233,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa11 = $img_nombre11.'.jpg';
             $src11= $destino11.$imgActa11;
-        }else {
-            $destino11 = 0;
-            $img_nombre11 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa11 = 0;
-            $src11= 0;
         }
 
         //imagen 12
@@ -315,12 +249,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa12 = $img_nombre12.'.jpg';
             $src12= $destino12.$imgActa12;
-        }else {
-            $destino12 = 0;
-            $img_nombre12 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa12 = 0;
-            $src12= 0;
         }
 
         //imagen 13
@@ -337,12 +265,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa13 = $img_nombre13.'.jpg';
             $src13= $destino13.$imgActa13;
-        }else {
-            $destino13 = 0;
-            $img_nombre13 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa13 = 0;
-            $src13= 0;
         }
 
         //imagen 14
@@ -359,12 +281,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa14 = $img_nombre14.'.jpg';
             $src14= $destino14.$imgActa14;
-        }else {
-            $destino14 = 0;
-            $img_nombre14 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa14 = 0;
-            $src14= 0;
         }
 
         //imagen 15
@@ -381,12 +297,6 @@
             //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
             $imgActa15 = $img_nombre15.'.jpg';
             $src15= $destino15.$imgActa15;
-        }else {
-            $destino15 = 0;
-            $img_nombre15 = 0;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa15 = 0;
-            $src15= 0;
         }
      
             $query = mysqli_query($conexion,"SELECT * FROM exp_general 
@@ -467,6 +377,10 @@
             if ($resul = 0) {
                 $alert  = $alert = '<p class="alert alert-danger w-50"> No esta disponible </p> ';
             }else {
+
+                
+                    
+                
 
             $sql_update = mysqli_query($conexion, "UPDATE
                                                     exp_general
@@ -752,7 +666,7 @@
                                 <i class="fa-solid fa-folder-open"></i> Subir Actas 1-8 Pag.
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark w-100 ">
-                                    <li><a class="dropdown-item" href="#">Acta N°1<input type="file" class="form-control form-control-sm"  name="image1" id="files" required></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°1<input type="file" class="form-control form-control-sm"  name="image1" id="files"></a></li>
                                     <li><a class="dropdown-item" href="#">Acta N°2<input type="file" class="form-control form-control-sm"  name="image2" id="files" ></a></li>
                                     <li><a class="dropdown-item" href="#">Acta N°3<input type="file" class="form-control form-control-sm"  name="image3" id="files"></a></li>
 

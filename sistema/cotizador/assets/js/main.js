@@ -260,16 +260,8 @@ function add_to_quote(e){
     let concepto = $('#concepto', form).val(),
     precio       = parseFloat($('#precio_unitario', form).val());
 
-    if(concepto.length < 5) {
-      notify('Ingresa un concepto válido por favor.', 'danger');
-      errors++;
-    }
-
-    // Validar el precio
-    if(precio < 10) {
-      notify('Por favor ingresa un precio mayor a $10.00', 'danger');
-      errors++;
-    }
+  
+    
 
     if(errors > 0) {
       notify('Completa el formulario.', 'danger');
