@@ -39,7 +39,8 @@
             $participa_aso = $_POST['participa_aso'];
             $n_socio = $_POST['n_socio'];
             $profesional_resp = $_POST['profesional_resp'];
-            $picture1 = $_FILES['image1'];
+
+            /*$picture1 = $_FILES['image1'];
             $picture2 = $_FILES['image2'];
             $picture3 = $_FILES['image3'];
             $picture4 = $_FILES['image4'];
@@ -55,7 +56,9 @@
             $picture14 = $_FILES['image14'];
             $picture15 = $_FILES['image15'];
 
-            //imagen 1   
+            
+
+        //imagen 1   
         $nombre_image1 = $picture1['name'];
         $type1= $picture1['type'];
         $url_temp1 = $picture1['tmp_name'];
@@ -70,6 +73,7 @@
             $imgActa1 = $img_nombre1.'.jpg';
             $src1= $destino1.$imgActa1;
         }
+        
 
         //imagen 2   
         $nombre_image2 = $picture2['name'];
@@ -378,11 +382,8 @@
                 $alert  = $alert = '<p class="alert alert-danger w-50"> No esta disponible </p> ';
             }else {
 
-                
-                    
-                
 
-            $sql_update = mysqli_query($conexion, "UPDATE
+                $sql_update = mysqli_query($conexion, "UPDATE
                                                     exp_general
                                                     SET
                                                         nombre_contratante = '$nombre_contratante',
@@ -410,13 +411,37 @@
                                                         image14 = '$imgActa14',
                                                         image15 = '$imgActa15'
                                                     WHERE
+                                                        id_exp = $idExp");*/
+
+    
+
+           
+                
+
+            $sql_update1 = mysqli_query($conexion, "UPDATE
+                                                    exp_general
+                                                    SET
+                                                        nombre_contratante = '$nombre_contratante',
+                                                        obj_contrato = '$obj_contrato ',
+                                                        ubicacion = '$ubicacion',
+                                                        monto_bs = $monto_bs,
+                                                        monto_dolares = $monto_dolares,
+                                                        fecha_ejecucion = '$fecha_ejecucion',
+                                                        participa_aso = '$participa_aso',
+                                                        n_socio = '$n_socio',
+                                                        profesional_resp = '$profesional_resp'
+                                                        
+                                                    WHERE
                                                         id_exp = $idExp");    
+
+
+
                 }
 
-                if ($sql_update) {
+                if ($sql_update1) {
                      
                         
-                        if ($ruta2 != '' ) {
+                        /*if ($ruta2 != '' ) {
                             unlink($ruta2);
                             unlink($ruta4);
                             unlink($ruta6);
@@ -454,7 +479,7 @@
                         move_uploaded_file($url_temp13,$src13);
                         move_uploaded_file($url_temp14,$src14);
                         move_uploaded_file($url_temp15,$src15);
-                    }
+                    }*/
                     $alert = '<p class="alert alert-success"> SE ACTUALIZO CORRECTAMENTE </p> ';
                     header("Location: lista_exp.php");
                 }
@@ -464,7 +489,7 @@
 
                 }
             }
-        }
+        
 
 
     //mostrar datos
@@ -522,6 +547,22 @@
             $n_scio = $data['n_socio'];
             $p_resp = $data['profesional_resp'];
 
+            $jpg = $data['image'];
+            $jpg2 = $data['image2'];
+            $jpg3 = $data['image3'];
+            $jpg4 = $data['image4'];
+            $jpg5 = $data['image5'];
+            $jpg6 = $data['image6'];
+            $jpg7 = $data['image7'];
+            $jpg8 = $data['image8'];
+            $jpg9 = $data['image9'];
+            $jpg10 = $data['image10'];
+            $jpg11 = $data['image11'];
+            $jpg12 = $data['image12'];
+            $jpg13 = $data['image13'];
+            $jpg14 = $data['image14'];
+            $jpg15 = $data['image15'];
+
             if ($data['image'] != 'nodisponible.png' ) {
                 $image = 'img/actas/'.$data['image'];
                 
@@ -577,9 +618,9 @@
                 <div class="container-fluid px-4 ">
                 <div class="container-fluid px-4 row">
                 
-                
+                <center>
                     <h1 class="mt-4 col"><i class="fa-solid fa-triangle-exclamation"></i> Editar Experiencia <a class="btn btn-warning btn-sm disabled"> Que Corresponde a : <strong> <?php echo $n_c;?> </strong></a></h1> 
-                            
+                    </center>
                     </div>   
                         
                         <hr>
@@ -660,14 +701,34 @@
                                             
                                         </div>
                                     </div>
+
+                                    <hr class="w-100">     
+                                    <center><input type="submit" value="Actualizar Datos" class="btn btn-success  border-0 w-50   " data-dismiss="alert" ></center>
+
+                                </form>
                                     <hr>
-                                    <div class="dropdown col ">
+
+                                    
+
+
+                                    <form action="editar_acta.php" method="post" enctype='multipart/form-data' class="row">
+
+                                    <input type="hidden" name="id_exp" value="<?php echo $id_exp;?>">
+                                    <input type="hidden" name="fecha" value="<?php echo $f_ejecucion;?>">
+                                    
+                                    
+
+
+                                    
+                                
+                                    
+                                    <div class="dropdown col-sm-6 ">
                                 <button class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
                                 <i class="fa-solid fa-folder-open"></i> Subir Actas 1-8 Pag.
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark w-100 ">
-                                    <li><a class="dropdown-item" href="#">Acta N°1<input type="file" class="form-control form-control-sm"  name="image1" id="files"></a></li>
-                                    <li><a class="dropdown-item" href="#">Acta N°2<input type="file" class="form-control form-control-sm"  name="image2" id="files" ></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°1<input type="file" class="form-control form-control-sm"  name="image1" id="files" ></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°2<input type="file" class="form-control form-control-sm"  name="image2" id="files"></a></li>
                                     <li><a class="dropdown-item" href="#">Acta N°3<input type="file" class="form-control form-control-sm"  name="image3" id="files"></a></li>
 
                                     <li><a class="dropdown-item" href="#">Acta N°4<input type="file" class="form-control form-control-sm"  name="image4" id="files"></a></li>
@@ -677,12 +738,11 @@
                                     <li><a class="dropdown-item" href="#">Acta N°8<input type="file" class="form-control form-control-sm"  name="image8" id="files"></a></li>
 
                                     
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item">Subir las actas en el orden correcto</a></li>
+                                    
                                 </ul>
                                 </div>
 
-                                <div class="dropdown col ">
+                                <div class="dropdown col-sm-6 ">
                                 <button class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
                                 <i class="fa-solid fa-folder-open"></i> Subir Actas 9-15 Pag.
                                 </button>
@@ -698,10 +758,19 @@
                                     
 
                                     
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item">Subir las actas en el orden correcto</a></li>
+                                    
                                 </ul>
                                 </div>
+
+                                <hr class="w-100">     
+                                    <center><input type="submit" value="Actualizar Actas " class="btn btn-success  border-0 w-50   " data-dismiss="alert" ></center>
+                                    
+
+                                </form>
+
+                                </div>
+
+                                
 
                                     <div class=" col-md-12"> <hr>
 
@@ -756,8 +825,7 @@
                                     
                                         </div>
                             
-                                    <hr class="w-100">     
-                                    <center><input type="submit" value="Actualizar Experiencia " class="btn btn-success  border-0 w-50   " data-dismiss="alert" ></center>
+                                    
                                     <div class=" form-text text-center " role="alert" style=""> <?php echo isset ($alert) ? $alert :''; ?></div>
                             
                        </form>
@@ -785,18 +853,8 @@
                         
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; poncelet.bo@gmail.com @leiglesSoft</div>
-                            <div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
+                
+          
 
 
         <script type="text/javascript">

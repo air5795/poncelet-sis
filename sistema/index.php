@@ -147,7 +147,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header alert alert-warning">
                                         
-                                        <strong class="alert alert-warning "> <i class="fas fa-chart-area me-1"></i> Proyectos Pendientes de Pago Comercilizadora :  <?PHP echo $r; ?> </strong>
+                                        <strong class="alert alert-warning "> <i class="fas fa-chart-area me-1"></i> Proyectos Pendientes de Pago Comercializadora :  <?PHP echo $r; ?> </strong>
                                     </div>
                                     <div class="card-body"><canvas id="myChart" width="100%" height="20"></canvas></div>
                                     <div class="card-footer small text-muted">Actualizacion <?php echo date('d/m/y');?></div>

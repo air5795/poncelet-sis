@@ -513,7 +513,7 @@
         <!-- contenido del sistema-->
 
         <div id="layoutSidenav_content">
-                <main>0
+                <main>
                     <div class="container-fluid ">
                     <div class="container-fluid  ">
                     <div>
@@ -529,7 +529,7 @@
 
 
 
-                    <div class=" container-register2 row ">
+                    <div class=" p-4 row ">
 
                         <div class="col-md-6">
                          <a class="btn alert alert-dark disabled" role="button" aria-disabled="true">N°: <?php echo $total3 ?></a>

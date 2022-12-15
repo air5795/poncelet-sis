@@ -385,7 +385,7 @@ ORDER BY id_gastoC DESC;");
                                     </a>
                                 
                                     <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_gastoC']; ?> " class="btn btn-outline-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
-
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_gastoC']; ?> " class="btn btn-outline-warning btn-sm" href="">Editar </a>       
                                     
                                 </div>
                                     
@@ -393,6 +393,34 @@ ORDER BY id_gastoC DESC;");
                                     
                                 </td>
                             </tr>
+                            <!-- Modal editar  -->
+                            <div class="modal fade " id="exampleModal<?php echo $data['id_gastoC']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content  bg-opacity-80">
+                                            <form action="editar_gastos_c.php" method="post">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Editar registro </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-header text-center " style="padding: 0; margin: 0;">
+                                            <input type="hidden" name="idGasto" value="<?php echo $data['id_gastoC']; ?>" >
+                                            
+                                            <input name="edetalle" class="form-control"  type="text" value=" <?php echo $data['g_detalleGasto'] ?> " >
+                                            <input name="emonto" class="form-control" type="text" value="<?php echo $data['g_montoBs']?> " >
+                                             
+                                            </div>
+                                                
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <input class="btn btn-warning" type="submit" value="Actualizar">
+                                        </div>
+
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
 
                             <!-- Modal eliminar  -->
                             <div class="modal fade " id="exampleModali<?php echo $data['id_gastoC']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
