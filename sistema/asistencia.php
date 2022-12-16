@@ -42,7 +42,7 @@
 
             if ($query_insert) {
                  
-                $alert = '<p class="alert alert-success" > Registrado Correctamente !! </p> ';
+                $alert = '<p  class="alert alert-success" > Registrado Correctamente !! </p> ';
                 $url ="asistencia.php"; // aqui pones la url
                 $tiempo_espera = 4; // Aquí se configura cuántos segundos hasta la actualización.
                 // Declaramos la funcion apra la redirección
@@ -187,7 +187,8 @@
                             <div class="row">
                                 <div class="" role="alert" style=""> <?php echo isset ($alert) ? $alert :''; ?></div>
                                 
-                                <input type="submit" value="Registrar  " class="btn btn-primary  border-0 " data-dismiss="alert" >
+                                <button id="noti" type="submit" value="Registrar  " class="btn btn-primary  border-0 " data-dismiss="alert" >Registrar</button>
+                                   
                                 
                             </div>
 
@@ -493,7 +494,14 @@
             </div>
         </div>
 
-        
+      
+        <script type="text/javascript">
+           $(document).ready(function(){
+            $('noti').click(function(){
+                alertify.success("Registro Exitoso");
+            });
+           })
+        </script>
 
 
 
