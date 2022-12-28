@@ -5,17 +5,17 @@ include "../conexion.php";
 
 $num = 0;
 
-$query = mysqli_query($conexion, "SELECT * FROM productos");
+$query = mysqli_query($conexion, "SELECT * FROM recibos");
 $result = mysqli_num_rows($query);
 if ($result > 0) {
     while ($data = mysqli_fetch_array($query)) {
-        $nume = $data['id_producto'];
+        $nume = $data['id_recibo'];
     }
 }
 
-$sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_producto) FROM productos;");
+$sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_recibo) FROM recibos;");
 $result_f = mysqli_fetch_array($sql_tfila);
-$total2 = $result_f['COUNT(id_producto)'];
+$total2 = $result_f['COUNT(id_recibo)'];
 $total3 =  $total2 + 1;
 
 
@@ -23,103 +23,45 @@ if (!empty($_POST)) {
 
 
     if (
-        empty($_POST['producto'])
-        || empty($_POST['marca'])
-        || empty($_POST['unidad'])
-        || empty($_POST['precio_c'])
-        || empty($_POST['precio_v'])
+        empty($_POST['nombre'])
+        || empty($_POST['concepto'])
+        || empty($_POST['fecha'])
+        || empty($_POST['monto'])
     ) {
         $alert = '<p class="alert alert-danger "> Llenar campos faltantes</p> ';
     } else {
-        $Producto       = $_POST['producto'];
-        $Marca          = $_POST['marca'];
-        $Unidad         = $_POST['unidad'];
-        $Precio_c       = $_POST['precio_c'];
-        $Precio_v       = $_POST['precio_v'];
-        $Tipo           = $_POST['tipo'];
-        $Proveedor      = $_POST['proveedor'];
+        $Nombre      = $_POST['nombre'];
+        $Concepto    = $_POST['concepto'];
+        $Fecha       = $_POST['fecha'];
+        $Monto       = $_POST['monto'];
 
-        $foto           = $_FILES['foto'];
-        $pdf           = $_FILES['pdf'];
         $num            = $total2 + 1;
 
         $num2           = $total2;
 
-
-        //imagen 1
-
-        $nombre_image = $foto['name'];
-        $type = $foto['type'];
-        $url_temp = $foto['tmp_name'];
-
-        // pdf
-        $nombre_pdf = $pdf['name'];
-        $type2 = $pdf['type'];
-        $url_temp2 = $pdf['tmp_name'];
-
-        $imgProducto = 'nodisponible.png';
-
-        if ($nombre_image != '') {
-            $destino = 'img/productos/';
-            $img_nombre = 'producto' . $num;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $imgActa = $img_nombre . '.jpg';
-            $src = $destino . $imgActa;
-        }
-
-
-        if ($nombre_pdf != '') {
-            $destino2 = 'img/fichas_tecnicas/';
-            $img_nombre = 'FichaTecnica'.date("Y-m-d H-i-s").'_'.$num;
-            //$img_nombre = 'acta_'.$ubicacion.'-'.$fecha_ejecucion.date('H:m:s');
-            $ruta_pdf = $img_nombre . '.pdf';
-            $src_pdf = $destino2 . $ruta_pdf;
-        }
-
-
-
-
-        $query_insert = mysqli_query($conexion, "INSERT INTO productos(
-                        p_descripcion,
-                        p_marca,
-                        p_unidad,
-                        p_precioc,
-                        p_preciov,
-                        p_tipo,
-                        p_proveedor,
-                        foto,
-                        pdf
+        $query_insert = mysqli_query($conexion, "INSERT INTO recibos(
+                        nombre,
+                        monto,
+                        concepto,
+                        fecha
                     )
                     VALUES(
-                        '$Producto',
-                        '$Marca',
-                        '$Unidad',
-                        '$Precio_c',
-                        '$Precio_v',
-                        '$Tipo',
-                        '$Proveedor',
-                        '$imgActa',
-                        '$ruta_pdf'
-
+                        '$Nombre',
+                        '$Monto',
+                        '$Concepto',
+                        '$Fecha'
                     )");
 
 
         if ($query_insert) {
-            if ($nombre_image != '') {
-                move_uploaded_file($url_temp, $src);
-            }
-            if ($nombre_pdf != '') {
-                move_uploaded_file($url_temp2, $src_pdf);
-            }
+            
             $alert = '<p class="alert alert-success"> Guardado Correctamente </p> ';
-            header("Location: productos.php");
+            header("Location: recibos.php");
         } else {
             $alert = '<p class="alert alert-danger "> El registro fallo </p> ';
         }
     }
 }
-
-
 
 
 ?>
@@ -246,9 +188,9 @@ if (!empty($_POST)) {
 
                         <?php
 
-                        $sql_tfilas = mysqli_query($conexion, "SELECT COUNT(*) FROM productos;");
-                        $result_fs = mysqli_fetch_array($sql_tfilas);
-                        $totales = $result_f['COUNT(id_producto)'];; ?>
+                        $sql_tfilas = mysqli_query($conexion, "SELECT COUNT(*) FROM recibos;");
+                        $result_f = mysqli_fetch_array($sql_tfilas);
+                        $totales = $result_f['COUNT(*)'];; ?>
 
                         <div class="">
 
@@ -259,9 +201,9 @@ if (!empty($_POST)) {
                                         <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i> Lista de Recibos </a>
                                         <form class="d-flex" role="search">
 
-                                            <button style="margin:2px;" class="btn btn-sm btn-secondary" type="submit"> <strong> TOTAL PRODUCTOS : </strong> <?php echo $totales; ?> </button>
-                                            <a style="margin:2px;" class="  btn btn-primary btn-sm " href="cotizador/"> <i class="fa-solid fa-sack-dollar"></i> Ir a COTIZADOR</a>
-                                            <a href="ssreporte_inventario.php" class="btn btn-danger btn-sm" style="margin:2px;"> <i class="fa-solid fa-print"></i> Imprimir Reporte de Productos</a>
+                                            <button style="margin:2px;" class="btn btn-sm btn-secondary" type="submit"> <strong> N° de Recibos  :  </strong> <?php echo $totales; ?> </button>
+                    
+                                            <a href="#" class="btn btn-danger btn-sm" style="margin:2px;"> <i class="fa-solid fa-print"></i> Imprimir Reporte de Recibos</a>
                                         </form>
                                     </div>
                                 </nav>
@@ -294,11 +236,15 @@ if (!empty($_POST)) {
                                         $result = mysqli_num_rows($query);
                                         if ($result > 0) {
                                             while ($data = mysqli_fetch_array($query)) {
-                                                if ($data['foto'] != 'nodisponible.png') {
-                                                    $image = 'img/productos/' . $data['foto'];
-                                                } else {
-                                                    $image = 'img/' . $data['foto'];
-                                                }
+                                                
+                                                $fecha =  $data['fecha'];
+
+                                                $nombre = $data['nombre'];
+                                                $id = $data['id_recibo'];
+
+                                                
+
+                                                
 
 
 
@@ -307,15 +253,16 @@ if (!empty($_POST)) {
                                         ?>
 
                                                 <tr>
-                                                    <td><?php echo 'COD-' . $data['id_producto'] ?></td>
-                                                    <td><?php echo $data['p_descripcion'] ?></td>
-                                                    <td><?php echo $data['p_marca'] ?></td>
-                                                    <td><?php echo $data['p_unidad'] ?></td>
-                                                    <td><?php echo $data['p_precioc'] ?></td>
-                                                    <td><?php echo $data['p_preciov'] ?></td>
-                                                    <td><?php echo $data['p_tipo'] ?></td>
-                                                    <td><?php echo $data['p_proveedor'] ?></td>
-                                                    <td><?php echo $data['p_fecha_registro'] ?></td>
+                                                    <td><?php echo 'RECB-' . $data['id_recibo'] ?></td>
+                                                    <td><?php echo $data['nombre'] ?></td>
+                                                    <td>   <?php echo $data['concepto'] ?> </td>
+                                                    <td> <span style="text-align: left; background-color:aquamarine;" class="btn  btn-sm w-100"> <?php echo number_format($data['monto'],2,'.',',') ?> Bs</span></td>
+                                                    <td><?php 
+                                                                                    setlocale(LC_TIME, "spanish");
+                                                                                    //echo $data['fecha_ejecucion']
+                                                                                    echo strftime('%e de %B %Y', strtotime($data['fecha']));
+                                                                                ?></td>
+                                                    
 
 
 
@@ -331,60 +278,9 @@ if (!empty($_POST)) {
 
                                                         <div style="min-width: max-content;">
 
-                                                             <?php
-                                                             if (!empty($data['foto'])) {
-                                                                
-                                                             
-                                                             ?>
-                                                            <a class="btn btn-outline-success btn-sm gallery-item" id="<?php echo $image; ?> ">
-                                                                <i class="fa-solid fa-image"></i> Ver Imagen
-                                                            </a>
-
-                                                            <?php
-                                                             } else{
-
-                                                                
-                                                             
-                                                             ?>
-                                                            <a class="btn btn-outline-secondary btn-sm gallery-item" id="<?php echo $image; ?> ">
-                                                            <i class="fa-solid fa-circle-exclamation"></i> Sin Imagen
-                                                            </a>
-                                                            <?php
-                                                             } 
-                                                             ?>
-
-                                                            <a href="editar_imgP.php?id=<?php echo $data['id_producto'] ?>" class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="top" title="editar Imagen">
-                                                                <i class="fa-solid fa-upload"></i>
-                                                            </a>
-
-                                                            <?php
-                                                             if (!empty($data['pdf'])) {
-                                                                
-                                                             
-                                                             ?>
-
-                                                            <a style="background-color: #eeee90;color: #505050;border-color: black;" target="_blank" class="btn btn-primary btn-sm" href="img/fichas_tecnicas/<?php echo $data['pdf']; ?>"><i class="fa-solid fa-file-lines"></i> Ficha Tecnica </a>
-                                                            <?php
-                                                             } else{
-
-                                                                
-                                                             
-                                                             ?>
-
-                                                            <a target="_blank" class="btn btn-outline-secondary btn-sm" >
-                                                            <i class="fa-solid fa-circle-exclamation"></i> Sin Ficha Tec</a>
-
-                                                            <?php
-                                                             } 
-                                                             ?>
-
-
-                                                            <a style="background-color: #eeee90;color: #505050;border-color: black;" href="editar_imgPDFP.php?id=<?php echo $data['id_producto'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="editar Imagen">
-                                                                <i class="fa-solid fa-upload"></i>
-                                                            </a>
-                                                            <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_producto']; ?> " class="btn btn-warning btn-sm" href=""><i class="fa-regular fa-pen-to-square"></i> </a>
-                                                            <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_producto']; ?> " class="btn btn-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> </a>
-
+                                                            <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['id_recibo']; ?> " class="btn btn-warning btn-sm" href=""><i class="fa-regular fa-pen-to-square"></i> Editar </a>
+                                                            <a data-bs-toggle="modal" data-bs-target="#exampleModali<?php echo $data['id_recibo']; ?> " class="btn btn-danger btn-sm" href=""><i class="fa-solid fa-trash"></i> Eliminar </a>
+                                                            <a data-bs-toggle="modal" data-bs-target="#exampleModalp<?php echo $data['id_recibo']; ?> " class="btn btn-outline-danger  btn-sm  " href=""><img src="img/pdf.svg" height="20px" width="20px"> IMPRIMIR RECIBO </a>
 
                                                         </div>
 
@@ -394,74 +290,27 @@ if (!empty($_POST)) {
                                                 </tr>
 
                                                 <!-- Modal editar  -->
-                                                <div class="modal fade" id="exampleModal<?php echo $data['id_producto']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="exampleModal<?php echo $data['id_recibo']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
-                                                            <form action="editar_productos.php" method="post">
+                                                            <form action="editar_recibos.php" method="post">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Editar a <?php echo $data['p_descripcion'] ?> </h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Editar Recibo de  <?php echo $data['nombre'] ?> </h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="card-header">
-                                                                        <input type="hidden" name="eid_pro" value="<?php echo $data['id_producto']; ?>">
-                                                                        <label for="">Descripcion Producto</label>
-                                                                        <input name="eproducto" class="form-control" type="text" value=" <?php echo $data['p_descripcion'] ?>">
-                                                                        <label for="">Marca</label>
-                                                                        <input name="emarca" class="form-control" type="text" value=" <?php echo $data['p_marca'] ?>">
-                                                                        <label for="">Unidad</label>
-                                                                        <select name="eunidad" id="eunidad" class="form-control form-control-sm " required>
-                                                                            <option value="<?php echo $data['p_unidad'] ?>"><?php echo $data['p_unidad'] ?></option>
-                                                                            <option value="Unidad">Unidad</option>
-                                                                            <option value="Caja">Caja</option>
-                                                                            <option value="Pieza">Pieza</option>
-                                                                            <option value="Equipo">Equipo</option>
-                                                                            <option value="Paquete">Paquete</option>
-                                                                            <option value="Pliegue">Pliegue</option>
-                                                                            <option value="Pliego">Pliego</option>
-                                                                            <option value="Par">Par</option>
-                                                                            <option value="Docena">Docena</option>
-                                                                            <option value="Bidon">Bidon</option>
-                                                                            <option value="Block">Block</option>
-                                                                            <option value="Bolsa">Bolsa</option>
-                                                                            <option value="Bote">Bote</option>
-                                                                        </select>
-                                                                        <label for="">Tipo Producto</label>
-                                                                        <select name="etipo" id="etipo" class="form-control form-control-sm ">
-                                                                            <option value="<?php echo $data['p_tipo'] ?>"><?php echo $data['p_tipo'] ?></option>
-                                                                            <option value="limpieza">Material de Limpieza</option>
-                                                                            <option value="mobiliario">Material Mobiliario</option>
-                                                                            <option value="Musical">Material Musical</option>
-                                                                            <option value="Hospitalario">Material Hospitalario</option>
-                                                                            <option value="Tecnologico">Material Tecnologico</option>
-                                                                            <option value="Cocina">Material de Cocina</option>
-                                                                            <option value="Textil">Material Textil</option>
-                                                                            <option value="Vehiculos">Vehiculos</option>
-                                                                            <option value="Ferreteria">Ferreteria</option>
-                                                                            <option value="industrial">Seguridad Industrial</option>
-                                                                            <option value="alimentos">Alimentos</option>
-                                                                            <option value="escritorio">Material de Escritorio</option>
-                                                                            <option value="policial">Material Policial</option>
-                                                                            <option value="deportivo">Material Deportivo</option>
-                                                                            <option value="belleza">Material de Belleza</option>
-                                                                        </select>
+                                                                        <input type="hidden" name="eid" value="<?php echo $data['id_recibo']; ?>">
+                                                                        <label for="">Recibo del Sr.(a)</label>
+                                                                        <input name="enombre" class="form-control" type="text" value=" <?php echo $data['nombre'] ?>">
+                                                                        <label for="">Monto</label>
+                                                                        <input name="emonto" class="form-control" type="text" value=" <?php echo $data['monto'] ?>">
+                                                                        <label for="">Concepto</label>
+                                                                        <input name="econcepto" class="form-control" type="text" value=" <?php echo $data['concepto'] ?>">
+                                                                        <label for="">Fecha </label>
 
-                                                                        <label for="">Proveedor (Referencias )</label>
-                                                                        <input name="eproveedor" class="form-control" type="text" value=" <?php echo $data['p_proveedor'] ?>">
+                                                                        <input class=" form-control"type="date" name="efecha" value="<?php echo $data['fecha']?>">
 
-                                                                        <div class="">
-                                                                            <div class=" mb-3 mb-md-0">
-                                                                                <span for="inputFirstName">Precio Compra</span>
-                                                                                <input style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" name="eprecio_c" type="text" value="<?php echo $data['p_precioc'] ?>" required />
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="">
-                                                                            <div class=" mb-3 mb-md-0">
-                                                                                <span for="inputFirstName">Precio Venta</span>
-                                                                                <input style="background-color:#c9ffc9;" class="form-control form-control-sm  bg-opacity-10" name="eprecio_v" type="text" value="<?php echo $data['p_preciov'] ?>" required />
-                                                                            </div>
-                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
@@ -475,20 +324,20 @@ if (!empty($_POST)) {
                                                 </div>
 
                                                 <!-- Modal eliminar  -->
-                                                <div class="modal fade " id="exampleModali<?php echo $data['id_producto']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade " id="exampleModali<?php echo $data['id_recibo']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content  bg-opacity-80">
-                                                            <form action="eliminar_productos.php" method="post">
+                                                            <form action="eliminar_recibo.php" method="post">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title" id="exampleModalLabel">Eliminar registro </h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="card-header text-center " style="padding: 0; margin: 0;">
-                                                                        <input type="hidden" name="idPro" value="<?php echo $data['id_producto']; ?>">
+                                                                        <input type="hidden" name="idR" value="<?php echo $data['id_recibo']; ?>">
 
-                                                                        <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['p_descripcion'] ?> " disabled>
-                                                                        <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['p_precioc'] . ' Bs' ?> " disabled>
+                                                                        <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['nombre'] ?> " disabled>
+                                                                        <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['concepto'] . ' Bs' ?> " disabled>
 
                                                                     </div>
 
@@ -501,6 +350,28 @@ if (!empty($_POST)) {
                                                             </form>
                                                         </div>
                                                     </div>
+                                                </div>
+
+                                                <!-- Modal pdf  -->
+                                                <div class="modal fade " id="exampleModalp<?php echo $id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content  bg-opacity-80">
+                                                        <form action="pdf_recibos.php" method="post">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">RECIBO DE : <?php echo $nombre; ?>  </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        <input type="hidden" name="idRecibo" value="<?php echo $id; ?>" >
+                                                        <input type="hidden" name="names" value="<?php echo $nombre; ?>" >
+                                                    </div>
+                                                    
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                        <input class="btn btn-danger" type="submit" value="Imprimir RECIBO">
+                                                    </div>
+
+                                                    </form>
+                                                    </div>
+                                                </div>
                                                 </div>
 
 
@@ -626,6 +497,8 @@ if (!empty($_POST)) {
         
 
     </script>
+
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
