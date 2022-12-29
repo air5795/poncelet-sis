@@ -241,6 +241,8 @@ if (!empty($_POST)) {
 
                                                 $nombre = $data['nombre'];
                                                 $id = $data['id_recibo'];
+                                                $mon = $data['monto'];
+                                                $con = $data['concepto'];
 
                                                 
 
@@ -362,6 +364,8 @@ if (!empty($_POST)) {
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         <input type="hidden" name="idRecibo" value="<?php echo $id; ?>" >
                                                         <input type="hidden" name="names" value="<?php echo $nombre; ?>" >
+                                                        <input type="hidden" name="montos" value="<?php echo $mon; ?>" >
+                                                        <input type="hidden" name="concept" value="<?php echo $con; ?>" >
                                                     </div>
                                                     
                                                     <div class="modal-footer">
