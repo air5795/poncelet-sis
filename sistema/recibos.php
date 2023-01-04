@@ -34,22 +34,25 @@ if (!empty($_POST)) {
         $Concepto    = $_POST['concepto'];
         $Fecha       = $_POST['fecha'];
         $Monto       = $_POST['monto'];
+        $usuario_id = $_SESSION['iduser'];
 
         $num            = $total2 + 1;
 
         $num2           = $total2;
 
         $query_insert = mysqli_query($conexion, "INSERT INTO recibos(
-                        nombre,
+                        nombre_r,
                         monto,
                         concepto,
-                        fecha
+                        fecha,
+                        usuario_id
                     )
                     VALUES(
                         '$Nombre',
                         '$Monto',
                         '$Concepto',
-                        '$Fecha'
+                        '$Fecha',
+                        '$usuario_id'
                     )");
 
 
@@ -190,7 +193,14 @@ if (!empty($_POST)) {
 
                         $sql_tfilas = mysqli_query($conexion, "SELECT COUNT(*) FROM recibos;");
                         $result_f = mysqli_fetch_array($sql_tfilas);
-                        $totales = $result_f['COUNT(*)'];; ?>
+                        $totales = $result_f['COUNT(*)']; 
+                        
+                        $sql_tfilas2 = mysqli_query($conexion, "SELECT SUM(monto) FROM recibos;");
+                        $result_f2 = mysqli_fetch_array($sql_tfilas2);
+                        $totales2 = $result_f2['SUM(monto)']; ?>
+
+                        
+
 
                         <div class="">
 
@@ -200,6 +210,9 @@ if (!empty($_POST)) {
                                     <div class="container-fluid ">
                                         <a class="navbar-brand text-black"> <i class="fa-solid fa-table-list"></i> Lista de Recibos </a>
                                         <form class="d-flex" role="search">
+
+                                        <button style="margin:2px;" class="btn btn-sm btn-secondary" type="submit"> <strong>  &Sigma;  :  </strong> Sumatoria TOTAL RECIBOS Monto (Bs) :  
+                                      <?php echo number_format($totales2,2,'.',',').' Bs'?> </button>
 
                                             <button style="margin:2px;" class="btn btn-sm btn-secondary" type="submit"> <strong> N° de Recibos  :  </strong> <?php echo $totales; ?> </button>
                     
@@ -216,10 +229,12 @@ if (!empty($_POST)) {
                                             <tr class="">
 
                                                 <th>CODIGO RECIBO</th>
-                                                <th width="30%">RECIBO DEL Sr(a) </th>
-                                                <th>Por CONCEPTO</th>
-                                                <th>MONTO</th>
-                                                <th>FECHA</th>
+                                                <th width="20%">RECIBO DEL Sr(a) </th>
+                                                <th width="20%">Por CONCEPTO</th>
+                                                <th width="10%">MONTO</th>
+                                                <th width="10%">FECHA DE RECIBO</th>
+                                                <th>INGRESO A BASE DE DATOS</th>
+                                                <th>CREADO POR </th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
@@ -229,7 +244,19 @@ if (!empty($_POST)) {
                                         //$query = mysqli_query($conexion, "SELECT * FROM gastos
                                         //ORDER BY id_gasto DESC;");
 
-                                        $query = mysqli_query($conexion, "SELECT * FROM recibos order by id_recibo DESC;");
+                                        $query = mysqli_query($conexion, "SELECT
+                                        recibos.concepto,
+                                        recibos.dateadd,
+                                        recibos.fecha,
+                                        recibos.monto,
+                                        recibos.nombre_r,
+                                        recibos.id_recibo,
+                                        recibos.usuario_id,
+                                        usuario.idusuario,
+                                        usuario.nombre
+                                    FROM
+                                        recibos
+                                    JOIN usuario ON recibos.usuario_id = usuario.idusuario");
 
 
 
@@ -239,7 +266,7 @@ if (!empty($_POST)) {
                                                 
                                                 $fecha =  $data['fecha'];
 
-                                                $nombre = $data['nombre'];
+                                                $nombre = $data['nombre_r'];
                                                 $id = $data['id_recibo'];
                                                 $mon = $data['monto'];
                                                 $con = $data['concepto'];
@@ -256,7 +283,7 @@ if (!empty($_POST)) {
 
                                                 <tr>
                                                     <td><?php echo 'RECB-' . $data['id_recibo'] ?></td>
-                                                    <td><?php echo $data['nombre'] ?></td>
+                                                    <td><?php echo $data['nombre_r'] ?></td>
                                                     <td>   <?php echo $data['concepto'] ?> </td>
                                                     <td> <span style="text-align: left; background-color:aquamarine;" class="btn  btn-sm w-100"> <?php echo number_format($data['monto'],2,'.',',') ?> Bs</span></td>
                                                     <td><?php 
@@ -264,6 +291,8 @@ if (!empty($_POST)) {
                                                                                     //echo $data['fecha_ejecucion']
                                                                                     echo strftime('%e de %B %Y', strtotime($data['fecha']));
                                                                                 ?></td>
+                                                    <td style="background-color: #626262;font-weight: 700; color:white" ><?php echo $data['dateadd'] ?></td>
+                                                    <td style="background-color: #626262;font-weight: 700; color:white" ><?php echo $data['nombre'] ?></td>
                                                     
 
 
@@ -297,14 +326,14 @@ if (!empty($_POST)) {
                                                         <div class="modal-content">
                                                             <form action="editar_recibos.php" method="post">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Editar Recibo de  <?php echo $data['nombre'] ?> </h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Editar Recibo de  <?php echo $data['nombre_r'] ?> </h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="card-header">
                                                                         <input type="hidden" name="eid" value="<?php echo $data['id_recibo']; ?>">
                                                                         <label for="">Recibo del Sr.(a)</label>
-                                                                        <input name="enombre" class="form-control" type="text" value=" <?php echo $data['nombre'] ?>">
+                                                                        <input name="enombre" class="form-control" type="text" value=" <?php echo $data['nombre_r'] ?>">
                                                                         <label for="">Monto</label>
                                                                         <input name="emonto" class="form-control" type="text" value=" <?php echo $data['monto'] ?>">
                                                                         <label for="">Concepto</label>
@@ -338,8 +367,8 @@ if (!empty($_POST)) {
                                                                     <div class="card-header text-center " style="padding: 0; margin: 0;">
                                                                         <input type="hidden" name="idR" value="<?php echo $data['id_recibo']; ?>">
 
-                                                                        <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['nombre'] ?> " disabled>
-                                                                        <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['concepto'] . ' Bs' ?> " disabled>
+                                                                        <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['nombre_r'] ?> " disabled>
+                                                                        <input name="ename" class="form-control" style="text-align: center;" type="text" value=" <?php echo $data['concepto']  ?> " disabled>
 
                                                                     </div>
 

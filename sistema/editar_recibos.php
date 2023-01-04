@@ -28,7 +28,7 @@ if (!empty($_POST)) {
             
             
             $sql_update = mysqli_query($conexion,"UPDATE recibos
-                                                  SET nombre = '$nombre', monto = '$monto',  concepto = '$concepto' ,  fecha = '$fecha'  
+                                                  SET nombre_r = '$nombre', monto = '$monto',  concepto = '$concepto' ,  fecha = '$fecha'  
                                                   WHERE id_recibo = $idClave ");    
             
 

@@ -79,6 +79,24 @@ ob_start();
       font-size: 10px;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
+
+    #watermark2 {
+                position: fixed;
+
+                /** 
+                    Establece una posición en la página para tu imagen
+                    Esto debería centrarlo verticalmente
+                **/
+                bottom:   16cm;
+                left:     4cm;
+
+                /** Cambiar las dimensiones de la imagen **/
+                width:    12cm;
+                height:   8cm;
+
+                /** Tu marca de agua debe estar detrás de cada contenido **/
+                z-index:  -1000;
+            }
     
   </style>
 </head>
@@ -90,17 +108,12 @@ ob_start();
                                     </div>
         </header>
 
-        <footer>
-                                    <div id="watermark" >
-                                        <img src="data:image/png;base64,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" height="100%" width="100%" />
-                                        
-                                    </div>
-        </footer>
   <!-- Cabecera -->
+
+        <div id="watermark2">
+            <img style="opacity:0.1;" src="img/ICONOGRANDE.png" height="100%" width="100%" />
+        </div>
                          
-
-  
-
 
   <table border="1" width="100%" style="border-collapse:collapse; font-size:larger;" >
   
@@ -108,9 +121,10 @@ ob_start();
             <tr >
             <th  colspan="3" style="background-color: coral; text-align:left;font-size:15px;" > <span style="color:white">DATOS DE LA EMPRESA</span></th>
             </tr>
+            <hr>
 
             <tr class="fon" style="font-size: 11px;">
-                <td> <strong> NOMBRE : </strong> ALBERTO ARISPE PONCE </td>
+                <td> <strong> NOMBRE REPRESENTANTE LEGAL : </strong> ALBERTO ARISPE PONCE </td>
                 <td> <strong> CIUDAD : </strong> POTOSÍ</td>
                 <td> <strong> NIT : </strong> 6601358013</td>
             
@@ -128,18 +142,19 @@ ob_start();
   </table>
   <br>
   <table>
-                          <tr style="text-align: right; background-color: #5c5c5c; color: white; border:solid white;">
+                          <tr style="text-align: right; border:solid white;">
                               <td colspan="1" style="background-color:white;text-align: left; color:#5c5c5c; border:solid white "> 
                               <STRONG style="font-size:10px;"> Fecha de Impresion de Recibo:  </STRONG></td>
-                              <td colspan="3" style="background-color:white;text-align: left; color:#5c5c5c; border:solid white ">
+                              <td colspan="3" style="text-align: left; border:solid white "><span style="color:#5c5c5c;">
                                   <?php setlocale(LC_TIME, "spanish");
                                   echo strftime("%A, %d de %B de %Y ");?>
+                                  </span>
                               </td>
                           </tr>
                         </table>
   <table width="100%" border="1">
     <tr>
-      <td style="border:coral;background-color:#ffffe0; text-align: right; padding:7px;">
+      <td style="opacity:0.5;border:coral;background-color:#ffffe0; text-align: right; padding:7px;">
       <?php echo '<strong>Recibo: </strong> REC-00000'.$idRecibo ; ?></td>
     </tr>
   </table>
@@ -148,7 +163,7 @@ ob_start();
     <!-- Información del recibo -->
     <table border="1" width="100%"  style="border-collapse: collapse;">
             <tr style="background-color: coral;">
-                <th style="background-color: coral; text-align:left;font-size:15px;" > <span style="color:white">DATOS DEL RECIBO</span></th>
+                <th style="background-color:GRAY; text-align:left;font-size:25px;" > <span style="color:white">RECIBO DE PAGO </span></th>
             </tr>
         
     </table>
@@ -157,6 +172,10 @@ ob_start();
         <tr>
             <td width="30%"><strong>Para: </strong>  </td>
             <td><?php echo $nombre; ?></td>
+        </tr>
+        <tr>
+            <td width="30%"><strong>Concepto: </strong>  </td>
+            <td><?php echo $concepto; ?></td>
         </tr>
         <tr>
             <td width="30%"><strong>Monto: </strong>  </td>
@@ -178,7 +197,23 @@ ob_start();
             </td>
         </tr>
     </table>
+    <br><br>
+
+    <table style="padding:30px" width="100%">
+            <tr>
+              <td style="border-top: 2px solid black ; text-align:center">Recibi Conforme</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td style="border-top: 2px solid black ; text-align:center">Entregue Conforme</td>
+            </tr>
+  </table>
   </div>
+
+  
 
  
  
@@ -199,7 +234,7 @@ ob_start();
 
                     $dompdf->render();
 
-                    $dompdf->stream('recibo-'.$idRecibo,array('attachment'=>0));
+                    $dompdf->stream('recibo-'.$idRecibo,array('attachment'=>0)); 
                                     
                 ?>
 

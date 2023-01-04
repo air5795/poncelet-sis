@@ -120,7 +120,7 @@ if (empty($_SESSION['active'])) {
                             </a>
                             <div class="collapse" id="pagesCollapserec" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav"> 
-                                    <a class="nav-link" href="#.php"> Nuevo Recibo</a> 
+                                    <a class="nav-link" href="recibos.php"> Nuevo Recibo</a> 
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseclaves" aria-expanded="false" aria-controls="pagesCollapseError">
