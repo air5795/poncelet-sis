@@ -145,11 +145,10 @@
                             
                                 
                                 <div class="card mb-4">
-                                    <div class="card-header alert alert-warning">
-                                        
+                                    <div class="card-header alert alert-warning">     
                                         <strong class="alert alert-warning "> <i class="fas fa-chart-area me-1"></i> Proyectos Pendientes de Pago Comercializadora :  <?PHP echo $r; ?> </strong>
                                     </div>
-                                    <div class="card-body"><canvas id="myChart" width="100%" height="20"></canvas></div>
+                                    <div class="card-body"><canvas id="myChart" width="150%" height="20%"></canvas></div>
                                     <div class="card-footer small text-muted">Actualizacion <?php echo date('d/m/y');?></div>
                                 </div>
                                 
@@ -204,12 +203,12 @@
 
     
 var data = {
-  labels: <?php echo json_encode($nombre)?> ,
+  labels: <?php echo json_encode($nombre) ?> ,
   
   datasets: [
       {
       stack:1,
-      label: "Proyecto (Bs) :",
+      label: "Proyectos (Bs) :",
       backgroundColor: [
       'rgba(255, 99, 132, 0.2)',
       'rgba(255, 159, 64, 0.2)',
@@ -238,8 +237,10 @@ var data = {
 
 var options = {
   indexAxis: "y",
+
 }
 
+Chart.defaults.font.size = 10;
 var ctx = document.getElementById("myChart").getContext("2d");
 var myBarChart = new Chart(ctx, {
   type: 'bar',

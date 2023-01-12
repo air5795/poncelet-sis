@@ -256,7 +256,7 @@ if (!empty($_POST)) {
                                         usuario.nombre
                                     FROM
                                         recibos
-                                    JOIN usuario ON recibos.usuario_id = usuario.idusuario");
+                                    JOIN usuario ON recibos.usuario_id = usuario.idusuario ORDER BY recibos.id_recibo DESC");
 
 
 
