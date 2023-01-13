@@ -109,16 +109,16 @@ include "../conexion.php";
 
                 <div class="card-body">
                 
-                <table  style="font-size:11px ;" id="datatablesSimple"  >
+                <table  id="tablas"  class="table table-bordered table-hover " style="font-size:11px ;" style="width:100%"  >
                 <thead class="table-secondary">
                     <tr class="">
-                        <th width="10%">idº</th>
-                        <th width="20%">Nombre del contratante / Persona y Direccion de contacto</th>
-                        <th width="40%">Objeto del Contrato</th>
+                        <th>idº</th>
+                        <th>Nombre del contratante / Persona y Direccion de contacto</th>
+                        <th style="width: 40%;">Objeto del Contrato</th>
                         <th>Ubicacion</th>
-                        <th width="10%" >Monto final del contrato en (Bs)</th>
-                        <th  >Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
-                        <th >Monto en $u$ (Llenado de uso alternativo)</th>
+                        <th>Monto final del contrato en (Bs)</th>
+                        <th>Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
+                        <th>Monto en $u$ (Llenado de uso alternativo)</th>
                         <th>% de Participacion en Asociacion</th>
                         <th>Nombre LI del Socio(s)</th>
                         <th>Profesional Responsable</th>
@@ -126,7 +126,7 @@ include "../conexion.php";
                         <th>imagen-2(Acta)</th>
                         <th>imagen-3(Acta)</th>
                         <th>imagen-4(Acta)</th>
-                        <th width="5%">Acciones</th>    
+                        <th >Acciones</th>    
                     </tr>
                     </thead>
                     <?php
@@ -265,6 +265,21 @@ include "../conexion.php";
     </div>
     <!-- datatablesSimple -->
 
+    <script>$(document).ready(function () {
+    $('#tablas').DataTable({
+        order: [[5,'desc']],
+        pageLength: 5,
+        lengthMenu: [
+            [5, 10, 25,50,200, -1],
+            [5, 10, 25,50,200, 'All'],
+        ],
+        language:{
+            url:'js/Spanish.json'
+        },
+    
+    });
+});</script>
+
     <script>
     document.addEventListener("click",function(e){
         if(e.target.classList.contains("gallery-item")){
@@ -287,7 +302,7 @@ include "../conexion.php";
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
 
-    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
     
 
 </body>

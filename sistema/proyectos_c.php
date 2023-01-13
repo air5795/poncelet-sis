@@ -63,6 +63,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        
+ 
         <title>SISPONCELET</title>
         
     </head>
@@ -248,7 +250,7 @@
                                 
                             
                             <table class="table table-bordered ">
-                            <table  class=" table" id="datatablesSimple"  >
+                            <table class="table" id="tablas">
                                 <thead class="table-secondary ">
                                     <tr class="">
                                         
@@ -531,7 +533,11 @@
 
 
 
-        
+        <script>
+            $(document).ready( function () {
+                $('#tablas').DataTable();
+            } );
+        </script>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
@@ -540,5 +546,7 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+        
     </body>
 </html>

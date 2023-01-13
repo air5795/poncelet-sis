@@ -132,6 +132,116 @@ ob_start();
 
 
 
+<table style="width:97% ;">
+
+<?php
+$DateAndTime = date('d-m-Y ');  
+echo "The current date and time are $DateAndTime.";
+
+?>                          
+                                    
+                              
+                                
+                    
+                    
+                    
+                                           
+                        <tr>
+                            <td colspan="4" style="font-size:10px; border-right-color: white; border-left-color: white; border-top-color:white;"> <STRONG style="font-size:13px;"> DETALLE INGRESOS CAJA CHICA   </STRONG></td>
+                        </tr>
+                        
+                     
+                    
+                    
+                    <tr style="background-color:#d7d7d7 ;">
+                                        <th>N°</th>
+                                        <th>Persona</th>
+                                        <th>Fecha Ingreso</th>
+                                        <th>Monto</th>
+                                       
+                                         
+                                        
+                    </tr>
+
+                                    
+                    
+                    <?php
+                    
+                                    // rescatar datos DB 
+                                    //$query = mysqli_query($conexion, "SELECT * FROM gastos
+                                    //ORDER BY id_gasto DESC;");
+
+                                    $query = mysqli_query($conexion, "SELECT
+ROW_NUMBER() 
+OVER(ORDER BY fecha_i ) 
+row_num,
+id_ingreso,
+persona, 
+montoBs,
+montoU,
+fecha_i,
+respaldo
+FROM ingresos
+ORDER BY fecha_i ;");
+
+                                
+
+                                    $result = mysqli_num_rows($query);
+                                    if ($result > 0) {
+                                        while ($data = mysqli_fetch_array($query)) {
+                                            
+                                            
+                                            
+
+                                            
+
+                                    ?>
+                            <tr>
+                                <td><?php echo $data['row_num'] ?></td>
+                                <td><?php echo $data['persona'] ?></td>
+                                <td>
+                                    <?php 
+                                    setlocale(LC_TIME, "spanish");
+                                    echo strftime('%e de %B %Y', strtotime($data['fecha_i']));
+                                    ?>
+                                </td>
+                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['montoBs'],2,'.',',').' Bs' ?></td>
+                                
+                                
+                                
+
+                               
+                               
+                               
+                                
+                                
+                                
+                                
+                                
+                                
+
+                                
+                            </tr>
+                    <?php
+
+                        }
+                    }
+                    ?>
+
+                    <tr class="">
+                        <td colspan="3" style="text-align: right; background-color: rgb(249 134 2 / 20%); color: #5c5c5c;">  TOTAL INGRESOS</td>
+                        <td colspan="1" style="background-color: orange color:white; font-size:20px;"> <?php echo number_format($total2,2,'.',',').' Bs'?></td>
+                        
+                    </tr>
+                    
+
+                    
+                    <!--<tr>
+                         <td colspan="10" class="exp2"><img class="im" src="img/sello.jpg" ></td>
+                    </tr>-->
+
+
+                </table>
 
 
 

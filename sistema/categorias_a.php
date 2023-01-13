@@ -169,8 +169,8 @@
 
                                 
                             
-                            <table class="table table-bordered">
-                            <table  class="tabla_ale" id="datatablesSimple"  >
+                            <table >
+                            <table id="tablas"  class="table table-bordered table-hover" style="font-size:11px ;"  >
                                 <thead class="table-secondary">
                                     <tr class="">
                                         
@@ -322,7 +322,19 @@ ORDER BY id_activo DESC;");
         
 
 
-
+        <script>$(document).ready(function () {
+    $('#tablas').DataTable({
+        order: [[5, 'desc']],
+        pageLength: 5,
+        lengthMenu: [
+            [5, 10, 25,50,200, -1],
+            [5, 10, 25,50,00, 'All'],
+        ],
+        language:{
+            url:'js/Spanish.json'
+        }
+    });
+});</script>
 
         
         
@@ -333,5 +345,6 @@ ORDER BY id_activo DESC;");
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
     </body>
 </html>

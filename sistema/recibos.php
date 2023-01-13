@@ -223,8 +223,8 @@ if (!empty($_POST)) {
 
 
 
-                                <table class="table table-bordered table-hover">
-                                    <table id="datatablesSimple" style="font-size:11px ;">
+                                <table>
+                                    <table id="tablas"  class="table table-bordered table-hover" style="font-size:11px ;">
                                         <thead class="table-secondary">
                                             <tr class="">
 
@@ -385,26 +385,26 @@ if (!empty($_POST)) {
 
                                                 <!-- Modal pdf  -->
                                                 <div class="modal fade " id="exampleModalp<?php echo $id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content  bg-opacity-80">
-                                                        <form action="pdf_recibos.php" method="post">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">RECIBO DE : <?php echo $nombre; ?>  </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        <input type="hidden" name="idRecibo" value="<?php echo $id; ?>" >
-                                                        <input type="hidden" name="names" value="<?php echo $nombre; ?>" >
-                                                        <input type="hidden" name="montos" value="<?php echo $mon; ?>" >
-                                                        <input type="hidden" name="concept" value="<?php echo $con; ?>" >
-                                                    </div>
-                                                    
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                        <input class="btn btn-danger" type="submit" value="Imprimir RECIBO">
-                                                    </div>
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content  bg-opacity-80">
+                                                            <form action="pdf_recibos.php" method="post">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">RECIBO DE : <?php echo $nombre; ?>  </h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <input type="hidden" name="idRecibo" value="<?php echo $id; ?>" >
+                                                            <input type="hidden" name="names" value="<?php echo $nombre; ?>" >
+                                                            <input type="hidden" name="montos" value="<?php echo $mon; ?>" >
+                                                            <input type="hidden" name="concept" value="<?php echo $con; ?>" >
+                                                        </div>
+                                                        
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                            <input class="btn btn-danger" type="submit" value="Imprimir RECIBO">
+                                                        </div>
 
-                                                    </form>
+                                                        </form>
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 </div>
 
 
@@ -475,6 +475,22 @@ if (!empty($_POST)) {
 
 
     <script>
+        $(document).ready(function () {
+            $('#tablas').DataTable({
+                order: [[0, 'desc']],
+                pageLength: 5,
+                lengthMenu: [
+                    [5, 10, 25,50,200, -1],
+                    [5, 10, 25,50,200, 'All'],
+                ],
+                language:{
+                    url:'js/Spanish.json'
+                }
+            });
+        });
+</script>
+
+    <script>
         document.addEventListener("click", function(e) {
             if (e.target.classList.contains("gallery-item")) {
                 const src = e.target.getAttribute("id");
@@ -539,6 +555,7 @@ if (!empty($_POST)) {
     <script src="assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 </body>
 
 </html>
