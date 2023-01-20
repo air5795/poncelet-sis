@@ -25,7 +25,7 @@
 
 
         if (empty($_POST['nombre_contratante']) || empty($_POST['obj_contrato']) || empty($_POST['ubicacion']) || empty($_POST['monto_bs']) || empty($_POST['monto_dolares']) 
-         || empty($_POST['fecha_ejecucion'])  || empty($_POST['profesional_resp'])) {
+         || empty($_POST['fecha_ejecucion'])  || empty($_POST['profesional_resp']) || empty($_POST['detalle']) ) {
             $alert = '<p class="alert alert-danger "> Todos los Campos Son Obligatorios menos Nombre LI Socio(s)* y Participacion en Asociacion</p> ';
        } 
        else 
@@ -39,6 +39,7 @@
             $fecha_ejecucion = $_POST['fecha_ejecucion'];
             $participa_aso = $_POST['participa_aso'];
             $n_socio = $_POST['n_socio'];
+            $detalle = $_POST['detalle'];
             $profesional_resp = $_POST['profesional_resp'];
             $usuario_id = $_SESSION['iduser'];
             $image = $_FILES['image'];
@@ -406,6 +407,7 @@
                                                                                 participa_aso,
                                                                                 n_socio,
                                                                                 profesional_resp,
+                                                                                detalle,
                                                                                 image,
                                                                                 image2,
                                                                                 image3,
@@ -433,6 +435,7 @@
                                                                                 '$participa_aso',
                                                                                 '$n_socio',
                                                                                 '$profesional_resp',
+                                                                                '$detalle',
                                                                                 '$imgActa',
                                                                                 '$imgActa2',
                                                                                 '$imgActa3',
@@ -605,6 +608,13 @@
                                  <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Profesional Responsable (****)</span> 
                                     <input class="form-control form-control-sm warning" name="profesional_resp" type="text" value="ALBERTO ARISPE PONCE" />
+                                 </div>
+                             </div>
+
+                             <div class="col-md-12">
+                                 <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Detalle de la Experiencia <span style="color:red"> (Colocar Palabras Clave ejm. Computadoras) </span></span> 
+                                    <input class="form-control form-control-sm bg-info bg-opacity-25" name="detalle" type="text" required  />
                                  </div>
                              </div>
                              

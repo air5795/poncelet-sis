@@ -25,7 +25,8 @@
         || empty($_POST['monto_bs']) 
         || empty($_POST['monto_dolares']) 
         || empty($_POST['fecha_ejecucion'])  
-        || empty($_POST['profesional_resp'])) {
+        || empty($_POST['profesional_resp'])
+        || empty($_POST['detalle'])) {
             $alert = '<p class="alert alert-danger w-50"> Todos los Campos Son Obligatorios </p> ';
         } else {
             
@@ -38,6 +39,7 @@
             $fecha_ejecucion = $_POST['fecha_ejecucion'];
             $participa_aso = $_POST['participa_aso'];
             $n_socio = $_POST['n_socio'];
+            $detalle = $_POST['detalle'];
             $profesional_resp = $_POST['profesional_resp'];
 
             /*$picture1 = $_FILES['image1'];
@@ -429,7 +431,8 @@
                                                         fecha_ejecucion = '$fecha_ejecucion',
                                                         participa_aso = '$participa_aso',
                                                         n_socio = '$n_socio',
-                                                        profesional_resp = '$profesional_resp'
+                                                        profesional_resp = '$profesional_resp',
+                                                        detalle = '$detalle'
                                                         
                                                     WHERE
                                                         id_exp = $idExp");    
@@ -511,6 +514,7 @@
                                             participa_aso, 
                                             n_socio, 
                                             profesional_resp,
+                                            detalle,
                                             image,
                                             image2,
                                             image3,
@@ -545,6 +549,7 @@
             $f_ejecucion = $data['fecha_ejecucion'];
             $p_aso = $data['participa_aso'];
             $n_scio = $data['n_socio'];
+            $detalle = $data['detalle'];
             $p_resp = $data['profesional_resp'];
 
             $jpg = $data['image'];
@@ -699,6 +704,13 @@
                                             <span for="inputFirstName">Profesional Responsable (****)</span> 
                                             <input class="form-control form-control-sm warning" name="profesional_resp" type="text" value="<?php echo $p_resp;?>"/>
                                             
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class=" mb-3 mb-md-0">
+                                            <span for="inputFirstName">Detalle de la Experiencia <span style="color:red"> (Colocar Palabras Clave ejm. Computadoras) </span></span> 
+                                            <input class="form-control form-control-sm bg-info bg-opacity-25" name="detalle" type="text"  value="<?php echo $detalle;?>" required  />
                                         </div>
                                     </div>
 

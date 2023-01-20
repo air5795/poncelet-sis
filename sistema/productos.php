@@ -403,7 +403,7 @@ if (!empty($_POST)) {
                                         ?>
 
                                                 <tr>
-                                                    <td><?php echo 'COD-' . $data['id_producto'] ?></td>
+                                                    <td><?php echo $data['id_producto'] ?></td>
                                                     <td><?php echo $data['p_descripcion'] ?></td>
                                                     <td><?php echo $data['p_marca'] ?></td>
                                                     <td><?php echo $data['p_unidad'] ?></td>

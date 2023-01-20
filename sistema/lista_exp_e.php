@@ -96,6 +96,7 @@ include "../conexion.php";
                 <thead class="table-secondary">
                     <tr class="">
                         <th>Check</th>
+                        <th>Detalle</th>
                         <th>idº</th>
                         <th >Nombre del contratante / Persona y Direccion de contacto</th>
                         <th >Objeto del Contrato</th>
@@ -151,6 +152,7 @@ include "../conexion.php";
                                         <input  name="check[]" value="<?php echo $data['id_exp'] ?>" class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckDefault">
                                     </div>
                                 </td>
+                                <td><?php echo $data['detalle'] ?></td>
                                 <td><?php echo $data['id_exp'] ?></td>
                                 <td><?php echo $data['nombre_contratante'] ?></td>
                                 <td><?php echo $data['obj_contrato'] ?></td>

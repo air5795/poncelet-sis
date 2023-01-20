@@ -119,9 +119,9 @@ include "../conexion.php";
                         <th>Monto final del contrato en (Bs)</th>
                         <th>Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
                         <th>Monto en $u$ (Llenado de uso alternativo)</th>
-                        <th>% de Participacion en Asociacion</th>
-                        <th>Nombre LI del Socio(s)</th>
+                        
                         <th>Profesional Responsable</th>
+                        <th>Detalle</th>
                         <th>imagen-1(Acta)</th>
                         <th>imagen-2(Acta)</th>
                         <th>imagen-3(Acta)</th>
@@ -183,9 +183,9 @@ include "../conexion.php";
                                 <td class=" bg-success bg-opacity-10"><?php echo number_format($data['monto_bs'],2,'.',',').' Bs' ?></td>
                                 <td><?php echo $data['fecha_ejecucion'] ?></td>
                                 <td class=" bg-success bg-opacity-10"><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
-                                <td><?php echo $data['participa_aso'] ?></td>
-                                <td><?php echo $data['n_socio'] ?></td>
+                                
                                 <td><?php echo $data['profesional_resp'] ?></td>
+                                <td><?php echo $data['detalle'] ?></td>
                                 <td>
                                     <img style= "width:50px" src="<?php echo $image ?>" alt="" class="gallery-item"> 
                                 </td>
@@ -204,13 +204,13 @@ include "../conexion.php";
                                 <td class="col-sm-2" >
 
                                 <div style="min-width: max-content;">
-                                <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>"  class="btn btn-outline-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" >
-                                    <img src="img/lapiz.png" height="20px" width="20px"> 
+                                <a href="editar_exp.php?id=<?php echo $data['id_exp'] ?>"  class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" >
+                                    <img src="img/lapiz.png" height="20px" width="20px"> Editar Experiencia 
                                     </a>
 
                                     
-                                    <a href="borrar_exp.php?id=<?php echo $data['id_exp'] ?>"  class="btn btn-outline-danger  btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                    <img src="img/eliminar.png" height="20px" width="20px"> 
+                                    <a href="borrar_exp.php?id=<?php echo $data['id_exp'] ?>"  class="btn btn-danger  btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                    <img src="img/eliminar.png" height="20px" width="20px"> Eliminar 
                                     </a>
 
                                     
