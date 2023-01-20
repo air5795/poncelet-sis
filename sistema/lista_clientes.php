@@ -52,10 +52,10 @@ include "../conexion.php";
 
 
                 <div class="card-body">
-                <table  class="tabla_ale " style="width:100%" " id="datatablesSimple"  >
+                <table id="tablas"  class="table table-bordered table-hover" style="font-size:11px ;"  >
                 <thead>
                     <tr>
-                        
+                    <th>Id cliente</th>
                         <th>NIT</th>
                         <th>NOMBRE</th>
                         
@@ -98,8 +98,18 @@ include "../conexion.php";
 
                     ?>
                             <tr>
+                                <td><?php echo $data['idcliente'] ?></td>
+                                <td><?php 
                                 
-                                <td><?php echo $data['nit'] ?></td>
+                                if ($data['nit'] == 0) {
+                                    echo '<div class="alert alert-danger">Sin NIT/CI</div>';
+                                } else {
+                                    echo $data['nit'];
+                                }
+                                
+                                 
+                                
+                                ?></td>
                                 <td><?php echo $data['nombre'] ?></td>
                                 
                                 <td><?php echo $data['direccion'] ?></td>
@@ -172,6 +182,22 @@ include "../conexion.php";
     </div>
     </div>
     <!-- datatablesSimple -->
+
+    <script>
+        $(document).ready(function () {
+            $('#tablas').DataTable({
+                order: [[0, 'desc']],
+                pageLength: 5,
+                lengthMenu: [
+                    [5, 10, 25,50,200, -1],
+                    [5, 10, 25,50,200, 'All'],
+                ],
+                language:{
+                    url:'js/Spanish.json'
+                }
+            });
+        });
+</script>
     
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -187,7 +213,7 @@ include "../conexion.php";
     
         
     </script>
-    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
 </body>
 

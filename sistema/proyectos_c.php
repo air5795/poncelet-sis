@@ -251,6 +251,7 @@
                             
                             <table class="table table-bordered ">
                             <table class="table" id="tablas">
+                                
                                 <thead class="table-secondary ">
                                     <tr class="">
                                         

@@ -1,6 +1,6 @@
 <?php
     
-    $host = 'localhost';
+    $host = 'localhost:3316';
     $user = 'root';
     $password = '';
     $db = 'cotizacion';

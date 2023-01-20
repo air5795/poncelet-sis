@@ -3,7 +3,7 @@
 
   <?php
     // conexion a bases de datos
-    $host = 'localhost';
+    $host = 'localhost:3316';
     $user = 'root';
     $password = '';
     $db = 'cotizacion';
