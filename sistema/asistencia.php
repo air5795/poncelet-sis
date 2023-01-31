@@ -275,7 +275,7 @@
                                                                             usuario.nombre
                                                                     FROM asistencias
                                                                     JOIN usuario ON asistencias.usuario_id = usuario.idusuario
-                                                                    order by asistencias.id_asistencia DESC;");
+                                                                    order by asistencias.id_asistencia DESC ;");
 
                                 
 
@@ -494,19 +494,22 @@
             </div>
         </div>
 
-        <script>$(document).ready(function () {
-    $('#tablas').DataTable({
-        order: [[5, 'desc']],
-        pageLength: 5,
-        lengthMenu: [
-            [5, 10, 25,50,200, -1],
-            [5, 10, 25,50,00, 'All'],
-        ],
-        language:{
-            url:'js/Spanish.json'
-        }
+        <script>
+        $(document).ready(function () {
+        $('#tablas').DataTable({
+            
+            order: [[5, 'desc']],
+            pageLength: 5,
+            lengthMenu: [
+                [5, 10, 25,50,200, -1],
+                [5, 10, 25,50,00, 'All'],
+            ],
+            language:{
+                url:'js/Spanish.json'
+            }
+        });
     });
-});</script>
+</script>
 
       
         <script type="text/javascript">

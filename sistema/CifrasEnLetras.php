@@ -218,6 +218,9 @@ class CifrasEnLetras {
     - Los múltiplos de millón tienen la preposición 'de' antes de la palabra.
     - El género masculino o femenino sólo puede influir en las cifras inferiores al millón.
   */
+
+
+  //-------------------------------------------------------------------------------decimales
   public static function convertirNumeroEnLetras(
     $cifras, $numeroDecimales=-1,
     $palabraEntera='', $palabraEnteraPlural='', $esFemeninaPalabraEntera=false,
@@ -281,8 +284,9 @@ class CifrasEnLetras {
       $parteDecimal = self::procesarEnLetras($cifrasDecimal,
         $palabraDecimal, $palabraDecimalPlural, $esFemeninaPalabraDecimal);
       if (self::empiezaPor($parteDecimal, self::PREFIJO_ERROR)) return $parteDecimal;
-      $resultado[]= " con ";
-      $resultado[]= $parteDecimal;
+      $resultado[]= " ";
+      //$resultado[]= " con ";
+      $resultado[]= $cifrasDecimal.'/100 Bolivianos';
     }
 
     return implode('', $resultado);
@@ -296,9 +300,14 @@ class CifrasEnLetras {
       CifrasEnLetras::convertirEurosEnLetras(85009) --> "ochenta y cinco mil nueve euros"
       CifrasEnLetras::convertirEurosEnLetras(10200.35) --> "diez mil doscientos euros con treinta y cinco céntimos"
   */
-  public static function convertirEurosEnLetras($euros, $numeroDecimales=2) {
+  /*public static function convertirEurosEnLetras($euros, $numeroDecimales=2) {
     return self::convertirNumeroEnLetras($euros, $numeroDecimales,
       "euro", "Bolivianos", false, "centavos", "centavos", false);
+  }*/
+
+  public static function convertirEurosEnLetras($euros, $numeroDecimales=2) {
+    return self::convertirNumeroEnLetras($euros, $numeroDecimales,
+      "", " ", false, "centavos","/100", false);
   }
 
   /*

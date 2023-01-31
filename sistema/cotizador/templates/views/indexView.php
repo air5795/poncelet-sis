@@ -240,7 +240,7 @@
 
                     <div class="col-sm-6">
                     <label for="precio_unitario_c">Precio Unitario de Compra (Bs) </label>
-                        <input autocomplete="off" style="background-color: #e3ffe3 ;" type="number" 
+                        <input autocomplete="off" style="background-color: #e3ffe3 ;" type="text" 
                         class="form-control " id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" oninput="calcular_a_bs()" required>
                       
                     </div>

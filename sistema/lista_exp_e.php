@@ -152,7 +152,24 @@ include "../conexion.php";
                                         <input  name="check[]" value="<?php echo $data['id_exp'] ?>" class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckDefault">
                                     </div>
                                 </td>
-                                <td><?php echo $data['detalle'] ?></td>
+                                <td><?php 
+
+                                if (empty($data['detalle'])) {
+                                    
+                                    echo '<div class="alert alert-danger">'.'Sin Detalle';
+                                }
+                                else {
+                                    echo '<div class="alert alert-info">'.$data['detalle'];
+                                }
+
+                               
+                                    
+                                
+
+
+                                     ?>
+                                    
+                                </div></td>
                                 <td><?php echo $data['id_exp'] ?></td>
                                 <td><?php echo $data['nombre_contratante'] ?></td>
                                 <td><?php echo $data['obj_contrato'] ?></td>

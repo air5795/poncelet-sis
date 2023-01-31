@@ -191,7 +191,7 @@ ob_start();
                     //Convertimos el total en letras
                     $letra=($v->convertirEurosEnLetras($monto));
 
-                    echo $letra;
+                    echo 'Son '.$letra;
                 ?>
 
             </td>

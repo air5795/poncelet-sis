@@ -116,7 +116,7 @@ if (!empty($_POST)) {
             <div class="container-fluid px-4">
                 <div class="container-fluid px-4 ">
 
-                    <h1 class="mt-4 col"><i class="fa-solid fa-chart-simple"></i> <strong>Seguimiento </strong><span style="color:#fd6f0a;"> Proyectos Comercializadora </span></h1>
+                    <h1 class="mt-4 col"><i class="fa-solid fa-chart-simple"></i> <strong>Seguimiento de PAGO a </strong><span style="color:#fd6f0a;"> Proyectos PONCELET </span></h1>
 
                     <hr>
 
@@ -400,7 +400,7 @@ if (!empty($_POST)) {
                                         ?>
 
                                                 <tr style="background-color:<?php echo $color ?> ;">
-                                                    <td><?php echo 'CODP-' . $data['id_pro'] ?></td>
+                                                    <td><?php echo $data['id_pro'] ?></td>
                                                     <td><?php echo $data['nombre'] ?></td>
                                                     <td><?php echo $data['ubicacion'] ?></td>
                                                     <td><?php echo $data['num_tramite'] ?></td>

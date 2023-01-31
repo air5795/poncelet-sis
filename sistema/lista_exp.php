@@ -176,7 +176,7 @@ include "../conexion.php";
 
                     ?>
                             <tr>
-                                <td><?php echo 'EXP-'.$data['id_exp'] ?></td>
+                                <td><?php echo $data['id_exp'] ?></td>
                                 <td><?php echo $data['nombre_contratante'] ?></td>
                                 <td><?php echo $data['obj_contrato'] ?></td>
                                 <td><?php echo $data['ubicacion'] ?></td>
@@ -185,7 +185,24 @@ include "../conexion.php";
                                 <td class=" bg-success bg-opacity-10"><?php echo number_format($data['monto_dolares'],2,'.',',').' $' ?></td>
                                 
                                 <td><?php echo $data['profesional_resp'] ?></td>
-                                <td><?php echo $data['detalle'] ?></td>
+                                <td><?php 
+
+                                if (empty($data['detalle'])) {
+                                    
+                                    echo '<div class="alert alert-danger">'.'Sin Detalle';
+                                }
+                                else {
+                                    echo '<div class="alert alert-info">'.$data['detalle'];
+                                }
+
+                               
+                                    
+                                
+
+
+                                     ?>
+                                    
+                                </div></td>
                                 <td>
                                     <img style= "width:50px" src="<?php echo $image ?>" alt="" class="gallery-item"> 
                                 </td>
@@ -208,12 +225,10 @@ include "../conexion.php";
                                     <img src="img/lapiz.png" height="20px" width="20px"> Editar Experiencia 
                                     </a>
 
-                                    
                                     <a href="borrar_exp.php?id=<?php echo $data['id_exp'] ?>"  class="btn btn-danger  btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar">
                                     <img src="img/eliminar.png" height="20px" width="20px"> Eliminar 
                                     </a>
 
-                                    
                                 </div>
                                     
                                     

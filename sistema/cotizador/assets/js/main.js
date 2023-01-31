@@ -83,10 +83,10 @@ function add_to_quote(e){
 
         // validar el precio 
 
-        if (precio < 10 ) {
-            notify('Porfavor ingresa un precio mayor a 10.','danger');
-            errors++;
-        }
+       // if (precio < 10 ) {
+       //     notify('Porfavor ingresa un precio mayor a 10.','danger');
+       //     errors++;
+       // }
 
 
         if (errors > 0) {

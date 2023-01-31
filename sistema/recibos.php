@@ -282,7 +282,7 @@ if (!empty($_POST)) {
                                         ?>
 
                                                 <tr>
-                                                    <td><?php echo 'RECB-' . $data['id_recibo'] ?></td>
+                                                    <td><?php echo $data['id_recibo'] ?></td>
                                                     <td><?php echo $data['nombre_r'] ?></td>
                                                     <td>   <?php echo $data['concepto'] ?> </td>
                                                     <td> <span style="text-align: left; background-color:aquamarine;" class="btn  btn-sm w-100"> <?php echo number_format($data['monto'],2,'.',',') ?> Bs</span></td>
