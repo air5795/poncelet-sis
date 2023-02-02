@@ -519,7 +519,7 @@ ORDER BY id_gastoC DESC;");
         $(document).ready(function () {
             $('#tablas').DataTable({
                 order: [[0, 'desc']],
-                pageLength: 5,
+                pageLength: 8,
                 lengthMenu: [
                     [5, 10, 25,50,200, -1],
                     [5, 10, 25,50,200, 'All'],

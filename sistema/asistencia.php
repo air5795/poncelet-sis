@@ -275,7 +275,7 @@
                                                                             usuario.nombre
                                                                     FROM asistencias
                                                                     JOIN usuario ON asistencias.usuario_id = usuario.idusuario
-                                                                    order by asistencias.id_asistencia DESC ;");
+                                                                    order by asistencias.id_asistencia DESC limit 50 ;");
 
                                 
 
