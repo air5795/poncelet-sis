@@ -5,7 +5,7 @@
 
     $num =0;
 
-    $query = mysqli_query($conexion, "SELECT * FROM asistencias");
+    $query = mysqli_query($conexion, "SELECT * FROM asis");
     $result = mysqli_num_rows($query);
     if ($result > 0) {
         while ($data = mysqli_fetch_array($query)) {
@@ -13,7 +13,7 @@
              
         }}
 
-        $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_asistencia) FROM asistencias;");
+        $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_asistencia) FROM asis;");
         $result_f = mysqli_fetch_array($sql_tfila);
         $total2 = $result_f['COUNT(id_asistencia)'];
         $total3 =  $total2 + 1;
@@ -22,13 +22,13 @@
     if (!empty($_POST)) {
 
 
-        if (empty($_POST['tipo'])) {
+        if (empty($_POST['ingresos'])) {
             $alert = '<p class="alert alert-danger "> Llenar campos faltantes</p> ';
        } 
        else 
      {
             
-            $Tipo = $_POST['tipo'];
+            $ingreso = $_POST['ingreso'];
             $Usuario = $_SESSION['iduser'];
             $Obs = $_POST['obs'];
             
@@ -36,8 +36,8 @@
 
             
 
-                    $query_insert = mysqli_query($conexion, "INSERT INTO asistencias ( tipo_registro, observacion_asis, usuario_id) 
-                                                                VALUES ( '$Tipo', '$Obs', $Usuario);");
+                    $query_insert = mysqli_query($conexion, "INSERT INTO asis ( ingresos, observacion, usuario_id) 
+                                                                VALUES ( '$ingreso', '$Obs', $Usuario);");
 
 
             if ($query_insert) {
@@ -143,17 +143,7 @@
                              
                             <a class="btn alert alert-dark font-weight-bold  disabled" role="button" aria-disabled="true"> <strong> N° de registro :  <?php echo $total3 ?> </strong></a>
                             
-                            <div class="col-md-12">
-                                <div class=" mb-3 mb-md-0">
-                                    <span for="inputFirstName">Tipo de Registro</span> 
-                                    <select name="tipo" class="form-select form-select-sm" required >
-                                        <option value="" >Seleccione una opcion: </option>
-                                        <option value="entrada" >Entrada </option>
-                                        <option value="salida" >Salida </option>
-                                    </select>
-                                   
-                                </div>
-                            </div>
+                            
 
                             
 
@@ -187,7 +177,7 @@
                             <div class="row">
                                 <div class="" role="alert" style=""> <?php echo isset ($alert) ? $alert :''; ?></div>
                                 
-                                <button id="noti" type="submit" value="Registrar  " class="btn btn-primary  border-0 " data-dismiss="alert" >Registrar</button>
+                                <button id="noti" type="submit" value="Registrar  " class="btn btn-success  border-0 " data-dismiss="alert" >Registrar Asistencia</button>
                                    
                                 
                             </div>
@@ -213,15 +203,15 @@
 
 
                             <nav class="bg-light">
-                                <div class="container-fluid" style="BACKGROUND-COLOR: #e1e1e1;padding: 15px;text-align: center;">
-                                     <h4 style=" padding:5px;text-align: initial;background-color: #e9e9e9; "> <i class="fa-solid fa-print"></i> Reporte Por Fechas de Asistencias </h4>
+                                <div class="container" style="BACKGROUND-COLOR: #e1e1e1;">
+                                     
                                     <form action="reporte_asis.php"  class="form-inline row" method="POST" name="formFechas" id="formFechas">
                                         <div class="col-sm-3">
                                         <label for="">Elegir Personal</label>
-                                            <select style="width: 100%;font-size:12px ; border-radius: 25px;border: 2px solid gray;" name="personal" id="select" class=" form-select" required >
+                                            <select style="width: 100%;font-size:12px ;" name="personal" id="select" class=" form-select" required >
                                                 <option value="" >Seleccione una opción : </option>
                                                 <?php
-                                                    $query = mysqli_query($conexion, "SELECT * from usuario WHERE estatus = 1 ORDER BY nombre ASC;");
+                                                    $query = mysqli_query($conexion, "SELECT * from usuario ORDER BY nombre ASC;");
                                                     $result = mysqli_num_rows($query);
                                                     if ($result > 0) {
                                                     while ($data = mysqli_fetch_array($query)) {
@@ -234,19 +224,18 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <label for="">Fecha Inicio</label>
-                                            <input style="border-radius: 25px;border: 2px solid gray;" class="form-control form-control-sm" type="date" name="fecha_inicio" id="" required > 
+                                            <input class="form-control form-control-sm" type="date" name="fecha_inicio" id="" required > 
                                         </div>
                                         <div class="col-sm-3">
                                             <label for="">Fecha Final</label>
-                                            <input style="border-radius: 25px;border: 2px solid gray;" class="form-control form-control-sm" type="date" name="fecha_final" id="" required >
+                                            <input class="form-control form-control-sm" type="date" name="fecha_final" id="" required >
 
                                         </div>
                                         
                                         <div class="col-sm-3">
-                                            <label for="">Imprimir</label>
                                             <center>
-                                            <button style="font-size:12px;border-radius: 8px;border: 1px solid red;" type="submit" class="    ">
-                                            Reporte de Asistencias <img src="img/PDF.svg" height="30px" width="30px" >  
+                                            <button type="submit" class="btn btn-danger btn-sm    ">
+                                                <img src="img/PDF.svg" height="45px" width="45px" > 
                                             </button>
                                             </center>
                                         </div>

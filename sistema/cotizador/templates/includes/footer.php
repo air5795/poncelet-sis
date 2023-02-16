@@ -83,6 +83,43 @@
         })
       })
     </script>
+
+
+<script>
+      $(document).ready(function(){
+        $("#buscarp2").click(function(){
+          var nombre = $("#nombrep2").val();
+
+          if(nombre!='')
+          {
+            $.ajax({
+              url:"ejecutar3.php",
+              type:"post",
+              dataType:"JSON",
+              data:{nombre:nombre},
+              success:function(info){
+                console.log(info.nit);
+                //$("#empresa").html(info.nit);
+                //$("#empresa").text(info.nit);
+                $("#concepto").val(info.s_descripcion);
+                $("#marca").val(info.s_marca);
+                $("#tipo").val(info.s_unidad);
+                $("#precio_unitario").val(info.s_preciov);
+                $("#precio_unitario_c").val(info.s_precioc);
+  
+                
+                
+              }
+            })
+          }
+          else{
+            alert("Seleccione un nombre");
+          }
+        })
+      })
+    </script>
+
+
     <script type="text/javascript">
         
 
@@ -117,11 +154,15 @@ $(document).ready(function() {
 });
     </script>
 
+    
+
+
+
 <script>
       // In your Javascript (external .js resource or <script> tag)
 $(document).ready(function() {
-    $('.js-example').select2({
-      placeholder: "Buscar en base de datos (Productos)",
+    $('.secundario').select2({
+      placeholder: "Buscar en base de datos (Antiguo)",
       allowClear: true , 
       theme: "classic",
       
@@ -132,7 +173,21 @@ $(document).ready(function() {
 });
     </script>
 
+
+<script>
+      // In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $('.principal').select2({
+      placeholder: "Buscar en base de datos (Nueva)",
+      allowClear: true , 
+      theme: "classic",
+      
+      language: "es",
+    });
     
+    
+});
+    </script>
 
 
     

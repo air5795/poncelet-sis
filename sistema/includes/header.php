@@ -311,6 +311,36 @@ if (empty($_SESSION['active'])) {
 
                             <!-- lista de menu 4 -->
 
+                            
+
+                                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapse1" aria-expanded="false" aria-controls="pagesCollapseError">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                                                    Productos BD Principal <span class="pf pf-mastercard-securecode"></span>
+                                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                                </a>
+
+                                                <div class="collapse" id="pagesCollapse1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                                    <nav class="sb-sidenav-menu-nested nav">
+                                                        <a class="nav-link" href="productos.php">Gestor Productos</a>
+                                                    
+                                                        
+                                                    </nav>
+                                                </div>
+
+                                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapse12" aria-expanded="false" aria-controls="pagesCollapseError">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                                                    Productos BD Secundario
+                                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                                </a>
+
+                                                <div class="collapse" id="pagesCollapse12" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                                    <nav class="sb-sidenav-menu-nested nav">
+                                                        <a class="nav-link" href="productos_old.php">Gestor Productos</a>
+                                                    
+                                                        
+                                                    </nav>
+                                                </div>
+
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-comments-dollar"></i></div>
                                 Cotizaciones
@@ -334,23 +364,13 @@ if (empty($_SESSION['active'])) {
                                                     </nav>
                                                 </div>
 
-                                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapse1" aria-expanded="false" aria-controls="pagesCollapseError">
-                                                <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
-                                                    Productos
-                                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                                </a>
-
-                                                <div class="collapse" id="pagesCollapse1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                                    <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="productos.php">Gestor Productos</a>
-                                                    
-                                                        
-                                                    </nav>
-                                                </div>
+                                                
 
 
                                             </nav>
                                         </div>
+
+                                        
 
                                         <!-- lista de menu seguimiento -->
 

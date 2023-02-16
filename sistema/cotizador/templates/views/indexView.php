@@ -175,9 +175,33 @@
               <div class="card-body" style="background-color: #ffffff;">
                 <form id="add_to_quote" method="POST">
                   <div class="form-group row">
+
                   <div class="col-sm-7" >
                     
-                                    <select style="width: 100%;font-size:12px ;" name="nombrep" id="nombrep" class="form-control form-control-sm  js-example " >
+                                    <select style="width: 100%;font-size:12px ;" name="nombrep2" id="nombrep2" class="form-control form-control-sm  secundario " >
+                                        <option value="" >Seleccione una opción : </option>
+                                        <?php
+                                            $query = mysqli_query($conexion, "SELECT * from productos_s ORDER BY s_descripcion ASC;");
+                                            $result = mysqli_num_rows($query);
+                                            if ($result > 0) {
+                                            while ($data = mysqli_fetch_array($query)) {
+                                                echo '<option value="'.$data['s_descripcion'].'">'.$data['s_descripcion'].'</option>';
+                                                $nombre = $data['s_descripcion'];
+                                            }}
+                                        ?>
+                                    </select>
+                    </div>
+                    <div class="col-sm-5 ">
+                      <a class="btn btn-sm " style="background-color:#ff3b00; color:white" id="buscarp2"><i class="fa-solid fa-magnifying-glass"></i> Buscar </a>
+                      
+                    </div>
+
+
+                    <hr>
+
+                    <div class="col-sm-7" >
+                    
+                                    <select style="width: 100%;font-size:12px ;" name="nombrep" id="nombrep" class="form-control form-control-sm  principal " >
                                         <option value="" >Seleccione una opción : </option>
                                         <?php
                                             $query = mysqli_query($conexion, "SELECT * from productos ORDER BY p_descripcion ASC;");
