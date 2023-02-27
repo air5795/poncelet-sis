@@ -147,7 +147,7 @@ if (!empty($_POST)) {
 
     <div id="layoutSidenav_content">
         <main>
-            <div class="container-fluid px-4">
+            <div class="container-fluid px-4 ">
                 <div class="container-fluid px-4 ">
 
                     <h1 class="mt-4 col"><i class="fa-solid fa-truck-ramp-box"></i> <strong>Gestor </strong><span style="color:#fd6f0a;"> Base de datos Productos </span></h1>
@@ -727,7 +727,7 @@ if (!empty($_POST)) {
                 var b = parseFloat(document.getElementById("precio_c").value) || 0;
                 decimal = b.toFixed(2);
                 proceso = (decimal *(30/100))+b;
-                result = proceso.toFixed(0);
+                result = proceso.toFixed(2);
                 document.getElementById("precio_v").value = result;
             } catch(e){}
         }

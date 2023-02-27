@@ -152,8 +152,9 @@ if (empty($_SESSION['active'])) {
                             </a>
                             <div class="collapse" id="pagesCollapsei" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="categorias_i.php">Categorias mercaderia</a> 
-                                    <a class="nav-link" href="inventario_i.php">Gestor Inventario</a> 
+                                    <!--<a class="nav-link" href="categorias_i.php">Categorias mercaderia</a> 
+                                    <a class="nav-link" href="inventario_i.php">Gestor Inventario</a>-->
+                                    <a class="nav-link" href="http://localhost/poncelet-sis/sistema/ventas/">Sistema Ventas</a>
                                 </nav>
                             </div>
 

@@ -231,6 +231,7 @@
                                                 ?>
 
                                             </select>
+                                            
                                         </div>
                                         <div class="col-sm-3">
                                             <label for="">Fecha Inicio</label>
