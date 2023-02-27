@@ -48,11 +48,11 @@ include "../conexion.php";
         <br />
 
             <div class="table-responsive">
-                <table id="datos_producto" class="table table-bordered table-striped">
+                <table id="datos_producto" class="table table-bordered table-striped" style="font-size: 10px;">
                     <thead>
                         <tr>
                         <th>ID</th>
-                        <th>NOMBRE</th>
+                        <th>NOMBRE Y DESCRIPCION</th>
                         <th>MARCA</th>
                         <th>U/M</th>
                         <th>PRECIO COMPRA</th>
@@ -82,13 +82,16 @@ include "../conexion.php";
             </div>
             
                 <form action="" method="POST" id="formulario" enctype="multipart/form-data">
+                    
                     <div class="modal-content">
 
                     <div class="modal-body" style="background-color: #ebebeb;">
+
+                    <p style="color:red">(*) Obligatorio Llenar</p>
                     <div class="row">
 
                         <div class="col-12">
-                            <label for="nombre" style="color: black;font-family: sans-serif;">Ingrese el Nombre o Descripción</label>
+                            <label for="nombre" style="color: black;font-family: sans-serif;">Ingrese el Nombre o Descripción <span style="color:red"> *</span></label>
                             <input type="text" name="nombre" id="nombre" class="form-control form-control-sm">
                         </div>
                         <div class="col-6">
@@ -96,7 +99,7 @@ include "../conexion.php";
                             <input type="text" name="marca" id="marca" class="form-control form-control-sm">
                         </div> 
                         <div class="col-6">
-                            <label for="unidad" style="color: black;font-family: sans-serif;">Ingrese Unidad Medible (U/M)</label>
+                            <label for="unidad" style="color: black;font-family: sans-serif;">Ingrese Unidad Medible (U/M) <span style="color:red"> *</span></label>
                             <select name="unidad" id="unidad" class="form-control form-control-sm">
                                 <option value="">Selecciona una Opcion</option>
                                 <option value="Unidad">Unidad</option>
@@ -119,7 +122,7 @@ include "../conexion.php";
 
 
                         <div class="col-6">
-                            <label for="tipo" style="color: black;font-family: sans-serif;">Ingrese Tipo de Producto</label>
+                            <label for="tipo" style="color: black;font-family: sans-serif;">Ingrese Tipo de Producto <span style="color:red"> *</span></label>
                             <select name="tipo" id="tipo" class="form-control form-control-sm ">
                                 <option value="">Selecciona una Opcion</option>
                                 <option value="limpieza">Material de Limpieza</option>
@@ -146,16 +149,14 @@ include "../conexion.php";
                         </div>
 
                         <div class="col-6">
-                            <label for="pc" style="color: black;font-family: sans-serif;">Ingrese Precio de Compra</label>
+                            <label for="pc" style="color: black;font-family: sans-serif;">Ingrese Precio de Compra <span style="color:red"> *</span></label>
                             <input type="text" name="pc" id="pc" class="form-control form-control-sm" style="background-color: #2cff0029; color:green">
                         </div>
 
                         <div class="col-6">
-                            <label for="pv" style="color: black;font-family: sans-serif;">Ingrese Precio de Venta</label>
+                            <label for="pv" style="color: black;font-family: sans-serif;">Ingrese Precio de Venta <span style="color:red"> *</span></label>
                             <input type="text" name="pv" id="pv" class="form-control form-control-sm" style="background-color: #2cff0029; color:green">
                         </div>
-
-
 
                         <div class="col-6">
                             <label for="ficha" style="color: black;font-family: sans-serif;">Ingrese Ficha Tecnica</label>
@@ -170,8 +171,13 @@ include "../conexion.php";
                         <div class="col-6">
                             <label for="foto" style="color: black;font-family: sans-serif;">Ingrese Foto</label>
                             <input type="file" class="form-control form-control-sm" name="foto" id="files">
+                        </div>
+
+                        <div class="col-6">
                             <span id="imagen-subida"></span>
                         </div>
+
+                        
 
                         
 
