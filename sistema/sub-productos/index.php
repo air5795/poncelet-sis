@@ -1,57 +1,65 @@
-<?php
-
-session_start();
-include "../conexion.php";
-
-
-?>
-
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-    <meta charset="utf-8" />
-    <?php include "includes/scripts.php"; ?>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
     <link rel="stylesheet" href="css/estilos.css">
-    <link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>SISPONCELET</title>
 
-</head>
+    <title>PONCELET-SIS</title>
+  </head>
+  <body>
 
-<body class="sb-nav-fixed">
-    <?php include "includes/header.php"; ?>
+  
+  <div class="container-fluid px-5">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <img src="img/ICONO23.png" width="320px">
+        <span class="fs-4" style="color:black">/ Productos</span> 
+      </a>
 
-    <div id="layoutSidenav_content">
-        <div class="container-fluid px-5 fondo ">
-            <h1 class="mt-4 col"><i class="fa-solid fa-truck-ramp-box"></i> <strong>Gestor </strong><span style="color:#fd6f0a;"> Base de datos Productos </span></h1>
-            <hr> 
+      <ul class="nav nav-pills">
+        <li class="nav-item" style="margin-right: 6px;"><a href="../cotizador/" class="btn btn-danger">Ir a COTIZADOR</a></li>
+        <li class="nav-item"><a href="../" class="btn btn-secondary" >Volver al sistema Poncelet</a></li>
+      </ul>
+    </header>
+  </div>
+
+
+  <div id="layoutSidenav_content">
+  <div class="container-fluid px-4 fondo ">
+    
+
+      
         
-
         <div class="row">
             <div class="col-2 offset-10">
                 <div class="text-center">
                     <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalproductos" id="botonCrear">
-                        <i class="fa-solid fa-circle-plus"></i> Registrar Producto
+                        <button type="button" class="btn btn-secondary w-100" data-bs-toggle="modal" data-bs-target="#modalproductos" id="botonCrear">
+                        <i class="fa-solid fa-plus"></i> Nuevo Producto
                         </button>
-
-
                 </div>
             </div>
+            <div class="col-4">
+                <h3><i class="fa-solid fa-database"></i> Productos en base de Datos</h3>
+            </div>
         </div>
-
         <br />
         <br />
 
-            <div class="table-responsive">
-                <table id="datos_producto" class="table table-bordered table-striped" style="font-size: 10px;">
-                    <thead>
-                        <tr>
+        <div class="table-responsive" style="font-size: 11px;">
+            <table id="datos_usuario" class="table  table-striped" >
+                <thead>
+                    <tr>
                         <th>ID</th>
                         <th>NOMBRE Y DESCRIPCION</th>
                         <th>MARCA</th>
@@ -64,19 +72,19 @@ include "../conexion.php";
                         <th>IMAGEN</th>
                         <th>EDITAR</th>
                         <th>BORRAR</th>
-                        </tr>
-                    </thead>
-                </table>
-
-            </div>
+                    </tr>
+                </thead>
+            </table>
         </div>
+   </div>
 
-        <!-- Modal NUEVO -->
-        <div class="modal fade" id="modalproductos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<!-- Modal NUEVO -->
+<div class="modal fade" id="modalproductos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de Productos</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-box"></i> Registro de Productos</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             
@@ -203,10 +211,11 @@ include "../conexion.php";
         </div>
         </div>
 
-    </div>
+</div>
 
-
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
@@ -220,13 +229,14 @@ include "../conexion.php";
         $(document).ready(function(){
             $("#botonCrear").click(function(){
                 $("#formulario")[0].reset();
-                $(".modal-title").text("Crear Usuario");
+                //$(".modal-title").text("Crear Producto");
                 $("#action").val("Crear");
                 $("#operacion").val("Crear");
                 $("#imagen_subida").html("");
             });
             
             var dataTable = $('#datos_usuario').DataTable({
+                "pageLength": 15,
                 "processing":true,
                 "serverSide":true,
                 "order":[],
@@ -355,6 +365,5 @@ include "../conexion.php";
         });         
     </script>
     
-</body>
-
+  </body>
 </html>

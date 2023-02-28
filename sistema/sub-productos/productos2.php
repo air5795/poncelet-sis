@@ -1,9 +1,7 @@
 <?php
-
 session_start();
-include "../conexion.php";
 
-
+include "../../conexion.php";
 ?>
 
 
@@ -12,9 +10,8 @@ include "../conexion.php";
 
 <head>
     <meta charset="utf-8" />
-    <?php include "includes/scripts.php"; ?>
+    <?php include "../includes/header.php"; ?>
     <link rel="stylesheet" href="css/estilos.css">
-    <link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
@@ -24,7 +21,7 @@ include "../conexion.php";
 </head>
 
 <body class="sb-nav-fixed">
-    <?php include "includes/header.php"; ?>
+    <?php include "../includes/scripts.php"; ?>
 
     <div id="layoutSidenav_content">
         <div class="container-fluid px-5 fondo ">
@@ -205,6 +202,17 @@ include "../conexion.php";
 
     </div>
 
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
 
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -354,6 +362,8 @@ include "../conexion.php";
 
         });         
     </script>
+
+
     
 </body>
 

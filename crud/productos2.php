@@ -1,9 +1,7 @@
 <?php
-
 session_start();
+
 include "../conexion.php";
-
-
 ?>
 
 
@@ -12,7 +10,7 @@ include "../conexion.php";
 
 <head>
     <meta charset="utf-8" />
-    <?php include "includes/scripts.php"; ?>
+    
     <link rel="stylesheet" href="css/estilos.css">
     <link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -24,7 +22,7 @@ include "../conexion.php";
 </head>
 
 <body class="sb-nav-fixed">
-    <?php include "includes/header.php"; ?>
+    <?php include "../sistema/includes/header.php"; ?>
 
     <div id="layoutSidenav_content">
         <div class="container-fluid px-5 fondo ">
