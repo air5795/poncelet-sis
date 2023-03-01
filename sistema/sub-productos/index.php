@@ -41,7 +41,10 @@
       
         
         <div class="row">
-            <div class="col-2 offset-10">
+            <div class="col-md-4">
+                <h3><i class="fa-solid fa-database"></i> Productos en base de Datos</h3>
+            </div>
+            <div class="col-md-2 offset-md-6">
                 <div class="text-center">
                     <!-- Button trigger modal -->
                         <button type="button" class="btn btn-secondary w-100" data-bs-toggle="modal" data-bs-target="#modalproductos" id="botonCrear">
@@ -49,12 +52,10 @@
                         </button>
                 </div>
             </div>
-            <div class="col-4">
-                <h3><i class="fa-solid fa-database"></i> Productos en base de Datos</h3>
-            </div>
+            
         </div>
-        <br />
-        <br />
+        
+        <hr>
 
         <div class="table-responsive" style="font-size: 11px;">
             <table id="datos_usuario" class="table  table-striped" >
@@ -70,6 +71,8 @@
                         <th>PROVEEDOR</th>
                         <th>FECHA REGISTRO</th>
                         <th>IMAGEN</th>
+                        <th>FICHA TECNICA</th>
+                        <th>CERTIFICADO</th>
                         <th>EDITAR</th>
                         <th>BORRAR</th>
                     </tr>
@@ -156,28 +159,28 @@
                         </div>
 
                         <div class="col-6">
-                            <label for="pc" style="color: black;font-family: sans-serif;">Ingrese Precio de Compra <span style="color:red"> *</span></label>
-                            <input type="text" name="pc" id="pc" class="form-control form-control-sm" style="background-color: #2cff0029; color:green">
+                            <label for="pc" style="color: black;font-family: sans-serif;">Ingrese Precio de Compra (Bs) <span style="color:red"> *</span></label>
+                            <input oninput="calcular_a_bs()" type="text" name="pc" id="pc" class="form-control form-control-sm" style="background-color: #2cff0029; color:green">
                         </div>
 
                         <div class="col-6">
-                            <label for="pv" style="color: black;font-family: sans-serif;">Ingrese Precio de Venta <span style="color:red"> *</span></label>
+                            <label for="pv" style="color: black;font-family: sans-serif;">Ingrese Precio de Venta (Bs) <span style="color:red"> *</span></label>
                             <input type="text" name="pv" id="pv" class="form-control form-control-sm" style="background-color: #2cff0029; color:green">
                         </div>
 
                         <div class="col-6">
                             <label for="ficha" style="color: black;font-family: sans-serif;">Ingrese Ficha Tecnica</label>
-                            <input type="file" class="form-control form-control-sm" name="ficha" id="files">
+                            <input type="file" class="form-control form-control-sm" name="ficha" id="ficha">
                         </div>
 
                         <div class="col-6">
                             <label for="certificado" style="color: black;font-family: sans-serif;">Ingrese Certificado</label>
-                            <input type="file" class="form-control form-control-sm" name="certificado" id="files">
+                            <input type="file" class="form-control form-control-sm" name="certificado" id="certificado">
                         </div>
 
                         <div class="col-6">
                             <label for="foto" style="color: black;font-family: sans-serif;">Ingrese Foto</label>
-                            <input type="file" class="form-control form-control-sm" name="foto" id="files">
+                            <input type="file" class="form-control form-control-sm" name="foto" id="foto">
                         </div>
 
                         <div class="col-6">
@@ -213,6 +216,22 @@
 
 </div>
 
+<!-- Modal para  ver imagenes -->
+<div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered ">
+                        <div class="modal-content modal-fullscreen ">
+                            <div class="modal-header">
+                                <!--<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="#" class="modal-img" alt="modal img" >
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     
 
@@ -232,11 +251,13 @@
                 //$(".modal-title").text("Crear Producto");
                 $("#action").val("Crear");
                 $("#operacion").val("Crear");
-                $("#imagen_subida").html("");
+                $("#foto").html("");
+                $("#ficha").html("");
+                $("#certificado").html("");
             });
             
             var dataTable = $('#datos_usuario').DataTable({
-                "pageLength": 15,
+                "pageLength": 10,
                 "processing":true,
                 "serverSide":true,
                 "order":[],
@@ -275,21 +296,47 @@
             //Aquí código inserción
             $(document).on('submit', '#formulario', function(event){
             event.preventDefault();
-            var nombres = $('#nombre').val();
-            var apellidos = $('#apellidos').val();
-            var telefono = $('#telefono').val();
-            var email = $('#email').val();
-            var extension = $('#imagen_usuario').val().split('.').pop().toLowerCase();
+            var nombre = $('#nombre').val();
+            var marca = $('#marca').val();
+            var unidad = $('#unidad').val();
+            var tipo = $('#tipo').val();
+            var proveedor = $('#proveedor').val();
+            var pc = $('#pc').val();
+            var pv = $('#pv').val();
+            var extension = $('#foto').val().split('.').pop().toLowerCase();
+            var extension2 = $('#ficha').val().split('.').pop().toLowerCase();
+            var extension3 = $('#certificado').val().split('.').pop().toLowerCase();
             if(extension != '')
             {
                 if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
                 {
                     alert("Fomato de imagen inválido");
-                    $('#imagen_usuario').val('');
+                    $('#foto').val('');
                     return false;
                 }
-            }	
-		    if(nombres != '' && apellidos != '' && email != '')
+            }
+
+            if(extension2 != '')
+            {
+                if(jQuery.inArray(extension2, ['pdf']) == -1)
+                {
+                    alert("Fomato inválido");
+                    $('#ficha').val('');
+                    return false;
+                }
+            }
+
+            if(extension3 != '')
+            {
+                if(jQuery.inArray(extension3, ['pdf']) == -1)
+                {
+                    alert("Fomato de imagen inválido");
+                    $('#certificado').val('');
+                    return false;
+                }
+            }
+            	
+		    if(nombre != '' && marca != '' && unidad != '' && tipo != '' && pc != '' && pv != '')
                 {
                     $.ajax({
                         url:"crear.php",
@@ -301,7 +348,7 @@
                         {
                             alert(data);
                             $('#formulario')[0].reset();
-                            $('#modalUsuario').modal('hide');
+                            $('#modalproductos').modal('hide');
                             dataTable.ajax.reload();
                         }
                     });
@@ -363,6 +410,35 @@
             });
 
         });         
+    </script>
+
+
+<script>
+    document.addEventListener("click",function(e){
+        if(e.target.classList.contains("gallery-item")){
+            const src = e.target.getAttribute("src");
+            document.querySelector(".modal-img").src = src;
+
+            const myModal = new bootstrap.Modal(document.getElementById('gallery-modal'));
+            myModal.show();
+        }
+    });
+</script>
+
+<script type="text/javascript">
+        
+
+        function calcular_a_bs(){
+            try{
+                var b = parseFloat(document.getElementById("pc").value) || 0;
+                decimal = b.toFixed(2);
+                proceso = (decimal *(30/100))+b;
+                result = proceso.toFixed(2);
+                document.getElementById("pv").value = result;
+            } catch(e){}
+        }
+
+
     </script>
     
   </body>

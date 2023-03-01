@@ -3,20 +3,35 @@
 include("conexion.php");
 include("funciones.php");
 
+
 if ($_POST["operacion"] == "Crear") {
     $imagen = '';
-    if ($_FILES["imagen_usuario"]["name"] != '') {
+    $ficha = '';
+    $certificado = '';
+    if ($_FILES["foto"]["name"] != '') {
         $imagen = subir_imagen();
     }
-    $stmt = $conexion->prepare("INSERT INTO usuarios(nombre, apellidos, imagen, telefono, email)VALUES(:nombre, :apellidos, :imagen, :telefono, :email)");
+    if ($_FILES["ficha"]["name"] != '') {
+        $ficha = subir_ficha();
+    }
+    if ($_FILES["certificado"]["name"] != '') {
+        $certificado = subir_certificado();
+    }
+    $stmt = $conexion->prepare("INSERT INTO productos(p_descripcion, p_marca, p_unidad, p_precioc, p_preciov, p_tipo, p_proveedor, foto, pdf, certificado)
+                                VALUES(:nombre, :marca, :unidad, :pc, :pv, :tipo, :proveedor, :foto, :ficha, :certificado)");
 
     $resultado = $stmt->execute(
         array(
             ':nombre'    => $_POST["nombre"],
-            ':apellidos'    => $_POST["apellidos"],
-            ':telefono'    => $_POST["telefono"],
-            ':email'    => $_POST["email"],
-            ':imagen'    => $imagen
+            ':marca'    => $_POST["marca"],
+            ':unidad'    => $_POST["unidad"],
+            ':pc'    => $_POST["pc"],
+            ':pv'    => $_POST["pv"],
+            ':tipo'    => $_POST["tipo"],
+            ':proveedor'    => $_POST["proveedor"],
+            ':foto'    => $imagen,
+            ':ficha'    => $ficha,
+            ':certificado'    => $certificado
         )
     );
 
