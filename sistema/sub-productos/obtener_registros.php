@@ -30,7 +30,7 @@
     foreach($resultado as $fila){
         $imagen = '';
         if($fila["foto"] != ''){
-            $imagen = '<img src="productos/' . $fila["foto"] . '"  class="img-thumbnail gallery-item" width="50" height="35" />';
+            $imagen = '<a class="btn btn-outline-success btn-sm gallery-item" id="productos/'.$fila['foto'].'"><i class="fa-solid fa-image"></i> Imagen</a>';
         }else{
             $imagen = '';
         }

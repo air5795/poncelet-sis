@@ -18,6 +18,9 @@
   </head>
   <body>
 
+
+
+
   
   <div class="container-fluid px-5">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -58,7 +61,7 @@
         <hr>
 
         <div class="table-responsive" style="font-size: 11px;">
-            <table id="datos_usuario" class="table  table-striped" >
+            <table id="datos_usuario" class="table table-striped" >
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -210,14 +213,21 @@
                     </div>
                 </form>
             </div>
+
+
             
         </div>
+
+
+
         </div>
+
+
 
 </div>
 
-<!-- Modal para  ver imagenes -->
-<div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <!-- Modal para  ver imagenes -->
+                            <div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered ">
                         <div class="modal-content modal-fullscreen ">
                             <div class="modal-header">
@@ -225,12 +235,14 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <img src="#" class="modal-img" alt="modal img" >
+                                <img src="img/actas/acta_103_1_2021-02-22.jpg" class="modal-img" alt="modal img" width="100%" height="100%">
                             </div>
 
                         </div>
                     </div>
                 </div>
+
+
 
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     
@@ -416,7 +428,7 @@
 <script>
     document.addEventListener("click",function(e){
         if(e.target.classList.contains("gallery-item")){
-            const src = e.target.getAttribute("src");
+            const src = e.target.getAttribute("id");
             document.querySelector(".modal-img").src = src;
 
             const myModal = new bootstrap.Modal(document.getElementById('gallery-modal'));

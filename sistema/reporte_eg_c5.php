@@ -22,6 +22,7 @@ ob_start();
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -204,6 +205,7 @@ ob_start();
                     $dompdf->loadHtml($html);
                     $dompdf->setPaper('letter','portrait');
                     $dompdf->set_option('dpi', 100);
+                    
                     //$dompdf->setPaper('A4', 'landscape');
                     $dompdf->render();
                     $dompdf->stream('Exp_General_Constructora',array('attachment'=>0));
