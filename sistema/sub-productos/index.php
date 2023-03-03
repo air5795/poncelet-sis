@@ -19,19 +19,17 @@
   <body>
 
 
-
-
   
   <div class="container-fluid px-5">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <img src="img/ICONO23.png" width="320px">
-        <span class="fs-4" style="color:black">/ Productos</span> 
+      <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <img src="img/GH.png" width="320px">
+        <span class="fs-4" style="color: #eb1818;opacity: 50%;">/ Gestor Productos</span> 
       </a>
 
       <ul class="nav nav-pills">
-        <li class="nav-item" style="margin-right: 6px;"><a href="../cotizador/" class="btn btn-danger">Ir a COTIZADOR</a></li>
-        <li class="nav-item"><a href="../" class="btn btn-secondary" >Volver al sistema Poncelet</a></li>
+        <li class="nav-item" style="margin-right: 6px;"><a href="../cotizador/" class="btn btn-outline-danger boton2"><i class="fa-solid fa-sack-dollar"></i> Ir a COTIZADOR</a></li>
+        <li class="nav-item"><a href="../" class="btn btn-outline-secondary boton" ><i class="fa-solid fa-arrow-left boton"></i> Volver SIS-PONCELET</a></li>
       </ul>
     </header>
   </div>
@@ -50,7 +48,7 @@
             <div class="col-md-2 offset-md-6">
                 <div class="text-center">
                     <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-secondary w-100" data-bs-toggle="modal" data-bs-target="#modalproductos" id="botonCrear">
+                        <button type="button" class="btn btn-outline-secondary boton6 w-100" data-bs-toggle="modal" data-bs-target="#modalproductos" id="botonCrear">
                         <i class="fa-solid fa-plus"></i> Nuevo Producto
                         </button>
                 </div>
@@ -58,26 +56,26 @@
             
         </div>
         
-        <hr>
+        <hr style="background-color: red;">
 
         <div class="table-responsive" style="font-size: 11px;">
-            <table id="datos_usuario" class="table table-striped" >
+            <table id="datos_usuario" class="table table-dark table-hover" >
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>NOMBRE Y DESCRIPCION</th>
-                        <th>MARCA</th>
-                        <th>U/M</th>
-                        <th>PRECIO COMPRA</th>
-                        <th>PRECIO VENTA</th>
-                        <th>TIPO PRODUCTO</th>
-                        <th>PROVEEDOR</th>
-                        <th>FECHA REGISTRO</th>
-                        <th>IMAGEN</th>
-                        <th>FICHA TECNICA</th>
-                        <th>CERTIFICADO</th>
-                        <th>EDITAR</th>
-                        <th>BORRAR</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">ID</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;" width="15%">NOMBRE Y DESCRIPCION</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">MARCA</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">U/M</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">PRECIO COMPRA</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">PRECIO VENTA</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">TIPO PRODUCTO</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">PROVEEDOR</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">FECHA REGISTRO</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;" width="2%">IMAGEN</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">FICHA TECNICA</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">CERTIFICADO</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">EDITAR</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">BORRAR</th>
                     </tr>
                 </thead>
             </table>
@@ -91,28 +89,30 @@
             <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-box"></i> Registro de Productos</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: azure;"></button>
             </div>
             
                 <form action="" method="POST" id="formulario" enctype="multipart/form-data">
                     
                     <div class="modal-content">
 
-                    <div class="modal-body" style="background-color: #ebebeb;">
+                    <div class="modal-body">
 
-                    <p style="color:red">(*) Obligatorio Llenar</p>
+                    
+
+                 
                     <div class="row">
 
                         <div class="col-12">
-                            <label for="nombre" style="color: black;font-family: sans-serif;">Ingrese el Nombre o Descripción <span style="color:red"> *</span></label>
+                            <label for="nombre" style="font-family: sans-serif;">Ingrese el Nombre o Descripción <span style="color:red"> *</span></label>
                             <input type="text" name="nombre" id="nombre" class="form-control form-control-sm">
                         </div>
                         <div class="col-6">
-                            <label for="marca" style="color: black;font-family: sans-serif;">Ingrese la Marca</label>
+                            <label for="marca" style="font-family: sans-serif;">Ingrese la Marca</label>
                             <input type="text" name="marca" id="marca" class="form-control form-control-sm">
                         </div> 
                         <div class="col-6">
-                            <label for="unidad" style="color: black;font-family: sans-serif;">Ingrese Unidad Medible (U/M) <span style="color:red"> *</span></label>
+                            <label for="unidad" style="font-family: sans-serif;">Ingrese Unidad Medible (U/M) <span style="color:red"> *</span></label>
                             <select name="unidad" id="unidad" class="form-control form-control-sm">
                                 <option value="">Selecciona una Opcion</option>
                                 <option value="Unidad">Unidad</option>
@@ -135,7 +135,7 @@
 
 
                         <div class="col-6">
-                            <label for="tipo" style="color: black;font-family: sans-serif;">Ingrese Tipo de Producto <span style="color:red"> *</span></label>
+                            <label for="tipo" style="font-family: sans-serif;">Ingrese Tipo de Producto <span style="color:red"> *</span></label>
                             <select name="tipo" id="tipo" class="form-control form-control-sm ">
                                 <option value="">Selecciona una Opcion</option>
                                 <option value="limpieza">Material de Limpieza</option>
@@ -157,32 +157,32 @@
                         </div>
 
                         <div class="col-6">
-                            <label for="proveedor" style="color: black;font-family: sans-serif;">Ingrese Proveedor</label>
+                            <label for="proveedor" style="font-family: sans-serif;">Ingrese Proveedor</label>
                             <input type="text" name="proveedor" id="proveedor" class="form-control form-control-sm">
                         </div>
 
                         <div class="col-6">
-                            <label for="pc" style="color: black;font-family: sans-serif;">Ingrese Precio de Compra (Bs) <span style="color:red"> *</span></label>
-                            <input oninput="calcular_a_bs()" type="text" name="pc" id="pc" class="form-control form-control-sm" style="background-color: #2cff0029; color:green">
+                            <label for="pc" style="font-family: sans-serif;">Ingrese Precio de Compra (Bs) <span style="color:red"> *</span></label>
+                            <input oninput="calcular_a_bs()" type="text" name="pc" id="pc" class="form-control form-control-sm" style="background-color: #a4d39a; color:green">
                         </div>
 
                         <div class="col-6">
-                            <label for="pv" style="color: black;font-family: sans-serif;">Ingrese Precio de Venta (Bs) <span style="color:red"> *</span></label>
-                            <input type="text" name="pv" id="pv" class="form-control form-control-sm" style="background-color: #2cff0029; color:green">
+                            <label for="pv" style="font-family: sans-serif;">Ingrese Precio de Venta (Bs) <span style="color:red"> *</span></label>
+                            <input type="text" name="pv" id="pv" class="form-control form-control-sm" style="background-color: #a4d39a; color:green">
                         </div>
 
                         <div class="col-6">
-                            <label for="ficha" style="color: black;font-family: sans-serif;">Ingrese Ficha Tecnica</label>
+                            <label for="ficha" style="font-family: sans-serif;">Ingrese Ficha Tecnica</label>
                             <input type="file" class="form-control form-control-sm" name="ficha" id="ficha">
                         </div>
 
                         <div class="col-6">
-                            <label for="certificado" style="color: black;font-family: sans-serif;">Ingrese Certificado</label>
+                            <label for="certificado" style="font-family: sans-serif;">Ingrese Certificado</label>
                             <input type="file" class="form-control form-control-sm" name="certificado" id="certificado">
                         </div>
 
                         <div class="col-6">
-                            <label for="foto" style="color: black;font-family: sans-serif;">Ingrese Foto</label>
+                            <label for="foto" style="font-family: sans-serif;">Ingrese Foto</label>
                             <input type="file" class="form-control form-control-sm" name="foto" id="foto">
                         </div>
 
@@ -205,8 +205,8 @@
                         <input type="hidden" name="id_producto" id="id_producto">
                         <input type="hidden" name="operacion" id="operacion">
 
-                        <input type="reset" value="Limpiar Formulario" class="btn btn-secondary"> 
-                        <input type="submit" name="action" id="action" class="btn btn-primary" value="Registrar">
+                        <input type="reset" value="Limpiar" class="btn btn-secondary"> 
+                        <input type="submit" name="action" id="action" class="btn btn-success" value="Registrar">
                         
                     </div>
                     </div>
@@ -261,7 +261,7 @@
             $("#botonCrear").click(function(){
                 $("#formulario")[0].reset();
                 //$(".modal-title").text("Crear Producto");
-                $("#action").val("Crear");
+                $("#action").val("Crear Producto");
                 $("#operacion").val("Crear");
                 $("#foto").html("");
                 $("#ficha").html("");
