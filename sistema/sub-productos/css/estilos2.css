@@ -1,0 +1,60 @@
+
+  table.dataTable tbody th, table.dataTable tbody td{
+    padding: 2px 2px !important;
+  }
+
+  thead {
+   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
+}
+
+label{
+  padding: 5px;
+  font-size: 15px;
+}
+
+.boton{
+    border: rgb(255, 255, 255) 2px solid;
+    color: rgb(255, 255, 255);
+    background-color: coral;
+}
+
+.boton:hover{
+  color: coral;
+  background-color: rgb(255, 255, 255);
+  border: coral 2px solid;
+}
+
+.boton-w{
+  width: 100%;
+  font-size: 15px;
+}
+
+main.darkmode .sb-nav-fixed #layoutSidenav #layoutSidenav_content{
+  background-color: #212529;
+  color:white;
+}
+
+main.darkmode{
+  background-color: #212529;
+  color:#ffffff;
+}
+
+main.darkmode label{
+  color: rgb(255, 255, 255);
+  font-size:14px;
+}
+
+main.darkmode option{
+  background-color: #f2f3f3;
+  color: rgb(39, 39, 39);
+}
+
+main.darkmode select{
+  background-color: #242424;
+  color: rgb(255, 255, 255);
+}
+
+main.darkmode input{
+  background-color: #212529;
+  color: white;
+}

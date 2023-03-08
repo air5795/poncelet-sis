@@ -251,6 +251,11 @@
                         <option value="Block">Block</option>
                         <option value="Bolsa">Bolsa</option>
                         <option value="Bote">Bote</option>
+
+                        <option value="Frasco">Frasco</option>
+                        <option value="Sachet">Sachet</option>
+                        <option value="Rollo">Rollo</option>
+                     
                       </select>
                       
                     </div>

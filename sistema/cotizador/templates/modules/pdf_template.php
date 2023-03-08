@@ -148,7 +148,7 @@
         <th>Total</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody style="font-size: 10px;">
       <?php $i = 1; ?>
       <?php foreach ($d->items as $c): ?>
         <tr>

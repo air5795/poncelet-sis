@@ -139,12 +139,14 @@ ob_start();
 
     </table>
 
+    <br><br><hr>
+
 
 <table style="width:97% ;">
 
          
                     
-              
+             
                 
     
     
@@ -248,7 +250,7 @@ ORDER BY fecha_i ;");
 
 </table>
 
-<br><br><br><hr>
+<br><br><hr>
 
 
 
@@ -399,6 +401,7 @@ ORDER BY g_fechai ;");
                     $dompdf = new Dompdf();
                     $dompdf->loadHtml($html);
                     $dompdf->setPaper('A4','portrait');
+                    $dompdf->set_option('dpi', 100);
                     //$dompdf->setPaper('letter','portrait');
                     //$dompdf->setPaper('A4', 'landscape');
                     $canvas = $dompdf->getCanvas(); 

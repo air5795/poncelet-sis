@@ -30,23 +30,23 @@
     foreach($resultado as $fila){
         $imagen = '';
         if($fila["foto"] != ''){
-            $imagen = '<a class="btn btn-outline-success btn-sm gallery-item boton4" id="productos/'.$fila['foto'].'"><i class="fa-solid fa-image"></i> Img</a>';
+            $imagen = '<a class="btn btn-outline-primary btn-sm gallery-item boton-w"  id="productos/'.$fila['foto'].'"><i class="fa-solid fa-image"></i> </a>';
         }else{
-            $imagen = '';
+            $imagen = '<a class="btn btn-outline-secondary btn-sm gallery-item boton-w disabled" id=""><i class="fa-solid fa-ban"></i> </a>';
         }
 
         $ficha = '';
         if($fila["pdf"] != ''){
-            $ficha = '<a  target="_blank" class="btn btn-primary btn-sm boton5" href="fichas/'.$fila['pdf'].' "><i class="fa-solid fa-file-signature"></i> Ficha/Tecnica </a>';
+            $ficha = '<a  target="_blank" class="btn btn-outline-danger btn-sm boton-w boton-f " href="fichas/'.$fila['pdf'].' "><i class="bi bi-file-earmark-pdf-fill"></i></a>';
         }else{
-            $ficha = '';
+            $ficha = '<a class="btn btn-outline-secondary btn-sm boton-w disabled" href="" ><i class="fa-solid fa-ban"></i></a>';
         }
 
         $certificado = '';
         if($fila["certificado"] != ''){
-            $certificado = '<a  target="_blank" class="btn btn-primary btn-sm boton5" href="certificados/'.$fila['certificado'].' "><i class="fa-solid fa-passport"></i> Certificado</a>';
+            $certificado = '<a  target="_blank" class="btn btn-outline-danger btn-sm boton-w boton-c" href="certificados/'.$fila['certificado'].' "><i class="bi bi-file-earmark-post"></i></a>';
         }else{
-            $certificado = '';
+            $certificado = '<a  class="btn btn-outline-secondary btn-sm boton-w disabled" href=""><i class="fa-solid fa-ban"></i></a>';
         }
 
 
@@ -56,16 +56,16 @@
         $sub_array[] = $fila["p_descripcion"];
         $sub_array[] = $fila["p_marca"];
         $sub_array[] = $fila["p_unidad"];
-        $sub_array[] = $fila["p_precioc"];
-        $sub_array[] = $fila["p_preciov"];
+        $sub_array[] = $fila["p_precioc"].' Bs';
+        $sub_array[] = $fila["p_preciov"].' Bs';
         $sub_array[] = $fila["p_tipo"];
         $sub_array[] = $fila["p_proveedor"];
         $sub_array[] = $fila["p_fecha_registro"];
         $sub_array[] = $imagen;
         $sub_array[] = $ficha;
         $sub_array[] = $certificado;
-        $sub_array[] = '<button type="button" name="editar" id="'.$fila["id_producto"].'" class="btn btn-warning btn-sm editar" style="background-color: #fbe806;color: #505050; color:#767676;"><i class="fa-solid fa-pencil"></i> Editar</button>';
-        $sub_array[] = '<button type="button" name="borrar" id="'.$fila["id_producto"].'" class="btn btn-danger btn-sm borrar" style="background-color: #ff5757;color: #505050; color:white;"><i class="fa-solid fa-trash-can"></i> Borrar</button>';
+        $sub_array[] = '<button type="button" name="editar" id="'.$fila["id_producto"].'" class="btn btn-warning btn-sm boton-w  editar" style="background-color: #fbe806;color: #505050; color:#767676;"><i class="fa-solid fa-pencil"></i> </button>';
+        $sub_array[] = '<button type="button" name="borrar" id="'.$fila["id_producto"].'" class="btn btn-danger btn-sm boton-w borrar" style="background-color: #ff5757;color: #505050; color:white;"><i class="fa-solid fa-trash-can"></i> </button>';
         $datos[] = $sub_array;
     }
 

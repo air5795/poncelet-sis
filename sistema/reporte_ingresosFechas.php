@@ -5,25 +5,24 @@ include "../conexion.php";
 
 $fecha_inicio = $_POST['fecha_inicio'];
 $fecha_final = $_POST['fecha_final'];
-$proyecto = $_POST['proyecto'];
 
 
 
                             $sql_suma_bs = mysqli_query($conexion, "SELECT
                                                                         SUM(g_montoBs)
                                                                     FROM
-                                                                        gastos_c
+                                                                        gastos
                                                                     WHERE
-                                                                        DATE(g_fechai) BETWEEN '{$fecha_inicio}' AND '{$fecha_final}' AND g_proyecto = '$proyecto';");
+                                                                        DATE(g_fecha_i) BETWEEN '{$fecha_inicio}' AND '{$fecha_final}';");
                             $result_sum = mysqli_fetch_array($sql_suma_bs);
                             $total = $result_sum['SUM(g_montoBs)']; 
 
                             $sql_suma_bs2 = mysqli_query($conexion, "SELECT
                                                                         SUM(montoBs)
                                                                     FROM
-                                                                        ingresos_c
+                                                                        ingresos
                                                                     WHERE
-                                                                        DATE(fecha_i) BETWEEN '{$fecha_inicio}' AND '{$fecha_final}' AND proyecto = '$proyecto';");
+                                                                        DATE(fecha_i) BETWEEN '{$fecha_inicio}' AND '{$fecha_final}';");
                             $result_sum2 = mysqli_fetch_array($sql_suma_bs2);
                             $total2 = $result_sum2['SUM(montoBs)'];
 
@@ -32,7 +31,7 @@ $proyecto = $_POST['proyecto'];
 
                             $saldo = $total2 - $total;
 
-                            $sql_suma_bs3 = mysqli_query($conexion, "SELECT SUM(montoBs) FROM ingresos_c ; ");
+                            $sql_suma_bs3 = mysqli_query($conexion, "SELECT SUM(montoBs) FROM ingresos;");
                             $result_sum3 = mysqli_fetch_array($sql_suma_bs3);
                             $total3 = $result_sum3['SUM(montoBs)'];
 
@@ -128,10 +127,10 @@ ob_start();
                  
             </tr>
             <tr>
-                            <td colspan="2" style="font-size:10px; border-right-color: white; border-left-color: white; border-top-color:white;"> <STRONG style="font-size:13px;"> REPORTE DE GASTOS CAJA CHICA DEL PROYECTO :<?PHP echo $proyecto ?>   </STRONG></td>
+                            <td colspan="2" style="font-size:10px; border-right-color: white; border-left-color: white; border-top-color:white;"> <STRONG style="font-size:13px;"> REPORTE DE INGRESOS CAJA CHICA   </STRONG></td>
                         </tr>
     <tr>
-        <th colspan="2" style="width:100% ; border-left-color: white; border-right-color: white; text-align:left ;" >Informe : Arq. Mariana Nicol Erquicia Camacho</th>
+        <th colspan="2" style="width:100% ; border-left-color: white; border-right-color: white; text-align:left ;" >Informe : Lic. Mavel Condori FLores</th>
     </tr>
 
 
@@ -155,25 +154,15 @@ ob_start();
     </tr>
     <tr>
         
-        <th style="text-align:right ;">GASTOS TOTAL</th>
-        <th style="background-color: #f3a6b5 ;font-size:15px" ><?php echo number_format($total,2,'.',',').' Bs';?></th>
-    </tr>
-    <tr>
-        
         <th style="text-align:right ;">INGRESOS TOTAL</th>
-        <th style="background-color: #D7FFC1 ;font-size:15px" ><?php echo number_format($total2,2,'.',',').' Bs';?></th>
-    </tr>
-    <tr>
-        
-        <th style="text-align:right ;">SALDO TOTAL</th>
-        <th style="background-color: #FFF256 ;font-size:15px" ><?php echo number_format($saldo,2,'.',',').' Bs';?></th>
+        <th style="background-color: green ;font-size:15px; color:white" ><?php echo $total2.' Bs';?></th>
     </tr>
     
 
     
 </table>
 
-<br>
+<br><br><br><hr>
 
 
 
@@ -202,7 +191,7 @@ echo "The current date and time are $DateAndTime.";
                     
                                            
                         <tr>
-                            <td colspan="5" style="font-size:10px; border-right-color: white; border-left-color: white; border-top-color:white;"> <STRONG style="font-size:13px;"> DETALLE GASTOS CAJA CHICA   </STRONG></td>
+                            <td colspan="4" style="font-size:10px; border-right-color: white; border-left-color: white; border-top-color:white;"> <STRONG style="font-size:13px;"> DETALLE GASTOS CAJA CHICA   </STRONG></td>
                         </tr>
                         
                      
@@ -210,10 +199,10 @@ echo "The current date and time are $DateAndTime.";
                     
                     <tr style="background-color:#d7d7d7 ;">
                                         <th>N°</th>
-                                        <th>Proyecto</th>
-                                        <th>Detalle gasto</th>
+                                        
+                                        <th>Detalle</th>
                                        
-                                        <th>Fecha de Gasto</th> 
+                                        <th>Fecha de iNGRESO</th> 
                                         <th>Monto(Bs)</th>
                     </tr>
 
@@ -232,17 +221,16 @@ echo "The current date and time are $DateAndTime.";
 
                                     $query = mysqli_query($conexion, "SELECT
                                     ROW_NUMBER() 
-                                    OVER(ORDER BY g_fechai ) 
+                                    OVER(ORDER BY fecha_i ) 
                                     row_num,
-                                    id_gastoC,
-                                    g_proyecto, 
-                                    g_montoBs,
-                                    g_montoU,
-                                    g_detalleGasto,
-                                    g_fechai,
-                                    g_respaldo
-                                    FROM gastos_c WHERE DATE(g_fechai) BETWEEN '{$fecha_inicio}' AND '{$fecha_final}' AND g_proyecto = '$proyecto' 
-                                    ORDER BY g_fechai ;");
+                                    id_ingreso,
+                                    persona, 
+                                    montoBs,
+                                    montoU,
+                                    fecha_i,
+                                    respaldo
+                                    FROM ingresos WHERE DATE(fecha_i) BETWEEN '{$fecha_inicio}' AND '{$fecha_final}' 
+                                    ORDER BY fecha_i ;");
 
                                     $result = mysqli_num_rows($query);
                                     if ($result > 0) {
@@ -251,18 +239,18 @@ echo "The current date and time are $DateAndTime.";
                                     ?>
                             <tr>
                                 <td><?php echo $data['row_num'] ?></td>
-                                <td style="text-transform: uppercase;"><?php echo $data['g_proyecto'] ?></td>
-                                <td style="text-transform: uppercase;"><?php echo $data['g_detalleGasto'] ?></td>
+                                <td style="text-transform: uppercase;"><?php echo $data['persona'] ?></td>
+                                
                                 
                                 <td>
                                     <?php 
                                     setlocale(LC_TIME, "spanish");
-                                    echo strftime('%e de %B %Y', strtotime($data['g_fechai']));
+                                    echo strftime('%e de %B %Y', strtotime($data['fecha_i']));
                                     ?>
                                 </td>
 
                                
-                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['g_montoBs'],2,'.',',').' Bs' ?></td>
+                                <td class=" bg-success bg-opacity-10"><?php echo number_format($data['montoBs'],2,'.',',').' Bs' ?></td>
                                
                                 
                                 
@@ -280,8 +268,8 @@ echo "The current date and time are $DateAndTime.";
                     ?>
 
                     <tr class="">
-                        <td colspan="4" style="text-align: right; background-color: rgb(249 134 2 / 20%); color: #5c5c5c;"> TOTAL GASTOS</td>
-                        <td colspan="1" style="background-color: orange color:white; font-size:20px;"> <?php echo number_format($total,2,'.',',').' Bs'?></td>
+                        <td colspan="3" style="text-align: right; background-color: rgb(249 134 2 / 20%); color: #5c5c5c;"> TOTAL INGRESOS</td>
+                        <td colspan="1" style="background-color: orange color:white; font-size:20px;"> <?php echo number_format($total2,2,'.',',').' Bs'?></td>
                         
                     </tr>
                     

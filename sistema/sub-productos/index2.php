@@ -1,107 +1,90 @@
-<?php
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <title>PONCELET-SIS</title>
+  </head>
+  <body >
+
+
+  
+  <div class="container-fluid px-5">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <img src="img/GH.png" width="320px">
+        <span class="fs-4" style="color: #eb1818;opacity: 50%;">/ Gestor Productos</span> 
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item" style="margin-right: 6px;"><a href="../cotizador/" class="btn btn-outline-danger boton2"><i class="fa-solid fa-sack-dollar"></i> Ir a COTIZADOR</a></li>
+        <li class="nav-item"><a href="../" class="btn btn-outline-secondary boton" ><i class="fa-solid fa-arrow-left boton"></i> Volver SIS-PONCELET</a></li>
+        
+        <li><a class="btn btn-light " id="bdark" style="border-radius: 50px;"> <i class="fa-solid fa-moon"></i> </a></li>
+      </ul>
+    </header>
+  </div>
+
+
+
+  <div id="layoutSidenav_content">
+  <div class="container-fluid  fondo ">
     
-    session_start();
-    include "../../conexion.php";
 
-?>
-
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      
         
-        <link rel="stylesheet" href="css/estilos3.css">
-        <link rel="stylesheet" href="css/estilos2.css">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
-        <link rel="shortcut icon" href="img/ICONOGRANDE2.png">
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>SIS-PONCELET</title>
-        
-    </head>
-    <body class="sb-nav-fixed">
-    <?php include "menu.php";?>
-    
-
-        <!-- contenido del sistema-->
-
-        <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid ">
-                    <div class="container-fluid  ">
-                    
-                     
-                        
-                        <hr>
-<!-- contenido del sistema 2--> 
-
-<!-- Contenedor tabla--> 
-
-<div class="container-fluid  fondo ">    
         <div class="row">
-            <div class="col-md-6">
-                <h2><i class="fa-solid fa-database"></i> BD - Productos</h2>
-                
+            <div class="col-md-4">
+                <h3><i class="fa-solid fa-database"></i> Productos en base de Datos</h3>
             </div>
-            <div class="col-md-2">
-                <a class="btn btn-secondary w-100 disabled" href=""><i class="bi bi-box-seam"></i> <strong> 1250 </strong> Productos</a>
-            
-                
-            </div>
-
-
-            <div class="col-md-2">
-                <a class="btn btn-danger w-100 disabled" href=""><i class="bi bi-file-earmark-pdf"></i> Imprimir PDF</a>
-                
-            </div>
-
-            <div class="col-md-2 ">
-                
+            <div class="col-md-2 offset-md-6">
                 <div class="text-center">
                     <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-outline-secondary boton w-100" data-bs-toggle="modal" data-bs-target="#modalproductos" id="botonCrear">
+                        <button type="button" class="btn btn-outline-secondary boton6 w-100" data-bs-toggle="modal" data-bs-target="#modalproductos" id="botonCrear">
                         <i class="fa-solid fa-plus"></i> Nuevo Producto
                         </button>
-                        
                 </div>
             </div>
-            
             
         </div>
         
         <hr style="background-color: red;">
 
         <div class="table-responsive" style="font-size: 11px; width:100%">
-            <table id="datos_usuario" class="table table-hover table-striped" style="width:100%" >
+            <table id="datos_usuario" class="table table-dark table-hover" >
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th width="25%">NOMBRE Y DESCRIPCION</th>
-                        <th>MARCA</th>
-                        <th>U/M</th>
-                        <th>P. COMPRA</th>
-                        <th>P. VENTA</th>
-                        <th>TIPO P.</th>
-                        <th>PROVEEDOR</th>
-                        <th>FECHA REGISTRO</th>
-                        <th>IMG</th>
-                        <th>F.T.</th>
-                        <th>CER.</th>
-                        <th></th>
-                        <th></th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">ID</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;" width="15%">NOMBRE Y DESCRIPCION</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">MARCA</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">U/M</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">PRECIO COMPRA</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">PRECIO VENTA</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">TIPO PRODUCTO</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">PROVEEDOR</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">FECHA REGISTRO</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">IMAGEN</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">FICHA TECNICA</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">CERTIFICADO</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">EDITAR</th>
+                        <th style="background-color: #080808;border-radius: 15px 15px 0px 0px;">BORRAR</th>
                     </tr>
                 </thead>
             </table>
         </div>
-    </div>
+   </div>
 
-<!-- FINAL tabla--> 
 
 <!-- Modal NUEVO -->
 <div class="modal fade" id="modalproductos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -246,10 +229,8 @@
 
 </div>
 
-<!-- FINAL MODAL -->
-<!-- Modal para  ver imagenes -->
-
-                <div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <!-- Modal para  ver imagenes -->
+                            <div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered ">
                         <div class="modal-content modal-fullscreen ">
                             <div class="modal-header">
@@ -263,49 +244,22 @@
                         </div>
                     </div>
                 </div>
-<!-- FINAL Modal para  ver imagenes -->
-                
-
-<!-- FINAL CONTENIDO--> 
-                
-            </div>
-        </div>
-
-    </main>
-
-</div>
-
-        
-
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" ></script>
-        
-        <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        
 
 
-        <script>
 
-            window.addEventListener('DOMContentLoaded', event => {
-            // Toggle the side navigation
-            const sidebarToggle = document.body.querySelector('#sidebarToggle');
-            if (sidebarToggle) {
-                // Uncomment Below to persist sidebar toggle between refreshes
-                // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-                //     document.body.classList.toggle('sb-sidenav-toggled');
-                // }
-                sidebarToggle.addEventListener('click', event => {
-                    event.preventDefault();
-                    document.body.classList.toggle('sb-sidenav-toggled');
-                    localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-                });
-            }
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    
 
-            });
-        </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-<script type="text/javascript">
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
         $(document).ready(function(){
             $("#botonCrear").click(function(){
                 $("#formulario")[0].reset();
@@ -504,10 +458,10 @@
 
     <script>
         const bdark = document.querySelector('#bdark');
-        const main = document.querySelector('main');
+        const body = document.querySelector('body');
 
         bdark.addEventListener('click',e =>{
-            main.classList.toggle('darkmode');
+            body.classList.toggle('darkmode');
         });
 
         const table = document.querySelector('table');
@@ -517,10 +471,6 @@
 
 
     </script>
-        
-        
-       
-
-
-        </body>
+    
+  </body>
 </html>

@@ -11,6 +11,7 @@
              
         }}
 
+
         $sql_tfila = mysqli_query($conexion, "SELECT COUNT(id_ingreso) FROM ingresos;");
         $result_f = mysqli_fetch_array($sql_tfila);
         $total2 = $result_f['COUNT(id_ingreso)'];
@@ -281,6 +282,21 @@
                                         
                                         ?>
                                     </button>
+                                    </form>
+                                </div>
+                                </nav>
+
+                                <nav class="navbar bg-light">
+                                <div class="container-fluid" style="BACKGROUND-COLOR: #e1e1e1;">
+                                    <a class="navbar-brand text-black"> <i class="fa-solid fa-print"></i> Imprimir por Rango de fechas </a>
+                                    <form action="reporte_ingresosFechas.php"  class="form-inline" method="POST" name="formFechas" id="formFechas">
+                                        
+                                        <label for="">Fecha Inicio</label>
+                                        <input type="date" name="fecha_inicio" id="" required > 
+                                        <label for="">Fecha Final</label>
+                                        <input type="date" name="fecha_final" id="" required >
+                                        <input type="submit" value="Imprimir" >
+
                                     </form>
                                 </div>
                                 </nav>
