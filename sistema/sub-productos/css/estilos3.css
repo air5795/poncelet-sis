@@ -5557,6 +5557,10 @@ textarea.form-control-lg {
   outline: 0;
 }
 
+body.darkmode .modal-content {
+  background-color: #212529;
+}
+
 .modal-backdrop {
   position: fixed;
   top: 0;

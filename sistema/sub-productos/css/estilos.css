@@ -218,3 +218,7 @@ body.darkmode thead{
 }
 
 
+body.darkmode .modal-content{
+  color:rgb(255, 255, 255);
+  background-color: #272727;
+}

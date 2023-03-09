@@ -4,6 +4,8 @@ include("conexion.php");
 include("funciones.php");
 
 
+
+
 if ($_POST["operacion"] == "Crear") {
     $imagen = '';
     $ficha = '';
@@ -41,26 +43,67 @@ if ($_POST["operacion"] == "Crear") {
 }
 
 
+
+	
+
+
+
+
 if ($_POST["operacion"] == "Editar") {
-    $imagen = '';
-    if ($_FILES["imagen_usuario"]["name"] != '') {
-        $imagen = subir_imagen();
-    }else{
-        $imagen = $_POST["imagen_usuario_oculta"];
+    $imagen = obtener_nombre_imagen($_POST["id_producto"]);
+    $ficha = obtener_nombre_ficha($_POST["id_producto"]);
+    $certificados = obtener_nombre_certificado($_POST["id_producto"]);
+
+    if ($_FILES["ficha"]["name"] != '') {
+        unlink("fichas/" . $ficha);
+        $ficha = subir_ficha();
+    } 
+    else {
+        $ficha = @$_POST['ficha_o'];    
+    } 
+
+    if ($_FILES["certificado"]["name"] != '') {
+        unlink("certificados/" . $certificados); 
+        $certificado =  subir_certificado();
+    }
+    else {
+        $certificado = @$_POST['certificado_o'];
     }
 
 
-    $stmt = $conexion->prepare("UPDATE usuarios SET nombre=:nombre, apellidos=:apellidos, imagen=:imagen, telefono=:telefono, email=:email WHERE id = :id");
+    if ($_FILES["foto"]["name"] != '') {
+        unlink("productos/" . $imagen);
+         $imagen = subir_imagen();
+    }
+    else {
+
+        $imagen = @$_POST['img_o'];     
+    }
+    
+
+
+
+
+    $stmt = $conexion->prepare("UPDATE productos SET p_descripcion=:nombre, p_marca=:marca, p_unidad=:unidad, p_precioc=:pc, p_preciov=:pv, p_tipo=:tipo, p_proveedor=:proveedor, 
+    foto=:foto,pdf=:ficha,certificado=:certificado WHERE id_producto = :id_producto");
 
     $resultado = $stmt->execute(
         array(
+            ':id_producto'    => $_POST["id_producto"],
             ':nombre'    => $_POST["nombre"],
-            ':apellidos'    => $_POST["apellidos"],
-            ':telefono'    => $_POST["telefono"],
-            ':email'    => $_POST["email"],
-            ':imagen'    => $imagen,
-            ':id'    => $_POST["id_usuario"]
+            ':marca'    => $_POST["marca"],
+            ':unidad'    => $_POST["unidad"],
+            ':pc'    => $_POST["pc"],
+            ':pv'    => $_POST["pv"],
+            ':tipo'    => $_POST["tipo"],
+            ':proveedor'    => $_POST["proveedor"],
+            ':foto'    => $imagen,
+            ':ficha'    => $ficha,
+            ':certificado'    => $certificado
+
         )
+
+        
     );
 
     if (!empty($resultado)) {

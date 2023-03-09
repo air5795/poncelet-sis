@@ -37,31 +37,31 @@
                     <div class="container-fluid  ">
                     
                      
+                        <br>
                         
-                        <hr>
 <!-- contenido del sistema 2--> 
 
 <!-- Contenedor tabla--> 
 
 <div class="container-fluid  fondo ">    
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-sm-6">
                 <h2><i class="fa-solid fa-database"></i> BD - Productos</h2>
                 
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-2">
                 <a class="btn btn-secondary w-100 disabled" href=""><i class="bi bi-box-seam"></i> <strong> 1250 </strong> Productos</a>
             
                 
             </div>
 
 
-            <div class="col-md-2">
-                <a class="btn btn-danger w-100 disabled" href=""><i class="bi bi-file-earmark-pdf"></i> Imprimir PDF</a>
+            <div class="col-sm-2">
+                <a class="btn btn-danger w-100 disabled" href=""><i class="bi bi-file-earmark-pdf"></i> Imprimir Reporte</a>
                 
             </div>
 
-            <div class="col-md-2 ">
+            <div class="col-sm-2 ">
                 
                 <div class="text-center">
                     <!-- Button trigger modal -->
@@ -195,6 +195,11 @@
                             <label for="ficha" style="font-family: sans-serif;">Ingrese Ficha Tecnica</label>
                             <input type="file" class="form-control form-control-sm" name="ficha" id="ficha">
                         </div>
+                        <div class="col-6">
+                                <label for="ficha" style="font-family: sans-serif;">Revision</label>
+                                <span id="pdf-subido" class="alert-sm"></span>
+                        </div>
+                        
 
                         <div class="col-6">
                             <label for="certificado" style="font-family: sans-serif;">Ingrese Certificado</label>
@@ -202,14 +207,20 @@
                         </div>
 
                         <div class="col-6">
+                            <label for="certificado" style="font-family: sans-serif;">Revision</label>
+                            <span id="certificado-subido" class="alert-sm"></span>
+                        </div>
+                        
+
+                        <div class="col-6">
                             <label for="foto" style="font-family: sans-serif;">Ingrese Foto</label>
                             <input type="file" class="form-control form-control-sm" name="foto" id="foto">
                         </div>
-
                         <div class="col-6">
                             <span id="imagen-subida"></span>
                         </div>
-
+                        
+                        
                         
 
                         
@@ -420,25 +431,31 @@
                 }
 	        });
 
-            //Funcionalida de editar
+
+            //Funcionalidad de editar
             $(document).on('click', '.editar', function(){		
-            var id_usuario = $(this).attr("id");		
+            var id_producto = $(this).attr("id");		
             $.ajax({
                 url:"obtener_registro.php",
                 method:"POST",
-                data:{id_usuario:id_usuario},
+                data:{id_producto:id_producto},
                 dataType:"json",
                 success:function(data)
                     {
                         //console.log(data);				
-                        $('#modalUsuario').modal('show');
+                        $('#modalproductos').modal('show');
                         $('#nombre').val(data.nombre);
-                        $('#apellidos').val(data.apellidos);
-                        $('#telefono').val(data.telefono);
-                        $('#email').val(data.email);
-                        $('.modal-title').text("Editar Usuario");
-                        $('#id_usuario').val(id_usuario);
-                        $('#imagen_subida').html(data.imagen_usuario);
+                        $('#marca').val(data.marca);
+                        $('#unidad').val(data.unidad);
+                        $('#tipo').val(data.tipo);
+                        $('#proveedor').val(data.proveedor);
+                        $('#pc').val(data.pc);
+                        $('#pv').val(data.pv);
+                        $('.modal-title').text("Editar Producto");
+                        $('#id_producto').val(id_producto);
+                        $('#imagen-subida').html(data.foto);
+                        $('#pdf-subido').html(data.ficha);
+                        $('#certificado-subido').html(data.certificado);
                         $('#action').val("Editar");
                         $('#operacion').val("Editar");
                     },
@@ -448,15 +465,15 @@
                 })
 	        });
 
-            //Funcionalida de borrar
+            //Funcionalidad de borrar
             $(document).on('click', '.borrar', function(){
-                var id_usuario = $(this).attr("id");
-                if(confirm("Esta seguro de borrar este registro:" + id_usuario))
+                var id_producto = $(this).attr("id");
+                if(confirm("Esta seguro de borrar este registro:" + id_producto ))
                 {
                     $.ajax({
                         url:"borrar.php",
                         method:"POST",
-                        data:{id_usuario:id_usuario},
+                        data:{id_producto:id_producto},
                         success:function(data)
                         {
                             alert(data);
@@ -505,15 +522,25 @@
     <script>
         const bdark = document.querySelector('#bdark');
         const main = document.querySelector('main');
+        const body = document.querySelector('body');
 
         bdark.addEventListener('click',e =>{
             main.classList.toggle('darkmode');
         });
 
-        const table = document.querySelector('table');
         bdark.addEventListener('click',e =>{
+            body.classList.toggle('darkmode');
+        });
+
+        
+
+        const table = document.querySelector('table');
+            bdark.addEventListener('click',e =>{
             table.classList.toggle('table-dark');
         });
+
+
+
 
 
     </script>
