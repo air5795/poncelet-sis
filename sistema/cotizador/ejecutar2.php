@@ -21,6 +21,7 @@
         $resultado = mysqli_query($conexion,$sql);
 
         while($row = mysqli_fetch_array($resultado)){
+            $data["id_producto"] = $row["id_producto"];
             $data["p_descripcion"] = $row["p_descripcion"];
             $data["p_marca"] = $row["p_marca"];
             $data["p_unidad"] = $row["p_unidad"];

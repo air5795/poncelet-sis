@@ -173,7 +173,7 @@
             <div class="card mb-3">
               <div class="card-header" style="padding: 0;text-align: center; background-color: #ff3b00; color:white;">Agregar Nuevo Concepto</div>
               <div class="card-body" style="background-color: #ffffff;">
-                <form id="add_to_quote" method="POST">
+                <form id="add_to_quote" method="POST" >
                   <div class="form-group row">
 
                   <div class="col-sm-7" >
@@ -221,7 +221,11 @@
 
 
 
-
+                    <div class="col-sm-2">
+                      <label for="id">ID Producto</label>
+                      <input autocomplete="off" type="text" class="form-control form-control-sm disabled" id="id_producto" name="id_producto" disabled>
+                      
+                    </div>
 
                     <div class="col-sm-12">
                       <label for="concepto">Concepto</label>
@@ -297,7 +301,24 @@
                   <button class="btn btn-secondary" type="submit" ><i class="fa-solid fa-arrow-right"></i> Agregar Concepto</button>
                   <button class="btn btn-danger" type="reset" >Resetear</button>
                 </form>
+
+                
+                
               </div>
+
+              <form action="templates/views/update.php" method="POST">
+
+                  
+                    <input  type="hidden" class="form-control " id="id_producto2" name="id_producto2" >                        
+                  <input  type="hidden" class="form-control " id="precio_unitario2" name="precio_unitario2" >
+                  <input  type="hidden" class="form-control " id="precio_unitario_c2" name="precio_unitario_c2" >
+                  <input  type="hidden" class="form-control " id="tipo2" name="tipo2" >
+                  <input  type="hidden" class="form-control " id="marca2" name="marca2" >
+                  <input  type="hidden" class="form-control " id="concepto2" name="concepto2" >
+
+                  <input type="submit" value="Actualizar los Datos" class="btn btn-dark w-100">
+
+                </form>
             </div>
         </div>
 

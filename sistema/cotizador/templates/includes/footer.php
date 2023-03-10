@@ -66,6 +66,8 @@
                 console.log(info.nit);
                 //$("#empresa").html(info.nit);
                 //$("#empresa").text(info.nit);
+                $("#id_producto").val(info.id_producto);
+                $("#id_producto2").val(info.id_producto);
                 $("#concepto").val(info.p_descripcion);
                 $("#marca").val(info.p_marca);
                 $("#tipo").val(info.p_unidad);
@@ -101,6 +103,7 @@
                 console.log(info.nit);
                 //$("#empresa").html(info.nit);
                 //$("#empresa").text(info.nit);
+                $("#id_producto").val(info.id_producto_s);
                 $("#concepto").val(info.s_descripcion);
                 $("#marca").val(info.s_marca);
                 $("#tipo").val(info.s_unidad);

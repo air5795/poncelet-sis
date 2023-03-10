@@ -469,6 +469,7 @@
                 dataType:"json",
                 success:function(data)
                     {
+                        
                         //console.log(data);				
                         $('#modalproductos').modal('show');
                         $('#nombre').val(data.nombre);
