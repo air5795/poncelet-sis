@@ -19,6 +19,8 @@
         
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
         <link rel="shortcut icon" href="img/ICONOGRANDE2.png">
         <meta name="description" content="" />
         <meta name="author" content="" />
@@ -26,7 +28,7 @@
         
     </head>
     <body class="sb-nav-fixed">
-    <?php include "menu.php";?>
+    <?php include "../menu.php"?>
     
 
         <!-- contenido del sistema-->
@@ -49,8 +51,17 @@
                 <h2><i class="fa-solid fa-database"></i> BD - Productos</h2>
                 
             </div>
+
+            <?php
+
+                $result=mysqli_query($conexion,"SELECT count(*) as total from productos");
+                $data=mysqli_fetch_assoc($result);
+                $data['total'];
+
+            ?>
+
             <div class="col-sm-2">
-                <a class="btn btn-secondary w-100 disabled" href=""><i class="bi bi-box-seam"></i> <strong> 1250 </strong> Productos</a>
+                <a class="btn btn-secondary w-100 disabled" href=""><i class="bi bi-box-seam"> </i> <strong> <?php echo $data['total']; ?> </strong> Productos</a>
             
                 
             </div>
@@ -183,12 +194,12 @@
 
                         <div class="col-6">
                             <label for="pc" style="font-family: sans-serif;">Ingrese Precio de Compra (Bs) <span style="color:red"> *</span></label>
-                            <input oninput="calcular_a_bs()" type="text" name="pc" id="pc" class="form-control form-control-sm" style="background-color: #a4d39a; color:green">
+                            <input oninput="calcular_a_bs()" type="text" name="pc" id="pc" class="form-control form-control-sm" style="background-color: #e5ffe0; color:green; font-weight: 600;">
                         </div>
 
                         <div class="col-6">
                             <label for="pv" style="font-family: sans-serif;">Ingrese Precio de Venta (Bs) <span style="color:red"> *</span></label>
-                            <input type="text" name="pv" id="pv" class="form-control form-control-sm" style="background-color: #a4d39a; color:green">
+                            <input type="text" name="pv" id="pv" class="form-control form-control-sm" style="background-color: #e5ffe0; color:green; font-weight: 600;">
                         </div>
 
                         <div class="col-6">
@@ -196,7 +207,7 @@
                             <input type="file" class="form-control form-control-sm" name="ficha" id="ficha">
                         </div>
                         <div class="col-6">
-                                <label for="ficha" style="font-family: sans-serif;">Revision</label>
+                                <label for="ficha" style="font-family: sans-serif;"></label>
                                 <span id="pdf-subido" class="alert-sm"></span>
                         </div>
                         
@@ -207,7 +218,7 @@
                         </div>
 
                         <div class="col-6">
-                            <label for="certificado" style="font-family: sans-serif;">Revision</label>
+                            <label for="certificado" style="font-family: sans-serif;"></label>
                             <span id="certificado-subido" class="alert-sm"></span>
                         </div>
                         
@@ -294,6 +305,7 @@
         <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
 
 
         <script>
@@ -318,14 +330,21 @@
 
 <script type="text/javascript">
         $(document).ready(function(){
-            $("#botonCrear").click(function(){
+
+                
+                $("#botonCrear").click(function(){
                 $("#formulario")[0].reset();
-                //$(".modal-title").text("Crear Producto");
+                $(".modal-title").text("Crear Producto");
                 $("#action").val("Crear Producto");
                 $("#operacion").val("Crear");
+                $('#imagen-subida').html("");
+                $('#pdf-subido').html("");
+                $('#certificado-subido').html("");
                 $("#foto").html("");
                 $("#ficha").html("");
                 $("#certificado").html("");
+
+                
             });
             
             var dataTable = $('#datos_usuario').DataTable({
@@ -418,7 +437,11 @@
                         processData:false,
                         success:function(data)
                         {
-                            alert(data);
+                            Swal.fire(
+                            'Exitoso!',
+                            'Se registro correctamente',
+                            'success'
+                            ),
                             $('#formulario')[0].reset();
                             $('#modalproductos').modal('hide');
                             dataTable.ajax.reload();
@@ -427,7 +450,11 @@
                 }
                 else
                 {
-                    alert("Algunos campos son obligatorios");
+                    Swal.fire(
+                    'Algunos Campos son Obligatorios ?',
+                    'Revisa el formulario',
+                    'warning'
+                    );
                 }
 	        });
 
@@ -468,23 +495,39 @@
             //Funcionalidad de borrar
             $(document).on('click', '.borrar', function(){
                 var id_producto = $(this).attr("id");
-                if(confirm("Esta seguro de borrar este registro:" + id_producto ))
-                {
+
+                Swal.fire({
+                title: 'Esta Seguro de Borrar ?',
+                text: "El Registro con el ID = " + id_producto,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#72db88',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, Borralo!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+
                     $.ajax({
                         url:"borrar.php",
                         method:"POST",
                         data:{id_producto:id_producto},
                         success:function(data)
                         {
-                            alert(data);
                             dataTable.ajax.reload();
                         }
                     });
+
+                    Swal.fire(
+                    'Borrado con Exito!',
+                    'Se Elimino de la Base de datos el Producto ',
+                    'success'
+                    )
                 }
-                else
-                {
-                    return false;	
+                else{
+                    return false;
                 }
+                });
+
             });
 
         });         

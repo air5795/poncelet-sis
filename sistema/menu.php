@@ -166,8 +166,8 @@ if (empty($_SESSION['active'])) {
                             </a>
                             <div class="collapse" id="pagesCollapseie" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="categorias_a.php">Categorias Activos </a> 
-                                    <a class="nav-link" href="activos.php">Gestor Activos</a> 
+                                    <a class="nav-link" href="../categorias_a.php">Categorias Activos </a> 
+                                    <a class="nav-link" href="../activos.php">Gestor Activos</a> 
                                 </nav>
                             </div>
 
@@ -208,7 +208,7 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="ingresos.php">Gestor Ingresos</a>
+                                                        <a class="nav-link" href="../ingresos.php">Gestor Ingresos</a>
                                                     </nav>
                                                 </div>
 
@@ -220,7 +220,7 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapse_e" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="gastos.php">Gestor Gastos</a>
+                                                        <a class="nav-link" href="../gastos.php">Gestor Gastos</a>
                                                         
                                                     </nav>
                                                 </div>
@@ -258,8 +258,8 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="registro_exp.php">Registrar Experiencia</a>
-                                                        <a class="nav-link" href="lista_exp.php">Ver Experiencia G.</a>
+                                                        <a class="nav-link" href="../registro_exp.php">Registrar Experiencia</a>
+                                                        <a class="nav-link" href="../lista_exp.php">Ver Experiencia G.</a>
                                                     </nav>
                                                 </div>
 
@@ -271,7 +271,7 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapse_e" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="lista_exp_e.php">Listar Exp. Especifica</a>
+                                                        <a class="nav-link" href="../lista_exp_e.php">Listar Exp. Especifica</a>
                                                         
                                                     </nav>
                                                 </div>
@@ -299,8 +299,8 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="registro_cliente.php">Registrar Cliente</a>
-                                                        <a class="nav-link" href="lista_clientes.php">Lista de Clientes</a>
+                                                        <a class="nav-link" href="../registro_cliente.php">Registrar Cliente</a>
+                                                        <a class="nav-link" href="../lista_clientes.php">Lista de Clientes</a>
                                                     </nav>
                                                 </div>
 
@@ -323,7 +323,7 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapse1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="productos.php">Gestor Productos</a>
+                                                        <a class="nav-link" href="sub-productos/">Gestor Productos</a>
                                                     
                                                         
                                                     </nav>
@@ -337,7 +337,7 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapse12" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="productos_old.php">Gestor Productos</a>
+                                                        <a class="nav-link" href="#">Gestor Productos</a>
                                                     
                                                         
                                                     </nav>
@@ -360,7 +360,7 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapse2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="cotizador/">Cotizador</a>
+                                                        <a class="nav-link" href="../cotizador/">Cotizador</a>
                                                         
                                                         
                                                     </nav>
@@ -385,7 +385,7 @@ if (empty($_SESSION['active'])) {
                             <div class="collapse" id="collapsepro" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                                 
-                                                <a class="nav-link " href="proyectos_comer.php" >
+                                                <a class="nav-link " href="../proyectos_comer.php" >
                                                 <i class="fas fa-file-circle-plus"></i>- Gestor Proyectos 
                                                     
                                                 </a>
@@ -417,8 +417,8 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="registro_exp_c.php">Registrar Experiencia</a>
-                                                        <a class="nav-link" href="lista_exp_c.php">Ver Experiencia G.</a>
+                                                        <a class="nav-link" href="../registro_exp_c.php">Registrar Experiencia</a>
+                                                        <a class="nav-link" href="../lista_exp_c.php">Ver Experiencia G.</a>
                                                     </nav>
                                                 </div>
 
@@ -430,7 +430,7 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapse_e" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="lista_exp_e_c.php">Listar Exp. Especifica</a>
+                                                        <a class="nav-link" href="../lista_exp_e_c.php">Listar Exp. Especifica</a>
                                                         
                                                     </nav>
                                                 </div>
@@ -455,7 +455,7 @@ if (empty($_SESSION['active'])) {
 
                                                             <div class="collapse" id="pagesCollapseAuth2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                                 <nav class="sb-sidenav-menu-nested nav">
-                                                                    <a class="nav-link" href="proyectos_c.php">Gestor Proyectos</a>
+                                                                    <a class="nav-link" href="../proyectos_c.php">Gestor Proyectos</a>
                                                                 </nav>
                                                             </div>
                                                             
@@ -467,7 +467,7 @@ if (empty($_SESSION['active'])) {
 
                                                             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                                 <nav class="sb-sidenav-menu-nested nav">
-                                                                    <a class="nav-link" href="ingresos_c.php">Gestor Ingresos</a>
+                                                                    <a class="nav-link" href="../ingresos_c.php">Gestor Ingresos</a>
                                                                 </nav>
                                                             </div>
 
@@ -479,7 +479,7 @@ if (empty($_SESSION['active'])) {
 
                                                             <div class="collapse" id="pagesCollapse_e" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                                 <nav class="sb-sidenav-menu-nested nav">
-                                                                    <a class="nav-link" href="gastos_c.php">Gestor Gastos</a>
+                                                                    <a class="nav-link" href="../gastos_c.php">Gestor Gastos</a>
                                                                     
                                                                 </nav>
                                                             </div>
@@ -516,8 +516,8 @@ if (empty($_SESSION['active'])) {
 
                             <div class="collapse" id="pagesCollapse3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="registro_usuario.php">Nuevo Usuario</a>
-                                    <a class="nav-link" href="lista_usuarios.php">Lista de Usuarios</a>
+                                    <a class="nav-link" href="../registro_usuario.php">Nuevo Usuario</a>
+                                    <a class="nav-link" href="../lista_usuarios.php">Lista de Usuarios</a>
                                 </nav>
                             </div>
                             <?php

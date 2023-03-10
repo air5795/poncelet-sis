@@ -22,14 +22,16 @@ if (isset($_POST["id_producto"])) {
             $salida["foto"] = '<img src="productos/' . $fila["foto"] . '"  class="img-thumbnail" width="150" height="150" />
             <input type="hidden" name="img_o" value="'.$fila["foto"].'" />';
         }else{
-            $salida["foto"] = '<div class="alert alert-danger" role="alert"> <i class="bi bi-exclamation-octagon-fill"></i> Sin Foto</div>' ;
+            $salida["foto"] = '<div class="alert alert-danger" role="alert"> <input type="hidden" name="img_o" value="" /> <i class="bi bi-exclamation-octagon-fill"></i> Sin Foto</div>' ;
+            //$salida["foto"] = '<input type="hidden" name="img_o" value="" />';
         }
         
         /* PDF */
         if ($fila["pdf"] != "") {
             $salida["ficha"] = '<div class="alert alert-success" role="alert"> <input name="ficha_o" type="hidden" value="'.$fila["pdf"].'" /> <i class="bi bi-check-circle-fill"></i> Contiene Ficha Tecnica</div>' ;
         }else{
-            $salida["ficha"] = '<div class="alert alert-danger" role="alert">  <i class="bi bi-exclamation-octagon-fill"></i> Sin Ficha Tecnica</div>' ;
+            $salida["ficha"] = '<div class="alert alert-danger" role="alert"> <input name="ficha_o" type="hidden" value="" /> <i class="bi bi-exclamation-octagon-fill"></i> Sin Ficha Tecnica</div>' ;
+            //$salida["ficha"] = '<input type="hidden" name="ficha_o" value="" />';
         }
 
         /* CERTIFIACADO */
@@ -38,8 +40,10 @@ if (isset($_POST["id_producto"])) {
         
         if ($fila["certificado"] != "") {
             $salida["certificado"] = '<div class="alert alert-success" role="alert"> <input name=" certificado_o" type="hidden" value="'.$fila["certificado"].'" /> <i class="bi bi-check-circle-fill"></i> Contiene Certificado</div>' ;
+
         }else{
-            $salida["certificado"] = '<div class="alert alert-danger" role="alert"> <i class="bi bi-exclamation-octagon-fill"></i> Sin Certificado</div>' ;
+            $salida["certificado"] = '<div class="alert alert-danger" role="alert"> <input name=" certificado_o" type="hidden" value="" /> <i class="bi bi-exclamation-octagon-fill"></i> Sin Certificado</div>' ;
+            //$salida["certificado"] = '<input type="hidden" name="certificado_o" value="" />';
         }
     }
 
