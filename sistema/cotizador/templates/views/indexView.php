@@ -309,14 +309,15 @@
               <form action="templates/views/update.php" method="POST">
 
                   
-                    <input  type="hidden" class="form-control " id="id_producto2" name="id_producto2" >                        
-                  <input  type="hidden" class="form-control " id="precio_unitario2" name="precio_unitario2" >
-                  <input  type="hidden" class="form-control " id="precio_unitario_c2" name="precio_unitario_c2" >
-                  <input  type="hidden" class="form-control " id="tipo2" name="tipo2" >
-                  <input  type="hidden" class="form-control " id="marca2" name="marca2" >
-                  <input  type="hidden" class="form-control " id="concepto2" name="concepto2" >
+                  <input  type="text" class="form-control " id="id_producto2" name="id_producto2" readonly="readonly" >                        
+                  <input  type="text" class="form-control " id="precio_unitario2" name="precio_unitario2" readonly="readonly"  >
+                  <input  type="text" class="form-control " id="precio_unitario_c2" name="precio_unitario_c2" readonly="readonly"  >
+                  <input  type="text" class="form-control " id="tipo2" name="tipo2" readonly="readonly"  >
+                  <input  type="text" class="form-control " id="marca2" name="marca2" readonly="readonly"  >
+                  <input  type="text" class="form-control " id="concepto2" name="concepto2" readonly="readonly" >
 
-                  <input type="submit" value="Actualizar los Datos" class="btn btn-dark w-100">
+                  <input type="submit" value="Actualizar los Datos" class="btn btn-dark w-100" onclick="enviarTexto()">
+                  
 
                 </form>
             </div>

@@ -69,10 +69,16 @@
                 $("#id_producto").val(info.id_producto);
                 $("#id_producto2").val(info.id_producto);
                 $("#concepto").val(info.p_descripcion);
+                $("#concepto2").val(info.p_descripcion);
                 $("#marca").val(info.p_marca);
+                $("#marca2").val(info.p_marca);
                 $("#tipo").val(info.p_unidad);
+                $("#tipo2").val(info.p_unidad);
+                
                 $("#precio_unitario").val(info.p_preciov);
+                $("#precio_unitario2").val(info.p_preciov);
                 $("#precio_unitario_c").val(info.p_precioc);
+                $("#precio_unitario_c2").val(info.p_precioc);
   
                 
                 
@@ -190,6 +196,25 @@ $(document).ready(function() {
     
     
 });
+    </script>
+
+    <script>
+      function enviarTexto() {
+        var texto = document.getElementById("concepto").value;
+        document.getElementById("concepto2").value=texto;
+
+        var texto = document.getElementById("marca").value;
+        document.getElementById("marca2").value=texto;
+
+        var texto = document.getElementById("tipo").value;
+        document.getElementById("tipo2").value=texto; 
+
+        var texto = document.getElementById("precio_unitario").value;
+        document.getElementById("precio_unitario2").value=texto;
+
+        var texto = document.getElementById("precio_unitario_c").value;
+        document.getElementById("precio_unitario_c2").value=texto;
+      }
     </script>
 
 
