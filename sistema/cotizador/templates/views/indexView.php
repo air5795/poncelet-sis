@@ -26,6 +26,8 @@
 
 
 
+
+
     <div class="container-fluid py-3">
       <div class="row">
         <div class="col-sm-12 wrapper_notifications">
@@ -35,8 +37,13 @@
       <div class="row">
         <div class="col-lg-5 col-12">
             <div class="card mb-3">
-              <div class="card-header" style="padding: 0;text-align: center;background-color: #ff3b00; color:white;">Informacion de la Cotizacion y de el Cliente</div>
-              <div class="card-body" style="background-color: #ffffff;">
+              <div class="card-header" style="padding: 0;text-align: center;background-color: #6c757d; color:white;"> 
+              Informacion de la Cotizacion y de el Cliente
+              <a style="float:right" class="btn btn-secondary btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              x
+              </a>
+              </div>
+              <div class="card-body" style="background-color: #ffffff;" class="collapse" id="collapseExample">
                 <form >
                   <div class="form-group row">
                     <div class="col-sm-7" >
@@ -176,7 +183,7 @@
                 <form id="add_to_quote" method="POST" >
                   <div class="form-group row">
 
-                  <div class="col-sm-7" >
+                  <div class="col-sm-8" >
                     
                                     <select style="width: 100%;font-size:12px ;" name="nombrep2" id="nombrep2" class="form-control form-control-sm  secundario " >
                                         <option value="" >Seleccione una opción : </option>
@@ -191,15 +198,17 @@
                                         ?>
                                     </select>
                     </div>
-                    <div class="col-sm-5 ">
+                    <div class="col-sm-4 ">
                       <a class="btn btn-sm " style="background-color:#ff3b00; color:white" id="buscarp2"><i class="fa-solid fa-magnifying-glass"></i> Buscar </a>
                       
                     </div>
 
+                    
+                  <p></p>
 
-                    <hr>
+                    
 
-                    <div class="col-sm-7" >
+                    <div class="col-sm-8" >
                     
                                     <select style="width: 100%;font-size:12px ;" name="nombrep" id="nombrep" class="form-control form-control-sm  principal " >
                                         <option value="" >Seleccione una opción : </option>
@@ -214,9 +223,9 @@
                                         ?>
                                     </select>
                     </div>
-                    <div class="col-sm-5 ">
+                    <div class="col-sm-4 ">
                       <a class="btn btn-sm " style="background-color:#ff3b00; color:white" id="buscarp"><i class="fa-solid fa-magnifying-glass"></i> Buscar </a>
-                      <a type="button"  class="btn btn-sm btn-secondary" id="nuevo" href="../productos.php" ><i class="fa-solid fa-box"></i> Nuevo </a>
+                      <a type="button"  class="btn btn-sm btn-secondary" id="nuevo" href="http://localhost/poncelet-sis/sistema/sub-productos/" ><i class="fa-solid fa-box"></i> Nuevo </a>
                     </div>
 
 
@@ -285,13 +294,15 @@
                       
                     </div>
 
-                    
-
-                    <div  class="col-sm-6">
-                    <label for="envio">Envio (Transporte o imprevistos)</label>
-                        <input autocomplete="off" style="background-color: #fff3ee;" type="number" class="form-control " id="envio" name="envio" placeholder="0.00" required>
+                    <div  class="col-sm-4">
+                      
+                        <input value="0" autocomplete="off" style="background-color: #fff3ee;" type="hidden" class="form-control " id="envio" name="envio" placeholder="0.00" required>
                         
                     </div>
+
+                    
+
+                   
 
                     
 
@@ -302,6 +313,12 @@
                   <button class="btn btn-danger" type="reset" >Resetear</button>
                 </form>
 
+                <hr>
+
+          
+
+                
+
                 
                 
               </div>
@@ -309,14 +326,14 @@
               <form action="templates/views/update.php" method="POST">
 
                   
-                  <input  type="text" class="form-control " id="id_producto2" name="id_producto2" readonly="readonly" >                        
-                  <input  type="text" class="form-control " id="precio_unitario2" name="precio_unitario2" readonly="readonly"  >
-                  <input  type="text" class="form-control " id="precio_unitario_c2" name="precio_unitario_c2" readonly="readonly"  >
-                  <input  type="text" class="form-control " id="tipo2" name="tipo2" readonly="readonly"  >
-                  <input  type="text" class="form-control " id="marca2" name="marca2" readonly="readonly"  >
-                  <input  type="text" class="form-control " id="concepto2" name="concepto2" readonly="readonly" >
+                  <input  type="hidden" class="form-control " id="id_producto2" name="id_producto2" readonly="readonly" >                        
+                  <input  type="hidden" class="form-control " id="precio_unitario2" name="precio_unitario2" readonly="readonly"  >
+                  <input  type="hidden" class="form-control " id="precio_unitario_c2" name="precio_unitario_c2" readonly="readonly"  >
+                  <input  type="hidden" class="form-control " id="tipo2" name="tipo2" readonly="readonly"  >
+                  <input  type="hidden" class="form-control " id="marca2" name="marca2" readonly="readonly"  >
+                  <input  type="hidden" class="form-control " id="concepto2" name="concepto2" readonly="readonly" >
 
-                  <input type="submit" value="Actualizar los Datos" class="btn btn-dark w-100" onclick="enviarTexto()">
+                  <input type="submit" value="Actualizar los Datos" class="btn btn-dark btn-sm w-100" onclick="enviarTexto()">
                   
 
                 </form>
@@ -324,26 +341,32 @@
         </div>
 
         <div class="col-lg-7 col-12">
+          
 
-        <div class="wrapper_update_concept " style="display:none ;" >
-          <div class="card mb-3">
-              <div class="card-header">Editar Concepto</div>
-              <div class="card-body">
+        <!-- Modal -->
+          <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Producto</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
                 <form id="save_concept" method="POST">
                   <input type="hidden" class="form-control" id="id_concepto" name="id_concepto" >
                   <div class="form-group row">
-                    <div class="col-sm-6">
-                      <label for="concepto">Concepto</label>
+                    <div class="col-sm-12">
+                      <label for="concepto">Concepto (Descripcion)</label>
                       <input type="text" class="form-control" id="concepto" name="concepto"  required  >
                     </div>
                     
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <label for="marca">Marca</label>
                       <input type="text" class="form-control" id="marca" name="marca"   >
                     </div>
                     
                     
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <label for="tipo">Unidad/Medible </label>
                       <select name="tipo" id="tipo" class="form-control">
                         <option value="Unidad">Unidad</option>
@@ -361,58 +384,57 @@
                         <option value="Bote">Bote</option>
                       </select>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                       <label for="cantidad">Cantidad</label>
                       <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="99999" value="1" required  >
                     </div>
 
-                    <div class="col-sm-2">
-                      <label for="precio_unitario">Precio Unitario </label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Bs</span>
-                        </div>
-                        <input type="text" class="form-control" id="precio_unitario" name="precio_unitario" placeholder="0.00" required>
-                      </div>
+                    <div class="col-sm-4">
+                      <label for="precio_unitario">Precio de venta </label>
+                      
+                        <input type="text" class="form-control" id="precio_unitario" name="precio_unitario" placeholder="0.00" style="background-color: #ddf3e6;color: green;font-weight: 700;" required>
+                      
                     </div>
 
-                    <div class="col-sm-3">
-                      <label for="precio_unitario_c">Precio Unitario de Compra </label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Bs</span>
-                        </div>
-                        <input type="text" class="form-control" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" required>
-                      </div>
+                    <div class="col-sm-4">
+                        <label for="precio_unitario_c">Precio de Compra </label>
+                        <input type="text" class="form-control" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" style="background-color: #ddf3e6;color: green;font-weight: 700;" required>
+                      
                     </div>
                   </div>
+                  <hr>
 
-                  <div class="col-sm-3">
-                      <label for="envio">Envio</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Bs</span>
-                        </div>
-                        <input type="text" class="form-control" id="envio" name="envio" placeholder="0.00" required>
-                      </div>
-                    </div>
-                  
-
+                  <div class="col-sm-4">
+                      <label for="envio">Envio (Transporte)</label>
+                      
+                        
+                        <input type="text" class="form-control" id="envio" name="envio" placeholder="0.00" style="background-color: #e1c1ff;font-weight: 700;" required>
+                      
+                </div>
                       <hr>
-                  
                   <button class="btn btn-success" type="submit" >Guardar Cambios</button>
-                  <button class="btn btn-danger" type="reset" id="cancel_edit" >Cancelar</button>
+                  <button class="btn btn-danger" type="reset" id="cancel_edit" data-bs-dismiss="modal" >Cancelar</button>
                 </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!--<div class="wrapper_update_concept " style="display:none ;" >
+          <div class="card mb-3">
+              <div class="card-header">Editar Concepto</div>
+              <div class="card-body">
+                
               </div>
             </div>
 
-            </div>
+            </div>-->
             
 
           
             <div class="card">
-              <div style="background-color: #343a40; color:white;" class="card-header">Resumen de Cotizacion <button class="btn btn-danger btn-sm float-right restart_quote "> <i class="fa-solid fa-power-off"></i> Reiniciar</button> </div>
-                <div class="card-body wrapper_quote">
+              <div style="background-color: #343a40; color:white;" class="card-header">Resumen de Cotizacion <button style="float:right;" class="btn btn-danger btn-sm  restart_quote "> <i class="fa-solid fa-power-off"></i> Reiniciar</button> </div>
+                <div class="card-body wrapper_quote" style="padding: 7px;">
                   
                 </div>
                 <div class="card-footer">
@@ -428,11 +450,7 @@
     <?php require_once INCLUDES.'footer.php' ?>
 
 
-  <div style="background-color: #343a40;" class="container-fluid">
-  
-  <p style="color: #a7a7a7;text-align: right;padding: 0;margin: 0;">Poncelet - Empresa Comercializadora - Constructora </p>
-  <p style="color: #707070; text-align: right;padding: 0;margin: 0;">airsoftware air5795@gmail.com - 79441119 &#169 Derechos Reservados </p>
-  </div>
+
   
 
     

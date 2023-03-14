@@ -61,14 +61,14 @@
             ?>
 
             <div class="col-sm-2">
-                <a class="btn btn-secondary w-100 disabled" href=""><i class="bi bi-box-seam"> </i> <strong> <?php echo $data['total']; ?> </strong> Productos</a>
+                <a class="btn btn-secondary w-100 disabled" href=""> <strong><i class="bi bi-box-seam"> - </i>  <?php echo $data['total']; ?> </strong>  Productos </a>
             
                 
             </div>
 
 
             <div class="col-sm-2">
-                <a class="btn btn-danger w-100 disabled" href=""><i class="bi bi-file-earmark-pdf"></i> Imprimir Reporte</a>
+                <a class="btn btn-danger w-100" style="background-color: cadetblue;border:none;" href="http://localhost/poncelet-sis/sistema/cotizador/"><i class="bi bi-file-earmark-ruled"></i> Cotizador Poncelet </a>
                 
             </div>
 
