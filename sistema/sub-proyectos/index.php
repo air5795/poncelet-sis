@@ -76,7 +76,7 @@
                 
                 <div class="text-center">
                     <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-outline-secondary boton w-100" data-bs-toggle="modal" data-bs-target="#modalproductos" id="botonCrear">
+                        <button type="button" class="btn btn-outline-secondary boton w-100" data-bs-toggle="modal" data-bs-target="#modalproyectos" id="botonCrear">
                         <i class="fa-solid fa-plus"></i> Nuevo Proyecto
                         </button>
                         
@@ -89,19 +89,21 @@
         <hr style="background-color: red;">
 
         <div class="table-responsive" style="font-size: 11px; width:100%">
-            <table id="datos_usuario" class="table table-hover table-striped" style="width:100%" >
+            <table id="datos_usuario" class="table table-hover table-striped" style="width:100%;" >
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th width="25%">NOMBRE PROYECTO</th>
+                        <th width="15%">NOMBRE PROYECTO</th>
+                        <th>TIPO</th>
                         <th>UBICACION</th>
                         <th>N° TRAMITE</th>
                         <th>N° COMPROBANTE</th>
                         <th>CUCE</th>
+                        
                         <th>MONTO</th>
                         <th>FECHA</th>
                         <th>ESTADO</th>
-                        <th>OBSERVACION</th>
+                        <th width="15%">PARTICIPANTES</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -113,11 +115,11 @@
 <!-- FINAL tabla--> 
 
 <!-- Modal NUEVO -->
-<div class="modal fade" id="modalproductos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalproyectos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-box"></i> Registro de Productos</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-box"></i> Registro de pproyectos</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: azure;"></button>
             </div>
             
@@ -133,101 +135,115 @@
                     <div class="row">
 
                         <div class="col-12">
-                            <label for="nombre" style="font-family: sans-serif;">Ingrese el Nombre o Descripción <span style="color:red"> *</span></label>
-                            <input type="text" name="nombre" id="nombre" class="form-control form-control-sm">
+                            <span for="inputFirstName">Nombre Proyecto o Descripcion </span>
+                            <input class="form-control form-control-sm  bg-opacity-10" name="nombre" id="nombre" type="text" value="" required />
                         </div>
-                        <div class="col-6">
-                            <label for="marca" style="font-family: sans-serif;">Ingrese la Marca</label>
-                            <input type="text" name="marca" id="marca" class="form-control form-control-sm">
+                        
+                        <div class="col-4">
+                            <span for="inputFirstName">Lugar (Ubicacion) </span>
+                            <input class="form-control form-control-sm  bg-opacity-10" name="ubicacion" id="ubicacion" type="text" value="" required />
                         </div> 
-                        <div class="col-6">
-                            <label for="unidad" style="font-family: sans-serif;">Ingrese Unidad Medible (U/M) <span style="color:red"> *</span></label>
-                            <select name="unidad" id="unidad" class="form-control form-control-sm">
+
+                        <div class="col-4">
+                            <span for="inputFirstName">Modalidad </span>
+                            <select name="tipo" id="tipo" class="form-control form-control-sm">
                                 <option value="">Selecciona una Opcion</option>
-                                <option value="Unidad">Unidad</option>
-                                <option value="Caja">Caja</option>
-                                <option value="Pieza">Pieza</option>
-                                <option value="Equipo">Equipo</option>
-                                <option value="Paquete">Paquete</option>
-                                <option value="Pliegue">Pliegue</option>
-                                <option value="Pliego">Pliego</option>
-                                <option value="Par">Par</option>
-                                <option value="Docena">Docena</option>
-                                <option value="Bidon">Bidon</option>
-                                <option value="Block">Block</option>
-                                <option value="Bolsa">Bolsa</option>
-                                <option value="Bote">Bote</option>
+                                <option value="COMPRA DIRECTA">COMPRA DIRECTA</option>
+                                <option value="CONTRATACION DIRECTA">CONTRATACION DIRECTA</option>
+                                <option value="CM">CM</option>
+                                <option value="ANPE">ANPE</option>
+                                <option value="ANPP">ANPP</option>
+                                <option value="LP">LP</option>
                             </select>
                         </div>
-
-                        
-
-
-                        <div class="col-6">
-                            <label for="tipo" style="font-family: sans-serif;">Ingrese Tipo de Producto <span style="color:red"> *</span></label>
-                            <select name="tipo" id="tipo" class="form-control form-control-sm ">
-                                <option value="">Selecciona una Opcion</option>
-                                <option value="limpieza">Material de Limpieza</option>
-                                <option value="mobiliario">Material Mobiliario</option>
-                                <option value="Musical">Material Musical</option>
-                                <option value="Hospitalario">Material Hospitalario</option>
-                                <option value="Tecnologico">Material Tecnologico</option>
-                                <option value="Cocina">Material de Cocina</option>
-                                <option value="Textil">Material Textil</option>
-                                <option value="Vehiculos">Vehiculos</option>
-                                <option value="Ferreteria">Ferreteria</option>
-                                <option value="industrial">Seguridad Industrial</option>
-                                <option value="alimentos">Alimentos</option>
-                                <option value="escritorio">Material de Escritorio</option>
-                                <option value="policial">Material Policial</option>
-                                <option value="deportivo">Material Deportivo</option>
-                                <option value="belleza">Material de Belleza</option>
-                            </select>
+  
+                        <div class="col-4">
+                            <span for="inputFirstName">Fecha </span>
+                            <input class="form-control form-control-sm  bg-opacity-10" name="fecha" id="fecha" type="date" value="" required />
                         </div>
 
-                        <div class="col-6">
-                            <label for="proveedor" style="font-family: sans-serif;">Ingrese Proveedor</label>
-                            <input type="text" name="proveedor" id="proveedor" class="form-control form-control-sm">
+                       
+
+                        <div class="col-4">
+                                <span for="inputFirstName">N° CUCE </span>
+                                <input class="form-control form-control-sm  bg-opacity-10" name="cuce" id="cuce" type="text" value="" />
                         </div>
 
-                        <div class="col-6">
-                            <label for="pc" style="font-family: sans-serif;">Ingrese Precio de Compra (Bs) <span style="color:red"> *</span></label>
-                            <input oninput="calcular_a_bs()" type="text" name="pc" id="pc" class="form-control form-control-sm" style="background-color: #e5ffe0; color:green; font-weight: 600;">
-                        </div>
-
-                        <div class="col-6">
-                            <label for="pv" style="font-family: sans-serif;">Ingrese Precio de Venta (Bs) <span style="color:red"> *</span></label>
-                            <input type="text" name="pv" id="pv" class="form-control form-control-sm" style="background-color: #e5ffe0; color:green; font-weight: 600;">
-                        </div>
-
-                        <div class="col-6">
-                            <label for="ficha" style="font-family: sans-serif;">Ingrese Ficha Tecnica</label>
-                            <input type="file" class="form-control form-control-sm" name="ficha" id="ficha">
-                        </div>
-                        <div class="col-6">
-                                <label for="ficha" style="font-family: sans-serif;"></label>
-                                <span id="pdf-subido" class="alert-sm"></span>
+                        <div class="col-4">
+                                <span for="inputFirstName">N° tramite </span>
+                                <input class="form-control form-control-sm  bg-opacity-10" name="tramite" id="tramite" type="text" value="" />
                         </div>
                         
 
-                        <div class="col-6">
-                            <label for="certificado" style="font-family: sans-serif;">Ingrese Certificado</label>
-                            <input type="file" class="form-control form-control-sm" name="certificado" id="certificado">
+                        <div class="col-4">
+                            <span for="inputFirstName">N° Comprobante </span>
+                            <input class="form-control form-control-sm  bg-opacity-10" name="comprobante" id="comprobante" type="text" value="" />
                         </div>
 
-                        <div class="col-6">
-                            <label for="certificado" style="font-family: sans-serif;"></label>
-                            <span id="certificado-subido" class="alert-sm"></span>
-                        </div>
                         
 
-                        <div class="col-6">
-                            <label for="foto" style="font-family: sans-serif;">Ingrese Foto</label>
-                            <input type="file" class="form-control form-control-sm" name="foto" id="foto">
+                        <div class="col-4">
+                            <span for="inputFirstName">Monto</span>
+                            <input id="monto" style="background-color: #e5ffe0; color:green; font-weight: 600;" class="form-control form-control-sm  bg-opacity-10" placeholder="0"  name="monto" type="text" value="" required />
                         </div>
-                        <div class="col-6">
-                            <span id="imagen-subida"></span>
+
+
+                        <div class="col-4">
+                                <span for="inputFirstName">Estado</span>
+                                <select name="estado" id="estado" class="form-control form-control-sm " required>
+                                        <option value="">Selecciona una Opcion</option>
+                                        <option  value="proceso">En Proceso</option>
+                                        <option  value="pagado">Pagado</option>
+                                </select>
                         </div>
+
+                        <p></p>
+                        <hr>
+
+                        <h6>Participantes en Proyecto</h6>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Importante!</strong> Mencionar los trabajos colaborados en el proyecto ejemplo: Certificado C-1
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+
+                        <div class="col-10">
+                            <span for="inputFirstName">Jazmin </span>
+                            <input class="form-control form-control-sm  bg-opacity-10" id="jazmin" name="jazmin" type="text" value=""  />
+                        </div>
+
+                        
+
+                        <div class="col-10">
+                            <span for="inputFirstName">Mavel </span>
+                            <input class="form-control form-control-sm  bg-opacity-10" id="mavel" name="mavel" type="text" value=""  />
+                        </div>
+
+                        
+
+                        <div class="col-10">
+                            <span for="inputFirstName">Nicol </span>
+                            <input class="form-control form-control-sm  bg-opacity-10" id="nicol" name="nicol" type="text" value=""  />
+                        </div>
+
+                        
+
+                        <div class="col-10">
+                            <span for="inputFirstName">Alejandro </span>
+                            <input class="form-control form-control-sm  bg-opacity-10" id="ale" name="ale" type="text" value=""  />
+                        </div>
+
+                        
+
+                        <div class="col-10">
+                            <span for="inputFirstName">Edwin</span>
+                            <input class="form-control form-control-sm  bg-opacity-10" id="edwin" name="edwin" type="text" value=""  />
+                        </div>
+
+                       
+
+                        
+
                         
                         
                         
@@ -308,6 +324,8 @@
 
         <script>
 
+       
+
             window.addEventListener('DOMContentLoaded', event => {
             // Toggle the side navigation
             const sidebarToggle = document.body.querySelector('#sidebarToggle');
@@ -332,17 +350,9 @@
                 
                 $("#botonCrear").click(function(){
                 $("#formulario")[0].reset();
-                $(".modal-title").text("Crear Producto");
-                $("#action").val("Crear Producto");
+                $(".modal-title").text("Crear Proyecto");
+                $("#action").val("Crear Proyecto");
                 $("#operacion").val("Crear");
-                $('#imagen-subida').html("");
-                $('#pdf-subido').html("");
-                $('#certificado-subido').html("");
-                $("#foto").html("");
-                $("#ficha").html("");
-                $("#certificado").html("");
-
-                
             });
             
             var dataTable = $('#datos_usuario').DataTable({
@@ -354,15 +364,16 @@
                     url: "obtener_registros.php",
                     type: "POST"
                 },
-                "createdRow": function(row,data,index){
-                        if (data[8] == 'proceso') {
-                            $('td', row).eq(8).css({
+                //CONDICIONAL DE COLORES EN TABLA 
+                /*"createdRow": function(row,data,index){
+                        if (data[7] == 'proceso') {
+                            $('td', row).eq(7).css({
                                 'background-color':'#f3f39b',
                                 'color':'black',
                                 'text-align':'center',
                             });
                         }else{
-                            $('td', row).eq(8).css({
+                            $('td', row).eq(7).css({
                                 'color':'black',
                                 'background-color':'#84f585',
                                 'text-align':'center',
@@ -370,7 +381,7 @@
 
                             });
                         }
-                    },
+                    },*/
                 "columnsDefs":[
                     {
                     "targets":[0, 3, 4],
@@ -405,46 +416,21 @@
             $(document).on('submit', '#formulario', function(event){
             event.preventDefault();
             var nombre = $('#nombre').val();
-            var marca = $('#marca').val();
-            var unidad = $('#unidad').val();
+            var ubicacion = $('#ubicacion').val();
             var tipo = $('#tipo').val();
-            var proveedor = $('#proveedor').val();
-            var pc = $('#pc').val();
-            var pv = $('#pv').val();
-            var extension = $('#foto').val().split('.').pop().toLowerCase();
-            var extension2 = $('#ficha').val().split('.').pop().toLowerCase();
-            var extension3 = $('#certificado').val().split('.').pop().toLowerCase();
-            if(extension != '')
-            {
-                if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
-                {
-                    alert("Fomato de imagen inválido");
-                    $('#foto').val('');
-                    return false;
-                }
-            }
-
-            if(extension2 != '')
-            {
-                if(jQuery.inArray(extension2, ['pdf']) == -1)
-                {
-                    alert("Fomato inválido");
-                    $('#ficha').val('');
-                    return false;
-                }
-            }
-
-            if(extension3 != '')
-            {
-                if(jQuery.inArray(extension3, ['pdf']) == -1)
-                {
-                    alert("Fomato de imagen inválido");
-                    $('#certificado').val('');
-                    return false;
-                }
-            }
+            var fecha = $('#fecha').val();
+            var cuce = $('#cuce').val();
+            var tramite = $('#tramite').val();
+            var comprobante = $('#comprobante').val();
+            var monto = $('#monto').val();
+            var estado = $('#estado').val();
+            var jazmin = $('#jazmin').val();
+            var mavel = $('#mavel').val();
+            var nicol = $('#nicol').val();
+            var ale = $('#ale').val();
+            var edwin = $('#edwin').val();
             	
-		    if(nombre != '' && marca != '' && unidad != '' && tipo != '' && pc != '' && pv != '')
+		    if(nombre != '' && ubicacion != '' && tipo != '' && fecha != '' && monto != '' && estado != '')
                 {
                     $.ajax({
                         url:"crear.php",
@@ -460,7 +446,7 @@
                             'success'
                             ),
                             $('#formulario')[0].reset();
-                            $('#modalproductos').modal('hide');
+                            $('#modalproyectos').modal('hide');
                             dataTable.ajax.reload();
                         }
                     });
@@ -581,6 +567,9 @@
     </script>
 
     <script>
+
+        //MODO OSCURO 
+
         const bdark = document.querySelector('#bdark');
         const main = document.querySelector('main');
         const body = document.querySelector('body');

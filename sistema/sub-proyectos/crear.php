@@ -7,33 +7,27 @@ include("funciones.php");
 
 
 if ($_POST["operacion"] == "Crear") {
-    $imagen = '';
-    $ficha = '';
-    $certificado = '';
-    if ($_FILES["foto"]["name"] != '') {
-        $imagen = subir_imagen();
-    }
-    if ($_FILES["ficha"]["name"] != '') {
-        $ficha = subir_ficha();
-    }
-    if ($_FILES["certificado"]["name"] != '') {
-        $certificado = subir_certificado();
-    }
-    $stmt = $conexion->prepare("INSERT INTO proyectos_comer(p_descripcion, p_marca, p_unidad, p_precioc, p_preciov, p_tipo, p_proveedor, foto, pdf, certificado)
-                                VALUES(:nombre, :marca, :unidad, :pc, :pv, :tipo, :proveedor, :foto, :ficha, :certificado)");
+
+
+    $stmt = $conexion->prepare("INSERT INTO proyectos_comer(nombre, tipo, ubicacion, num_tramite, num_comprobante, cuce, monto, fecha, estado, jazmin, mavel, nicol, ale, edwin)
+                                VALUES(:nombre, :tipo, :ubicacion, :tramite, :comprobante, :cuce, :monto, :fecha, :estado, :jazmin, :mavel, :nicol, :ale, :edwin)");
 
     $resultado = $stmt->execute(
         array(
-            ':nombre'    => $_POST["nombre"],
-            ':marca'    => $_POST["marca"],
-            ':unidad'    => $_POST["unidad"],
-            ':pc'    => $_POST["pc"],
-            ':pv'    => $_POST["pv"],
-            ':tipo'    => $_POST["tipo"],
-            ':proveedor'    => $_POST["proveedor"],
-            ':foto'    => $imagen,
-            ':ficha'    => $ficha,
-            ':certificado'    => $certificado
+            ':nombre'           => $_POST["nombre"],
+            ':ubicacion'        => $_POST["ubicacion"],
+            ':tipo'             => $_POST["tipo"],
+            ':tramite'          => $_POST["tramite"],
+            ':comprobante'      => $_POST["comprobante"],
+            ':monto'            => $_POST["monto"],
+            ':cuce'             => $_POST["cuce"],
+            ':estado'           => $_POST["estado"],
+            ':fecha'            => $_POST["fecha"],
+            ':jazmin'           => $_POST["jazmin"],
+            ':mavel'            => $_POST["mavel"],
+            ':nicol'            => $_POST["nicol"],
+            ':ale'              => $_POST["ale"],
+            ':edwin'            => $_POST["edwin"]
         )
     );
 

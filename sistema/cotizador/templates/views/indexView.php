@@ -398,7 +398,7 @@
 
                     <div class="col-sm-4">
                         <label for="precio_unitario_c">Precio de Compra </label>
-                        <input type="text" class="form-control" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" style="background-color: #ddf3e6;color: green;font-weight: 700;" required>
+                        <input oninput="calcular_a_bs()" type="text" class="form-control" id="precio_unitario_c" name="precio_unitario_c" placeholder="0.00" style="background-color: #ddf3e6;color: green;font-weight: 700;" required>
                       
                     </div>
                   </div>

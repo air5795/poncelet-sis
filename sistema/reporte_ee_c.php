@@ -907,10 +907,10 @@ if (isset($_POST['uno'])) {
                     
                     
                         <tr>
-                            <td colspan="10" class="exp5"> <STRONG style="font-size:12px;"> FORMULARIO A-3 </STRONG></td>
+                            <td colspan="10" class="exp5"> <STRONG style="font-size:12px;"> FORMULARIO A-4 </STRONG></td>
                         </tr>
                         <tr>
-                            <td colspan="10" class="exp4"> <STRONG style="font-size:13px;"> EXPERIENCIA GENERAL DE LA EMPRESA </STRONG></td>
+                            <td colspan="10" class="exp4"> <STRONG style="font-size:13px;"> EXPERIENCIA ESPECIFICA DE LA EMPRESA </STRONG></td>
                         </tr>
                         
                      
@@ -1763,8 +1763,8 @@ if (isset($_POST['uno'])) {
                     $html = ob_get_clean();
                     $dompdf = new Dompdf();
                     $dompdf->loadHtml($html);
-                    //$dompdf->setPaper('letter','portrait');
-                    $dompdf->setPaper('A4', 'landscape');
+                    $dompdf->setPaper('letter','portrait');
+                    //$dompdf->setPaper('A4', 'landscape');
                     $dompdf->set_option('dpi', 100);
                     $dompdf->render();
                     $dompdf->stream('Experiencia_Especifica',array('attachment'=>0));       
