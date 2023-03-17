@@ -26,16 +26,16 @@ $invoice = new Invoice();
     <?php
     $invoiceList = $invoice->getInvoiceList();
     foreach ($invoiceList as $invoiceDetails) {
-      $invoiceDate = date("d/M/Y, H:i:s", strtotime($invoiceDetails["order_date"]));
+      $invoiceDate = date("d/M/Y, H:i:s", strtotime($invoiceDetails["fecha_cotizacion"]));
       echo '
               <tr>
-                <td>' . $invoiceDetails["order_id"] . '</td>
+                <td>' . $invoiceDetails["id_cotizacion"] . '</td>
                 <td>' . $invoiceDate . '</td>
-                <td>' . $invoiceDetails["order_receiver_name"] . '</td>
-                <td>' . $invoiceDetails["order_total_after_tax"] . '</td>
-                <td><a href="print_invoice.php?invoice_id=' . $invoiceDetails["order_id"] . '" title="Imprimir Factura"><span class="glyphicon glyphicon-print"></span></a></td>
-                <td><a href="edit_invoice.php?update_id=' . $invoiceDetails["order_id"] . '"  title="Editar Factura"><span class="glyphicon glyphicon-edit"></span></a></td>
-                <td><a href="#" id="' . $invoiceDetails["order_id"] . '" class="deleteInvoice"  title="Eliminar Factura"><span class="glyphicon glyphicon-remove"></span></a></td>
+                <td>' . $invoiceDetails["cliente_nombre"] . '</td>
+                <td>' . $invoiceDetails["total_despues_impuestos"] .' Bs'. '</td>
+                <td><a href="print_invoice.php?invoice_id=' . $invoiceDetails["id_cotizacion"] . '" title="Imprimir Factura"><span class="glyphicon glyphicon-print"></span></a></td>
+                <td><a href="edit_invoice.php?update_id=' . $invoiceDetails["id_cotizacion"] . '"  title="Editar Factura"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="#" id="' . $invoiceDetails["id_cotizacion"] . '" class="deleteInvoice"  title="Eliminar Factura"><span class="glyphicon glyphicon-remove"></span></a></td>
               </tr>
             ';
     }

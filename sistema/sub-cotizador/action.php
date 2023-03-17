@@ -9,9 +9,5 @@ if($_POST['action'] == 'delete_invoice' && $_POST['id']) {
 	);
 	echo json_encode($jsonResponse);	
 }
-if($_GET['action'] == 'logout') {
-session_unset();
-session_destroy();
-header("Location:index.php");
-}
+
 

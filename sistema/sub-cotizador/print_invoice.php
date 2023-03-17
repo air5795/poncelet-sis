@@ -1,8 +1,8 @@
 <?php
-session_start();
+
 include 'Invoice.php';
 $invoice = new Invoice();
-$invoice->checkLoggedIn();
+
 if (!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
 	echo $_GET['invoice_id'];
 	$invoiceValues = $invoice->getInvoice($_GET['invoice_id']);
