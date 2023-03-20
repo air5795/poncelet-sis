@@ -921,14 +921,14 @@ if (isset($_POST['uno'])) {
                     <tr  style="background-color: #DBE5F1; ">
                         <td>N°</td>
                         <td >Nombre del contratante / Persona y Direccion de contacto</td>
-                        <td >Objeto del Contrato(Obras General)</td>
-                        <td>Ubicación de la Obra </td>
+                        <td >Objeto del Contrato(Obra similar)</td>
+                        <td>Ubicación</td>
                         <td>Periodo de ejecucion (Fecha de inicio y finalizacion)</td>
-                        <td>% de Participacion en Asociacion(*)</td>
-                        <td>Nombre del Socio(s)(**)</td>
-                        <td>Profesional Responsable(***)</td>
+                        <td>% de Participacion en Asociacion(**)</td>
+                        <td>Nombre del Socio(s)(***)</td>
+                        <td>Profesional Responsable(****)</td>
                         <td>Monto en $u$ (Llenado de uso alternativo)</td>
-                        <td>Monto final del contrato en Bs.</td>
+                        <td>Monto final del contrato en Bs. (*)</td>
                          
                     </tr>
 
@@ -1096,7 +1096,7 @@ if (isset($_POST['uno'])) {
                         <td style="background-color:white ;"></td>
                     </tr>
                     <tr class="exp">
-                        <td colspan="8" style="text-align: right; background-color: #DBE5F1;">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
+                        <td colspan="8" style="text-align: right; background-color: #DBE5F1;">TOTAL FACTURADO EN BOLIVIANOS (*****)</td>
                         <td style="background-color:white ;"></td>
                         <td  style="background-color: white;"><?php echo number_format($total,2,'.',',').' Bs'?></td>
                     </tr>
@@ -1104,11 +1104,11 @@ if (isset($_POST['uno'])) {
                         
                         <td colspan="10" style="background-color: white ; text-align: left;" >
 
-                        *	Cuando la empresa cuente con experiencia asociada, solo se debe consignar el monto correspondiente a su participación. <br>
-                        **	Si el contrato lo ejecutó asociado, indicar en esta casilla el nombre del o los socios. <br>
-                        ***	Indicar el nombre del Profesional Responsable, que desempeñó el cargo de Superintendente/ Residente o Director de Obras o su equivalente. Se puede nombrar a más de un profesional, si así correspondiese. <br>
-                        ****	El monto en bolivianos no necesariamente debe coincidir con el monto en Dólares Americanos. <br>
-                        
+                        *	    Monto a la fecha de Recepción Final de la Obra. <br>
+                        **	    Cuando la empresa cuente con experiencia asociada, solo se debe consignar el monto correspondiente a su participación. <br>
+                        ***	    Si el contrato lo ejecutó asociado, indicar en esta casilla el nombre del o los socios. <br>
+                        ****	Indicar el nombre del Profesional Responsable, que desempeñó el cargo de Superintendente/ Residente o Director de Obras o su equivalente. Se puede nombrar a más de un profesional, si así correspondiese. <br>
+                        *****	El monto en bolivianos no necesariamente debe coincidir con el monto en Dólares Americanos. <br>
                         <strong> NOTA.- </strong> Toda la información contenida en este formulario es una declaración jurada. En caso de adjudicación el proponente se compromete a presentar el certificado, Acta de Recepción Definitiva u otro documento que acredite su experiencia en cada una de las obras detalladas, en original o fotocopia legalizada emitida por el contratante.
                 
                         </td>

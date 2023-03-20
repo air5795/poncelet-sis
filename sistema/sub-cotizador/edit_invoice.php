@@ -16,7 +16,7 @@ if (!empty($_GET['update_id']) && $_GET['update_id']) {
 <title>Sis-poncelet</title>
 <script src="js/invoice.js"></script>
 <link href="css/style.css" rel="stylesheet">
-<?php include('inc/container.php'); ?>
+
 <div class="container content-invoice">
 	<form action="" id="invoice-form" method="post" class="invoice-form" role="form" novalidate="">
 		<div class="load-animate animated fadeInUp">

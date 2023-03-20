@@ -2,6 +2,7 @@
 
 include('inc/header.php');
 include 'Invoice.php';
+include 'conexion.php';
 $invoice = new Invoice();
 
 if (!empty($_POST['companyName']) && $_POST['companyName']) {
@@ -12,32 +13,48 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 <title>Sis-poncelet</title>
 <script src="js/invoice.js"></script>
 <link href="css/style.css" rel="stylesheet">
-<?php include('inc/container.php'); ?>
-<div class="container content-invoice">
+
+
+
+<div class="container ">
 	<form action="" id="invoice-form" method="post" class="invoice-form" role="form" novalidate="">
 		<div class="load-animate animated fadeInUp">
 			<div class="row">
-				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-					<h2 class="title"></h2>
+				<div class="container">
+					
 					<?php include('menu.php'); ?>
 				</div>
 			</div>
 			<input id="currency" type="hidden" value="$">
 			<div class="row">
-				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 pull-right">
+				
+				<div class="col-md-12 row">
 					<h3>Clientes</h3>
-					<div class="form-group">
-						<input type="text" class="form-control" name="companyName" id="companyName" placeholder="Nombre Cliente" autocomplete="off">
+					<div class="form-group col-md-4">
+					<select style="width: 100%;font-size:12px ;" name="nombre" id="nombre" class="form-control  js-example-basic-single " required >
+                                        <option value="" >Seleccione una opción : </option>
+                                        <?php
+                                            $query = mysqli_query($conexion, "SELECT * from cliente ORDER BY NOMBRE ASC;");
+                                            $result = mysqli_num_rows($query);
+                                            if ($result > 0) {
+                                            while ($data = mysqli_fetch_array($query)) {
+                                                echo '<option value="'.$data['nombre'].'">'.$data['nombre'].'</option>';
+                                                $nombre = $data['nombre'];
+                                            }}
+                                        ?>
+                                    </select>
 					</div>
-					<div class="form-group">
-						<textarea class="form-control" rows="3" name="address" id="address" placeholder="Dirección"></textarea>
+					<div class="form-group col-md-4">
+						<input type="text" class="form-control form-control-sm" name="companyName" id="companyName" placeholder="Nombre Cliente" autocomplete="off">
+					</div>
+					<br>
+					<div class="form-group col-md-4">
+						<input class="form-control form-control-sm" type="text" name="address" id="address" placeholder="Dirección">
 					</div>
 
 				</div>
 			</div>
+			<hr>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<table class="table table-bordered table-hover" id="invoiceItem">
@@ -51,26 +68,30 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 						</tr>
 						<tr>
 							<td><input class="itemRow" type="checkbox"></td>
-							<td><input type="text" name="productCode[]" id="productCode_1" class="form-control" autocomplete="off"></td>
-							<td><input type="text" name="productName[]" id="productName_1" class="form-control" autocomplete="off"></td>
-							<td><input type="number" name="quantity[]" id="quantity_1" class="form-control quantity" autocomplete="off"></td>
-							<td><input type="number" name="price[]" id="price_1" class="form-control price" autocomplete="off"></td>
-							<td><input type="number" name="total[]" id="total_1" class="form-control total" autocomplete="off"></td>
+							<td><input class="form-control form-control-sm" type="text" name="productCode[]" id="productCode_1" class="form-control" autocomplete="off"></td>
+							
+							<td><input class="form-control form-control-sm" type="text" name="productName[]" id="productName_1" class="form-control" autocomplete="off"></td>
+							<td><input class="form-control form-control-sm" type="number" name="quantity[]" id="quantity_1" class="form-control quantity" autocomplete="off"></td>
+							<td><input class="form-control form-control-sm" type="number" name="price[]" id="price_1" class="form-control price" autocomplete="off"></td>
+							<td><input class="form-control form-control-sm" type="number" name="total[]" id="total_1" class="form-control total" autocomplete="off"></td>
 						</tr>
 					</table>
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 					<button class="btn btn-danger delete" id="removeRows" type="button">- Eliminar</button>
 					<button class="btn btn-success" id="addRows" type="button">+ Agregar Más</button>
 				</div>
 			</div>
+
+			<hr>
 			<div class="row">
-				<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+				<div class="col-md-4">
 					<h3>Observaciones: </h3>
 					<div class="form-group">
-						<textarea class="form-control txt" rows="5" name="notes" id="notes" placeholder="Observaciones"></textarea>
+						<input class="form-control form-control-sm" type="text" name="notes" id="notes" placeholder="Observaciones">
 					</div>
 					<br>
 					<div class="form-group">
@@ -79,51 +100,40 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 					</div>
 
 				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					<span class="form-inline">
-						<div class="form-group">
-							<label>Subtotal: &nbsp;</label>
-							<div class="input-group">
-								<div class="input-group-addon currency">$</div>
-								<input value="" type="number" class="form-control" name="subTotal" id="subTotal" placeholder="Subtotal">
-							</div>
+				<div class="col-md-8 row">
+
+						<div class="col-md-3">
+							<label for="">Sub TOTAL</label>
+							<input value="" type="number" class="form-control" name="subTotal" id="subTotal" placeholder="Subtotal">
 						</div>
-						<div class="form-group">
-							<label>Porcentaje Impuestos: &nbsp;</label>
-							<div class="input-group">
-								<input value="" type="number" class="form-control" name="taxRate" id="taxRate" placeholder="Porcentaje Impuestos">
-								<div class="input-group-addon">%</div>
-							</div>
+
+						<div class="col-md-3">
+							<label for="">% IMPUESTOS</label>
+							<input value="" type="number" class="form-control" name="taxRate" id="taxRate" placeholder="Porcentaje Impuestos">
 						</div>
-						<div class="form-group">
-							<label>Monto impuestos: &nbsp;</label>
-							<div class="input-group">
-								<div class="input-group-addon currency">$</div>
-								<input value="" type="number" class="form-control" name="taxAmount" id="taxAmount" placeholder="Monto impuestos">
-							</div>
+
+						<div class="col-md-3">
+							<label for="">Monto IMPUESTOS</label>
+							<input value="" type="number" class="form-control" name="taxAmount" id="taxAmount" placeholder="Monto impuestos">
 						</div>
-						<div class="form-group">
-							<label>Total: &nbsp;</label>
-							<div class="input-group">
-								<div class="input-group-addon currency">$</div>
-								<input value="" type="number" class="form-control" name="totalAftertax" id="totalAftertax" placeholder="Total">
-							</div>
+					
+						<div class="col-md-3">
+							<label for="">TOTAL</label>
+							<input value="" type="number" class="form-control" name="totalAftertax" id="totalAftertax" placeholder="Total">
 						</div>
-						<div class="form-group">
-							<label>Monto Pagado: &nbsp;</label>
-							<div class="input-group">
-								<div class="input-group-addon currency">$</div>
-								<input value="" type="number" class="form-control" name="amountPaid" id="amountPaid" placeholder="Monto Pagado">
-							</div>
+
+						<div class="col-md-3">
+							<label for="">Monto Pagado:</label>
+							<input value="" type="number" class="form-control" name="amountPaid" id="amountPaid" placeholder="Monto Pagado">
 						</div>
-						<div class="form-group">
-							<label>Cambio: &nbsp;</label>
-							<div class="input-group">
-								<div class="input-group-addon currency">$</div>
-								<input value="" type="number" class="form-control" name="amountDue" id="amountDue" placeholder="Cambio">
-							</div>
+
+						<div class="col-md-3">
+							<label for="">cambio:</label>
+							<input value="" type="number" class="form-control" name="amountDue" id="amountDue" placeholder="Cambio">
 						</div>
-					</span>
+
+					
+					
 				</div>
 			</div>
 			<div class="clearfix"></div>

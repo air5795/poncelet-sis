@@ -7,7 +7,7 @@ $invoice = new Invoice();
 <title>sis-poncelet</title>
 <script src="js/invoice.js"></script>
 <link href="css/style.css" rel="stylesheet">
-<?php include('inc/container.php'); ?>
+
 <div class="container">
   <h2 class="title"></h2>
   <?php include('menu.php'); ?>
@@ -33,9 +33,9 @@ $invoice = new Invoice();
                 <td>' . $invoiceDate . '</td>
                 <td>' . $invoiceDetails["cliente_nombre"] . '</td>
                 <td>' . $invoiceDetails["total_despues_impuestos"] .' Bs'. '</td>
-                <td><a href="print_invoice.php?invoice_id=' . $invoiceDetails["id_cotizacion"] . '" title="Imprimir Factura"><span class="glyphicon glyphicon-print"></span></a></td>
-                <td><a href="edit_invoice.php?update_id=' . $invoiceDetails["id_cotizacion"] . '"  title="Editar Factura"><span class="glyphicon glyphicon-edit"></span></a></td>
-                <td><a href="#" id="' . $invoiceDetails["id_cotizacion"] . '" class="deleteInvoice"  title="Eliminar Factura"><span class="glyphicon glyphicon-remove"></span></a></td>
+                <td><a class="btn btn-outline-danger" href="print_invoice.php?invoice_id=' . $invoiceDetails["id_cotizacion"] . '" title="Imprimir Factura"><span <i class="bi bi-printer-fill"></i></a></td>
+                <td><a class="btn btn-warning" href="edit_invoice.php?update_id=' . $invoiceDetails["id_cotizacion"] . '"  title="Editar Factura"><i class="bi bi-pencil-square"></i></a></td>
+                <td><a class="btn btn-danger" href="#" id="' . $invoiceDetails["id_cotizacion"] . '" class="deleteInvoice"  title="Eliminar Factura"><i class="bi bi-trash-fill"></i></a></td>
               </tr>
             ';
     }

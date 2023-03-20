@@ -26,6 +26,8 @@
 
 <script src="assets/js/custom.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <script src="assets/js/lib/datatables/datatables.min.js"></script>
 <script src="assets/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
@@ -36,7 +38,23 @@
 <script src="assets/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 <script src="assets/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script src="assets/js/lib/datatables/datatables-init.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+<script>
+      // In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $('.js-example-basic-single').select2({
+      placeholder: "Buscar en base de datos (Clientes)",
+      allowClear: true , 
+      theme: "classic",
+      language: "es",
+  
+    });
+  
+    theme: "classic";
+    
+});
+    </script>
 
 
 <script>
