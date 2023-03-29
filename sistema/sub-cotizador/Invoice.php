@@ -121,4 +121,6 @@ class Invoice
 		$this->deleteInvoiceItems($invoiceId);
 		return 1;
 	}
+
+
 }

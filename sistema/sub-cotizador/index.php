@@ -43,3 +43,4 @@ $invoice = new Invoice();
   </table>
 </div>
 <?php include('inc/footer.php'); ?>
+ 

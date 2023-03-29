@@ -225,7 +225,7 @@
                     </div>
                     <div class="col-sm-4 ">
                       <a class="btn btn-sm " style="background-color:#ff3b00; color:white" id="buscarp"><i class="fa-solid fa-magnifying-glass"></i> Buscar </a>
-                      <a type="button"  class="btn btn-sm btn-secondary" id="nuevo" href="http://localhost/poncelet-sis/sistema/sub-productos/" ><i class="fa-solid fa-box"></i> Nuevo </a>
+                      <a type="button"  class="btn btn-sm btn-secondary" id="nuevo" href="/poncelet-sis/sistema/sub-productos/" ><i class="fa-solid fa-box"></i> Nuevo </a>
                     </div>
 
 

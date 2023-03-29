@@ -33,16 +33,16 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 					<div class="form-group col-md-4">
 					<select style="width: 100%;font-size:12px ;" name="nombre" id="nombre" class="form-control  js-example-basic-single " required >
                                         <option value="" >Seleccione una opción : </option>
-                                        <?php
-                                            $query = mysqli_query($conexion, "SELECT * from cliente ORDER BY NOMBRE ASC;");
-                                            $result = mysqli_num_rows($query);
-                                            if ($result > 0) {
-                                            while ($data = mysqli_fetch_array($query)) {
-                                                echo '<option value="'.$data['nombre'].'">'.$data['nombre'].'</option>';
-                                                $nombre = $data['nombre'];
-                                            }}
-                                        ?>
-                                    </select>
+											<?php
+												$query = mysqli_query($conexion, "SELECT * from cliente ORDER BY NOMBRE ASC;");
+												$result = mysqli_num_rows($query);
+												if ($result > 0) {
+												while ($data = mysqli_fetch_array($query)) {
+													echo '<option value="'.$data['nombre'].'">'.$data['nombre'].'</option>';
+													$nombre = $data['nombre'];
+												}}
+											?>
+                                    	</select>
 					</div>
 					<div class="form-group col-md-4">
 						<input type="text" class="form-control form-control-sm" name="companyName" id="companyName" placeholder="Nombre Cliente" autocomplete="off">
@@ -66,15 +66,19 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 							<th width="15%">Precio</th>
 							<th width="15%">Total</th>
 						</tr>
+						
 						<tr>
+						
 							<td><input class="itemRow" type="checkbox"></td>
 							<td><input class="form-control form-control-sm" type="text" name="productCode[]" id="productCode_1" class="form-control" autocomplete="off"></td>
-							
 							<td><input class="form-control form-control-sm" type="text" name="productName[]" id="productName_1" class="form-control" autocomplete="off"></td>
 							<td><input class="form-control form-control-sm" type="number" name="quantity[]" id="quantity_1" class="form-control quantity" autocomplete="off"></td>
 							<td><input class="form-control form-control-sm" type="number" name="price[]" id="price_1" class="form-control price" autocomplete="off"></td>
-							<td><input class="form-control form-control-sm" type="number" name="total[]" id="total_1" class="form-control total" autocomplete="off"></td>
+							<td><input class="form-control form-control-sm" type="number" name="total[]" id="total_1" class="form-control total" autocomplete="off"></td> 
+							
+
 						</tr>
+						
 					</table>
 				</div>
 			</div>
@@ -82,7 +86,8 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 			<div class="row">
 				<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 					<button class="btn btn-danger delete" id="removeRows" type="button">- Eliminar</button>
-					<button class="btn btn-success" id="addRows" type="button">+ Agregar Más</button>
+					<button class="btn btn-success" id="addRows" type="button" onclick="addRow()">+ Agregar Más</button>
+					
 				</div>
 			</div>
 

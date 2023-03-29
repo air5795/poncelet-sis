@@ -16,14 +16,27 @@
 		htmlRows += '<tr>';
 		htmlRows += '<td><input class="itemRow" type="checkbox"></td>';          
 		htmlRows += '<td><input type="text" name="productCode[]" id="productCode_'+count+'" class="form-control" autocomplete="off"></td>';
+		htmlRows += '<td><select name="items[]" id="items_'+count+'" class="form-control"></select></td>';	
 		//htmlRows += '<td><select style="width: 100%;font-size:12px ;" name="productName" id="nombrep" class="form-control form-control-sm  principal "><option value=""> Seleccione una opcion:</option> <?php $query = mysqli_query($conexion,"SELECT * FROM productos ORDER BY p_descripcion ASC;"); $result = mysqli_num_rows($query); if ($result > 0) { while ($data = mysqli_fetch_array($query)) {  echo "<option value="'.$data['p_descripcion'].'">".$data['p_descripcion']."</option>'; $nombre = $data['p_descripcion']; }} ?> '</td>';         
-		htmlRows += '<td><input type="text" name="productName[]" id="productName_'+count+'" class="form-control" autocomplete="off"></td>';	
+		//htmlRows += '<td><input type="text" name="productName[]" id="productName_'+count+'" class="form-control" autocomplete="off"></td>';	
 		htmlRows += '<td><input type="number" name="quantity[]" id="quantity_'+count+'" class="form-control quantity" autocomplete="off"></td>';   		
 		htmlRows += '<td><input type="number" name="price[]" id="price_'+count+'" class="form-control price" autocomplete="off"></td>';		 
 		htmlRows += '<td><input type="number" name="total[]" id="total_'+count+'" class="form-control total" autocomplete="off"></td>';          
 		htmlRows += '</tr>';
 		$('#invoiceItem').append(htmlRows);
 	}); 
+
+	function loadItems(id) {	
+		$.ajax({
+			url:"invoice_action.php",
+			method:"POST",
+			data:{action:'loadItemsList'},
+			success:function(data) {
+				$('#items_'+id).html(data);
+			}
+		});
+	}
+	
 	$(document).on('click', '#removeRows', function(){
 		$(".itemRow:checked").each(function() {
 			$(this).closest('tr').remove();
