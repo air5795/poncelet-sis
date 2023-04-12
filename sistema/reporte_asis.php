@@ -145,7 +145,7 @@ echo "The current date and time are $DateAndTime.";
                                                                     
                                                                     JOIN usuario ON asistencias.usuario_id = usuario.idusuario
                                                                     WHERE DATE(fecha_asis) BETWEEN '{$fecha_inicio}' AND '{$fecha_final}' AND usuario_id = $personal
-                                                                    order by asistencias.id_asistencia ASC;");
+                                                                    order by asistencias.fecha_asis ASC;");
 
                                                                     
 

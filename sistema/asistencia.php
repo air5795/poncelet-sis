@@ -550,7 +550,7 @@
         $(document).ready(function () {
         $('#tablas').DataTable({
             
-            order: [[5, 'desc']],
+            order: [[0, 'desc']],
             pageLength: 5,
             lengthMenu: [
                 [5, 10, 25,50,200, -1],

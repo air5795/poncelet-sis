@@ -35,7 +35,7 @@
         $result = mysqli_query($conexion, $sql);
 
         if ($result) {
-        header("location: http://localhost/poncelet-sis/sistema/cotizador/");
+        header("location: /poncelet-sis/sistema/cotizador/");
         }
         else {
             echo 'error';
