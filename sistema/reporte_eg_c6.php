@@ -147,12 +147,13 @@ ob_start();
                         
                         <td colspan="10" style="background-color: white ; text-align: left;" >
 
-                        *	Cuando la empresa cuente con experiencia asociada, solo se debe consignar el monto correspondiente a su participación. <br>
-                        **	Si el contrato lo ejecutó asociado, indicar en esta casilla el nombre del o los socios. <br>
-                        ***	Indicar el nombre del Profesional Responsable, que desempeñó el cargo de Superintendente/ Residente o Director de Obras o su equivalente. Se puede nombrar a más de un profesional, si así correspondiese. <br>
-                        ****	El monto en bolivianos no necesariamente debe coincidir con el monto en Dólares Americanos. <br>
+                        *	Monto a la fecha de Recepción Final de la Obra.  <br>
+                        **	Cuando la empresa cuente con experiencia asociada, solo se debe consignar el monto correspondiente a su participación. <br>
+                        ***	Si el contrato lo ejecutó asociado, indicar en esta casilla el nombre del o los socios. <br>
+                        ****	Indicar el nombre del Profesional Responsable, que desempeñó el cargo de Superintendente/ Residente o Director de Obras o su equivalente. Se puede nombrar a más de un profesional, si así correspondiese. <br>
+                        *****	El monto en bolivianos no necesariamente debe coincidir con el monto en Dólares Americanos. <br>
                         NOTA.- Toda la información contenida en este formulario es una declaración jurada. En caso de adjudicación el proponente se compromete a presentar el certificado, Acta de Recepción Definitiva u otro documento que acredite su experiencia en cada una de las obras detalladas, en original o fotocopia legalizada emitida por el contratante. <br>
-                
+
                         </td>
                         
                     </tr>

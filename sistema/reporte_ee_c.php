@@ -1479,10 +1479,10 @@ if (isset($_POST['uno'])) {
                 <table>
                 
                 <tr>
-                    <td colspan="10" class="exp5"> <STRONG style="font-size:12px;"> FORMULARIO A-4 </STRONG></td>
+                    <td colspan="10" class="exp5"> <STRONG style="font-size:12px;font-family: verdana;"> FORMULARIO A-4 </STRONG></td>
                 </tr>
                 <tr>
-                    <td colspan="10" class="exp4"> <STRONG style="font-size:13px;"> EXPERIENCIA ESPECIFICA DE LA EMPRESA </STRONG></td>
+                    <td colspan="10" class="exp4"> <STRONG style="font-size:12px;font-family: verdana;"> EXPERIENCIA ESPECIFICA DE LA EMPRESA </STRONG></td>
                 </tr>
                 
              
@@ -1498,11 +1498,11 @@ if (isset($_POST['uno'])) {
                 
                 <th>Periodo de ejecucion (Fecha de inicio y finalizacion)</th>
                 
-                <th>% de Participacion en Asociacion(*)</th>
-                <th>Nombre del Socio(s) (**)</th>
-                <th>Profesional Responsable(***)</th> 
+                <th>% de Participacion en Asociacion(**)</th>
+                <th>Nombre del Socio(s) (***)</th>
+                <th>Profesional Responsable(****)</th> 
                 <th>Monto en $u$ (Llenado de uso alternativo)</th>
-                <th>Monto final del contrato en Bs</th>
+                <th>Monto final del contrato en Bs (*)</th>
             </tr>
             
             <?php
@@ -1668,7 +1668,7 @@ if (isset($_POST['uno'])) {
                         <td colspan="1" style="background-color: white;"></td>
                     </tr>
                     <tr class="exp">
-                        <td colspan="8" style="text-align: right;background-color: #DBE5F1;">TOTAL FACTURADO EN BOLIVIANOS (****)</td>
+                        <td colspan="8" style="text-align: right;background-color: #DBE5F1;">TOTAL FACTURADO EN BOLIVIANOS (*****)</td>
                         <td colspan="1" style="background-color: white;" ></td>
                         <td colspan="1" style="background-color: white;"><?php echo number_format($total,2,'.',',').' Bs'?></td>
                     </tr>
@@ -1676,12 +1676,13 @@ if (isset($_POST['uno'])) {
                         
                         <td colspan="10" style="background-color: white ; text-align: left;" >
 
-                        *	Cuando la empresa cuente con experiencia asociada, solo se debe consignar el monto correspondiente a su participación. <br>
-                        **	Si el contrato lo ejecutó asociado, indicar en esta casilla el nombre del o los socios. <br>
-                        ***	Indicar el nombre del Profesional Responsable, que desempeñó el cargo de Superintendente/ Residente o Director de Obras o su equivalente. Se puede nombrar a más de un profesional, si así correspondiese. <br>
-                        ****	El monto en bolivianos no necesariamente debe coincidir con el monto en Dólares Americanos. <br>
+                        *	Monto a la fecha de Recepción Final de la Obra. <br>
+                        **	Cuando la empresa cuente con experiencia asociada, solo se debe consignar el monto correspondiente a su participación. <br>
+                        ***	Si el contrato lo ejecutó asociado, indicar en esta casilla el nombre del o los socios. <br>
+                        ****	Indicar el nombre del Profesional Responsable, que desempeñó el cargo de Superintendente/ Residente o Director de Obras o su equivalente. Se puede nombrar a más de un profesional, si así correspondiese. <br>
+                        *****	El monto en bolivianos no necesariamente debe coincidir con el monto en Dólares Americanos. <br>
                         NOTA.- Toda la información contenida en este formulario es una declaración jurada. En caso de adjudicación el proponente se compromete a presentar el certificado, Acta de Recepción Definitiva u otro documento que acredite su experiencia en cada una de las obras detalladas, en original o fotocopia legalizada emitida por el contratante. <br>
-                
+
                         </td>
                         
                     </tr>
@@ -1763,8 +1764,8 @@ if (isset($_POST['uno'])) {
                     $html = ob_get_clean();
                     $dompdf = new Dompdf();
                     $dompdf->loadHtml($html);
-                    $dompdf->setPaper('letter','portrait');
-                    //$dompdf->setPaper('A4', 'landscape');
+                    //$dompdf->setPaper('letter','portrait');
+                    $dompdf->setPaper('A4', 'landscape');
                     $dompdf->set_option('dpi', 100);
                     $dompdf->render();
                     $dompdf->stream('Experiencia_Especifica',array('attachment'=>0));       
