@@ -55,9 +55,9 @@
                         <!--Home Content-->
 
                         <?php
-                            $query = mysqli_query($conexion, "SELECT monto,fecha,nombre FROM proyectos_comer where estado = 'proceso' order by fecha DESC limit 10");
+                            $query = mysqli_query($conexion, "SELECT monto_ofertado,fecha,nombre  FROM proyectos_comer  order by fecha DESC limit 10");
                             foreach ($query as $data) {
-                                $monto[]    = $data['monto'];
+                                $monto[]    = $data['monto_ofertado'];
                                 //$fecha[]    = $data['fecha'];
                                 $nombre[]   = $data['nombre'].' FECHA: '.$data['fecha'];
 
@@ -135,7 +135,7 @@
                         <?php 
                                 
 
-                                $sql_pro = mysqli_query($conexion, "SELECT COUNT(*) FROM proyectos_comer WHERE estado = 'proceso';");
+                                $sql_pro = mysqli_query($conexion, "SELECT COUNT(*) FROM proyectos_comer WHERE  estado = 'adjudicado';");
                                 $res = mysqli_fetch_array($sql_pro);
                                 $r = $res['COUNT(*)']; 
 
@@ -208,7 +208,7 @@ var data = {
   datasets: [
       {
       stack:1,
-      label: "Proyectos (Bs) :",
+      label: "Monto Ofertado (Bs) :",
       backgroundColor: [
       'rgba(255, 99, 132, 0.2)',
       'rgba(255, 159, 64, 0.2)',

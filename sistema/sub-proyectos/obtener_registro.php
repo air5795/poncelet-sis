@@ -3,48 +3,34 @@
 include("conexion.php");
 include("funciones.php");
 
-if (isset($_POST["id_producto"])) {
+if (isset($_POST["id_pro"])) {
     $salida = array();
-    $stmt = $conexion->prepare("SELECT * FROM productos WHERE id_producto = '".$_POST["id_producto"]."' LIMIT 1");
+    $stmt = $conexion->prepare("SELECT * FROM proyectos_comer WHERE id_pro = '".$_POST["id_pro"]."' LIMIT 1");
     $stmt->execute();
     $resultado = $stmt->fetchAll();
     foreach($resultado as $fila){
-        $salida["nombre"] = $fila["p_descripcion"];
-        $salida["marca"] = $fila["p_marca"];
-        $salida["unidad"] = $fila["p_unidad"];
-        $salida["pc"] = $fila["p_precioc"];
-        $salida["pv"] = $fila["p_preciov"];
-        $salida["tipo"] = $fila["p_tipo"];
-        $salida["proveedor"] = $fila["p_proveedor"];
+        $salida["nombre"] = $fila["nombre"];
+        $salida["rubro"] = $fila["rubro"];
+        $salida["tipo"] = $fila["tipo"];
+        $salida["tipo2"] = $fila["tipo2"];
+        $salida["ubicacion"] = $fila["ubicacion"];
+        $salida["num_tramite"] = $fila["num_tramite"];
+        $salida["num_comprobante"] = $fila["num_comprobante"];
+        $salida["cuce"] = $fila["cuce"];
+        $salida["monto"] = $fila["monto"];
+        $salida["monto_ofertado"] = $fila["monto_ofertado"];
+        $salida["fecha"] = $fila["fecha"];
+        $salida["estado"] = $fila["estado"];
+        $salida["posicion"] = $fila["posicion"];
+        $salida["observacion"] = $fila["observacion"];
+        $salida["encargado"] = $fila["encargado"];
+        $salida["jazmin"] = $fila["jazmin"];
+        $salida["mavel"] = $fila["mavel"];
+        $salida["ale"] = $fila["ale"];
+        $salida["nicol"] = $fila["nicol"];
+        $salida["edwin"] = $fila["edwin"];
 
-        /* FOTO */ 
-        if ($fila["foto"] != "") {
-            $salida["foto"] = '<img src="productos/' . $fila["foto"] . '"  class="img-thumbnail" width="150" height="150" />
-            <input type="hidden" name="img_o" value="'.$fila["foto"].'" />';
-        }else{
-            $salida["foto"] = '<div class="alert alert-danger" role="alert"> <input type="hidden" name="img_o" value="" /> <i class="bi bi-exclamation-octagon-fill"></i> Sin Foto</div>' ;
-            //$salida["foto"] = '<input type="hidden" name="img_o" value="" />';
-        }
-        
-        /* PDF */
-        if ($fila["pdf"] != "") {
-            $salida["ficha"] = '<div class="alert alert-success" role="alert"> <input name="ficha_o" type="hidden" value="'.$fila["pdf"].'" /> <i class="bi bi-check-circle-fill"></i> Contiene Ficha Tecnica</div>' ;
-        }else{
-            $salida["ficha"] = '<div class="alert alert-danger" role="alert"> <input name="ficha_o" type="hidden" value="" /> <i class="bi bi-exclamation-octagon-fill"></i> Sin Ficha Tecnica</div>' ;
-            //$salida["ficha"] = '<input type="hidden" name="ficha_o" value="" />';
-        }
-
-        /* CERTIFIACADO */
-
-        
-        
-        if ($fila["certificado"] != "") {
-            $salida["certificado"] = '<div class="alert alert-success" role="alert"> <input name=" certificado_o" type="hidden" value="'.$fila["certificado"].'" /> <i class="bi bi-check-circle-fill"></i> Contiene Certificado</div>' ;
-
-        }else{
-            $salida["certificado"] = '<div class="alert alert-danger" role="alert"> <input name=" certificado_o" type="hidden" value="" /> <i class="bi bi-exclamation-octagon-fill"></i> Sin Certificado</div>' ;
-            //$salida["certificado"] = '<input type="hidden" name="certificado_o" value="" />';
-        }
+    
     }
 
     echo json_encode($salida);

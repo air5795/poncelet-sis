@@ -339,6 +339,39 @@ $('#cancel_edit').on('click', (e) => {
   form.trigger('reset');
 });
 
+
+
+
+$('#generate_quote').click(function(e){
+  var registerForm = $("#mandar");
+  var formData = registerForm.serializeArray();
+
+  // Convertir los datos en un objeto JSON
+  var jsonForm = JSON.stringify(formData);
+
+  console.log(formData);
+
+  //peticion
+
+  $.ajax({
+    url     : 'test.php',
+    type    : 'POST',
+    dataType: 'json',
+    cache   : false,
+    data: { formData: jsonForm },
+    beforeSend: () => {
+      //$('body').waitMe();
+      //button.html('Generando...');
+    }
+  })
+
+});
+
+
+
+
+
+
   // Función para generar la cotización
   $('#generate_quote').on('click', generate_quote);
   function generate_quote(e) {
@@ -466,7 +499,7 @@ $('#cancel_edit').on('click', (e) => {
       type    : 'POST',
       dataType: 'json',
       cache   : false,
-      data    : {action, nombre, empresa, email,garantia,valides,entrega},
+      data    : {action, nombre, empresa, email, garantia, valides, entrega},
       beforeSend: () => {
         $('body').waitMe();
         button.html('Generando...');
@@ -494,5 +527,4 @@ $('#cancel_edit').on('click', (e) => {
       $('body').waitMe('hide');
     });
   }
-
 });

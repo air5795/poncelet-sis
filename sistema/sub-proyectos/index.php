@@ -16,10 +16,14 @@
         <link rel="stylesheet" href="css/estilos3.css">
         <link rel="stylesheet" href="css/estilos2.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
+        
+
         
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
         <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+        
 
         <link rel="shortcut icon" href="img/ICONOGRANDE2.png">
         <meta name="description" content="" />
@@ -47,24 +51,231 @@
 
 <div class="container-fluid  fondo ">    
         <div class="row">
-            <div class="col-sm-8">
-                <h2><i class="fa-solid fa-database"></i> Seguimiento - Proyectos Poncelet</h2>
+            <div class="col-sm-6">
+                <h2><i class="bi bi-bar-chart-line-fill"></i> Seguimiento - Proyectos y Cotizaciones </h2>
                 
             </div>
 
             <?php
 
-                $result=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer");
+                $result=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer where tipo = 'cotizacion'");
                 $data=mysqli_fetch_assoc($result);
-                $data['total'];
+                $n_cotizacion = $data['total'];
+
+                $result2=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer where tipo != 'cotizacion'");
+                $data2=mysqli_fetch_assoc($result2);
+                $n_proyectos = $data2['total'];
+
+                $result3=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer where estado = 'adjudicado'");
+                $data3=mysqli_fetch_assoc($result3);
+                $n_adjudicados = $data3['total'];
 
             ?>
 
-            <div class="col-sm-2">
-                <a class="btn btn-secondary w-100 disabled" href=""> <strong><i class="bi bi-folder-check"> - </i>  <?php echo $data['total']; ?> </strong>  Proyectos </a>
+            <div class="col-sm-1">
+                <a class="btn btn-success w-100  disabled" href=""> <strong>  <?php echo $n_adjudicados; ?> </strong> <span style="font-size: small;">  ADJUDICADOS </span></a>
             
                 
             </div>
+
+            <div class="col-sm-1">
+                <a class="btn btn-secondary w-100 small  disabled" href=""> <strong>  <?php echo $n_cotizacion; ?> </strong> <span style="font-size: small;">   COTIZACIONES </span> </a>
+            
+                
+            </div>
+            <div class="col-sm-1">
+                <a class="btn btn-secondary w-100 small disabled" href=""> <strong>  <?php echo $n_proyectos; ?> </strong> <span style="font-size: small;">   PROYECTOS </span> </a>
+            
+                
+            </div>
+            <div class="col-sm-1">
+                <a class="btn btn-danger w-100  " href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="bi bi-file-pdf-fill"></i> <br> Imprimir    </a>
+            
+                
+            </div>
+
+
+
+
+<!-- Modal Imprimir -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title2 fs-5" id="exampleModalLabel"><i class="bi bi-file-pdf-fill"></i>  Imprimir Informes</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+      
+      <form action="reporte.php"  class="form-inline" method="POST" name="formFechas" id="formFechas">
+      <div class="row">
+            <div class="col-sm-3">
+            <label for="">Elegir Personal</label>
+                <select style="width: 100%;font-size:12px ; border-radius: 25px;border: 2px solid gray;" name="personal" id="select" class=" form-select" required >
+                    <option value="jazmin">Jazmin Velasco Diaz </option>
+                    <option value="mavel">Mavel Condori Flores</option>
+                    <option value="ale">Alejandro Iglesias Raldes </option>
+                    <option value="nicol">Mariana Nicol Erquicia Camacho </option>
+                    <option value="edwin">Edwin Mario Pinto Ramirez </option>
+                                                
+
+                </select>
+                                            
+            </div>
+            <div class="col-sm-3">
+                <label for="">Fecha Inicio</label>
+                <input style="border-radius: 25px;border: 2px solid gray;" class="form-control form-control-sm" type="date" name="fecha_inicio" id="" required > 
+            </div>
+            <div class="col-sm-3">
+                <label for="">Fecha Final</label>
+                <input style="border-radius: 25px;border: 2px solid gray;" class="form-control form-control-sm" type="date" name="fecha_final" id="" required >
+
+            </div>
+            
+
+            
+
+            <div class="col-sm-3">
+                <label for=""><i class="bi bi-printer-fill"></i> Imprimir </label>
+            <input class="btn btn-danger btn-sm w-100" type="submit" value="INFORME GENERAL" >
+            </div>
+
+                                        
+            
+            </div>
+        </form>
+
+
+
+
+
+        <form action="reporte2.php"  class="form-inline" method="POST" name="formFechas" id="formFechas">
+      <div class="row">
+            <div class="col-sm-3">
+            <label for="">Elegir Personal</label>
+                <select style="width: 100%;font-size:12px ; border-radius: 25px;border: 2px solid gray;" name="personal" id="select" class=" form-select" required >
+                    <option value="jazmin">Jazmin Velasco Diaz </option>
+                    <option value="mavel">Mavel Condori Flores</option>
+                    <option value="ale">Alejandro Iglesias Raldes </option>
+                    <option value="nicol">Mariana Nicol Erquicia Camacho </option>
+                    <option value="edwin">Edwin Mario Pinto Ramirez </option>
+                                                
+
+                </select>
+                                            
+            </div>
+            <div class="col-sm-3">
+                <label for="">Fecha Inicio</label>
+                <input style="border-radius: 25px;border: 2px solid gray;" class="form-control form-control-sm" type="date" name="fecha_inicio" id="" required > 
+            </div>
+            <div class="col-sm-3">
+                <label for="">Fecha Final</label>
+                <input style="border-radius: 25px;border: 2px solid gray;" class="form-control form-control-sm" type="date" name="fecha_final" id="" required >
+
+            </div>
+            
+
+            
+
+                                        
+            <div class="col-sm-3 ">
+                <label for=""> <i class="bi bi-printer-fill"></i> Imprimir </label>
+                <input class="btn btn-danger btn-sm w-100 " type="submit" value="INF DE COTIZACIONES" >
+            </div>
+            </div>
+        </form>
+
+        <form action="reporte3.php"  class="form-inline" method="POST" name="formFechas" id="formFechas">
+      <div class="row">
+            <div class="col-sm-3">
+            <label for="">Elegir Personal</label>
+                <select style="width: 100%;font-size:12px ; border-radius: 25px;border: 2px solid gray;" name="personal" id="select" class=" form-select" required >
+                    <option value="jazmin">Jazmin Velasco Diaz </option>
+                    <option value="mavel">Mavel Condori Flores</option>
+                    <option value="ale">Alejandro Iglesias Raldes </option>
+                    <option value="nicol">Mariana Nicol Erquicia Camacho </option>
+                    <option value="edwin">Edwin Mario Pinto Ramirez </option>
+                                                
+
+                </select>
+                                            
+            </div>
+            <div class="col-sm-3">
+                <label for="">Fecha Inicio</label>
+                <input style="border-radius: 25px;border: 2px solid gray;" class="form-control form-control-sm" type="date" name="fecha_inicio" id="" required > 
+            </div>
+            <div class="col-sm-3">
+                <label for="">Fecha Final</label>
+                <input style="border-radius: 25px;border: 2px solid gray;" class="form-control form-control-sm" type="date" name="fecha_final" id="" required >
+
+            </div>
+            
+
+    
+
+            <div class="col-sm-3">
+                <label for=""><i class="bi bi-printer-fill"></i> Imprimir </label>
+                <input class="btn btn-danger btn-sm w-100 " type="submit" value="INF DE PROYECTOS" >
+            </div>
+            </div>
+        </form>
+
+
+ 
+
+        
+
+        
+                                        
+                                        
+                                        
+
+                                        
+                                            
+                                        
+
+                                        
+                                    
+                                        
+                                        
+                                       
+
+                                    
+
+           
+                                
+                                 
+                                
+        
+
+        
+
+       
+
+
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- 
             <div class="col-sm-2">
@@ -72,12 +283,14 @@
                 
             </div> -->
 
+            
+
             <div class="col-sm-2 ">
                 
                 <div class="text-center">
                     <!-- Button trigger modal -->
                         <button type="button" class="btn btn-outline-secondary boton w-100" data-bs-toggle="modal" data-bs-target="#modalproyectos" id="botonCrear">
-                        <i class="fa-solid fa-plus"></i> Nuevo Proyecto
+                        <i class="fa-solid fa-plus"></i> Nuevo 
                         </button>
                         
                 </div>
@@ -88,22 +301,27 @@
         
         <hr style="background-color: red;">
 
-        <div class="table-responsive" style="font-size: 11px; width:100%">
-            <table id="datos_usuario" class="table table-hover table-striped" style="width:100%;" >
+        <div class="table-responsive" style="font-size: 10px; width:100%">
+            <table id="datos_usuario" class="table table-hover table-striped table-bordered" style="width:100%; text-align:center-," >
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th width="20%">RUBRO</th>
                         <th width="15%">NOMBRE PROYECTO</th>
-                        <th>TIPO</th>
-                        <th>UBICACION</th>
-                        <th>N° TRAMITE</th>
-                        <th>N° COMPROBANTE</th>
-                        <th>CUCE</th>
                         
-                        <th>MONTO</th>
-                        <th>FECHA</th>
-                        <th>ESTADO</th>
-                        <th width="15%">PARTICIPANTES</th>
+                        <th>UBICACION</th>
+                        <th>MONTO REFERENCIA</th>
+                        <th>MONTO OFERTADO</th>
+                        <th>FECHA PRESENTACION</th>
+                        <th>POSICION</th>
+                        <th>TIPO</th>
+                        <th>OBSERVACION</th>
+                        
+                        <th>IDENTIFICACIONES</th>
+                        <th width="25%">ESTADO</th>
+                        
+                        <th width="20%">ENCARGADO</th>
+                        <th width="15%" >PARTICIPACION</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -119,11 +337,13 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-box"></i> Registro de pproyectos</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-box"></i> Registro de proyectos</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: azure;"></button>
             </div>
             
                 <form action="" method="POST" id="formulario" enctype="multipart/form-data">
+
+
                     
                     <div class="modal-content">
 
@@ -133,6 +353,16 @@
 
                  
                     <div class="row">
+                    
+
+                    <div class="col-4">
+                            <span for="inputFirstName">Rubro </span>
+                            <select name="rubro" id="rubro" class="form-select form-select-sm">
+                                
+                                <option value="COMERCIALIZADORA">COMERCIALIZADORA</option>
+                                <option value="CONSTRUCTORA">CONSTRUCTORA</option>
+                            </select>
+                        </div>
 
                         <div class="col-12">
                             <span for="inputFirstName">Nombre Proyecto o Descripcion </span>
@@ -148,12 +378,24 @@
                             <span for="inputFirstName">Modalidad </span>
                             <select name="tipo" id="tipo" class="form-control form-control-sm">
                                 <option value="">Selecciona una Opcion</option>
+                                <option value="COTIZACION">COTIZACION</option>
                                 <option value="COMPRA DIRECTA">COMPRA DIRECTA</option>
                                 <option value="CONTRATACION DIRECTA">CONTRATACION DIRECTA</option>
                                 <option value="CM">CM</option>
                                 <option value="ANPE">ANPE</option>
                                 <option value="ANPP">ANPP</option>
                                 <option value="LP">LP</option>
+                            </select>
+                        </div>
+
+                        <div class="col-4">
+                            <span for="inputFirstName">Tipo </span>
+                            <select name="tipo2" id="tipo2" class="form-control form-control-sm">
+                                <option value="">Selecciona una Opcion</option>
+                                <option value="Items">POR ITEMS</option>
+                                <option value="Total">POR EL TOTAL</option>
+                                <option value="Lotes">POR LOTES</option>
+                                
                             </select>
                         </div>
   
@@ -183,8 +425,13 @@
                         
 
                         <div class="col-4">
-                            <span for="inputFirstName">Monto</span>
-                            <input id="monto" style="background-color: #e5ffe0; color:green; font-weight: 600;" class="form-control form-control-sm  bg-opacity-10" placeholder="0"  name="monto" type="text" value="" required />
+                            <span for="inputFirstName">Monto Referencial</span>
+                            <input id="monto" style="background-color: #e5ffe0; color:green; font-weight: 600;" class="form-control form-control-sm  bg-opacity-10" placeholder="0"  name="monto" type="text" value=""  />
+                        </div>
+
+                        <div class="col-4">
+                            <span for="inputFirstName">Monto Ofertado</span>
+                            <input id="monto_ofertado" style="background-color: #e5ffe0; color:green; font-weight: 600;" class="form-control form-control-sm  bg-opacity-10" placeholder="0"  name="monto_ofertado" type="text" value=""  />
                         </div>
 
 
@@ -193,8 +440,38 @@
                                 <select name="estado" id="estado" class="form-control form-control-sm " required>
                                         <option value="">Selecciona una Opcion</option>
                                         <option  value="proceso">En Proceso</option>
+                                        <option  value="adjudicado">Adjudicado</option>
                                         <option  value="pagado">Pagado</option>
+                                        <option  value="no">No Adjudicado</option>
                                 </select>
+                        </div>
+
+                        <div class="col-4">
+                            <span for="inputFirstName">POSICION </span>
+                            <select name="posicion" id="posicion" class="form-control form-control-sm">
+                                <option value="">Selecciona una Opcion</option>
+                                <option value="1° LUGAR">1° LUGAR</option>
+                                <option value="2° LUGAR">2° LUGAR</option>
+                                <option value="3° LUGAR">3° LUGAR</option>
+                                <option value="4° LUGAR">4° LUGAR</option>
+                                <option value="5° LUGAR">5° LUGAR</option>
+                                <option value="6° LUGAR">6° LUGAR</option>
+                                <option value="7° LUGAR">7° LUGAR</option>
+                                <option value="8° LUGAR">8° LUGAR</option>
+                                <option value="9° LUGAR">9° LUGAR</option>
+                                <option value="10° LUGAR">10° LUGAR</option>
+                                <option value="11° LUGAR">11° LUGAR</option>
+                                <option value="12° LUGAR">12° LUGAR</option>
+                                <option value="13° LUGAR">13° LUGAR</option>
+                                <option value="14° LUGAR">14° LUGAR</option>
+                               
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <span for="inputFirstName">Observaciones </span>
+                            
+                            <input class="form-control form-control-sm  bg-opacity-10" id="observacion" name="observacion" type="text" value="">
                         </div>
 
                         <p></p>
@@ -206,39 +483,57 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
 
+                        <div class="col-12">
+                                <span for="inputFirstName"><i class="bi bi-star-fill"></i> Encargado de Proyecto</span>
+                                <select name="encargado" id="encargado" class="form-control form-control-sm " required>
+                                        <option value="">Selecciona una Opcion</option>
+                                        <option value="jazmin">Jazmin Velasco Diaz </option>
+                                                <option value="mavel">Mavel Condori Flores</option>
+                                                <option value="ale">Alejandro Iglesias Raldes </option>
+                                                <option value="nicol">Mariana Nicol Erquicia Camacho </option>
+                                                <option value="edwin">Edwin Mario Pinto Ramirez </option>
+                                </select>
+                        </div>
 
-                        <div class="col-10">
+
+                        <div class="col-6">
                             <span for="inputFirstName">Jazmin </span>
                             <input class="form-control form-control-sm  bg-opacity-10" id="jazmin" name="jazmin" type="text" value=""  />
                         </div>
 
                         
 
-                        <div class="col-10">
+                        <div class="col-6">
                             <span for="inputFirstName">Mavel </span>
                             <input class="form-control form-control-sm  bg-opacity-10" id="mavel" name="mavel" type="text" value=""  />
                         </div>
 
                         
 
-                        <div class="col-10">
+                        <div class="col-6">
                             <span for="inputFirstName">Nicol </span>
                             <input class="form-control form-control-sm  bg-opacity-10" id="nicol" name="nicol" type="text" value=""  />
                         </div>
 
                         
 
-                        <div class="col-10">
+                        <div class="col-6">
                             <span for="inputFirstName">Alejandro </span>
                             <input class="form-control form-control-sm  bg-opacity-10" id="ale" name="ale" type="text" value=""  />
                         </div>
 
                         
 
-                        <div class="col-10">
+                        <div class="col-6">
                             <span for="inputFirstName">Edwin</span>
                             <input class="form-control form-control-sm  bg-opacity-10" id="edwin" name="edwin" type="text" value=""  />
                         </div>
+
+                        <br>
+
+                        
+
+                        
 
                        
 
@@ -258,7 +553,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="id_producto" id="id_producto">
+                        <input type="hidden" name="id_pro" id="id_pro">
                         <input type="hidden" name="operacion" id="operacion">
 
                         <input type="reset" value="Limpiar" class="btn btn-secondary"> 
@@ -416,21 +711,27 @@
             $(document).on('submit', '#formulario', function(event){
             event.preventDefault();
             var nombre = $('#nombre').val();
+            var rubro = $('#rubro').val();
             var ubicacion = $('#ubicacion').val();
             var tipo = $('#tipo').val();
+            var tipo2 = $('#tipo2').val();
             var fecha = $('#fecha').val();
             var cuce = $('#cuce').val();
             var tramite = $('#tramite').val();
             var comprobante = $('#comprobante').val();
             var monto = $('#monto').val();
+            var monto_ofertado = $('#monto_ofertado').val();
             var estado = $('#estado').val();
+            var posicion = $('#posicion').val();
+            var observacion = $('#observacion').val();
+            var encargado = $('#encargado').val();
             var jazmin = $('#jazmin').val();
             var mavel = $('#mavel').val();
             var nicol = $('#nicol').val();
             var ale = $('#ale').val();
             var edwin = $('#edwin').val();
             	
-		    if(nombre != '' && ubicacion != '' && tipo != '' && fecha != '' && monto != '' && estado != '')
+		    if(nombre != '' && ubicacion != '' && tipo != '' && fecha != '' && tipo2 != '' && estado != '')
                 {
                     $.ajax({
                         url:"crear.php",
@@ -464,29 +765,41 @@
 
             //Funcionalidad de editar
             $(document).on('click', '.editar', function(){		
-            var id_producto = $(this).attr("id");		
+            var id_pro = $(this).attr("id");		
             $.ajax({
                 url:"obtener_registro.php",
                 method:"POST",
-                data:{id_producto:id_producto},
+                data:{id_pro:id_pro},
                 dataType:"json",
                 success:function(data)
                     {
                         
                         //console.log(data);				
-                        $('#modalproductos').modal('show');
+                        $('#modalproyectos').modal('show');
+                        
                         $('#nombre').val(data.nombre);
-                        $('#marca').val(data.marca);
-                        $('#unidad').val(data.unidad);
+                        $('#rubro').val(data.rubro);
                         $('#tipo').val(data.tipo);
-                        $('#proveedor').val(data.proveedor);
-                        $('#pc').val(data.pc);
-                        $('#pv').val(data.pv);
-                        $('.modal-title').text("Editar Producto");
-                        $('#id_producto').val(id_producto);
-                        $('#imagen-subida').html(data.foto);
-                        $('#pdf-subido').html(data.ficha);
-                        $('#certificado-subido').html(data.certificado);
+                        $('#tipo2').val(data.tipo2);
+                        $('#ubicacion').val(data.ubicacion);
+                        $('#tramite').val(data.num_tramite);
+                        $('#comprobante').val(data.num_comprobante);
+                        $('#cuce').val(data.cuce);
+                        $('#monto').val(data.monto);
+                        $('#monto_ofertado').val(data.monto_ofertado);
+                        $('#fecha').val(data.fecha);
+                        $('#estado').val(data.estado);
+                        $('#posicion').val(data.posicion);
+                        $('#observacion').val(data.observacion);
+                        $('#encargado').val(data.encargado);
+                        $('#mavel').val(data.mavel);
+                        $('#ale').val(data.ale);
+                        $('#jazmin').val(data.jazmin);
+                        $('#nicol').val(data.nicol);
+                        $('#edwin').val(data.edwin);
+                        $('.modal-title').text("Editar Proyecto");
+                        $('#id_pro').val(id_pro);
+                    
                         $('#action').val("Editar");
                         $('#operacion').val("Editar");
                     },
@@ -498,11 +811,11 @@
 
             //Funcionalidad de borrar
             $(document).on('click', '.borrar', function(){
-                var id_producto = $(this).attr("id");
+                var id_pro = $(this).attr("id");
 
                 Swal.fire({
                 title: 'Esta Seguro de Borrar ?',
-                text: "El Registro con el ID = " + id_producto,
+                text: "El Registro con el ID = " + id_pro,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#72db88',
@@ -514,7 +827,7 @@
                     $.ajax({
                         url:"borrar.php",
                         method:"POST",
-                        data:{id_producto:id_producto},
+                        data:{id_pro:id_pro},
                         success:function(data)
                         {
                             dataTable.ajax.reload();

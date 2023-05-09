@@ -70,6 +70,7 @@ include "../conexion.php";
                         <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c4.php"><i class="fa-solid fa-print"></i>->  GAM COLCHA K </a></li>
                         <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c5.php"><i class="fa-solid fa-print"></i>->  GAM SUCRE </a></li>
                         <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c6.php"><i class="fa-solid fa-print"></i>->  GAM PUNA </a></li>
+                        <li><a style="color: red;" class="dropdown-item" href="reporte_eg_c7.php"><i class="fa-solid fa-print"></i>->  GAM PORCO </a></li>
                         
                         <li><hr class="dropdown-divider"></li>
                         <li><a style="color: red;" class="dropdown-item" href="rep_imgEG_c.php"> <i class="fa-solid fa-print"></i>->  Actas Constructora</a></li>

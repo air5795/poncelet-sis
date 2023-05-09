@@ -67,6 +67,7 @@ if (empty($_SESSION['active'])) {
                                                 ?> </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="asistencia.php"> <i class="fa-solid fa-id-card"></i> Registrar Asistencia</a></li>
+                        <li><a class="dropdown-item" href="sub-salidas/"> <i class="fa-solid fa-id-card"></i> Registrar Salidas</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="salir.php"><i class="fa-solid fa-circle-xmark"></i> Salir del Sistema</a></li>
                     </ul>
@@ -88,7 +89,7 @@ if (empty($_SESSION['active'])) {
                             </a>
 
                             <?php
-                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 or $_SESSION['iduser'] == 33 ) {
+                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 or $_SESSION['iduser'] == 32 ) {
                             
                         
                         ?> 
@@ -233,7 +234,7 @@ if (empty($_SESSION['active'])) {
                             ?>
                             
                             <?php
-                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 or $_SESSION['iduser'] == 33 ) {
+                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 or $_SESSION['iduser'] == 32 ) {
                             
                         
                         ?>
@@ -384,7 +385,7 @@ if (empty($_SESSION['active'])) {
                             <div class="collapse" id="collapsepro" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                                 
-                                                <a class="nav-link " href="proyectos_comer.php" >
+                                                <a class="nav-link " href="sub-proyectos/" >
                                                 <i class="fas fa-file-circle-plus"></i>- Gestor Proyectos 
                                                     
                                                 </a>

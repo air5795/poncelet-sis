@@ -72,8 +72,7 @@
                     </div>
 
                     </div>
-                    
-                    
+
                     <div class="col-md-2">
                       
                     <label for="empresa">NIT</label>
@@ -461,7 +460,8 @@
                   
                 </div>
                 <div class="card-footer">
-                  <button class="btn btn-secondary" id="generate_quote" ><i class="fa-solid fa-hand-holding-dollar"></i> Generar Cotizacion</button>
+                  
+                  <button type="button" class="btn btn-secondary" id="generate_quote" ><i class="fa-solid fa-hand-holding-dollar"></i> Generar Cotizacion</button>
                   <button class="btn btn-success" id="generate_quote2" ><i class="fa-solid fa-floppy-disk"></i> Respaldo</button>
                   <button style="float:right;" class="btn btn-danger btn-sm  restart_quote "> <i class="fa-solid fa-power-off"></i> Reiniciar</button>
                   <a class="btn" id="download_quote" style="display: none; color:red; background-color:#e9e9e9" href="" ><i class="fa-solid fa-print"></i> Descargar PDF</a>      

@@ -43,30 +43,31 @@ if (empty($_SESSION['active'])) {
                                                         //echo $_SESSION['iduser'];
                                                     }
                                                     elseif ($_SESSION['iduser'] == 12 ) {
-                                                        echo '<img style="width:35px; height:35px;" src="../sistema/img/nicol.png" >';
+                                                        echo '<img style="width:35px; height:35px;" src="../img/nicol.png" >';
                                                             //echo $_SESSION['iduser'];
                                                         }
                                                         elseif ($_SESSION['iduser'] == 28 ) {
-                                                            echo '<img style="width:35px; height:35px;" src="../sistema/img/mavel.png" >';
+                                                            echo '<img style="width:35px; height:35px;" src="../img/mavel.png" >';
                                                                 //echo $_SESSION['iduser'];
                                                             }
                                                             elseif ($_SESSION['iduser'] == 29 ) {
-                                                                echo '<img style="width:35px; height:35px;" src="../sistema/img/jazmin.png" >';
+                                                                echo '<img style="width:35px; height:35px;" src="../img/jazmin.png" >';
                                                                     //echo $_SESSION['iduser'];
                                                                 } elseif ($_SESSION['iduser'] == 32 ) {
-                                                                    echo '<img style="width:35px; height:35px;" src="../sistema/img/edwin.png" >';
+                                                                    echo '<img style="width:35px; height:35px;" src="../img/edwin.png" >';
                                                                         //echo $_SESSION['iduser'];
                                                                     } elseif ($_SESSION['iduser'] == 33 ) {
-                                                                        echo '<img style="width:35px; height:35px;" src="../sistema/img/usuario.png" >';
+                                                                        echo '<img style="width:35px; height:35px;" src="../img/usuario.png" >';
                                                                             //echo $_SESSION['iduser'];
                                                                         }elseif ($_SESSION['iduser'] == 30 ) {
-                                                                            echo '<img style="width:35px; height:35px;" src="../sistema/img/alberto.png" >';
+                                                                            echo '<img style="width:35px; height:35px;" src="../img/alberto.png" >';
                                                                                 //echo $_SESSION['iduser'];
                                                                             }
                                                 
                                                 ?> </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="../asistencia.php"> <i class="fa-solid fa-id-card"></i> Registrar Asistencia</a></li>
+                        <li><a class="dropdown-item" href="../sub-salidas"> <i class="fa-solid fa-id-card"></i> Registrar Salidas</a></li>
                         <li><a class="btn btn-light " id="bdark" style="border-radius: 50px;"> <i class="fa-solid fa-moon"></i> Modo Oscuro </a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="../salir.php"><i class="fa-solid fa-circle-xmark"></i> Salir del Sistema</a></li>
@@ -89,7 +90,7 @@ if (empty($_SESSION['active'])) {
                             </a>
 
                             <?php
-                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 or $_SESSION['iduser'] == 33 ) {
+                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 or $_SESSION['iduser'] == 32 ) {
                             
                         
                         ?> 
@@ -234,7 +235,7 @@ if (empty($_SESSION['active'])) {
                             ?>
                             
                             <?php
-                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 or $_SESSION['iduser'] == 33 ) {
+                        if ($_SESSION['rol'] == 1 or $_SESSION['iduser'] == 12 or $_SESSION['iduser'] == 28 or $_SESSION['iduser'] == 29 or $_SESSION['iduser'] == 30 or $_SESSION['iduser'] == 32 ) {
                             
                         
                         ?>
@@ -323,7 +324,7 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapse1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="sub-productos/">Gestor Productos</a>
+                                                        <a class="nav-link" href="../sub-productos">Gestor Productos</a>
                                                     
                                                         
                                                     </nav>
@@ -385,7 +386,7 @@ if (empty($_SESSION['active'])) {
                             <div class="collapse" id="collapsepro" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                                 
-                                                <a class="nav-link " href="../proyectos_comer.php" >
+                                                <a class="nav-link " href="../sub-proyectos/" >
                                                 <i class="fas fa-file-circle-plus"></i>- Gestor Proyectos 
                                                     
                                                 </a>
