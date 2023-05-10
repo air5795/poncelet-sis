@@ -363,19 +363,6 @@
 
 
 
-    
-
-
-
-
-
-    
-
-
-
-
-
-
 
     function obtener_nombre_imagen($id_exp){
         include('conexion.php');
@@ -386,6 +373,9 @@
             return $fila["image"];
         }
     }
+
+
+
 
     function obtener_nombre_ficha($id_producto){
         include('conexion.php');
