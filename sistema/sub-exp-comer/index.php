@@ -114,7 +114,7 @@
 
 <!-- Modal NUEVO -->
 <div class="modal fade" id="modalproductos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-box"></i> Registrar Experiencia</h1>
@@ -128,93 +128,184 @@
                     <div class="modal-body">
 
                     
-
-                 
+                    <div class="row">
+                    <div class="col-md-6">
                     <div class="row">
 
                         <div class="col-12">
                                 <span for="inputFirstName">Nombre del Contratante / Persona y Dirección de Contacto</span>
-                                <input  class="form-control form-control-sm " name="nombre_contratante" type="text"  required />
+                                <input  class="form-control form-control-sm " name="nombre_contratante" id="nombre_contratante" type="text"  required />
                         </div>
-                        <div class="col-6">
+                        <div class="col-12">
                                 <span for="inputFirstName">Objeto del Contrato (Obra similar)</span> 
-                                <input class="form-control form-control-sm" name="obj_contrato" type="text" required />
+                                <input class="form-control form-control-sm" name="obj_contrato" id="obj_contrato" type="text" required />
                         </div> 
                         <div class="col-6">
                         <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Ubicación</span> 
-                                    <input class="form-control form-control-sm" name="ubicacion" type="text" required />
+                                    <input class="form-control form-control-sm" name="ubicacion" id="ubicacion" type="text" required />
                                  </div>
                         </div>
 
+                        <div class="col-6">
+                            <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Monto en Bs.</span> 
+                                    <input class="form-control form-control-sm money" id="monto_bs" name="monto_bs" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_dolar()" required/>
+                                 </div>
+                        </div>
+
+                        <div class="col-6">
+                        <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Monto en $u$ </span> 
+                                    <input class="form-control form-control-sm money " id="monto_dolares" name="monto_dolares" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_bs()" required />
+                                 </div>
+                        </div>
+
+                        <div class="col-6">
+                        <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Período de ejecución </span> 
+                                    <input class="form-control form-control-sm" name="fecha_ejecucion" id="fecha_ejecucion"   type="date" required />
+                                 </div>
+                        </div>
+
+                        <div class="col-6">
+                        <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">% participación en Asociación (**)</span> 
+                                    <input class="form-control form-control-sm" name="participa_aso" id="participa_aso"  type="text" />
+                                 </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Nombre Ll del Socio(s) (***)</span> 
+                                    <input class="form-control form-control-sm" name="n_socio" id="n_socio" type="text" />
+                                 </div>
+                        </div>
+
+                        <div class="col-6">
+                                <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Profesional Responsable (****)</span> 
+                                    <input class="form-control form-control-sm warning" name="profesional_resp" id="profesional_resp" type="text" value="ALBERTO ARISPE PONCE" />
+                                 </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class=" mb-3 mb-md-0">
+                                    <span for="inputFirstName">Detalle de la Experiencia <span style="color:red"> (Colocar Palabras Clave ejm. Computadoras) </span></span> 
+                                    <input class="form-control form-control-sm bg-info bg-opacity-25" name="detalle" id="detalle" type="text" required  />
+                                 </div>
+                        </div>
+
+                        <p></p>
+
+                        <div class=" row"> 
+
+                             <div class="dropdown col ">
+                                <button class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                                <i class="fa-solid fa-folder-open"></i> Subir Actas 1-8 Pag.
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark w-100 ">
+                                    <li><a class="dropdown-item" href="#">Acta N°1<input type="file" class="form-control form-control-sm"  name="image" id="image" required></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°2<input type="file" class="form-control form-control-sm"  name="image2" id="image2" ></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°3<input type="file" class="form-control form-control-sm"  name="image3" id="image3"></a></li>
+
+                                    <li><a class="dropdown-item" href="#">Acta N°4<input type="file" class="form-control form-control-sm"  name="image4" id="image4"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°5<input type="file" class="form-control form-control-sm"  name="image5" id="image5"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°6<input type="file" class="form-control form-control-sm"  name="image6" id="image6"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°7<input type="file" class="form-control form-control-sm"  name="image7" id="image7"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°8<input type="file" class="form-control form-control-sm"  name="image8" id="image8"></a></li>
+
+                                    
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item">Subir las actas en el orden correcto</a></li>
+                                </ul>
+                                </div>
+
+                                <div class="dropdown col ">
+                                <button class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                                <i class="fa-solid fa-folder-open"></i> Subir Actas 9-15 Pag.
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark w-100 ">
+                                    <li><a class="dropdown-item" href="#">Acta N°9<input type="file" class="form-control form-control-sm"  name="image9" id="image9"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°10<input type="file" class="form-control form-control-sm"  name="image10" id="image10" ></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°11<input type="file" class="form-control form-control-sm"  name="image11" id="image11"></a></li>
+
+                                    <li><a class="dropdown-item" href="#">Acta N°12<input type="file" class="form-control form-control-sm"  name="image12" id="image12"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°13<input type="file" class="form-control form-control-sm"  name="image13" id="image13"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°14<input type="file" class="form-control form-control-sm"  name="image14" id="image14"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°15<input type="file" class="form-control form-control-sm"  name="image15" id="image15"></a></li>
+                                    
+
+                                    
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item">Subir las actas en el orden correcto</a></li>
+                                </ul>
+                                </div>
+
+                                <p></p>
+
+                                <div class="col-2">
+                                    <span id="image"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image2"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image3"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image4"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image5"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image6"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image7"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image8"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image9"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image10"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image11"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image12"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image13"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image14"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image15"></span>
+                                </div>
+
+                                
+
+                            
+
+
+                                
+
+
+                             
+                             
+                            
+                             </div>
+
+
+
                         
-
-
-                        <div class="col-6">
-                            <label for="tipo" style="font-family: sans-serif;">Ingrese Tipo de Producto <span style="color:red"> *</span></label>
-                            <select name="tipo" id="tipo" class="form-control form-control-sm ">
-                                <option value="">Selecciona una Opcion</option>
-                                <option value="limpieza">Material de Limpieza</option>
-                                <option value="mobiliario">Material Mobiliario</option>
-                                <option value="Musical">Material Musical</option>
-                                <option value="Hospitalario">Material Hospitalario</option>
-                                <option value="Tecnologico">Material Tecnologico</option>
-                                <option value="Cocina">Material de Cocina</option>
-                                <option value="Textil">Material Textil</option>
-                                <option value="Vehiculos">Vehiculos</option>
-                                <option value="Ferreteria">Ferreteria</option>
-                                <option value="industrial">Seguridad Industrial</option>
-                                <option value="alimentos">Alimentos</option>
-                                <option value="escritorio">Material de Escritorio</option>
-                                <option value="policial">Material Policial</option>
-                                <option value="deportivo">Material Deportivo</option>
-                                <option value="belleza">Material de Belleza</option>
-                            </select>
-                        </div>
-
-                        <div class="col-6">
-                            <label for="proveedor" style="font-family: sans-serif;">Ingrese Proveedor</label>
-                            <input type="text" name="proveedor" id="proveedor" class="form-control form-control-sm">
-                        </div>
-
-                        <div class="col-6">
-                            <label for="pc" style="font-family: sans-serif;">Ingrese Precio de Compra (Bs) <span style="color:red"> *</span></label>
-                            <input oninput="calcular_a_bs()" type="text" name="pc" id="pc" class="form-control form-control-sm" style="background-color: #e5ffe0; color:green; font-weight: 600;">
-                        </div>
-
-                        <div class="col-6">
-                            <label for="pv" style="font-family: sans-serif;">Ingrese Precio de Venta (Bs) <span style="color:red"> *</span></label>
-                            <input type="text" name="pv" id="pv" class="form-control form-control-sm" style="background-color: #e5ffe0; color:green; font-weight: 600;">
-                        </div>
-
-                        <div class="col-6">
-                            <label for="ficha" style="font-family: sans-serif;">Ingrese Ficha Tecnica</label>
-                            <input type="file" class="form-control form-control-sm" name="ficha" id="ficha">
-                        </div>
-                        <div class="col-6">
-                                <label for="ficha" style="font-family: sans-serif;"></label>
-                                <span id="pdf-subido" class="alert-sm"></span>
-                        </div>
-                        
-
-                        <div class="col-6">
-                            <label for="certificado" style="font-family: sans-serif;">Ingrese Certificado</label>
-                            <input type="file" class="form-control form-control-sm" name="certificado" id="certificado">
-                        </div>
-
-                        <div class="col-6">
-                            <label for="certificado" style="font-family: sans-serif;"></label>
-                            <span id="certificado-subido" class="alert-sm"></span>
-                        </div>
-                        
-
-                        <div class="col-6">
-                            <label for="foto" style="font-family: sans-serif;">Ingrese Foto</label>
-                            <input type="file" class="form-control form-control-sm" name="foto" id="foto">
-                        </div>
-                        <div class="col-6">
-                            <span id="imagen-subida"></span>
-                        </div>
                         
                         
                         
@@ -228,8 +319,26 @@
                         
 
                     </div>
+
+                    
+
+                       </div>
+
+                       <div class="col-md-6">
+                            <div class="" id="">
+                             <center> 
+                                
+                             <output id="list" class="form-control "></output>
+                            
+                            </center>
+                             
+
+                            </div>
+                       </div>
+
+                       </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="id_producto" id="id_producto">
+                        <input type="hidden" name="id_exp" id="id_exp">
                         <input type="hidden" name="operacion" id="operacion">
 
                         <input type="reset" value="Limpiar" class="btn btn-secondary"> 
@@ -239,7 +348,11 @@
                     </div>
                     </div>
                 </form>
+
+                
             </div>
+
+            
 
 
             
@@ -319,15 +432,15 @@
                 
                 $("#botonCrear").click(function(){
                 $("#formulario")[0].reset();
-                $(".modal-title").text("Crear Producto");
-                $("#action").val("Crear Producto");
+                $(".modal-title").text("Crear Proyecto");
+                $("#action").val("Crear Proyecto");
                 $("#operacion").val("Crear");
-                $('#imagen-subida').html("");
-                $('#pdf-subido').html("");
-                $('#certificado-subido').html("");
-                $("#foto").html("");
-                $("#ficha").html("");
-                $("#certificado").html("");
+                //$('#imagen-subida').html("");
+                //$('#pdf-subido').html("");
+                //$('#certificado-subido').html("");
+                //$("#foto").html("");
+                //$("#ficha").html("");
+                //$("#certificado").html("");
 
                 
             });
@@ -372,47 +485,183 @@
             //Aquí código inserción
             $(document).on('submit', '#formulario', function(event){
             event.preventDefault();
-            var nombre = $('#nombre').val();
-            var marca = $('#marca').val();
-            var unidad = $('#unidad').val();
-            var tipo = $('#tipo').val();
-            var proveedor = $('#proveedor').val();
-            var pc = $('#pc').val();
-            var pv = $('#pv').val();
-            var extension = $('#foto').val().split('.').pop().toLowerCase();
-            var extension2 = $('#ficha').val().split('.').pop().toLowerCase();
-            var extension3 = $('#certificado').val().split('.').pop().toLowerCase();
+            var nombre_contratante = $('#nombre_contratante').val();
+            var obj_contrato = $('#obj_contrato').val();
+            var ubicacion = $('#ubicacion').val();
+            var monto_bs = $('#monto_bs').val();
+            var monto_dolares = $('#monto_dolares').val();
+            var fecha_ejecucion = $('#fecha_ejecucion').val();
+            var participa_aso = $('#participa_aso').val();
+            var n_socio = $('#n_socio').val();
+            var profesional_resp = $('#profesional_resp').val();
+            var detalle = $('#detalle').val();
+            
+            var extension = $('#image').val().split('.').pop().toLowerCase();
+            var extension2 = $('#image2').val().split('.').pop().toLowerCase();
+            var extension3 = $('#image3').val().split('.').pop().toLowerCase();
+            var extension4 = $('#image4').val().split('.').pop().toLowerCase();
+            var extension5 = $('#image5').val().split('.').pop().toLowerCase();
+            var extension6 = $('#image6').val().split('.').pop().toLowerCase();
+            var extension7 = $('#image7').val().split('.').pop().toLowerCase();
+            var extension8 = $('#image8').val().split('.').pop().toLowerCase();
+            var extension9 = $('#image9').val().split('.').pop().toLowerCase();
+            var extension10 = $('#image10').val().split('.').pop().toLowerCase();
+            var extension11 = $('#image11').val().split('.').pop().toLowerCase();
+            var extension12 = $('#image12').val().split('.').pop().toLowerCase();
+            var extension13 = $('#image13').val().split('.').pop().toLowerCase();
+            var extension14 = $('#image14').val().split('.').pop().toLowerCase();
+            var extension15 = $('#image15').val().split('.').pop().toLowerCase();
+        
             if(extension != '')
             {
                 if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
                 {
                     alert("Fomato de imagen inválido");
-                    $('#foto').val('');
+                    $('#image').val('');
                     return false;
                 }
             }
 
             if(extension2 != '')
             {
-                if(jQuery.inArray(extension2, ['pdf']) == -1)
+                if(jQuery.inArray(extension2, ['gif','png','jpg','jpeg']) == -1)
                 {
-                    alert("Fomato inválido");
-                    $('#ficha').val('');
+                    alert("Fomato de imagen inválido");
+                    $('#image2').val('');
                     return false;
                 }
             }
 
             if(extension3 != '')
             {
-                if(jQuery.inArray(extension3, ['pdf']) == -1)
+                if(jQuery.inArray(extension3, ['gif','png','jpg','jpeg']) == -1)
                 {
                     alert("Fomato de imagen inválido");
-                    $('#certificado').val('');
+                    $('#image3').val('');
                     return false;
                 }
             }
+
+            if(extension4 != '')
+            {
+                if(jQuery.inArray(extension4, ['gif','png','jpg','jpeg']) == -1)
+                {
+                    alert("Fomato de imagen inválido");
+                    $('#image4').val('');
+                    return false;
+                }
+            }
+
+            if(extension5 != '')
+            {
+                if(jQuery.inArray(extension5, ['gif','png','jpg','jpeg']) == -1)
+                {
+                    alert("Fomato de imagen inválido");
+                    $('#image5').val('');
+                    return false;
+                }
+            }
+
+            if(extension6 != '') {
+                if(jQuery.inArray(extension6, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('Formato de imagen inválido');
+                    $('#image6').val('');
+                    return false;
+                }
+            }
+
+            if(extension7 != '') {
+                if(jQuery.inArray(extension7, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('Formato de imagen inválido');
+                    $('#image7').val('');
+                    return false;
+                }
+            }
+
+            if(extension8 != '') {
+                if(jQuery.inArray(extension8, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('Formato de imagen inválido');
+                    $('#image8').val('');
+                    return false;
+                }
+            }
+
+            if(extension8 != '') {
+                if(jQuery.inArray(extension8, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('Formato de imagen inválido');
+                    $('#image8').val('');
+                    return false;
+                }
+            }
+
+            if(extension9 != '') {
+                if(jQuery.inArray(extension9, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('Formato de imagen inválido');
+                    $('#image9').val('');
+                    return false;
+                }
+            }
+
+            if(extension10 != '') {
+                if(jQuery.inArray(extension10, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('Formato de imagen inválido');
+                    $('#image10').val('');
+                    return false;
+                }
+            }
+
+
+            if(extension11 != '') {
+                if(jQuery.inArray(extension11, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('Formato de imagen inválido');
+                    $('#image11').val('');
+                    return false;
+                }
+            }
+
+            if(extension12 != '') {
+                if(jQuery.inArray(extension12, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('Formato de imagen inválido');
+                    $('#image12').val('');
+                    return false;
+                }
+            }
+
+
+            if(extension13 != '') {
+                if(jQuery.inArray(extension13, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('Formato de imagen inválido');
+                    $('#image13').val('');
+                    return false;
+                }
+            }
+
+
+            if(extension14 != '') {
+                if(jQuery.inArray(extension14, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('Formato de imagen inválido');
+                    $('#image14').val('');
+                    return false;
+                }
+            }
+
+            if(extension15 != '') {
+                if(jQuery.inArray(extension15, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('Formato de imagen inválido');
+                    $('#image15').val('');
+                    return false;
+                }
+            }
+
+
+
+
+
+
+
+            
             	
-		    if(nombre != '' && marca != '' && unidad != '' && tipo != '' && pc != '' && pv != '')
+		    if(nombre_contratante != '' && obj_contrato != '' && ubicacion != '' && monto_bs != '' && fecha_ejecucion != '' && detalle != '' && image != '')
                 {
                     $.ajax({
                         url:"crear.php",
@@ -446,29 +695,49 @@
 
             //Funcionalidad de editar
             $(document).on('click', '.editar', function(){		
-            var id_producto = $(this).attr("id");		
+            var id_exp = $(this).attr("id");		
             $.ajax({
                 url:"obtener_registro.php",
                 method:"POST",
-                data:{id_producto:id_producto},
+                data:{id_exp:id_exp},
                 dataType:"json",
                 success:function(data)
                     {
                         
                         //console.log(data);				
                         $('#modalproductos').modal('show');
-                        $('#nombre').val(data.nombre);
-                        $('#marca').val(data.marca);
-                        $('#unidad').val(data.unidad);
-                        $('#tipo').val(data.tipo);
-                        $('#proveedor').val(data.proveedor);
-                        $('#pc').val(data.pc);
-                        $('#pv').val(data.pv);
+                        $('#nombre_contratante').val(data.nombre_contratante);
+                        $('#obj_contrato').val(data.obj_contrato);
+                        $('#ubicacion').val(data.ubicacion);
+                        $('#monto_bs').val(data.monto_bs);
+                        $('#monto_dolares').val(data.monto_dolares);
+                        $('#fecha_ejecucion').val(data.fecha_ejecucion);
+                        $('#participa_aso').val(data.participa_aso);
+                        $('#n_socio').val(data.n_socio);
+                        $('#detalle').val(data.detalle);
+                        $('#profesional_resp').val(data.profesional_resp);
+
+                        
                         $('.modal-title').text("Editar Producto");
-                        $('#id_producto').val(id_producto);
-                        $('#imagen-subida').html(data.foto);
-                        $('#pdf-subido').html(data.ficha);
-                        $('#certificado-subido').html(data.certificado);
+                        $('#id_exp').val(id_exp);
+                        $('#image').html(data.image);
+                        $('#image2').html(data.image2);
+                        $('#image3').html(data.image3);
+                        $('#image4').html(data.image4);
+                        $('#image5').html(data.image5);
+                        $('#image6').html(data.image6);
+                        $('#image7').html(data.image7);
+                        $('#image8').html(data.image8);
+                        $('#image9').html(data.image9);
+                        $('#image10').html(data.image10);
+                        $('#image11').html(data.image11);
+                        $('#image12').html(data.image12);
+                        $('#image13').html(data.image13);
+                        $('#image14').html(data.image14);
+                        $('#image15').html(data.image15);
+                        
+                        //$('#pdf-subido').html(data.ficha);
+                        //$('#certificado-subido').html(data.certificado);
                         $('#action').val("Editar");
                         $('#operacion').val("Editar");
                     },
@@ -573,8 +842,59 @@
 
 
     </script>
+
+<script>
+            function archivo(evt) {
+                var files = evt.target.files; // FileList object
+                
+                    //Obtenemos la imagen del campo "file". 
+                for (var i = 0, f; f = files[i]; i++) {         
+                    //Solo admitimos imágenes.
+                    if (!f.type.match('image.*')) {
+                            continue;
+                    }
+                
+                    var reader = new FileReader();
+                    
+                    reader.onload = (function(theFile) {
+                        return function(e) {
+                        // Creamos la imagen.
+                                document.getElementById("list").innerHTML = ['<img class="form-control" style="max-width:400px;" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+                        };
+                    })(f);
+            
+                    reader.readAsDataURL(f);
+                }
+            }
+                        
+                document.getElementById('image').addEventListener('change', archivo, false);
+        </script>
         
+        <script type="text/javascript">
+        function calcular_a_dolar(){
+            try{
+                var a = parseFloat(document.getElementById("monto_bs").value) || 0;
+                decimal = a.toFixed(2);
+                proceso = decimal/6.96;
+                result = proceso.toFixed(2);
+                document.getElementById("monto_dolares").value = result;
+            } catch(e){}
+        }
+
+        function calcular_a_bs(){
+            try{
+                var b = parseFloat(document.getElementById("monto_dolares").value) || 0;
+                decimal = b.toFixed(2);
+                proceso = decimal*6.96;
+                result = proceso.toFixed(2);
+                document.getElementById("monto_bs").value = result;
+            } catch(e){}
+        }
+
+
         
+
+    </script>
        
 
 
