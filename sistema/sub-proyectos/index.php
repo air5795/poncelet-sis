@@ -51,7 +51,7 @@
 
 <div class="container-fluid  fondo ">    
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <h2><i class="bi bi-bar-chart-line-fill"></i> Seguimiento - Proyectos y Cotizaciones </h2>
                 
             </div>
@@ -66,33 +66,72 @@
                 $data2=mysqli_fetch_assoc($result2);
                 $n_proyectos = $data2['total'];
 
-                $result3=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer where estado = 'adjudicado'");
+                $result3=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer where estado = 'adjudicado' and tipo != 'cotizacion' ");
                 $data3=mysqli_fetch_assoc($result3);
                 $n_adjudicados = $data3['total'];
 
+                $result4=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer where estado = 'adjudicado' and tipo = 'cotizacion'");
+                $data4=mysqli_fetch_assoc($result4);
+                $n_adjudicados2 = $data4['total'];
+
+                $result5=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer where estado = 'no' ");
+                $data5=mysqli_fetch_assoc($result5);
+                $n_adjudicados3 = $data5['total'];
+
+                $result6=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer where estado = 'proceso' ");
+                $data6=mysqli_fetch_assoc($result6);
+                $n_adjudicados4 = $data6['total'];
+
             ?>
+            <p></p>
 
-            <div class="col-sm-1">
-                <a class="btn btn-success w-100  disabled" href=""> <strong>  <?php echo $n_adjudicados; ?> </strong> <span style="font-size: small;">  ADJUDICADOS </span></a>
+            
+            <div class="col-sm-2">
+                <a class="btn btn-secondary w-100 small disabled" href=""> <strong>  <?php echo $n_proyectos; ?> </strong> <span style="font-size: small;"> PROYECTOS REALIZADOS </span> </a>
             
                 
             </div>
 
-            <div class="col-sm-1">
-                <a class="btn btn-secondary w-100 small  disabled" href=""> <strong>  <?php echo $n_cotizacion; ?> </strong> <span style="font-size: small;">   COTIZACIONES </span> </a>
+            
+
+            
+
+            <div class="col-sm-2">
+                <a class="btn btn-secondary w-100 small  disabled" href=""> <strong>  <?php echo $n_cotizacion; ?> </strong> <span style="font-size: small;">  COTIZACIONES REALIZADAS </span> </a>
             
                 
             </div>
-            <div class="col-sm-1">
-                <a class="btn btn-secondary w-100 small disabled" href=""> <strong>  <?php echo $n_proyectos; ?> </strong> <span style="font-size: small;">   PROYECTOS </span> </a>
+
+            <div class="col-sm-2">
+                <a class="btn btn-success w-100  disabled" href=""> <strong>  <?php echo $n_adjudicados; ?> </strong> <span style="font-size: small">   ADJUDICADOS </span></a>
             
                 
             </div>
-            <div class="col-sm-1">
-                <a class="btn btn-danger w-100  " href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="bi bi-file-pdf-fill"></i> <br> Imprimir    </a>
+
             
-                
+
+
+            <div class="col-sm-2">
+                <a class="btn btn-primary w-100  disabled" href=""> <strong>  <?php echo $n_adjudicados2; ?> </strong> <span style="font-size: small">  PROYECTOS PAGADOS </span></a>
+            
+  
             </div>
+
+            <div class="col-sm-2">
+                <a class="btn btn-danger w-100  disabled" href=""> <strong>  <?php echo $n_adjudicados3; ?> </strong> <span style="font-size: small">  PROYECTOS NO ADJUDICADOS </span></a>
+            
+  
+            </div>
+
+            <div class="col-sm-2">
+                <a class="btn btn-warning w-100  disabled" href=""> <strong>  <?php echo $n_adjudicados4; ?> </strong> <span style="font-size: small">  PROYECTOS EN PROCESO </span></a>
+            
+  
+            </div>
+
+           
+            
+            
 
 
 
@@ -284,44 +323,79 @@
             </div> -->
 
             
-
-            <div class="col-sm-2 ">
-                
-                <div class="text-center">
-                    <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-outline-secondary boton w-100" data-bs-toggle="modal" data-bs-target="#modalproyectos" id="botonCrear">
-                        <i class="fa-solid fa-plus"></i> Nuevo 
-                        </button>
-                        
-                </div>
-            </div>
             
             
         </div>
+
+        <P></P>
+
         
-        <hr style="background-color: red;">
+
+        
+        
+        <hr>
+
+
+        <div class="row">
+            <div class="col-sm-8">
+
+                <button type="" class="btn btn-secondary"> </button> <span style="font-size: small;"> Total Proyectos </span> &nbsp;&nbsp;&nbsp;
+                <button type="" class="btn btn-success"></button>   <span style="font-size: small;"> Adjudicados </span>&nbsp;&nbsp;&nbsp;
+                <button type="" class="btn btn-danger"></button>  <span style="font-size: small;"> No Adjudicados </span>&nbsp;&nbsp;&nbsp;
+                <button type="" class="btn btn-warning"></button>  <span style="font-size: small;"> Proyecto En Proceso</span> &nbsp;&nbsp;&nbsp;
+                <button style="background-color: #61a1fe;border: blue 1px solid;" type="" class="btn btn-primary"> </button> <span style="font-size: small;"> Proyectos Pagados</span> &nbsp;&nbsp;&nbsp;
+
+            </div>
+            
+
+            <div class="col-sm-4">
+
+                <div class="col">
+                    <a class="btn btn-outline-danger w-100  " href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="bi bi-file-pdf-fill"></i> Imprimir Informes   </a>
+                
+                    
+                </div>
+
+                <div class="col ">
+                    
+                    <div class="">
+                        <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary  w-100" data-bs-toggle="modal" data-bs-target="#modalproyectos" id="botonCrear">
+                            <i class="fa-solid fa-plus"></i> Nuevo Proyecto
+                            </button>
+                            
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <hr >
+
+        
 
         <div class="table-responsive" style="font-size: 10px; width:100%">
             <table id="datos_usuario" class="table table-hover table-striped table-bordered" style="width:100%; text-align:center-," >
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th width="20%">RUBRO</th>
-                        <th width="15%">NOMBRE PROYECTO</th>
+                        <th style="padding:5px;">ID</th>
+                        <th width="10%" style="padding:5px;">RUBRO</th>
+                        <th width="20%" style="padding:5px;">NOMBRE PROYECTO</th>
                         
-                        <th>UBICACION</th>
-                        <th>MONTO REFERENCIA</th>
-                        <th>MONTO OFERTADO</th>
-                        <th>FECHA PRESENTACION</th>
-                        <th>POSICION</th>
-                        <th>TIPO</th>
-                        <th>OBSERVACION</th>
+                        <th style="padding:5px;">UBICACION</th>
+                        <th width="10%" style="padding:5px;">MONTO REFERENCIA</th>
+                        <th width="10%" style="padding:5px;">MONTO OFERTADO</th>
+                        <th style="padding:5px;">FECHA PRESENTACION</th>
+                        <th style="padding:5px;">POSICION</th>
+                        <th style="padding:5px;">TIPO</th>
+                        <th style="padding:5px;">OBSERVACION</th>
                         
-                        <th>IDENTIFICACIONES</th>
-                        <th width="25%">ESTADO</th>
+                        <th width="10%" style="padding:5px;">IDENTIFICACIONES</th>
+                        <th style="padding:5px;" >ESTADO</th>
                         
-                        <th width="20%">ENCARGADO</th>
-                        <th width="15%" >PARTICIPACION</th>
+                        <th width="7%" style="padding:5px;">ENCARGADO</th>
+                        <th width="30%" style="padding:5px;" >PARTICIPACION</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -334,7 +408,7 @@
 
 <!-- Modal NUEVO -->
 <div class="modal fade" id="modalproyectos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-box"></i> Registro de proyectos</h1>
@@ -426,7 +500,7 @@
 
                         <div class="col-4">
                             <span for="inputFirstName">Monto Referencial</span>
-                            <input id="monto" style="background-color: #e5ffe0; color:green; font-weight: 600;" class="form-control form-control-sm  bg-opacity-10" placeholder="0"  name="monto" type="text" value=""  />
+                            <input id="monto" step="0.01" style="background-color: #e5ffe0; color:green; font-weight: 600;" class="form-control form-control-sm  bg-opacity-10" placeholder="0"  name="monto" type="text" value=""  />
                         </div>
 
                         <div class="col-4">
@@ -654,10 +728,13 @@
                 "pageLength": 25,
                 "processing":true,
                 "serverSide":true,
+                "ordering": false,
+                
                 "order":[],
                 "ajax":{
                     url: "obtener_registros.php",
                     type: "POST"
+                    
                 },
                 //CONDICIONAL DE COLORES EN TABLA 
                 /*"createdRow": function(row,data,index){

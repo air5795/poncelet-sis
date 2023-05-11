@@ -121,7 +121,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: azure;"></button>
             </div>
             
-                <form action="" method="POST" id="formulario" enctype="multipart/form-data">
+                <form action="" method="POST" id="formulario" enctype="multipart/form-data" >
                     
                     <div class="modal-content">
 
@@ -134,37 +134,37 @@
 
                         <div class="col-12">
                                 <span for="inputFirstName">Nombre del Contratante / Persona y Dirección de Contacto</span>
-                                <input  class="form-control form-control-sm " name="nombre_contratante" id="nombre_contratante" type="text"  required />
+                                <input  class="form-control form-control-sm " name="nombre_contratante" id="nombre_contratante" type="text"   />
                         </div>
                         <div class="col-12">
                                 <span for="inputFirstName">Objeto del Contrato (Obra similar)</span> 
-                                <input class="form-control form-control-sm" name="obj_contrato" id="obj_contrato" type="text" required />
+                                <input class="form-control form-control-sm" name="obj_contrato" id="obj_contrato" type="text"  />
                         </div> 
                         <div class="col-6">
                         <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Ubicación</span> 
-                                    <input class="form-control form-control-sm" name="ubicacion" id="ubicacion" type="text" required />
+                                    <input class="form-control form-control-sm" name="ubicacion" id="ubicacion" type="text" />
                                  </div>
                         </div>
 
                         <div class="col-6">
                             <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Monto en Bs.</span> 
-                                    <input class="form-control form-control-sm money" id="monto_bs" name="monto_bs" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_dolar()" required/>
+                                    <input class="form-control form-control-sm money" id="monto_bs" name="monto_bs" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_dolar()" />
                                  </div>
                         </div>
 
                         <div class="col-6">
                         <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Monto en $u$ </span> 
-                                    <input class="form-control form-control-sm money " id="monto_dolares" name="monto_dolares" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_bs()" required />
+                                    <input class="form-control form-control-sm money " id="monto_dolares" name="monto_dolares" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_bs()"  />
                                  </div>
                         </div>
 
                         <div class="col-6">
                         <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Período de ejecución </span> 
-                                    <input class="form-control form-control-sm" name="fecha_ejecucion" id="fecha_ejecucion"   type="date" required />
+                                    <input class="form-control form-control-sm" name="fecha_ejecucion" id="fecha_ejecucion"   type="date" />
                                  </div>
                         </div>
 
@@ -192,7 +192,7 @@
                         <div class="col-12">
                             <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">Detalle de la Experiencia <span style="color:red"> (Colocar Palabras Clave ejm. Computadoras) </span></span> 
-                                    <input class="form-control form-control-sm bg-info bg-opacity-25" name="detalle" id="detalle" type="text" required  />
+                                    <input class="form-control form-control-sm bg-info bg-opacity-25" name="detalle" id="detalle" type="text"  />
                                  </div>
                         </div>
 
@@ -205,7 +205,7 @@
                                 <i class="fa-solid fa-folder-open"></i> Subir Actas 1-8 Pag.
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark w-100 ">
-                                    <li><a class="dropdown-item" href="#">Acta N°1<input type="file" class="form-control form-control-sm"  name="image" id="image" required></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°1<input type="file" class="form-control form-control-sm"  name="image" id="image" ></a></li>
                                     <li><a class="dropdown-item" href="#">Acta N°2<input type="file" class="form-control form-control-sm"  name="image2" id="image2" ></a></li>
                                     <li><a class="dropdown-item" href="#">Acta N°3<input type="file" class="form-control form-control-sm"  name="image3" id="image3"></a></li>
 
@@ -244,51 +244,7 @@
 
                                 <p></p>
 
-                                <div class="col-2">
-                                    <span id="image"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image2"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image3"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image4"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image5"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image6"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image7"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image8"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image9"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image10"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image11"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image12"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image13"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image14"></span>
-                                </div>
-                                <div class="col-2">
-                                    <span id="image15"></span>
-                                </div>
+                                
 
                                 
 
@@ -302,6 +258,8 @@
                              
                             
                              </div>
+
+                             
 
 
 
@@ -320,6 +278,9 @@
 
                     </div>
 
+
+
+
                     
 
                        </div>
@@ -336,12 +297,60 @@
                             </div>
                        </div>
 
+                                <div class="col-2">    
+                                    <span id="image-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image2-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image3-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image4-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image5-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image6-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image7-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image8-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image9-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image10-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image11-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image12-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image13-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image14-view"></span>
+                                </div>
+                                <div class="col-2">
+                                    <span id="image15-view"></span>
+                                </div>
+
                        </div>
+
+                       
                     <div class="modal-footer">
                         <input type="hidden" name="id_exp" id="id_exp">
                         <input type="hidden" name="operacion" id="operacion">
 
-                        <input type="reset" value="Limpiar" class="btn btn-secondary"> 
+                        <input type="reset" value="Limpiar" class="btn btn-secondary" id="limpiar"> 
                         <input type="submit" name="action" id="action" class="btn btn-success" value="Registrar">
                         
                     </div>
@@ -435,7 +444,22 @@
                 $(".modal-title").text("Crear Proyecto");
                 $("#action").val("Crear Proyecto");
                 $("#operacion").val("Crear");
-                //$('#imagen-subida').html("");
+            
+                $('#image-view').html("");
+                $('#image2-view').html("");
+                $('#image3-view').html("");
+                $('#image4-view').html("");
+                $('#image5-view').html("");
+                $('#image6-view').html("");
+                $('#image7-view').html("");
+                $('#image8-view').html("");
+                $('#image9-view').html("");
+                $('#image10-view').html("");
+                $('#image11-view').html("");
+                $('#image12-view').html("");
+                $('#image13-view').html("");
+                $('#image14-view').html("");
+                $('#image15-view').html("");
                 //$('#pdf-subido').html("");
                 //$('#certificado-subido').html("");
                 //$("#foto").html("");
@@ -449,6 +473,7 @@
                 "pageLength": 25,
                 "processing":true,
                 "serverSide":true,
+                "ordering": false,
                 "order":[],
                 "ajax":{
                     url: "obtener_registros.php",
@@ -719,22 +744,39 @@
 
                         
                         $('.modal-title').text("Editar Producto");
+                        $('#image-view').html("");
+                        $('#image2-view').html("");
+                        $('#image3-view').html("");
+                        $('#image4-view').html("");
+                        $('#image5-view').html("");
+                        $('#image6-view').html("");
+                        $('#image7-view').html("");
+                        $('#image8-view').html("");
+                        $('#image9-view').html("");
+                        $('#image10-view').html("");
+                        $('#image11-view').html("");
+                        $('#image12-view').html("");
+                        $('#image13-view').html("");
+                        $('#image14-view').html("");
+                        $('#image15-view').html("");
                         $('#id_exp').val(id_exp);
-                        $('#image').html(data.image);
-                        $('#image2').html(data.image2);
-                        $('#image3').html(data.image3);
-                        $('#image4').html(data.image4);
-                        $('#image5').html(data.image5);
-                        $('#image6').html(data.image6);
-                        $('#image7').html(data.image7);
-                        $('#image8').html(data.image8);
-                        $('#image9').html(data.image9);
-                        $('#image10').html(data.image10);
-                        $('#image11').html(data.image11);
-                        $('#image12').html(data.image12);
-                        $('#image13').html(data.image13);
-                        $('#image14').html(data.image14);
-                        $('#image15').html(data.image15);
+                        $('#image-view').html(data.image);
+                        $('#image2-view').html(data.image2);
+                        $('#image3-view').html(data.image3);
+                        $('#image4-view').html(data.image4);
+                        $('#image5-view').html(data.image5);
+                        $('#image6-view').html(data.image6);
+                        $('#image7-view').html(data.image7);
+                        $('#image8-view').html(data.image8);
+                        $('#image9-view').html(data.image9);
+                        $('#image10-view').html(data.image10);
+                        $('#image11-view').html(data.image11);
+                        $('#image12-view').html(data.image12);
+                        $('#image13-view').html(data.image13);
+                        $('#image14-view').html(data.image14);
+                        $('#image15-view').html(data.image15);
+
+                        $('#limpiar').hide();
                         
                         //$('#pdf-subido').html(data.ficha);
                         //$('#certificado-subido').html(data.certificado);
@@ -749,11 +791,11 @@
 
             //Funcionalidad de borrar
             $(document).on('click', '.borrar', function(){
-                var id_producto = $(this).attr("id");
+                var id_exp = $(this).attr("id");
 
                 Swal.fire({
                 title: 'Esta Seguro de Borrar ?',
-                text: "El Registro con el ID = " + id_producto,
+                text: "El Registro con el ID = " + id_exp,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#72db88',
@@ -765,7 +807,7 @@
                     $.ajax({
                         url:"borrar.php",
                         method:"POST",
-                        data:{id_producto:id_producto},
+                        data:{id_exp:id_exp},
                         success:function(data)
                         {
                             dataTable.ajax.reload();
@@ -869,6 +911,8 @@
                         
                 document.getElementById('image').addEventListener('change', archivo, false);
         </script>
+
+        
         
         <script type="text/javascript">
         function calcular_a_dolar(){

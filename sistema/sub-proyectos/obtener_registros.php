@@ -84,15 +84,15 @@
 
 
         if ($fila['estado'] == 'pagado') {
-            $estado =  '<span style="font-size:12px;background-color:#20c997;" class="btn btn-success btn-sm w-100"><i class="bi bi-check2-all"></i> '.$fila["estado"].'</span>';
+            $estado =  '<span style="font-size:12px;background-color:#20c997;" class="btn btn-success btn-sm w-100"><i class="bi bi-check2-all"></i> </span>';
         }elseif ($fila['estado'] == 'no') {
-            $estado =  '<span style="font-size:12px;background-color:#f77171;color:white;" class="btn btn-warning btn-sm w-100"><i class="bi bi-journal-x"></i> No Adjudicado </span>';
+            $estado =  '<span style="font-size:12px;background-color:#f77171;color:white;" class="btn btn-warning btn-sm w-100"><i class="bi bi-x-lg"></i>  </span>';
         }elseif ($fila['estado'] == 'adjudicado') {
-            $estado =  '<span style="font-size:12px;background-color:#009b65;color:white;border: 1px solid #3bff3b;" class="btn btn-warning btn-sm w-100"><i class="bi bi-journal-check"></i>  Adjudicado </span>';
+            $estado =  '<span style="font-size:12px;background-color:#009b65;color:white;border: 1px solid #3bff3b;" class="btn btn-warning btn-sm w-100"><i class="bi bi-check-lg"></i>   </span>';
         }else if ($fila['estado'] == 'proceso') {
-            $estado =  '<span style="font-size:12px;background-color:#fff769;" class="btn btn-warning btn-sm w-100"><i class="bi bi-exclamation-triangle"></i> En '.$fila["estado"].'</span>';
+            $estado =  '<span style="font-size:12px;background-color:#fff769;" class="btn btn-warning btn-sm w-100"><i class="bi bi-exclamation-triangle"></i> </span>';
         }else {
-            $estado =  '<span style="font-size:12px;background-color:#ff9038; color:white" class="btn btn-warning btn-sm w-100"><i class="bi bi-check2"></i> '.$fila["estado"].'</span>';
+            $estado =  '<span style="font-size:12px;background-color:#ff9038; color:white" class="btn btn-warning btn-sm w-100"><i class="bi bi-check2"></i> </span>';
         }
 
         // tipo
@@ -100,39 +100,39 @@
         if ($fila['tipo2'] == '') {
             $tipo =  '';
         }else {
-            $tipo = $fila["tipo"].'<span style="font-size:12px;background-color:#ecffca;text-align: left;" </span>'.'<br/>'.'Por '.$fila["tipo2"].'<br/>'; 
+            $tipo = $fila["tipo"].'<span class="tipo" style="font-size:12px;background-color:#ecffca;text-align: left;" </span>'.'<br/>'.'Por '.$fila["tipo2"].'<br/>'; 
         }
 
         // encargado
 
         if ($fila['encargado'] == 'mavel') {
-            $encargado1 = '<span style="font-size:12px;background-color:#cafbff;text-align: left;" class="btn btn-info btn-sm w-100"><i class="bi bi-person-square"></i> Mavel Condori  </span>'.'<br/>';
+            $encargado1 = '<span style="font-size:12px;background-color:#cafbff;text-align: left;" class="btn btn-info btn-sm w-100"><i class="bi bi-pin-fill"></i> Mavel  </span>'.'<br/>';
         } else {
             $encargado1 = '';
         }
 
         if ($fila['encargado'] == 'ale') {
-            $encargado2 = '<span style="font-size:12px;background-color:#cafbff;text-align: left;" class="btn btn-info btn-sm w-100"><i class="bi bi-person-square"></i> Alejandro Iglesias </span>'.'<br/>';
+            $encargado2 = '<span style="font-size:12px;background-color:#cafbff;text-align: left;" class="btn btn-info btn-sm w-100"><i class="bi bi-pin-fill"></i> Alejandro  </span>'.'<br/>';
         } else {
             $encargado2 = '';
         }
 
         if ($fila['encargado'] == 'nicol') {
-            $encargado3 = '<span style="font-size:12px;background-color:#cafbff;text-align: left;" class="btn btn-info btn-sm w-100"><i class="bi bi-person-square"></i> Nicol Erquicia  </span>'.'<br/>';
+            $encargado3 = '<span style="font-size:12px;background-color:#cafbff;text-align: left;" class="btn btn-info btn-sm w-100"><i class="bi bi-pin-fill"></i> Nicol  </span>'.'<br/>';
         } else {
             $encargado3 = '';
         }
 
         
         if ($fila['encargado'] == 'jazmin') {
-            $encargado4 = '<span style="font-size:12px;background-color:#cafbff;text-align: left;" class="btn btn-info btn-sm w-100"><i class="bi bi-person-square"></i> Jazmin Velasco  </span>'.'<br/>';
+            $encargado4 = '<span style="font-size:12px;background-color:#cafbff;text-align: left;" class="btn btn-info btn-sm w-100"><i class="bi bi-pin-fill"></i> Jazmin   </span>'.'<br/>';
         } else {
             $encargado4 = '';
         }
 
         
         if ($fila['encargado'] == 'edwin') {
-            $encargado5 = '<span style="font-size:12px;background-color:#cafbff;text-align: left;" class="btn btn-info btn-sm w-100"><i class="bi bi-person-square"></i> Edwin Pinto </span>'.'<br/>';
+            $encargado5 = '<span style="font-size:12px;background-color:#cafbff;text-align: left;" class="btn btn-info btn-sm w-100"><i class="bi bi-pin-fill"></i> Edwin </span>'.'<br/>';
         } else {
             $encargado5 = '';
         }
@@ -161,8 +161,9 @@
         
         $sub_array[] = $fila["ubicacion"];
         
-        $sub_array[] = $fila["monto"].' Bs';
-        $sub_array[] = $fila["monto_ofertado"].' Bs';
+        $sub_array[] = number_format($fila['monto'],2,'.',',').' Bs';
+        $sub_array[] = number_format($fila['monto_ofertado'],2,'.',',').' Bs';
+        
         $sub_array[] = $fecha;
         $sub_array[] = $fila["posicion"];
         $sub_array[] = $tipo;

@@ -55,7 +55,11 @@
         
 
        
+        //fecha de presentacion
+        setlocale(LC_TIME, "spanish");
+        $fecha =  strftime('%e de %B %Y', strtotime($fila['fecha_ejecucion']));
 
+        //
         
 
        
@@ -67,9 +71,10 @@
         $sub_array[] = $fila["nombre_contratante"];
         $sub_array[] = $fila["obj_contrato"];
         $sub_array[] = $fila["ubicacion"];
-        $sub_array[] = $fila["monto_bs"].' Bs';
-        $sub_array[] = $fila["monto_dolares"].' $';
-        $sub_array[] = $fila["fecha_ejecucion"];
+        $sub_array[] = number_format($fila['monto_bs'],2,'.',',').' Bs';
+        $sub_array[] = number_format($fila['monto_dolares'],2,'.',',').' $';
+      
+        $sub_array[] = $fecha;
         //$sub_array[] = $fila["participa_aso"];
         //$sub_array[] = $fila["n_socio"];
         $sub_array[] = $image;
