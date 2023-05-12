@@ -10,6 +10,13 @@
     if (isset($_POST["search"]["value"])) {
        $query .= 'WHERE nombre_contratante LIKE "%' . $_POST["search"]["value"] . '%" ';
        $query .= 'OR monto_bs LIKE "%' . $_POST["search"]["value"] . '%" ';
+       $query .= 'OR ubicacion LIKE "%' . $_POST["search"]["value"] . '%" ';
+       $query .= 'OR fecha_ejecucion LIKE "%' . $_POST["search"]["value"] . '%" ';
+       $query .= 'OR participa_aso LIKE "%' . $_POST["search"]["value"] . '%" ';
+       $query .= 'OR n_socio LIKE "%' . $_POST["search"]["value"] . '%" ';
+       $query .= 'OR profesional_resp LIKE "%' . $_POST["search"]["value"] . '%" ';
+       $query .= 'OR detalle LIKE "%' . $_POST["search"]["value"] . '%" ';
+       $query .= 'OR obj_contrato LIKE "%' . $_POST["search"]["value"] . '%" ';
     }
 
     if (isset($_POST["order"])) {
@@ -52,6 +59,14 @@
             $image3 = '<a class="btn btn-outline-secondary btn-sm gallery-item boton-w disabled" id=""><i class="fa-solid fa-ban"></i> </a>';
         }
 
+        $image4 = '';
+        if($fila["image4"] != '' ){
+            $image4 = '<img class="gallery-item boton-w" src="actas/'.$fila['image4'].'" height="70px" id="actas/'.$fila['image4'].'">';
+            //$image = '<a class="btn btn-outline-primary btn-sm gallery-item boton-w"  id="actas/'.$fila['image'].'"><i class="fa-solid fa-image"></i> </a>';
+        }else{
+            $image4 = '<a class="btn btn-outline-secondary btn-sm gallery-item boton-w disabled" id=""><i class="fa-solid fa-ban"></i> </a>';
+        }
+
         
 
        
@@ -62,6 +77,11 @@
         //
         
 
+        if ($fila['detalle'] != '') {
+            $detalle = '<span style="font-size:12px;background-color:#626262;text-align: left;color:#05ffd1;border: 1px solid #05ffd1;" class="btn btn-info w-100 "><i class="bi bi-clipboard"></i> '.' '.$fila['detalle'].'</span>';
+        }else {
+            $detalle = '<span style="font-size:12px;background-color:#626262;text-align: left;color:#7fd0ff;" class="btn btn-info w-100 "><i class="bi bi-cart4"> Comercializadora</i></span>';
+        }
        
 
 
@@ -75,11 +95,13 @@
         $sub_array[] = number_format($fila['monto_dolares'],2,'.',',').' $';
       
         $sub_array[] = $fecha;
+        $sub_array[] = $detalle;
         //$sub_array[] = $fila["participa_aso"];
         //$sub_array[] = $fila["n_socio"];
         $sub_array[] = $image;
         $sub_array[] = $image2;
         $sub_array[] = $image3;
+        $sub_array[] = $image4;
         $sub_array[] = '<button type="button" name="editar" id="'.$fila["id_exp"].'" class="btn btn-warning btn-sm boton-w  editar" style="background-color: #fbe806;color: #505050; color:#767676;"><i class="fa-solid fa-pencil"></i> </button>';
         $sub_array[] = '<button type="button" name="borrar" id="'.$fila["id_exp"].'" class="btn btn-danger btn-sm boton-w borrar" style="background-color: #ff5757;color: #505050; color:white;"><i class="fa-solid fa-trash-can"></i> </button>';
         $datos[] = $sub_array;

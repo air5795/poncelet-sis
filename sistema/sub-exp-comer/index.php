@@ -58,26 +58,65 @@
                 $data=mysqli_fetch_assoc($result);
                 $data['total'];
 
+                $result2=mysqli_query($conexion,"SELECT SUM(monto_bs) FROM exp_general");
+                $data2=mysqli_fetch_assoc($result2);
+                $total = $data2['SUM(monto_bs)'];
+
             ?>
 
             <div class="col-sm-2">
-                <a class="btn btn-secondary w-100 disabled" href=""> <strong><i class="bi bi-box-seam"> - </i>  <?php echo $data['total']; ?> </strong>  Proyectos </a>
+                
+                
+            </div>
+
+            <div class="col-sm-2">
+                
+                
+            </div>
+            <div class="col-sm-2">
+                
+                
+            </div>
+
+            <hr>
+
+            <div class="col-sm-2">
+                
+                
+            </div>
+            
+            
+
+            <div class="col-sm-2">
+                <a class="btn btn-warning btn-sm w-100 disabled" href=""> <strong> <?php echo $data['total']; ?>    </strong> <br> <i class="bi bi-clipboard"></i> Proyectos Registrados    </a>
             
                 
             </div>
 
-
             <div class="col-sm-2">
-                <a class="btn btn-danger w-100" style="background-color: cadetblue;border:none;" href="http://localhost/poncelet-sis/sistema/cotizador/"><i class="bi bi-file-earmark-ruled"></i> Cotizador Poncelet </a>
+            <a class="btn btn-outline-success btn-sm disabled w-100  " role="button" aria-disabled="true" > <strong>  <?php echo number_format($total,2,'.',','). ' Bs' ?> </strong> <br>
+            Experiencia total (Bs)</a>
                 
             </div>
+
+            <div class="col-sm-2">
+                    <a class="btn btn-outline-danger btn-sm w-100  " href="../reporte_eg.php" > <i class="bi bi-file-pdf-fill"></i> <br> Lista Exp. General   </a>
+                  
+            </div>
+
+            <div class="col-sm-2">
+                    <a class="btn btn-outline-danger btn-sm w-100  " href="../rep_ImgEG.php" > <i class="bi bi-file-pdf-fill"></i> <br> Actas Exp. General   </a>
+                  
+            </div>
+
+            
 
             <div class="col-sm-2 ">
                 
                 <div class="text-center">
                     <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-outline-secondary boton w-100" data-bs-toggle="modal" data-bs-target="#modalproductos" id="botonCrear">
-                        <i class="fa-solid fa-plus"></i> Nuevo Proyecto
+                        <button type="button" class="btn btn-outline-secondary btn-sm boton w-100" data-bs-toggle="modal" data-bs-target="#modalproductos" id="botonCrear">
+                        <i class="fa-solid fa-plus"></i> <br> Nuevo Proyecto
                         </button>    
                 </div>
             </div>
@@ -85,23 +124,24 @@
             
         </div>
         
-        <hr style="background-color: red;">
+        <hr >
 
-        <div class="table-responsive" style="font-size: 11px; width:100%">
+        <div class="table-responsive" style="font-size: 11px; width:100%; text-align:center;">
             <table id="datos_usuario" class="table table-hover table-striped table-bordered" style="width:100%" >
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th width="30%">NOMBRE DEL CONTRATANTE / PERSONA Y DIRECCION DE CONTACTO  </th>
-                        <th width="50%">OBJETO DEL CONTRATO</th>
-                        <th>UBICACIÓN</th>
-                        <th>MONTO FINAL DEL CONTRATO EN "BS"</th>
-                        <th>MONTO FINAL DEL CONTRATO EN "$"</th>
-                        <th>FECHA EJECUCION</th>
-                        
-                        <th>ACTA 1</th>
-                        <th>ACTA 2</th>
-                        <th>ACTA 3</th>
+                        <th style="padding:5px;">ID</th>
+                        <th style="padding:5px;" width="20%">NOMBRE DEL CONTRATANTE / PERSONA Y DIRECCION DE CONTACTO  </th>
+                        <th style="padding:5px;" width="20%">OBJETO DEL CONTRATO</th>
+                        <th style="padding:5px;">UBICACIÓN</th>
+                        <th style="padding:5px;">MONTO FINAL DEL CONTRATO EN "BS"</th>
+                        <th style="padding:5px;">MONTO FINAL DEL CONTRATO EN "$"</th>
+                        <th style="padding:5px;" width="10%"><i class="bi bi-calendar-date"></i> FECHA EJECUCION</th>
+                        <th style="padding:5px;" width="15%">DETALLE</th>
+                        <th style="padding:5px;">ACTA N° 1</th>
+                        <th style="padding:5px;">ACTA N° 2</th>
+                        <th style="padding:5px;">ACTA N° 3</th>
+                        <th style="padding:5px;">ACTA N° 4</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -169,7 +209,7 @@
                         </div>
 
                         <div class="col-6">
-                        <div class=" mb-3 mb-md-0">
+                                <div class=" mb-3 mb-md-0">
                                     <span for="inputFirstName">% participación en Asociación (**)</span> 
                                     <input class="form-control form-control-sm" name="participa_aso" id="participa_aso"  type="text" />
                                  </div>
@@ -444,6 +484,8 @@
                 $(".modal-title").text("Crear Proyecto");
                 $("#action").val("Crear Proyecto");
                 $("#operacion").val("Crear");
+
+                $('#list').html("");
             
                 $('#image-view').html("");
                 $('#image2-view').html("");
@@ -470,7 +512,7 @@
             });
             
             var dataTable = $('#datos_usuario').DataTable({
-                "pageLength": 25,
+                "pageLength": 7,
                 "processing":true,
                 "serverSide":true,
                 "ordering": false,
@@ -479,9 +521,11 @@
                     url: "obtener_registros.php",
                     type: "POST"
                 },
+                
+                
                 "columnsDefs":[
                     {
-                    "targets":[0, 3, 4],
+                    "targets":[0,1,4],
                     "orderable":false,
                     },
                 ],
@@ -744,6 +788,7 @@
 
                         
                         $('.modal-title').text("Editar Producto");
+                        $('#list').html("");
                         $('#image-view').html("");
                         $('#image2-view').html("");
                         $('#image3-view').html("");
