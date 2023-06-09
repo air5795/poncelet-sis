@@ -24,16 +24,16 @@ if ($_POST["operacion"] == "Crear") {
 
     $resultado = $stmt->execute(
         array(
-            ':nombre'    => $_POST["nombre"],
-            ':marca'    => $_POST["marca"],
-            ':unidad'    => $_POST["unidad"],
-            ':pc'    => $_POST["pc"],
-            ':pv'    => $_POST["pv"],
-            ':tipo'    => $_POST["tipo"],
-            ':proveedor'    => $_POST["proveedor"],
-            ':foto'    => $imagen,
-            ':ficha'    => $ficha,
-            ':certificado'    => $certificado
+            ':nombre'           => $_POST["nombre"],
+            ':marca'            => $_POST["marca"],
+            ':unidad'           => $_POST["unidad"],
+            ':pc'               => $_POST["pc"],
+            ':pv'               => $_POST["pv"],
+            ':tipo'             => $_POST["tipo"],
+            ':proveedor'        => $_POST["proveedor"],
+            ':foto'             => $imagen,
+            ':ficha'            => $ficha,
+            ':certificado'      => $certificado
         )
     );
 
@@ -89,19 +89,21 @@ if ($_POST["operacion"] == "Editar") {
 
     $resultado = $stmt->execute(
         array(
-            ':id_producto'    => $_POST["id_producto"],
-            ':nombre'    => $_POST["nombre"],
-            ':marca'    => $_POST["marca"],
-            ':unidad'    => $_POST["unidad"],
-            ':pc'    => $_POST["pc"],
-            ':pv'    => $_POST["pv"],
-            ':tipo'    => $_POST["tipo"],
-            ':proveedor'    => $_POST["proveedor"],
-            ':foto'    => $imagen,
-            ':ficha'    => $ficha,
-            ':certificado'    => $certificado
+            ':id_producto'      => $_POST["id_producto"],
+            ':nombre'           => $_POST["nombre"],
+            ':marca'            => $_POST["marca"],
+            ':unidad'           => $_POST["unidad"],
+            ':pc'               => $_POST["pc"],
+            ':pv'               => $_POST["pv"],
+            ':tipo'             => $_POST["tipo"],
+            ':proveedor'        => $_POST["proveedor"],
+            ':foto'             => $imagen,
+            ':ficha'            => $ficha,
+            ':certificado'      => $certificado
 
         )
+
+        
 
         
     );

@@ -67,6 +67,21 @@
             $image4 = '<a class="btn btn-outline-secondary btn-sm gallery-item boton-w disabled" id=""><i class="fa-solid fa-ban"></i> </a>';
         }
 
+        $usuario = '';
+        if($fila["usuario_id"] == 1 ){
+            $usuario =  '<span style="font-size:12px;background-color:#d1d1d1;text-align: center;color:#4e4e4e;border: 1px solid #2a2a2a;" class="btn btn-info w-100 "><i class="bi bi-person-circle"></i> Alejandro</span>';
+        }else if ($fila["usuario_id"] == 29) {
+            $usuario =  '<span style="font-size:12px;background-color:#d1d1d1;text-align: center;color:#4e4e4e;border: 1px solid #2a2a2a;" class="btn btn-info w-100 "><i class="bi bi-person-circle"></i> Jazmin</span>';
+        }elseif ($fila["usuario_id"] == 12) {
+            $usuario =  '<span style="font-size:12px;background-color:#d1d1d1;text-align: center;color:#4e4e4e;border: 1px solid #2a2a2a;" class="btn btn-info w-100 "><i class="bi bi-person-circle"></i> Nicol</span>';
+        }elseif ($fila["usuario_id"] == 28) {
+            $usuario =  '<span style="font-size:12px;background-color:#d1d1d1;text-align: center;color:#4e4e4e;border: 1px solid #2a2a2a;" class="btn btn-info w-100 "><i class="bi bi-person-circle"></i> Mavel</span>';
+        }else{
+            $usuario =  '<span style="font-size:12px;background-color:#d1d1d1;text-align: center;color:#4e4e4e;border: 1px solid #2a2a2a;" class="btn btn-info w-100 "><i class="bi bi-person-circle"></i> otro</span>';
+        }
+
+
+
         
 
        
@@ -96,6 +111,8 @@
       
         $sub_array[] = $fecha;
         $sub_array[] = $detalle;
+        $sub_array[] = $usuario;
+
         //$sub_array[] = $fila["participa_aso"];
         //$sub_array[] = $fila["n_socio"];
         $sub_array[] = $image;
@@ -104,6 +121,7 @@
         $sub_array[] = $image4;
         $sub_array[] = '<button type="button" name="editar" id="'.$fila["id_exp"].'" class="btn btn-warning btn-sm boton-w  editar" style="background-color: #fbe806;color: #505050; color:#767676;"><i class="fa-solid fa-pencil"></i> </button>';
         $sub_array[] = '<button type="button" name="borrar" id="'.$fila["id_exp"].'" class="btn btn-danger btn-sm boton-w borrar" style="background-color: #ff5757;color: #505050; color:white;"><i class="fa-solid fa-trash-can"></i> </button>';
+        $sub_array[] = '<button type="button" name="borrar" id="'.$fila["id_exp"].'" class="btn btn-outline-danger btn-sm boton-w img-delete" style="background-color: #ffffff;color: #ff5757;"><i class="bi bi-images"></i> Borrar Actas</button>';
         $datos[] = $sub_array;
     }
 

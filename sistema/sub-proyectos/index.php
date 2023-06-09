@@ -66,11 +66,11 @@
                 $data2=mysqli_fetch_assoc($result2);
                 $n_proyectos = $data2['total'];
 
-                $result3=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer where estado = 'adjudicado' and tipo != 'cotizacion' ");
+                $result3=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer where estado = 'adjudicado' or estado = 'pagado';");
                 $data3=mysqli_fetch_assoc($result3);
                 $n_adjudicados = $data3['total'];
 
-                $result4=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer where estado = 'adjudicado' and tipo = 'cotizacion'");
+                $result4=mysqli_query($conexion,"SELECT count(*) as total from proyectos_comer where estado = 'pagado' ");
                 $data4=mysqli_fetch_assoc($result4);
                 $n_adjudicados2 = $data4['total'];
 

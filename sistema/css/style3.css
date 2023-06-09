@@ -34,6 +34,13 @@ td, th {
     border-color: white;
 }
 
+.exp-betanzos{
+    background: #ffffff;
+    font-size: 13px !important;
+    font-family: arial;
+    border-color: white;
+}
+
 .im{
     width: 180px;
 }

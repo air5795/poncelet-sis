@@ -131,19 +131,22 @@
                 <thead>
                     <tr>
                         <th style="padding:5px;">ID</th>
-                        <th style="padding:5px;" width="20%">NOMBRE DEL CONTRATANTE / PERSONA Y DIRECCION DE CONTACTO  </th>
+                        <th style="padding:5px;" width="10%">NOMBRE DEL CONTRATANTE / PERSONA Y DIRECCION DE CONTACTO  </th>
                         <th style="padding:5px;" width="20%">OBJETO DEL CONTRATO</th>
                         <th style="padding:5px;">UBICACIÓN</th>
+                        
                         <th style="padding:5px;">MONTO FINAL DEL CONTRATO EN "BS"</th>
                         <th style="padding:5px;">MONTO FINAL DEL CONTRATO EN "$"</th>
                         <th style="padding:5px;" width="10%"><i class="bi bi-calendar-date"></i> FECHA EJECUCION</th>
                         <th style="padding:5px;" width="15%">DETALLE</th>
+                        <th style="padding:5px;">REGISTRADO POR</th>
                         <th style="padding:5px;">ACTA N° 1</th>
                         <th style="padding:5px;">ACTA N° 2</th>
                         <th style="padding:5px;">ACTA N° 3</th>
                         <th style="padding:5px;">ACTA N° 4</th>
                         <th></th>
                         <th></th>
+                        <th width="10%"></th> 
                     </tr>
                 </thead>
             </table>
@@ -161,19 +164,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: azure;"></button>
             </div>
             
-                <form action="" method="POST" id="formulario" enctype="multipart/form-data" >
-                    
+                <form action="" method="POST" id="formulario" enctype="multipart/form-data">                    
                     <div class="modal-content">
-
-                    <div class="modal-body">
-
-                    
+                    <div class="modal-body">      
                     <div class="row">
                     <div class="col-md-6">
                     <div class="row">
-
                         <div class="col-12">
-                                <span for="inputFirstName">Nombre del Contratante / Persona y Dirección de Contacto</span>
+                                <span for="inputFirstName">Nombre del Contratante / Persona y Dirección de Contacto.</span>
                                 <input  class="form-control form-control-sm " name="nombre_contratante" id="nombre_contratante" type="text"   />
                         </div>
                         <div class="col-12">
@@ -186,9 +184,8 @@
                                     <input class="form-control form-control-sm" name="ubicacion" id="ubicacion" type="text" />
                                  </div>
                         </div>
-
                         <div class="col-6">
-                            <div class=" mb-3 mb-md-0">
+                            <div class="mb-3 mb-md-0">
                                     <span for="inputFirstName">Monto en Bs.</span> 
                                     <input class="form-control form-control-sm money" id="monto_bs" name="monto_bs" type="number" step='0.001'  placeholder='0.00' oninput="calcular_a_dolar()" />
                                  </div>
@@ -266,7 +263,7 @@
                                 <i class="fa-solid fa-folder-open"></i> Subir Actas 9-15 Pag.
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark w-100 ">
-                                    <li><a class="dropdown-item" href="#">Acta N°9<input type="file" class="form-control form-control-sm"  name="image9" id="image9"></a></li>
+                                    <li><a class="dropdown-item" href="#">Acta N°9<input type="file" class="form-control form-control-sm "  name="image9" id="image9"></a></li>
                                     <li><a class="dropdown-item" href="#">Acta N°10<input type="file" class="form-control form-control-sm"  name="image10" id="image10" ></a></li>
                                     <li><a class="dropdown-item" href="#">Acta N°11<input type="file" class="form-control form-control-sm"  name="image11" id="image11"></a></li>
 
@@ -283,7 +280,7 @@
                                 </div>
 
                                 <p></p>
-
+                                
                                 
 
                                 
@@ -385,11 +382,14 @@
 
                        </div>
 
+                       <!-- Boton Eliminar Images  -->
+
+                       
+
                        
                     <div class="modal-footer">
                         <input type="hidden" name="id_exp" id="id_exp">
                         <input type="hidden" name="operacion" id="operacion">
-
                         <input type="reset" value="Limpiar" class="btn btn-secondary" id="limpiar"> 
                         <input type="submit" name="action" id="action" class="btn btn-success" value="Registrar">
                         
@@ -433,6 +433,23 @@
                     </div>
                 </div>
 <!-- FINAL Modal para  ver imagenes -->
+
+<div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl ">
+                        <div class="modal-content modal-fullscreen ">
+                            <div class="modal-header">
+                                <!--<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="img/actas/acta_103_1_2021-02-22.jpg" class="modal-img" alt="modal img" width="100%" height="100%">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
                 
 
 <!-- FINAL CONTENIDO--> 
@@ -486,6 +503,7 @@
                 $("#operacion").val("Crear");
 
                 $('#list').html("");
+                $('#img-delete').hide();
             
                 $('#image-view').html("");
                 $('#image2-view').html("");
@@ -785,6 +803,7 @@
                         $('#n_socio').val(data.n_socio);
                         $('#detalle').val(data.detalle);
                         $('#profesional_resp').val(data.profesional_resp);
+                        $('#img-delete').show();
 
                         
                         $('.modal-title').text("Editar Producto");
@@ -825,7 +844,7 @@
                         
                         //$('#pdf-subido').html(data.ficha);
                         //$('#certificado-subido').html(data.certificado);
-                        $('#action').val("Editar");
+                        $('#action').val("Editar Proceso");
                         $('#operacion').val("Editar");
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
@@ -872,6 +891,45 @@
 
             });
 
+
+
+            //Funcionalidad de borrar imagenes
+            $(document).on('click', '.img-delete', function(){
+                var id_exp = $(this).attr("id");
+
+                Swal.fire({
+                title: 'Esta Seguro de Borrar las Actas de este Proceso ?',
+                text: "El Proceso con el ID = " + id_exp,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#72db88',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, Borralo!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        url:"borrar-img.php",
+                        method:"POST",
+                        data:{id_exp:id_exp},
+                        success:function(data){
+                            dataTable.ajax.reload();
+                        }
+                    });
+
+                    Swal.fire(
+                    'Borrado con Exito!',
+                    'Se Elimino todas las Actas',
+                    'success'
+                    )
+                }
+                else{
+                    return false;
+                }
+                });
+
+            });
+
         });         
     </script>
 
@@ -883,6 +941,18 @@
             document.querySelector(".modal-img").src = src;
 
             const myModal = new bootstrap.Modal(document.getElementById('gallery-modal'));
+            myModal.show();
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener("click",function(e){
+        if(e.target.classList.contains("gallery-item")){
+            const src = e.target.getAttribute("id");
+            document.querySelector(".modal-img2").src = src;
+
+            const myModal = new bootstrap.Modal(document.getElementById('gallery-modal2'));
             myModal.show();
         }
     });

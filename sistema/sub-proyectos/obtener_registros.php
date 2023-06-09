@@ -84,15 +84,15 @@
 
 
         if ($fila['estado'] == 'pagado') {
-            $estado =  '<span style="font-size:12px;background-color:#20c997;" class="btn btn-success btn-sm w-100"><i class="bi bi-check2-all"></i> </span>';
+            $estado =  '<span style="font-size:10px;background-color: #1b6600;color: #ffffff;border: greenyellow 3px solid;border-radius: 10px;" class="btn btn-success btn-sm w-100"><i class="bi bi-currency-dollar"></i> </br> Pagado</span>';
         }elseif ($fila['estado'] == 'no') {
-            $estado =  '<span style="font-size:12px;background-color:#f77171;color:white;" class="btn btn-warning btn-sm w-100"><i class="bi bi-x-lg"></i>  </span>';
+            $estado =  '<span style="font-size:10px;background-color:#f77171;color:white;" class="btn btn-warning btn-sm w-100"><i class="bi bi-x-lg"></i> </br> No Adjudicado  </span>';
         }elseif ($fila['estado'] == 'adjudicado') {
-            $estado =  '<span style="font-size:12px;background-color:#009b65;color:white;border: 1px solid #3bff3b;" class="btn btn-warning btn-sm w-100"><i class="bi bi-check-lg"></i>   </span>';
+            $estado =  '<span style="font-size:10px;background-color:#009b65;color:white;border: 1px solid #3bff3b;" class="btn btn-warning btn-sm w-100"><i class="bi bi-check-lg"></i> </br> Adjudicado  </span>';
         }else if ($fila['estado'] == 'proceso') {
-            $estado =  '<span style="font-size:12px;background-color:#fff769;" class="btn btn-warning btn-sm w-100"><i class="bi bi-exclamation-triangle"></i> </span>';
+            $estado =  '<span style="font-size:10px;background-color:#fff769;" class="btn btn-warning btn-sm w-100"><i class="bi bi-exclamation-triangle"></i> </br> En Proceso </span>';
         }else {
-            $estado =  '<span style="font-size:12px;background-color:#ff9038; color:white" class="btn btn-warning btn-sm w-100"><i class="bi bi-check2"></i> </span>';
+            $estado =  '<span style="font-size:10px;background-color:#ff9038; color:white" class="btn btn-warning btn-sm w-100"><i class="bi bi-check2"></i> </span>';
         }
 
         // tipo

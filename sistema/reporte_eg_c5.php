@@ -28,9 +28,6 @@ ob_start();
     <meta name="author" content="" />
     <link href="css/style3.css" rel="stylesheet" />
 
-
-    
-
     <title>SISPONCELET</title>
 
 </head>

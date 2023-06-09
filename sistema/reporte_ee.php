@@ -134,44 +134,44 @@ ob_start();
                         while ($data = mysqli_fetch_array($query)) {
                             if ($data['image'] != 'nodisponible.png' ) {
                                 $ru = $data['image'];
-                                $image = 'img/actas/'.$data['image'];
+                                $image = 'sub-exp-comer/actas/'.$data['image'];
                                 
 
                             }else {
-                                $image = 'img/'.$data['image'];
+                                $image = 'sub-exp-comer/'.$data['image'];
                             }
                             
-                            $image2 = 'img/actas/'.$data['image2'];
+                            $image2 = 'sub-exp-comer/actas/'.$data['image2'];
                             $ru2 = $data['image2'];
                             
-                            $image3= 'img/actas/'.$data['image3'];
+                            $image3= 'sub-exp-comer/actas/'.$data['image3'];
                             $ru3 = $data['image3'];
 
-                            $image4= 'img/actas/'.$data['image4'];
+                            $image4= 'sub-exp-comer/actas/'.$data['image4'];
                             $ru4 = $data['image4'];
 
-                            $image5= 'img/actas/'.$data['image5'];
+                            $image5= 'sub-exp-comer/actas/'.$data['image5'];
                             $ru5 = $data['image5'];
-                            $image6= 'img/actas/'.$data['image6'];
+                            $image6= 'sub-exp-comer/actas/'.$data['image6'];
                             $ru6 = $data['image6'];
-                            $image7= 'img/actas/'.$data['image7'];
+                            $image7= 'sub-exp-comer/actas/'.$data['image7'];
                             $ru7 = $data['image7'];
-                            $image8= 'img/actas/'.$data['image8'];
+                            $image8= 'sub-exp-comer/actas/'.$data['image8'];
                             $ru8 = $data['image8'];
 
-                            $image9= 'img/actas/'.$data['image9'];
+                            $image9= 'sub-exp-comer/actas/'.$data['image9'];
                             $ru9 = $data['image9'];
-                            $image10= 'img/actas/'.$data['image10'];
+                            $image10= 'sub-exp-comer/actas/'.$data['image10'];
                             $ru10 = $data['image10'];
-                            $image11= 'img/actas/'.$data['image11'];
+                            $image11= 'sub-exp-comer/actas/'.$data['image11'];
                             $ru11 = $data['image11'];
-                            $image12= 'img/actas/'.$data['image12'];
+                            $image12= 'sub-exp-comer/actas/'.$data['image12'];
                             $ru12 = $data['image12'];
-                            $image13= 'img/actas/'.$data['image13'];
+                            $image13= 'sub-exp-comer/actas/'.$data['image13'];
                             $ru13 = $data['image13'];
-                            $image14= 'img/actas/'.$data['image14'];
+                            $image14= 'sub-exp-comer/actas/'.$data['image14'];
                             $ru14 = $data['image14'];
-                            $image15= 'img/actas/'.$data['image15'];
+                            $image15= 'sub-exp-comer/actas/'.$data['image15'];
                             $ru15 = $data['image15'];
                             
 
@@ -200,18 +200,18 @@ ob_start();
 
                     
                     
-                    if ($ru !=0 )  {
+                    if ($ru !='' )  {
                         $origen = "../sistema"."/$image";
                         $destino = "../sistema/img/Exp_especifica"."/$ru";
                         $resultado = copy($origen, $destino);
                         echo $destino;
                     }
-                    if ($ru2 !=0) {
+                    if ($ru2 !='') {
                         $origen2 = "../sistema/".$image2;
                         $destino2 = "../sistema/img/Exp_especifica"."/$ru2";
                         $resultado2 = copy($origen2, $destino2);
                     }
-                    if ($ru3 !=0) {
+                    if ($ru3 !='') {
                         $origen3 = "../sistema"."/$image3";
                         $destino3 = "../sistema/img/Exp_especifica"."/$ru3";
                         $resultado3 = copy($origen3, $destino3);

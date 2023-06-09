@@ -125,19 +125,20 @@ include "../conexion.php";
 
                    
 
+
                     $result = mysqli_num_rows($query);
                     if ($result > 0) {
                         while ($data = mysqli_fetch_array($query)) {
                             if ($data['image'] != 'nodisponible.png' ) {
-                                $image = 'img/actas/'.$data['image'];
+                                $image = 'sub-exp-comer/actas/'.$data['image'];
                                 
 
                             }else {
-                                $image = 'img/'.$data['image'];
+                                $image = 'sub-exp-comer/'.$data['image'];
                             }
                             
-                            $image2 = 'img/actas/'.$data['image2'];
-                            $image3= 'img/actas/'.$data['image3'];
+                            $image2 = 'sub-exp-comer/actas/'.$data['image2'];
+                            $image3= 'sub-exp-comer/actas/'.$data['image3'];
 
                         
                             
@@ -147,11 +148,11 @@ include "../conexion.php";
                     ?>
                             <tr>
                                 <form>
-                                <td>
-                                    <div class="form-check form-switch">
-                                        <input  name="check[]" value="<?php echo $data['id_exp'] ?>" class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                                    </div>
-                                </td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input  name="check[]" value="<?php echo $data['id_exp'] ?>" class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                        </div>
+                                    </td>
                                 <td><?php 
 
                                 if (empty($data['detalle'])) {

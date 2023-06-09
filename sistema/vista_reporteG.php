@@ -22,7 +22,8 @@ include "../conexion.php";
 <body>
 
 <?php
-    $directory="img/actas/";
+    //$directory="img/actas/";
+    $directory="sub-exp-comer/actas/";
     $dirint = dir($directory);
 
     while (($archivo = $dirint->read()) != false)
@@ -44,7 +45,7 @@ include "../conexion.php";
     natsort($archivos);
     foreach($archivos as $archivo) {
     //echo $archivo;
-    echo'<img style="width:760px" src=img/actas/'.$archivo.'>';
+    echo'<img style="width:760px" src=sub-exp-comer/actas/'.$archivo.'>';
     }
     
 ?>

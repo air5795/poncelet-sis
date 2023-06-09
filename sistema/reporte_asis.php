@@ -6,7 +6,7 @@ include "../conexion.php";
 $fecha_inicio = $_POST['fecha_inicio'];
 $fecha_final = $_POST['fecha_final'];
 $personal = $_POST['personal'];
-
+echo $personal;
 
 
                    
@@ -101,7 +101,7 @@ echo "The current date and time are $DateAndTime.";
 
                         <tr style="text-align: right; background-color: #5c5c5c; color: white; border:solid white;">
                             <td colspan="1" style="background-color:white;text-align: left; color:#5c5c5c; border:solid white "> <STRONG style="font-size:10px;"> Fecha de Reporte  </STRONG></td>
-                            <td colspan="3" style="background-color:white;text-align: left; color:#5c5c5c; border:solid white ">
+                            <td colspan="5" style="background-color:white;text-align: left; color:#5c5c5c; border:solid white ">
                                 <?php setlocale(LC_TIME, "spanish");
                                 echo '<p style="color: coral; font-size:10px;text-align:right;opacity: 0.5;"> @irsoft-SYS-PONCELET</p>';
                                 echo strftime("%A, %d de %B de %Y ");?>
@@ -115,14 +115,16 @@ echo "The current date and time are $DateAndTime.";
                      
                     
                     <tr>
-                        <td style="font-size:10px; border-right-color: white; border-left-color: white; border-top-color:white;"  colspan="4" > <STRONG>  REPORTE DE ENTRADAS Y SALIDAS </STRONG></td> 
+                        <td style="font-size:10px; border-right-color: white; border-left-color: white; border-top-color:white;"  colspan="6" > <STRONG>  REPORTE DE ENTRADAS Y SALIDAS </STRONG></td> 
                     </tr>
                     <tr style="background-color:#d7d7d7 ;">
-                                        <th>Fecha y Hora</th>
-                                        <th>Usuario</th>
-                                        <th>Tipo de Registro</th>
+                                        <th>USUARIO</th>
+                                        <th>FECHA DE REGISTRO</th>
+                                        <th>TURNO</th>
+                                        <th>INGRESO</th>
+                                        <th>SALIDA</th>
                                         
-                                        <th>Observaciones</th>
+                                        <th>OBSERVACIONES</th>
                     </tr>
 
                                     
@@ -135,17 +137,8 @@ echo "The current date and time are $DateAndTime.";
                                     //$query = mysqli_query($conexion, "SELECT * FROM gastos
                                     //ORDER BY id_gasto DESC;");
 
-                                    $query = mysqli_query($conexion, "SELECT asistencias.id_asistencia, 
-                                                                            asistencias.fecha_asis,
-                                                                            asistencias.tipo_registro,
-                                                                            asistencias.observacion_asis,
-                                                                            asistencias.usuario_id,
-                                                                            usuario.nombre
-                                                                    FROM asistencias
-                                                                    
-                                                                    JOIN usuario ON asistencias.usuario_id = usuario.idusuario
-                                                                    WHERE DATE(fecha_asis) BETWEEN '{$fecha_inicio}' AND '{$fecha_final}' AND usuario_id = $personal
-                                                                    order by asistencias.fecha_asis ASC;");
+                                    $query = mysqli_query($conexion, "SELECT * FROM asis WHERE fecha_registro BETWEEN '{$fecha_inicio}' AND '{$fecha_final}' AND usuario_id = '$personal'
+                                                                    order by fecha_registro ASC;");
 
                                                                     
 
@@ -166,62 +159,15 @@ echo "The current date and time are $DateAndTime.";
 
                                     
 
-                            <td>
-                                    <?php 
-
-                                        
-
-                                        
-
-                                        
-                                        setlocale(LC_TIME, "spanish");
-                                        //echo $data['fecha_ejecucion']
-                                        
-                                        $fech = strftime('<span class="text-success">'.' %e de %B %Y  </span> |  %H:%M:%S', strtotime($data['fecha_asis']));
-                                        
-
-                                    
-                                         
-                                         echo $fech;
-                                    ?>
-                                </td>
                             
-                                <td><?php echo $data['nombre'] ?></td>
-                                <td>
-                                    <?php
-                                        if ($data['tipo_registro'] == 'salida') {
-                                    ?>
-                                    <div  style = "margin: 0; color:darkred">
-
-                                    <?php
-                                            echo "SALIDA"; 
-                                        }else{
-                                    
-                                    ?> 
-                                    </div>
-
-                                    <div  style = "margin: 0; color:#008B8B;">
-                                    
-                                    <?php
-                                    
-                                        echo "ENTRADA";
-                                    }
-
-                                    ?>
-                                    </div>
-                                </td>
-                                
-                                
-                                
-                                <td><?php echo $data['observacion_asis'] ?></td>
-                               
-                                
-                                
-                                
-                                
-                                
-                                
-
+                            
+                                <td><?php echo $data['usuario_id'] ?></td>
+                                <td><?php echo $data['fecha_registro'] ?></td>
+                                <td><?php echo $data['turno'] ?></td>
+                                <td><?php echo $data['ingreso'] ?></td>
+                                <td><?php echo $data['salida'] ?></td>
+                                <td><?php echo $data['observacion'] ?></td>
+                            
                                 
                             </tr>
                     <?php
@@ -231,7 +177,7 @@ echo "The current date and time are $DateAndTime.";
                     ?>
 
                     <tr>
-                         <td colspan="4"  ><img style="height: 150px; width:200px; "  src="img/ales.png" ></td>
+                         <td colspan="6"  ><img style="height: 150px; width:200px; "  src="img/ales.png" ></td>
                     </tr>
 
                     
@@ -259,9 +205,9 @@ echo "The current date and time are $DateAndTime.";
                     $html = ob_get_clean();
                     $dompdf = new Dompdf();
                     $dompdf->loadHtml($html, 'UTF-8');
-                    $dompdf->setPaper('A4','portrait');
+                    //$dompdf->setPaper('A4','portrait');
                     //$dompdf->setPaper('letter','portrait');
-                    //$dompdf->setPaper('A4', 'landscape');
+                    $dompdf->setPaper('A4', 'landscape');
                     $canvas = $dompdf->getCanvas(); 
  
 

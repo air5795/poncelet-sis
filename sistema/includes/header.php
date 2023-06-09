@@ -66,7 +66,7 @@ if (empty($_SESSION['active'])) {
                                                 
                                                 ?> </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="asistencia.php"> <i class="fa-solid fa-id-card"></i> Registrar Asistencia</a></li>
+                        <li><a class="dropdown-item" href="sub-asistencias/"> <i class="fa-solid fa-id-card"></i> Registrar Asistencia</a></li>
                         <li><a class="dropdown-item" href="sub-salidas/"> <i class="fa-solid fa-id-card"></i> Registrar Salidas</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="salir.php"><i class="fa-solid fa-circle-xmark"></i> Salir del Sistema</a></li>
@@ -258,8 +258,8 @@ if (empty($_SESSION['active'])) {
 
                                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                     <nav class="sb-sidenav-menu-nested nav">
-                                                        <a class="nav-link" href="registro_exp.php">Registrar Experiencia</a>
-                                                        <a class="nav-link" href="lista_exp.php">Ver Experiencia G.</a>
+                                                        <a class="nav-link" href="sub-exp-comer/">Gestor Exp. General</a>
+                                                        
                                                     </nav>
                                                 </div>
 
@@ -464,7 +464,7 @@ if (empty($_SESSION['active'])) {
                                                                 Ingresos
                                                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                                             </a>
-
+                                                            
                                                             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                                                 <nav class="sb-sidenav-menu-nested nav">
                                                                     <a class="nav-link" href="ingresos_c.php">Gestor Ingresos</a>
