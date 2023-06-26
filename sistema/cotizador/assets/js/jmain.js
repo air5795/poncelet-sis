@@ -3,6 +3,7 @@ $('document').ready(() =>{
 
     
     
+    
 function notify(content,type = 'success') {
         let wrapper = $('.wrapper_notifications'),
         id          = Math.floor((Math.random()*500)+1),

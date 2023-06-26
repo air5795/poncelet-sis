@@ -433,7 +433,7 @@
 
           
             <div class="card">
-              <div style="background-color: #343a40; color:white;" class="card-header">Resumen de Cotizacion <button style="float:right;" class="btn btn-danger btn-sm  restart_quote "> <i class="fa-solid fa-power-off"></i> Reiniciar</button> </div>
+              <div style="background-color: #343a40; color:white;" class="card-header">Resumen de Cotizacion <button  class="btn btn-success btn-sm guardar_quote" style="float:right;">Guardar Cotizacion</button> <button style="float:right;" class="btn btn-danger btn-sm  restart_quote "> <i class="fa-solid fa-power-off"></i> Reiniciar</button> </div>
                 <div class="card-body wrapper_quote" style="padding: 7px;">
                   
                 </div>

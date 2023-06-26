@@ -61,7 +61,7 @@ if (!empty($_GET['update_id']) && $_GET['update_id']) {
 							<tr>
 								<td><input class="itemRow" type="checkbox"></td>
 								<td><input type="text" value="<?php echo $invoiceItem["codigo_item"]; ?>" name="productCode[]" id="productCode_<?php echo $count; ?>" class="form-control" autocomplete="off"></td>
-								<td><input type="text" value="<?php echo $invoiceItem["nombre_item"]; ?>" name="productName[]" id="productName_<?php echo $count; ?>" class="form-control" autocomplete="off"></td>
+								<td><input type="text" value="<?php echo $invoiceItem["nombre_item"]; ?>" name="productName[]" id="productName_<?php echo $count; ?>" class="form-control price" autocomplete="off"></td>
 								<td><input type="number" value="<?php echo $invoiceItem["cantidad_item"]; ?>" name="quantity[]" id="quantity_<?php echo $count; ?>" class="form-control quantity" autocomplete="off"></td>
 								<td><input type="number" value="<?php echo $invoiceItem["precio_item"]; ?>" name="price[]" id="price_<?php echo $count; ?>" class="form-control price" autocomplete="off"></td>
 								<td><input type="number" value="<?php echo $invoiceItem["subtotal_item"]; ?>" name="total[]" id="total_<?php echo $count; ?>" class="form-control total" autocomplete="off"></td>

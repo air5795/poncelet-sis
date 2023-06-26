@@ -65,13 +65,6 @@
             
         </div>
 
-    
-
-        
-
-        
-        
-        
 
 
         <div class="row">
@@ -93,7 +86,7 @@
                 </div>
 
                 <div class="col-sm-9">
-                <div class="table-responsive" style="font-size: 12px;width:100%;background-color: #fdfde9;padding: 22px;border-radius: 25px;">
+                <div class="table-responsive" style="font-size: 12px;width:100%;background-color: #fdfde9;padding: 22px;border-radius: 25px;border: 1px solid #d5d5d5;   ">
                 <p></p>
                 <h3><i class="bi bi-calendar"></i> Tus Registros de Hoy </h3>
                     <table id="datos_usuario" class="table table-hover table-striped table-bordered" style="width:100%; text-align:center" >
@@ -454,6 +447,7 @@
 
             });
         </script>
+
 
     <script type="text/javascript">
         $(document).ready(function(){

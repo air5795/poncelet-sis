@@ -5,7 +5,7 @@
                     </div>
 <?php else: ?>
 
-    <form action="templates/views/crear.php" id="mandar">
+    <form id="mandar">
 
     
     
@@ -22,6 +22,7 @@
                                 <th>Subtotal Venta</th>
                                 <th>Precio Compra </th>
                                 <th>Subtotal Compra</th>
+                                
                             </tr>
                         </thead>
                         <tbody style="font-size:12px ;" >

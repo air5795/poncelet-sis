@@ -1,17 +1,17 @@
 <?php
 session_start();
+date_default_timezone_set('America/La_Paz');
 
 
 include("conexion.php");
 include("funciones.php");
 
     $usuario = $_SESSION['user'];
+    setlocale(LC_TIME, "spanish");
     $fecha = date("Y-m-d");
     // Consulta SQL para obtener los datos del usuario
     $query = "SELECT * FROM asis WHERE usuario_id = :usuario and fecha_registro = :fecha ";
 
-
- 
      if (isset($_POST["order"])) {
          $query .= 'ORDER BY' . $_POST['order']['0']['column'] .' '.$_POST["order"][0]['dir'] . '';        
      }else{
@@ -98,11 +98,11 @@ include("funciones.php");
             $turno = '<span style="font-size:12px;background-color:#c6d1f7;text-align: left; color:#5a5a5a;" class="btn  btn-sm w-100"><i class="bi bi-cloud-moon"></i> Tarde  </span>'.'<br/>';
         }
 
-
         $sub_array = array();
         $sub_array[] = '<button type="button" name="salida" id="'.$fila["id_asistencia"].'" class="btn btn-danger btn-sm boton-w salida"> Salida </button>';
         $sub_array[] = '<button type="button" name="editar" id="'.$fila["id_asistencia"].'" class="btn btn-warning btn-sm boton-w  editar" style="background-color: #fbe806;color: #505050; color:#767676;"><i class="fa-solid fa-pencil"></i>  </button>';
         $sub_array[] = $encargado1.$encargado2.$encargado3.$encargado4.$encargado5;
+
         
         $sub_array[] = $ingreso;
         $sub_array[] = $salida;

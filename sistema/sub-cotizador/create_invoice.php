@@ -31,18 +31,18 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 				<div class="col-md-12 row">
 					<h3>Clientes</h3>
 					<div class="form-group col-md-4">
-					<select style="width: 100%;font-size:12px ;" name="nombre" id="nombre" class="form-control  js-example-basic-single " required >
-                                        <option value="" >Seleccione una opción : </option>
-											<?php
-												$query = mysqli_query($conexion, "SELECT * from cliente ORDER BY NOMBRE ASC;");
-												$result = mysqli_num_rows($query);
-												if ($result > 0) {
-												while ($data = mysqli_fetch_array($query)) {
-													echo '<option value="'.$data['nombre'].'">'.$data['nombre'].'</option>';
-													$nombre = $data['nombre'];
-												}}
-											?>
-                                    	</select>
+						<select style="width: 100%;font-size:12px ;" name="nombre" id="nombre" class="form-control  js-example-basic-single "  required onchange="fetchClienteData()" required >
+                        <option value="" >Seleccione una opción : </option>
+							<?php
+								$query = mysqli_query($conexion, "SELECT * from cliente ORDER BY NOMBRE ASC;");
+								$result = mysqli_num_rows($query);
+								if ($result > 0) {
+								while ($data = mysqli_fetch_array($query)) {
+									echo '<option value="'.$data['nombre'].'">'.$data['nombre'].'</option>';
+									$nombre = $data['nombre'];
+								}}
+							?>
+                        </select>
 					</div>
 					<div class="form-group col-md-4">
 						<input type="text" class="form-control form-control-sm" name="companyName" id="companyName" placeholder="Nombre Cliente" autocomplete="off">
@@ -71,7 +71,22 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 						
 							<td><input class="itemRow" type="checkbox"></td>
 							<td><input class="form-control form-control-sm" type="text" name="productCode[]" id="productCode_1" class="form-control" autocomplete="off"></td>
-							<td><input class="form-control form-control-sm" type="text" name="productName[]" id="productName_1" class="form-control" autocomplete="off"></td>
+
+							<!-- <td><input class="form-control form-control-sm" type="text" name="productName[]" id="productName_1" class="form-control" autocomplete="off"></td> -->
+							<td>
+								<select  class="form-control  js-example-basic-single2 " name="productName[]" id="productName_1" onchange="getProductPrice(1)">
+									<option value="">Seleccione un producto</option>
+									<?php
+									$query = mysqli_query($conexion, "SELECT * FROM productos ORDER BY p_descripcion ASC");
+									while ($data = mysqli_fetch_array($query)) {
+										echo '<option value="'.$data['p_descripcion'].'" data-price="'.$data['p_precioc'].'">'.$data['p_descripcion'].'</option>';
+									}
+									?>
+								</select>
+							</td>
+
+
+
 							<td><input class="form-control form-control-sm" type="number" name="quantity[]" id="quantity_1" class="form-control quantity" autocomplete="off"></td>
 							<td><input class="form-control form-control-sm" type="number" name="price[]" id="price_1" class="form-control price" autocomplete="off"></td>
 							<td><input class="form-control form-control-sm" type="number" name="total[]" id="total_1" class="form-control total" autocomplete="off"></td> 
@@ -147,3 +162,43 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 </div>
 </div>
 <?php include('inc/footer.php'); ?>
+
+<script>
+  function fetchClienteData() {
+    var selectedCliente = document.getElementById("nombre").value;
+
+    // Realizar una solicitud AJAX al servidor
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "get_cliente_data.php?cliente=" + encodeURIComponent(selectedCliente), true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        var clienteData = JSON.parse(xhr.responseText);
+        if (clienteData) {
+          // Rellenar los campos de nombre y nit con los datos del cliente
+          document.getElementById("companyName").value = clienteData.nombre;
+          document.getElementById("address").value = clienteData.nit;
+        } else {
+          // Limpiar los campos si no se encuentra ningún dato para el cliente seleccionado
+          document.getElementById("companyName").value = "";
+          document.getElementById("address").value = "";
+        }
+      }
+    };
+    xhr.send();
+  }
+</script>
+
+<script>
+  function getProductPrice(rowId) {
+    var select = document.getElementById("productName_" + rowId);
+    var selectedOption = select.options[select.selectedIndex];
+    var priceInput = document.getElementById("price_" + rowId);
+
+    if (selectedOption.value !== "") {
+      var price = selectedOption.getAttribute("data-price");
+      priceInput.value = price;
+    } else {
+      priceInput.value = "";
+    }
+  }
+</script>

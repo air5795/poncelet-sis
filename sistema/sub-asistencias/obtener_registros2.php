@@ -1,13 +1,14 @@
 <?php
 
 session_start();
+date_default_timezone_set('America/La_Paz');
 
 include("conexion.php");
 include("funciones.php");
 
 $query = "";
 $salida = array();
-$query = "SELECT * from asis ";
+$query = "SELECT * from asis  ";
 
 if (isset($_POST["search"]["value"])) {
    $query .= 'WHERE observacion LIKE "%' . $_POST["search"]["value"] . '%" ';
@@ -16,7 +17,7 @@ if (isset($_POST["search"]["value"])) {
 if (isset($_POST["order"])) {
     $query .= 'ORDER BY' . $_POST['order']['0']['column'] .' '.$_POST["order"][0]['dir'] . '';        
 }else{
-    $query .= 'ORDER BY id_asistencia DESC ';
+    $query .= 'ORDER BY fecha_registro DESC  ';
 }
 
 if($_POST["length"] != -1){
@@ -91,13 +92,13 @@ $filtered_rows = $stmt->rowCount();
 
         
         
-                // turno
+        // turno
         
-                if ($fila['turno'] == 'dia') {
-                    $turno = '<span style="font-size:12px;background-color:#ffffc2;text-align: left; color:#5a5a5a;" class="btn  btn-sm w-100"><i class="bi bi-sun"></i> Mañana  </span>'.'<br/>';
-                } else {
-                    $turno = '<span style="font-size:12px;background-color:#c6d1f7;text-align: left; color:#5a5a5a;" class="btn  btn-sm w-100"><i class="bi bi-cloud-moon"></i> Tarde  </span>'.'<br/>';
-                }
+        if ($fila['turno'] == 'dia') {
+            $turno = '<span style="font-size:12px;background-color:#ffffc2;text-align: left; color:#5a5a5a;" class="btn  btn-sm w-100"><i class="bi bi-sun"></i> Mañana  </span>'.'<br/>';
+        } else {
+            $turno = '<span style="font-size:12px;background-color:#c6d1f7;text-align: left; color:#5a5a5a;" class="btn  btn-sm w-100"><i class="bi bi-cloud-moon"></i> Tarde  </span>'.'<br/>';
+        }
         
 
 
@@ -140,7 +141,7 @@ $filtered_rows = $stmt->rowCount();
             $color2 = ($total_minutos >= 225) ? 'green' : 'red';
 
             // Generar el código HTML de la barra de progreso
-            $barra_progreso = '<div class="progress" style="background-color: #f1f1f1; border:1px solid ' . $color2 . '">';
+            $barra_progreso = '<div class="progress" style="background-color: #f1f1; border:1px solid ' . $color2 . '">';
             $barra_progreso .= '<div class="progress-bar" role="progressbar" style="width: ' . $porcentaje . '%; background-color: ' . $color . ';" aria-valuenow="' . $porcentaje . '" aria-valuemin="0" aria-valuemax="100"></div>';
             $barra_progreso .= '</div>';
 

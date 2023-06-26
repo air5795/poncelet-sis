@@ -2,8 +2,8 @@
 include('inc/header.php');
 include 'Invoice.php';
 $invoice = new Invoice();
-
 ?>
+
 <title>sis-poncelet</title>
 <script src="js/invoice.js"></script>
 <link href="css/style.css" rel="stylesheet">
@@ -23,24 +23,60 @@ $invoice = new Invoice();
         <th>Eliminar</th>
       </tr>
     </thead>
-    <?php
-    $invoiceList = $invoice->getInvoiceList();
-    foreach ($invoiceList as $invoiceDetails) {
-      $invoiceDate = date("d/M/Y, H:i:s", strtotime($invoiceDetails["fecha_cotizacion"]));
-      echo '
-              <tr>
-                <td>' . $invoiceDetails["id_cotizacion"] . '</td>
-                <td>' . $invoiceDate . '</td>
-                <td>' . $invoiceDetails["cliente_nombre"] . '</td>
-                <td>' . $invoiceDetails["total_despues_impuestos"] .' Bs'. '</td>
-                <td><a class="btn btn-outline-danger" href="print_invoice.php?invoice_id=' . $invoiceDetails["id_cotizacion"] . '" title="Imprimir Factura"><span <i class="bi bi-printer-fill"></i></a></td>
-                <td><a class="btn btn-warning" href="edit_invoice.php?update_id=' . $invoiceDetails["id_cotizacion"] . '"  title="Editar Factura"><i class="bi bi-pencil-square"></i></a></td>
-                <td><a class="btn btn-danger" href="#" id="' . $invoiceDetails["id_cotizacion"] . '" class="deleteInvoice"  title="Eliminar Factura"><i class="bi bi-trash-fill"></i></a></td>
-              </tr>
-            ';
-    }
-    ?>
   </table>
 </div>
+
+<script>
+$(document).ready(function() {
+  $('#data-table').DataTable({
+    processing: true,
+    serverSide: true,
+    ajax: {
+      url: 'invoice_action.php',
+      type: 'POST',
+      data: { action: 'loadInvoiceData' }
+    },
+    columns: [
+      { data: 'id_cotizacion', title: '# Cotización' },
+      { data: 'fecha_cotizacion', title: 'Fecha Creación' },
+      { data: 'cliente_nombre', title: 'Nombre del Cliente' },
+      { data: 'total_despues_impuestos', title: 'Total (Monto)' },
+      { data: 'print_link', title: 'Imprimir' },
+      { data: 'edit_link', title: 'Editar' },
+      { data: 'delete_link', title: 'Eliminar' }
+    ],
+    language: {
+      "sProcessing": "Procesando...",
+      "sLengthMenu": "Mostrar _MENU_ registros",
+      "sZeroRecords": "No se encontraron resultados",
+      "sEmptyTable": "Ningún dato disponible en esta tabla",
+      "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+      "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+      "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+      "sInfoPostFix": "",
+      "sSearch": "Buscar:",
+      "sUrl": "",
+      "sInfoThousands": ",",
+      "sLoadingRecords": "Cargando...",
+      "oPaginate": {
+        "sFirst": "Primero",
+        "sLast": "Último",
+        "sNext": "Siguiente",
+        "sPrevious": "Anterior"
+      },
+      "oAria": {
+        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+      },
+      "buttons": {
+        "copy": "Copiar",
+        "colvis": "Visibilidad"
+      }
+    },
+    pageLength: 10
+  });
+});
+
+</script>
+
 <?php include('inc/footer.php'); ?>
- 

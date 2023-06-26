@@ -97,3 +97,10 @@ FROM
     exp_general
 WHERE
     fecha_ejecucion BETWEEN '2019-01-01' AND '2019-12-31';
+
+    // calcular por dia lo trabajado 
+
+SELECT usuario_id, fecha_registro, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(salida, ingreso)))) AS tiempo_trabajado
+FROM asis
+WHERE usuario_id = 'admin' and fecha_registro = '2023-06-14'
+GROUP BY usuario_id, fecha_registro;

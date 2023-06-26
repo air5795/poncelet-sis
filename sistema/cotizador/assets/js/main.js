@@ -126,6 +126,8 @@ function add_to_quote(e){
   }
 
 
+
+
 // Funcion para reiniciar la cotizacin
 $('.restart_quote').on('click', restart_quote);
 function restart_quote(e) {
@@ -160,6 +162,7 @@ function restart_quote(e) {
   }).always(() => {
 
   });
+
 }
 
 // Función para borrar un concepto
@@ -303,9 +306,23 @@ function save_concept(e) {
 
 
 
-
-
-
+$("#g").on("click", function() {
+  // Realizar la solicitud AJAX al archivo que guarda la cotización
+  $.ajax({
+    url: "guardar_cotizacion.php", // Ruta al archivo PHP que procesará la solicitud
+    type: "POST",
+    dataType: "json",
+    data: { cotizacion: json_encode($d) }, // Enviar la cotización como datos POST
+    success: function(response) {
+      // Manejar la respuesta del servidor si es necesario
+      console.log(response);
+    },
+    error: function(xhr, status, error) {
+      // Manejar los errores de la solicitud AJAX si es necesario
+      console.error(xhr.responseText);
+    }
+  });
+});
 
 
 
