@@ -35,6 +35,20 @@ class Invoice
         return $data;
     }
 
+	public function getInvoiceList($limit, $offset, $searchValue = '')
+    {
+        $searchQuery = '';
+        if ($searchValue != '') {
+            $searchQuery = " WHERE cliente_nombre LIKE '%" . $searchValue . "%'";
+        }
+
+        $sqlQuery = "SELECT * FROM $this->invoiceOrderTable" . $searchQuery . " LIMIT $limit OFFSET $offset";
+        return $this->getData($sqlQuery);
+    }
+	
+
+
+
     private function getNumRows($sqlQuery)
     {
         $result = mysqli_query($this->dbConnect, $sqlQuery);
@@ -54,13 +68,7 @@ class Invoice
         return $totalRecords;
     }
 
-    public function getInvoiceList()
-    {
-        $totalRecords = $this->getTotalRecords();
-        $sqlQuery = "SELECT * FROM $this->invoiceOrderTable";
-        $data = $this->getData($sqlQuery);
-        return array('total_records' => $totalRecords, 'data' => $data);
-    }
+    
 
     public function loadItemsList()
     {

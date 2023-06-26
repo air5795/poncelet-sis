@@ -29,7 +29,10 @@ $invoice = new Invoice();
 <script>
 $(document).ready(function() {
   $('#data-table').DataTable({
+    lengthMenu: [5, 25, 50], // Opciones de selección de filas por página
+    pageLength: 5, // Cambiar el número según tus necesidades
     processing: true,
+    searching: true,
     serverSide: true,
     ajax: {
       url: 'invoice_action.php',
@@ -39,7 +42,7 @@ $(document).ready(function() {
     columns: [
       { data: 'id_cotizacion', title: '# Cotización' },
       { data: 'fecha_cotizacion', title: 'Fecha Creación' },
-      { data: 'cliente_nombre', title: 'Nombre del Cliente' },
+      { data: 'cliente_nombre', title: 'Nombre del Cliente', searchable: true },
       { data: 'total_despues_impuestos', title: 'Total (Monto)' },
       { data: 'print_link', title: 'Imprimir' },
       { data: 'edit_link', title: 'Editar' },
@@ -72,9 +75,10 @@ $(document).ready(function() {
         "copy": "Copiar",
         "colvis": "Visibilidad"
       }
-    },
-    pageLength: 10
+    }
   });
+
+  
 });
 
 </script>
