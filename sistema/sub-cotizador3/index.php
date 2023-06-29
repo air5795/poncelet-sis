@@ -53,7 +53,7 @@
         <div class="container-fluid fondo">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2><i class="bi bi-receipt"></i> LISTA DE COTIZACIONES</h2>
+                    <h2><i class="bi bi-receipt"></i> Lista de Cotizaciones</h2>
                         
                     
                 </div>
@@ -63,9 +63,7 @@
                 </div>
 
                 <div class="col-sm-2">
-                        <button type="button" class="btn btn-outline-secondary boton w-100" >
-                        <i class="bi bi-file-earmark-plus"></i> Nueva Cotizacion
-                        </button>
+                  <a class="btn btn-primary" href="create_invoice.php"><i class="bi bi-file-earmark-plus"></i> Crear Nueva Cotizacion</a>
 
                 </div>
                 
@@ -119,8 +117,8 @@
         <script>
 $(document).ready(function() {
   $('#data-table').DataTable({
-    lengthMenu: [5, 25, 50], // Opciones de selección de filas por página
-    pageLength: 5, // Cambiar el número según tus necesidades
+    lengthMenu: [15, 25, 50], // Opciones de selección de filas por página
+    pageLength: 15, // Cambiar el número según tus necesidades
     processing: true,
     searching: true,
     serverSide: true,

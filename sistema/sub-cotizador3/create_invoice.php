@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+include "../../conexion.php";
 
 include('inc/header.php');
 include 'Invoice.php';
@@ -12,28 +13,83 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 	header("Location:index.php");
 }
 ?>
-<title>Sis-poncelet</title>
-<script src="js/invoice.js"></script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        
+        <link rel="stylesheet" href="css/estilos3.css">
+        <link rel="stylesheet" href="css/estilos2.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+        <link rel="shortcut icon" href="img/ICONOGRANDE2.png">
+        <title>sis-poncelet</title>
+        <script src="js/invoice.js"></script>
+        <link href="css/style.css" rel="stylesheet">
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>SIS-PONCELET</title>
+        
+    </head>
+	<body class="sb-nav-fixed">
 
 <?php include "../menu.php"?>
 
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid ">
+                    <div class="container-fluid  ">
+                    
+                     
+                        <br>
+                        
+<!-- contenido del sistema 2--> 
+
+<!-- Contenedor tabla--> 
+
+<div class="container-fluid  fondo ">    
+        <div class="container-fluid fondo">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2><i class="bi bi-file-earmark-plus"></i> NUEVA COTIZACION</h2>
+                        
+                    
+                </div>
+
+                <div class="col-sm-4">
+
+                </div>
+
+                <div class="col-sm-2">
+                        <a class="btn btn-primary" href="index.php"><i class="bi bi-list-check"></i> Lista de Cotizaciones</a>
+
+                </div>
+                
+<p></p>
+                <hr>
 
 
-<div class="container ">
+
+
 	<form action="" id="invoice-form" method="post" class="invoice-form" role="form" novalidate="">
 		<div class="load-animate animated fadeInUp">
 			<div class="row">
 				<div class="container">
 					
-					<?php include('menu.php'); ?>
+					
 				</div>
 			</div>
 			<input id="currency" type="hidden" value="$">
 			<div class="row">
 				
-				<div class="col-md-12 row">
-					<h3>Clientes</h3>
+				<div class="col-md-12 row" >
+					<h3><i class="bi bi-person-circle"></i> Clientes</h3>
 					<div class="form-group col-md-4">
 						<select style="width: 100%;font-size:12px ;" name="nombre" id="nombre" class="form-control  js-example-basic-single "  required onchange="fetchClienteData()" required >
                         <option value="" >Seleccione una opción : </option>
@@ -67,8 +123,8 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 							<th width="15%">No Ítem</th>
 							<th width="38%">Nombre Ítem</th>
 							<th width="15%">Cantidad</th>
-							<th width="15%">Precio</th>
-							<th width="15%">Total</th>
+							<th width="15%">Precio Venta</th>
+							<th width="15%">SubTotal Venta</th>
 						</tr>
 						
 						<tr>
@@ -83,7 +139,7 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 									<?php
 									$query = mysqli_query($conexion, "SELECT * FROM productos ORDER BY p_descripcion ASC");
 									while ($data = mysqli_fetch_array($query)) {
-										echo '<option value="'.$data['p_descripcion'].'" data-price="'.$data['p_precioc'].'">'.$data['p_descripcion'].'</option>';
+										echo '<option value="'.$data['p_descripcion'].'" data-price="'.$data['p_preciov'].'">'.$data['p_descripcion'].'</option>';
 									}
 									?>
 								</select>
@@ -127,7 +183,7 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 				<div class="col-md-8 row">
 
 						<div class="col-md-3">
-							<label for="">Sub TOTAL</label>
+							<label for="">TOTAL Venta</label>
 							<input value="" type="number" class="form-control" name="subTotal" id="subTotal" placeholder="Subtotal">
 						</div>
 
@@ -163,7 +219,6 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 			<div class="clearfix"></div>
 		</div>
 	</form>
-</div>
 
 
 

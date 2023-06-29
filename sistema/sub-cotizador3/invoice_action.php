@@ -54,6 +54,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 
 
 
+  
   include 'conexion.php';
   include 'invoice.php';
   
@@ -75,10 +76,10 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 			  case 'loadInvoiceData':
 				  $start = $_POST['start'];
 				  $length = $_POST['length'];
-				  $searchValue = $_POST['search']['value']; // Valor ingresado en el buscador
+				  $searchValue = $_POST['search']['value'];
   
-				  $invoiceData = $invoice->getInvoiceList($length, $start, $searchValue); // Pasa el valor del buscador a la función getInvoiceList()
-				  $totalRecords = $invoice->getTotalRecords($searchValue); // Pasa el valor del buscador a la función getTotalRecords()
+				  $invoiceData = $invoice->getInvoiceList($length, $start, $searchValue);
+				  $totalRecords = $invoice->getTotalRecords($searchValue);
   
 				  $data = array();
 				  foreach ($invoiceData as $invoiceDetails) {
@@ -98,6 +99,11 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 					  );
 				  }
   
+				  // Ordenar los datos por la columna 'id_cotizacion' en orden descendente
+				  usort($data, function ($a, $b) {
+					  return $b['id_cotizacion'] - $a['id_cotizacion'];
+				  });
+  
 				  $response = array(
 					  'draw' => intval($_POST['draw']),
 					  'recordsTotal' => intval($totalRecords),
@@ -111,5 +117,6 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 	  }
   }
   ?>
+  
   
   
