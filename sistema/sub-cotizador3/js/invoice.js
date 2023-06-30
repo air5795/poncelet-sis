@@ -160,7 +160,6 @@ $(document).ready(function() {
 		
 		//htmlRows += '<td><select name="productName[]" id="productName_' + count + '" class="form-control productSelect" onchange="getProductPrice(' + count + ')"><option value="">Seleccione un producto</option></select></td>';
 		htmlRows += '<td><input type="text" name="productName[]" id="productName_' + count + '" class="form-control form-control-sm" autocomplete="off"></td>';
-
 		htmlRows += '<td><input type="number" name="quantity[]" id="quantity_' + count + '" class="form-control form-control-sm quantity" autocomplete="off"></td>';
 		htmlRows += '<td><input type="number" name="price[]" id="price_' + count + '" class="form-control form-control-sm price" autocomplete="off"></td>';
 		htmlRows += '<td><input type="number" name="total[]" id="total_' + count + '" class="form-control form-control-sm total" autocomplete="off"></td>';
