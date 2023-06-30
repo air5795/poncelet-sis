@@ -112,19 +112,32 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 						<input class="form-control form-control-sm" type="text" name="address" id="address" placeholder="Dirección">
 					</div>
 
+					<p></p>
+		
+					<div class="form-group col-md-4">
+						<input class="form-control form-control-sm" type="text" name="tiempo_garantia" id="tiempo_garantia" placeholder="Tiempo de Garantia">
+					</div>
+					<div class="form-group col-md-4">
+						<input class="form-control form-control-sm" type="text" name="validez_cotizacion" id="validez_cotizacion" placeholder="Validez de Cotizacion">
+					</div>
+					<div class="form-group col-md-4">
+						<input class="form-control form-control-sm" type="text" name="tiempo_entrega" id="tiempo_entrega" placeholder="Tiempo de Entrega">
+					</div>
+
 				</div>
 			</div>
 			<hr>
 			<div class="row">
+			<h3><i class="bi bi-box-seam"></i></i> Productos</h3>
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<table class="table table-bordered table-hover" id="invoiceItem">
+					<table class="table table-hover table-striped table-bordered responsive" style="width:100%; text-align:center;" id="invoiceItem">
 						<tr>
 							<th width="2%"><input id="checkAll" class="formcontrol" type="checkbox"></th>
-							<th width="15%">No Ítem</th>
+							<th width="5%">COD </th>
 							<th width="38%">Nombre Ítem</th>
 							<th width="15%">Cantidad</th>
-							<th width="15%">Precio Venta</th>
-							<th width="15%">SubTotal Venta</th>
+							<th width="15%" style="background-color: #f2ffde;">Precio Venta</th>
+							<th width="15%" style="background-color: #f2ffde;">SubTotal Venta</th>
 						</tr>
 						
 						<tr>
@@ -160,8 +173,9 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 
 			<div class="row">
 				<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-					<button class="btn btn-danger delete" id="removeRows" type="button">- Eliminar</button>
-					<button class="btn btn-success" id="addRows" type="button" onclick="addRow()">+ Agregar Más</button>
+					<button class="btn btn-danger btn-sm delete" id="removeRows" type="button"><i class="bi bi-dash-lg"></i></button>
+					<button class="btn btn-success btn-sm" id="addRows" type="button" onclick="addRow()"><i class="bi bi-plus-lg"></i></button>
+					<button class="btn btn-success btn-sm" id="addtext" type="button" onclick="addtext()"><i class="bi bi-pencil"></i></button>
 					
 				</div>
 			</div>
@@ -176,40 +190,75 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 					<br>
 					<div class="form-group">
 						<input type="hidden" value="" class="form-control" name="userId">
-						<input data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="Guardar " class="btn btn-success submit_btn invoice-save-btm">
-					</div>
+						<button data-loading-text="Guardando factura..." type="submit" name="invoice_btn" class="btn btn-success submit_btn invoice-save-btm">
+							<i class="fas fa-save"></i> Guardar Cotizacion
+						</button>
+						</div>
+
+
 
 				</div>
 				<div class="col-md-8 row">
 
 						<div class="col-md-3">
-							<label for="">TOTAL Venta</label>
-							<input value="" type="number" class="form-control" name="subTotal" id="subTotal" placeholder="Subtotal">
+							<label for="">TOTAL VENTA</label>
+							<input style="background-color: #f2ffde;" value="" type="number" class="form-control form-control-sm" name="subTotal" id="subTotal" placeholder="Subtotal venta">
+						</div>
+
+						<div class="col-md-3">
+							<label for="">TOTAL COMPRA</label>
+							<input style="background-color: #defff7;" value="" type="number" class="form-control form-control-sm" name="subtotal_c" id="subtotal_c" placeholder="Subtotal compra">
 						</div>
 
 						<div class="col-md-3">
 							<label for="">% IMPUESTOS</label>
-							<input value="" type="number" class="form-control" name="taxRate" id="taxRate" placeholder="Porcentaje Impuestos">
+							<input value="" type="number" class="form-control form-control-sm" name="taxRate" id="taxRate" placeholder="Porcentaje Impuestos">
 						</div>
 
 						<div class="col-md-3">
 							<label for="">Monto IMPUESTOS</label>
-							<input value="" type="number" class="form-control" name="taxAmount" id="taxAmount" placeholder="Monto impuestos">
+							<input value="" type="number" class="form-control form-control-sm" name="taxAmount" id="taxAmount" placeholder="Monto impuestos">
 						</div>
+
+						<div class="col-md-3">
+							<label for="">Monto TRANSPORTE</label>
+							<input value="" type="number" class="form-control form-control-sm" name="transporte" id="transporte" placeholder="Monto Transporte">
+						</div>
+
+						<div class="col-md-3">
+							<label for="">Total GASTOS</label>
+							<input value="" type="number" class="form-control form-control-sm" name="total_gastos" id="total_gastos" placeholder="Total Gastos">
+						</div>
+
+						<div class="col-md-3">
+							<label for="">Total GANANCIA</label>
+							<input value="" type="number" class="form-control form-control-sm" name="total_ganancia" id="total_ganancia" placeholder="Total Ganancia">
+						</div>
+
+						<div class="col-md-3">
+							<label for="">% GANANCIA</label>
+							<input value="" type="number" class="form-control form-control-sm" name="porcentaje_ganancia" id="porcentaje_ganancia" placeholder="% Ganancia">
+						</div>
+
+						
+
+
+
+						
 					
-						<div class="col-md-3">
-							<label for="">TOTAL</label>
-							<input value="" type="number" class="form-control" name="totalAftertax" id="totalAftertax" placeholder="Total">
+						<div class="col-md-4">
+							<label for="">TOTAL nulo</label>
+							<input value="" type="number" class="form-control form-control-sm" name="totalAftertax" id="totalAftertax" placeholder="Total">
 						</div>
 
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<label for="">Monto Pagado:</label>
-							<input value="" type="number" class="form-control" name="amountPaid" id="amountPaid" placeholder="Monto Pagado">
+							<input value="" type="number" class="form-control form-control-sm" name="amountPaid" id="amountPaid" placeholder="Monto Pagado">
 						</div>
 
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<label for="">cambio:</label>
-							<input value="" type="number" class="form-control" name="amountDue" id="amountDue" placeholder="Cambio">
+							<input value="" type="number" class="form-control form-control-sm" name="amountDue" id="amountDue" placeholder="Cambio">
 						</div>
 
 					
