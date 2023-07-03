@@ -144,6 +144,8 @@ $(document).ready(function() {
 		htmlRows += '<td><input type="number" name="quantity[]" id="quantity_' + count + '" class="form-control form-control-sm quantity" autocomplete="off"></td>';
 		htmlRows += '<td><input type="number" name="price[]" id="price_' + count + '" class="form-control form-control-sm price" autocomplete="off"></td>';
 		htmlRows += '<td><input type="number" name="total[]" id="total_' + count + '" class="form-control form-control-sm total" autocomplete="off"></td>';
+		htmlRows += '<td><input type="number" name="pricec[]" id="pricec_' + count + '" class="form-control form-control-sm pricec" autocomplete="off"></td>';
+		htmlRows += '<td><input type="number" name="totalc[]" id="totalc_' + count + '" class="form-control form-control-sm totalc" autocomplete="off"></td>';
 		htmlRows += '</tr>';
 		$('#invoiceItem').append(htmlRows);
 		
@@ -163,6 +165,8 @@ $(document).ready(function() {
 		htmlRows += '<td><input type="number" name="quantity[]" id="quantity_' + count + '" class="form-control form-control-sm quantity" autocomplete="off"></td>';
 		htmlRows += '<td><input type="number" name="price[]" id="price_' + count + '" class="form-control form-control-sm price" autocomplete="off"></td>';
 		htmlRows += '<td><input type="number" name="total[]" id="total_' + count + '" class="form-control form-control-sm total" autocomplete="off"></td>';
+		htmlRows += '<td><input type="number" name="pricec[]" id="pricec_' + count + '" class="form-control form-control-sm pricec" autocomplete="off"></td>';
+		htmlRows += '<td><input type="number" name="totalc[]" id="totalc_' + count + '" class="form-control form-control-sm totalc" autocomplete="off"></td>';
 		htmlRows += '</tr>';
 		$('#invoiceItem').append(htmlRows);
 		
@@ -214,6 +218,7 @@ $(document).ready(function() {
 $(document).on('change', '#productName_' + id, function() {
 	var selectedOption = $(this).find('option:selected');
 	var priceInput = $('#price_' + id);
+	var pricecInput = $('#pricec_' + id);
 	if (selectedOption.val() !== "") {
 	  var productDescription = selectedOption.val();
 	  $.ajax({
@@ -222,15 +227,24 @@ $(document).on('change', '#productName_' + id, function() {
 		data: { action: 'loadItems', p_descripcion: productDescription }, // Cambio aquí: enviar p_descripcion en lugar de id_producto
 		dataType: 'json',
 		success: function(response) {
-		  if (response.p_precioc) {
-			priceInput.val(response.p_precioc);
+		  if (response.p_preciov) {
+			priceInput.val(response.p_preciov);
 		  } else {
 			priceInput.val("");
 		  }
+
+		  if (response.p_precioc) {
+			pricecInput.val(response.p_precioc);
+		  } else {
+			pricecInput.val("");
+		  }
+
+		  
 		}
 	  });
 	} else {
 	  priceInput.val("");
+	  pricecInput.val("");
 	}
   });
   

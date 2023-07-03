@@ -134,10 +134,12 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 						<tr>
 							<th width="2%"><input id="checkAll" class="formcontrol" type="checkbox"></th>
 							<th width="5%">COD </th>
-							<th width="38%">Nombre Ítem</th>
-							<th width="15%">Cantidad</th>
-							<th width="15%" style="background-color: #f2ffde;">Precio Venta</th>
-							<th width="15%" style="background-color: #f2ffde;">SubTotal Venta</th>
+							<th width="40%">Nombre Ítem</th>
+							<th width="10%">Cantidad</th>
+							<th width="10%" style="background-color: #f2ffde;">Precio Venta</th>
+							<th width="10%" style="background-color: #f2ffde;">SubTotal Venta</th>
+							<th width="10%" style="background-color: #defff7;">Precio Compra</th>
+							<th width="10%" style="background-color: #defff7;">SubTotal Compra</th>
 						</tr>
 						
 						<tr>
@@ -152,7 +154,10 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 									<?php
 									$query = mysqli_query($conexion, "SELECT * FROM productos ORDER BY p_descripcion ASC");
 									while ($data = mysqli_fetch_array($query)) {
-										echo '<option value="'.$data['p_descripcion'].'" data-price="'.$data['p_preciov'].'">'.$data['p_descripcion'].'</option>';
+										echo '<option value="'.$data['p_descripcion'].'" 
+										data-price="'.$data['p_preciov'].'"
+										data-pricec="'.$data['p_precioc'].'"
+										>'.$data['p_descripcion'].'</option>';
 									}
 									?>
 								</select>
@@ -162,8 +167,9 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 
 							<td><input class="form-control form-control-sm" type="number" name="quantity[]" id="quantity_1" class="form-control quantity" autocomplete="off"></td>
 							<td><input class="form-control form-control-sm" type="number" name="price[]" id="price_1" class="form-control price" autocomplete="off"></td>
-							<td><input class="form-control form-control-sm" type="number" name="total[]" id="total_1" class="form-control total" autocomplete="off"></td> 
-							
+							<td><input class="form-control form-control-sm" type="number" name="total[]" id="total_1" class="form-control total" autocomplete="off"></td>
+							<td><input class="form-control form-control-sm" type="number" name="pricec[]" id="pricec_1" class="form-control pricec" autocomplete="off"></td> 
+							<td><input class="form-control form-control-sm" type="number" name="totalc[]" id="totalc_1" class="form-control totalc" autocomplete="off"></td>
 
 						</tr>
 						
@@ -306,12 +312,17 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
     var select = document.getElementById("productName_" + rowId);
     var selectedOption = select.options[select.selectedIndex];
     var priceInput = document.getElementById("price_" + rowId);
+	var pricecInput = document.getElementById("pricec_" + rowId);
 
     if (selectedOption.value !== "") {
       var price = selectedOption.getAttribute("data-price");
+	  var pricec = selectedOption.getAttribute("data-pricec");
+
       priceInput.value = price;
+	  pricecInput.value = pricec;
     } else {
       priceInput.value = "";
+	  pricecInput.value = "";
     }
   }
 </script>

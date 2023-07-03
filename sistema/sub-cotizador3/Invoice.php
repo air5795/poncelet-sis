@@ -95,13 +95,15 @@ class Invoice
             $response = [
                 'id_producto' => $product['id_producto'],
                 'p_descripcion' => $product['p_descripcion'],
-                'p_precioc' => $product['p_precioc']
+                'p_precioc' => $product['p_precioc'],
+                'p_preciov' => $product['p_preciov']
             ];
         } else {
             $response = [
                 'id_producto' => '',
                 'p_descripcion' => '',
-                'p_precioc' => ''
+                'p_precioc' => '',
+                'p_preciov' => '',
             ];
         }
 
