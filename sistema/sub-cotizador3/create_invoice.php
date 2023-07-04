@@ -91,7 +91,7 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 				<div class="col-md-12 row" >
 					<h3><i class="bi bi-person-circle"></i> Clientes</h3>
 					<div class="form-group col-md-4">
-						<select style="width: 100%;font-size:12px ;" name="nombre" id="nombre" class="form-control  js-example-basic-single "  required onchange="fetchClienteData()" required >
+						<select style="width:100%;font-size:12px ;" name="nombre" id="nombre" class="form-control  js-example-basic-single "  required onchange="fetchClienteData()" required >
                         <option value="" >Seleccione una opción : </option>
 							<?php
 								$query = mysqli_query($conexion, "SELECT * from cliente ORDER BY NOMBRE ASC;");
@@ -109,7 +109,7 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 					</div>
 					<br>
 					<div class="form-group col-md-4">
-						<input class="form-control form-control-sm" type="text" name="address" id="address" placeholder="Dirección">
+						<input class="form-control form-control-sm" type="text" name="address" id="address" placeholder="NIT">
 					</div>
 
 					<p></p>
@@ -129,27 +129,30 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 			<hr>
 			<div class="row">
 			<h3><i class="bi bi-box-seam"></i></i> Productos</h3>
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<table class="table table-hover table-striped table-bordered responsive" style="width:100%; text-align:center;" id="invoiceItem">
-						<tr>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered responsive" style="width:100%; text-align:center; " id="invoiceItem">
+						<tr style="font-size: small;">
 							<th width="2%"><input id="checkAll" class="formcontrol" type="checkbox"></th>
 							<th width="5%">COD </th>
-							<th width="40%">Nombre Ítem</th>
-							<th width="10%">Cantidad</th>
-							<th width="10%" style="background-color: #f2ffde;">Precio Venta</th>
-							<th width="10%" style="background-color: #f2ffde;">SubTotal Venta</th>
-							<th width="10%" style="background-color: #defff7;">Precio Compra</th>
-							<th width="10%" style="background-color: #defff7;">SubTotal Compra</th>
+							<th width="30%">Nombre Ítem</th>
+							<th width="8%">Marca</th>
+							<th width="8%">U/M</th>
+							<th width="5%">Cantidad</th>
+							<th width="8%" style="background-color: #f2ffde;">Precio Venta</th>
+							<th width="8%" style="background-color: #f2ffde;">SubTotal Venta</th>
+							<th width="8%" style="background-color: #defff7;">Precio Compra</th>
+							<th width="8%" style="background-color: #defff7;">SubTotal Compra</th>
 						</tr>
 						
 						<tr>
 						
-							<td><input class="itemRow" type="checkbox"></td>
-							<td><input class="form-control form-control-sm" type="text" name="productCode[]" id="productCode_1" class="form-control" autocomplete="off"></td>
+							<td style="padding: 0;"><input class="itemRow" type="checkbox"></td>
+							<td style="padding: 0;"><input class="form-control form-control-sm" type="text" name="productCode[]" id="productCode_1" class="form-control" autocomplete="off"></td>
 
 							<!-- <td><input class="form-control form-control-sm" type="text" name="productName[]" id="productName_1" class="form-control" autocomplete="off"></td> -->
-							<td>
-								<select  class="form-control  js-example-basic-single2 " name="productName[]" id="productName_1" onchange="getProductPrice(1)">
+							
+							<td style="padding: 0;">
+								<select style="width: 800px;"  class="form-control  js-example-basic-single2 " name="productName[]" id="productName_1" onchange="getProductPrice(1)">
 									<option value="">Seleccione un producto</option>
 									<?php
 									$query = mysqli_query($conexion, "SELECT * FROM productos ORDER BY p_descripcion ASC");
@@ -157,6 +160,9 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 										echo '<option value="'.$data['p_descripcion'].'" 
 										data-price="'.$data['p_preciov'].'"
 										data-pricec="'.$data['p_precioc'].'"
+										data-marca="'.$data['p_marca'].'"
+										data-unidad="'.$data['p_unidad'].'"
+										data-id="'.$data['id_producto'].'"
 										>'.$data['p_descripcion'].'</option>';
 									}
 									?>
@@ -164,12 +170,14 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 							</td>
 
 
+							<td style="padding: 0;"><input class="form-control form-control-sm" type="text" name="marca[]" id="marca_1" class="form-control marca" autocomplete="off"></td>
+							<td style="padding: 0;"><input class="form-control form-control-sm" type="text" name="unidad[]" id="unidad_1" class="form-control unidad" autocomplete="off"></td>
 
-							<td><input class="form-control form-control-sm" type="number" name="quantity[]" id="quantity_1" class="form-control quantity" autocomplete="off"></td>
-							<td><input class="form-control form-control-sm" type="number" name="price[]" id="price_1" class="form-control price" autocomplete="off"></td>
-							<td><input class="form-control form-control-sm" type="number" name="total[]" id="total_1" class="form-control total" autocomplete="off"></td>
-							<td><input class="form-control form-control-sm" type="number" name="pricec[]" id="pricec_1" class="form-control pricec" autocomplete="off"></td> 
-							<td><input class="form-control form-control-sm" type="number" name="totalc[]" id="totalc_1" class="form-control totalc" autocomplete="off"></td>
+							<td style="padding: 0;"><input class="form-control form-control-sm" type="number" name="quantity[]" id="quantity_1" class="form-control quantity" autocomplete="off"></td>
+							<td style="padding: 0;"><input class="form-control form-control-sm" type="number" name="price[]" id="price_1" class="form-control price" autocomplete="off"></td>
+							<td style="padding: 0;"><input class="form-control form-control-sm" type="number" name="total[]" id="total_1" class="form-control total" autocomplete="off"></td>
+							<td style="padding: 0;"><input class="form-control form-control-sm" type="number" name="pricec[]" id="pricec_1" class="form-control pricec" autocomplete="off"></td> 
+							<td style="padding: 0;"><input class="form-control form-control-sm" type="number" name="totalc[]" id="totalc_1" class="form-control totalc" autocomplete="off"></td>
 
 						</tr>
 						
@@ -188,7 +196,7 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 
 			<hr>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<h3>Observaciones: </h3>
 					<div class="form-group">
 						<input class="form-control form-control-sm" type="text" name="notes" id="notes" placeholder="Observaciones">
@@ -204,47 +212,82 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 
 
 				</div>
-				<div class="col-md-8 row">
+				<div class="col-md-6 row">
 
-						<div class="col-md-3">
-							<label for="">TOTAL VENTA</label>
-							<input style="background-color: #f2ffde;" value="" type="number" class="form-control form-control-sm" name="subTotal" id="subTotal" placeholder="Subtotal venta">
+
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span  style="width: 50%;" class="input-group-text" id="basic-addon1">Total Venta (Bs)</span>
+								<input style="background-color: #f2ffde;text-align:center;" value="" type="number" class="form-control form-control-sm" name="subTotal" id="subTotal" placeholder="0.00">
+							</div>
 						</div>
 
-						<div class="col-md-3">
-							<label for="">TOTAL COMPRA</label>
-							<input style="background-color: #defff7;" value="" type="number" class="form-control form-control-sm" name="subtotal_c" id="subtotal_c" placeholder="Subtotal compra">
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1">Total Compra (Bs)</span>
+								<input style="background-color: #defff7; text-align:center;" value="" type="number" class="form-control form-control-sm" name="subtotal_c" id="subtotal_c" placeholder="0.00">
+							</div>
 						</div>
 
-						<div class="col-md-3">
-							<label for="">% IMPUESTOS</label>
-							<input value="" type="number" class="form-control form-control-sm" name="taxRate" id="taxRate" placeholder="Porcentaje Impuestos">
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1">% Impuestos</span>
+								<input style="text-align:center;" value="" type="number" class="form-control form-control-sm" name="taxRate" id="taxRate" placeholder="0.00">
+							</div>
 						</div>
 
-						<div class="col-md-3">
-							<label for="">Monto IMPUESTOS</label>
-							<input value="" type="number" class="form-control form-control-sm" name="taxAmount" id="taxAmount" placeholder="Monto impuestos">
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1">Monto Impuestos</span>
+								<input style="text-align:center; width:50%" value="" type="number" class="form-control form-control-sm" name="taxAmount" id="taxAmount" placeholder="0.00">
+							</div>
 						</div>
 
-						<div class="col-md-3">
-							<label for="">Monto TRANSPORTE</label>
-							<input value="" type="number" class="form-control form-control-sm" name="transporte" id="transporte" placeholder="Monto Transporte">
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1"> 
+								<i style="writing-mode: tb;" class="bi bi-truck"></i>  Transporte o Envio </span>
+								<input style="text-align:center; width:50%" value="" type="number" class="form-control form-control-sm" name="transporte" id="transporte" placeholder="0.00">
+							</div>
 						</div>
 
-						<div class="col-md-3">
-							<label for="">Total GASTOS</label>
-							<input value="" type="number" class="form-control form-control-sm" name="total_gastos" id="total_gastos" placeholder="Total Gastos">
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1"> 
+								<i style="writing-mode: tb;" class="bi bi-caret-up-square-fill"></i>  Total Ganancia</span>
+								<input style="text-align:center; width:50%;background-color: #d3ffd8" value="" type="number" class="form-control form-control-sm" name="total_ganancia" id="total_ganancia" placeholder="0.00">
+							</div>
 						</div>
 
-						<div class="col-md-3">
-							<label for="">Total GANANCIA</label>
-							<input value="" type="number" class="form-control form-control-sm" name="total_ganancia" id="total_ganancia" placeholder="Total Ganancia">
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1"> 
+								<i style="writing-mode: tb;" class="bi bi-caret-down-square-fill"></i>  Total Gastos</span>
+								<input style="text-align:center; width:50%;background-color: #ffc3c9" value="" type="number" class="form-control form-control-sm" name="total_gastos" id="total_gastos" placeholder="0.00">
+							</div>
 						</div>
 
-						<div class="col-md-3">
-							<label for="">% GANANCIA</label>
-							<input value="" type="number" class="form-control form-control-sm" name="porcentaje_ganancia" id="porcentaje_ganancia" placeholder="% Ganancia">
+						
+
+						
+						
+						
+
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1"> 
+								<i style="writing-mode: tb;" class="bi bi-percent"></i> de Ganancia</span>
+								<input  style="text-align:center; width:50%;background-color: #d3ffd8;" value="" type="number" class="form-control form-control-sm" name="porcentaje_ganancia" id="porcentaje_ganancia" placeholder="0.00">
+							</div>
 						</div>
+
+						
+
+					
+
+						
+
+				
 
 						
 
@@ -252,19 +295,19 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 
 						
 					
-						<div class="col-md-4">
+						<div class="col-md-4" hidden>
 							<label for="">TOTAL nulo</label>
-							<input value="" type="number" class="form-control form-control-sm" name="totalAftertax" id="totalAftertax" placeholder="Total">
+							<input value="" type="hidden" class="form-control form-control-sm" name="totalAftertax" id="totalAftertax" placeholder="Total">
 						</div>
 
-						<div class="col-md-4">
+						<div class="col-md-4" hidden>
 							<label for="">Monto Pagado:</label>
-							<input value="" type="number" class="form-control form-control-sm" name="amountPaid" id="amountPaid" placeholder="Monto Pagado">
+							<input value="" type="hidden" class="form-control form-control-sm" name="amountPaid" id="amountPaid" placeholder="Monto Pagado">
 						</div>
 
-						<div class="col-md-4">
+						<div class="col-md-4" hidden>
 							<label for="">cambio:</label>
-							<input value="" type="number" class="form-control form-control-sm" name="amountDue" id="amountDue" placeholder="Cambio">
+							<input value="" type="hidden" class="form-control form-control-sm" name="amountDue" id="amountDue" placeholder="Cambio">
 						</div>
 
 					
@@ -313,16 +356,28 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
     var selectedOption = select.options[select.selectedIndex];
     var priceInput = document.getElementById("price_" + rowId);
 	var pricecInput = document.getElementById("pricec_" + rowId);
+	var marcaInput = document.getElementById("marca_" + rowId);
+	var unidadInput = document.getElementById("unidad_" + rowId);
+	var idInput = document.getElementById("productCode_" + rowId);
 
     if (selectedOption.value !== "") {
       var price = selectedOption.getAttribute("data-price");
 	  var pricec = selectedOption.getAttribute("data-pricec");
+	  var marca = selectedOption.getAttribute("data-marca");
+	  var unidad = selectedOption.getAttribute("data-unidad");
+	  var cod = selectedOption.getAttribute("data-id");
 
       priceInput.value = price;
 	  pricecInput.value = pricec;
+	  marcaInput.value = marca;
+	  unidadInput.value = unidad;
+	  idInput.value = cod;
     } else {
       priceInput.value = "";
 	  pricecInput.value = "";
+	  marcaInput.value = "";
+	  unidadInput.value = "";
+	  idInput.value = "";
     }
   }
 </script>

@@ -136,16 +136,17 @@ $(document).ready(function() {
 		count++;
 		var htmlRows = '';
 		htmlRows += '<tr>';
-		htmlRows += '<td><input class="itemRow" type="checkbox"></td>';
-		htmlRows += '<td><input type="text" name="productCode[]" id="productCode_' + count + '" class="form-control form-control-sm" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input class="itemRow" type="checkbox"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="text" name="productCode[]" id="productCode_' + count + '" class="form-control form-control-sm" autocomplete="off"></td>';
 		
-		htmlRows += '<td><select name="productName[]" id="productName_' + count + '" class="form-control form-control-sm productSelect" onchange="getProductPrice(' + count + ')"><option value="">Seleccione un producto</option></select></td>';
-		
-		htmlRows += '<td><input type="number" name="quantity[]" id="quantity_' + count + '" class="form-control form-control-sm quantity" autocomplete="off"></td>';
-		htmlRows += '<td><input type="number" name="price[]" id="price_' + count + '" class="form-control form-control-sm price" autocomplete="off"></td>';
-		htmlRows += '<td><input type="number" name="total[]" id="total_' + count + '" class="form-control form-control-sm total" autocomplete="off"></td>';
-		htmlRows += '<td><input type="number" name="pricec[]" id="pricec_' + count + '" class="form-control form-control-sm pricec" autocomplete="off"></td>';
-		htmlRows += '<td><input type="number" name="totalc[]" id="totalc_' + count + '" class="form-control form-control-sm totalc" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><select name="productName[]" id="productName_' + count + '" class="form-control form-control-sm productSelect" onchange="getProductPrice(' + count + ')"><option value="">Seleccione un producto</option></select></td>';
+		htmlRows += '<td style="padding: 0;"><input type="text" name="marca[]" id="marca_' + count + '" class="form-control form-control-sm marca" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="text" name="unidad[]" id="unidad_' + count + '" class="form-control form-control-sm unidad" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="number" name="quantity[]" id="quantity_' + count + '" class="form-control form-control-sm quantity" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="number" name="price[]" id="price_' + count + '" class="form-control form-control-sm price" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="number" name="total[]" id="total_' + count + '" class="form-control form-control-sm total" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="number" name="pricec[]" id="pricec_' + count + '" class="form-control form-control-sm pricec" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="number" name="totalc[]" id="totalc_' + count + '" class="form-control form-control-sm totalc" autocomplete="off"></td>';
 		htmlRows += '</tr>';
 		$('#invoiceItem').append(htmlRows);
 		
@@ -157,16 +158,19 @@ $(document).ready(function() {
 		count++;
 		var htmlRows = '';
 		htmlRows += '<tr>';
-		htmlRows += '<td><input class="itemRow" type="checkbox"></td>';
-		htmlRows += '<td><input type="text" name="productCode[]" id="productCode_' + count + '" class="form-control form-control-sm" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input class="itemRow" type="checkbox"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="text" name="productCode[]" id="productCode_' + count + '" class="form-control form-control-sm" autocomplete="off"></td>';
 		
 		//htmlRows += '<td><select name="productName[]" id="productName_' + count + '" class="form-control productSelect" onchange="getProductPrice(' + count + ')"><option value="">Seleccione un producto</option></select></td>';
-		htmlRows += '<td><input type="text" name="productName[]" id="productName_' + count + '" class="form-control form-control-sm" autocomplete="off"></td>';
-		htmlRows += '<td><input type="number" name="quantity[]" id="quantity_' + count + '" class="form-control form-control-sm quantity" autocomplete="off"></td>';
-		htmlRows += '<td><input type="number" name="price[]" id="price_' + count + '" class="form-control form-control-sm price" autocomplete="off"></td>';
-		htmlRows += '<td><input type="number" name="total[]" id="total_' + count + '" class="form-control form-control-sm total" autocomplete="off"></td>';
-		htmlRows += '<td><input type="number" name="pricec[]" id="pricec_' + count + '" class="form-control form-control-sm pricec" autocomplete="off"></td>';
-		htmlRows += '<td><input type="number" name="totalc[]" id="totalc_' + count + '" class="form-control form-control-sm totalc" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="text" name="productName[]" id="productName_' + count + '" class="form-control form-control-sm" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="text" name="marca[]" id="marca_' + count + '" class="form-control form-control-sm marca" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="text" name="unidad[]" id="unidad_' + count + '" class="form-control form-control-sm unidad" autocomplete="off"></td>';
+
+		htmlRows += '<td style="padding: 0;"><input type="number" name="quantity[]" id="quantity_' + count + '" class="form-control form-control-sm quantity" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="number" name="price[]" id="price_' + count + '" class="form-control form-control-sm price" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="number" name="total[]" id="total_' + count + '" class="form-control form-control-sm total" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="number" name="pricec[]" id="pricec_' + count + '" class="form-control form-control-sm pricec" autocomplete="off"></td>';
+		htmlRows += '<td style="padding: 0;"><input type="number" name="totalc[]" id="totalc_' + count + '" class="form-control form-control-sm totalc" autocomplete="off"></td>';
 		htmlRows += '</tr>';
 		$('#invoiceItem').append(htmlRows);
 		
@@ -219,6 +223,10 @@ $(document).on('change', '#productName_' + id, function() {
 	var selectedOption = $(this).find('option:selected');
 	var priceInput = $('#price_' + id);
 	var pricecInput = $('#pricec_' + id);
+	var marcaInput = $('#marca_' + id);
+	var unidadInput = $('#unidad_' + id);
+	var idInput = $('#productCode_' + id);
+
 	if (selectedOption.val() !== "") {
 	  var productDescription = selectedOption.val();
 	  $.ajax({
@@ -239,12 +247,34 @@ $(document).on('change', '#productName_' + id, function() {
 			pricecInput.val("");
 		  }
 
+		  if (response.p_marca) {
+			marcaInput.val(response.p_marca);
+		  } else {
+			marcaInput.val("");
+		  }
+
+		  if (response.p_unidad) {
+			unidadInput.val(response.p_unidad);
+		  } else {
+			unidadInput.val("");
+		  }
+
+		  if (response.id_producto) {
+			idInput.val(response.id_producto);
+		  } else {
+			idInput.val("");
+		  }
+
 		  
 		}
 	  });
 	} else {
-	  priceInput.val("");
-	  pricecInput.val("");
+			  priceInput.val("");
+			  pricecInput.val("");
+	  marcaInput.val("");
+	  unidadInput.val("");
+	  idInput.val("");
+
 	}
   });
   
@@ -268,6 +298,11 @@ $(document).on('change', '#productName_' + id, function() {
 	$(document).on('blur', "[id^=price_]", function() {
 	  calculateTotal();
 	});
+
+	$(document).on('blur', "[id^=pricec_]", function() {
+		calculateTotal();
+	  });
+
   
 	$(document).on('blur', "#taxRate", function() {
 	  calculateTotal();
@@ -276,6 +311,8 @@ $(document).on('change', '#productName_' + id, function() {
 	$(document).on('blur', "#transporte", function() {
 		calculateTotal();
 	  });
+
+	  
   
 	$(document).on('blur', "#amountPaid", function() {
 	  var amountPaid = $(this).val();
@@ -311,6 +348,7 @@ $(document).on('change', '#productName_' + id, function() {
 function calculateTotal() {
   // Variable para almacenar la suma total de los elementos calculados
   var totalAmount = 0;
+  var totalAmount2 = 0;
 
   // Seleccionar todos los elementos cuyo atributo 'id' comienza con 'price_'
   $("[id^='price_']").each(function() {
@@ -337,14 +375,43 @@ function calculateTotal() {
     totalAmount += total;
   });
 
+  // Seleccionar todos los elementos cuyo atributo 'id' comienza con 'pricec_'
+  $("[id^='pricec_']").each(function() {
+    // Obtener el 'id' del elemento actual y eliminar 'price_' para obtener el número de identificación único
+    var id = $(this).attr('id');
+    id = id.replace("pricec_", '');
+
+    // Obtener el precio y la cantidad de los elementos correspondientes
+    var pricec = $('#pricec_' + id).val();
+    var quantity = $('#quantity_' + id).val();
+
+    // Si no se proporciona una cantidad, se establece en 1 por defecto
+    if (!quantity) {
+      quantity = 1;
+    }
+
+    // Calcular el total multiplicando el precio por la cantidad
+    var totalc = pricec * quantity;
+
+    // Establecer el valor del campo 'total_{id}' con el total calculado
+    $('#totalc_' + id).val(parseFloat(totalc));
+
+    // Agregar el total calculado al 'totalAmount' para obtener la suma total
+    totalAmount2 += totalc;
+	
+  });
+
+
   // Establecer el valor del campo 'subTotal' con la suma total calculada
   $('#subTotal').val(parseFloat(totalAmount));
+  $('#subtotal_c').val(parseFloat(totalAmount2));
 
   // Obtener la tasa de impuesto
   var taxRate = $("#taxRate").val();
 
   // Obtener nuevamente el valor de 'subTotal'
   var subTotal = $('#subTotal').val();
+  var subTotalc = $('#subtotal_c').val();
 
   // Calcular el monto de impuesto y el total después de impuestos
   if (subTotal) {
@@ -358,6 +425,9 @@ function calculateTotal() {
     subTotal = parseFloat(subTotal) + parseFloat(taxAmount);
     $('#totalAftertax').val(subTotal);
 
+	
+
+
 	// Obtener el valor del campo de transporte
     var transporte = $('#transporte').val();
     
@@ -365,7 +435,27 @@ function calculateTotal() {
       // Sumar el valor del transporte al total
       subTotal = parseFloat(subTotal) + parseFloat(transporte);
       $('#totalAftertax').val(subTotal);
+
+	  // calcular total gastos
+	  subTotalc = parseFloat(subTotalc) + parseFloat(transporte) + parseFloat(taxAmount);
+	  $('#total_gastos').val(subTotalc);
+
+
+		// calcular total ganacias
+	    ganancia = parseFloat(totalAmount) - subTotalc;
+		ganancia = ganancia.toFixed(2);
+		$('#total_ganancia').val(ganancia);
+
+		// calcular porcentaje de ganancia
+
+		var porcentaje_ganancia = (parseFloat(totalAmount) - subTotalc) * 100 / parseFloat(totalAmount);
+		porcentaje_ganancia = porcentaje_ganancia.toFixed(2);
+		$('#porcentaje_ganancia').val(porcentaje_ganancia);
+
+
     }
+
+	
 
     // Obtener los valores de 'amountPaid' y 'totalAftertax'
     var amountPaid = $('#amountPaid').val();

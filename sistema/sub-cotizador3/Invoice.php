@@ -96,7 +96,9 @@ class Invoice
                 'id_producto' => $product['id_producto'],
                 'p_descripcion' => $product['p_descripcion'],
                 'p_precioc' => $product['p_precioc'],
-                'p_preciov' => $product['p_preciov']
+                'p_preciov' => $product['p_preciov'],
+                'p_marca' => $product['p_marca'],
+                'p_unidad' => $product['p_unidad']
             ];
         } else {
             $response = [
@@ -104,6 +106,8 @@ class Invoice
                 'p_descripcion' => '',
                 'p_precioc' => '',
                 'p_preciov' => '',
+                'p_marca' => '',
+                'p_unidad' => ''
             ];
         }
 

@@ -28,7 +28,7 @@ $(document).ready(function() {
     $('.js-example-basic-single').select2({
       placeholder: "Buscar en base de datos (Clientes)",
       allowClear: true , 
-      theme: "classic",
+      
       language: "es",
   
     });
@@ -44,7 +44,7 @@ $(document).ready(function() {
     $('.js-example-basic-single2').select2({
       placeholder: "Buscar en base de datos (Productos)",
       allowClear: true , 
-      theme: "classic",
+      
       language: "es",
   
     });
@@ -60,7 +60,7 @@ $(document).ready(function() {
     $('.js-example-basic-single3').select2({
       placeholder: "Buscar en base de datos (Productos)",
       allowClear: true , 
-      theme: "classic",
+      
       language: "es",
   
     });
