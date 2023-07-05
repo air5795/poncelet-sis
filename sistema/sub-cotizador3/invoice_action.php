@@ -86,23 +86,29 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 					  $invoiceDate = date("d/M/Y, H:i:s", strtotime($invoiceDetails["fecha_cotizacion"]));
 					  $printLink = '<a class="btn btn-outline-danger" href="print_invoice.php?invoice_id=' . $invoiceDetails["id_cotizacion"] . '" title="Imprimir Factura"><span <i class="bi bi-printer-fill"></i></a>';
 					  $editLink = '<a class="btn btn-warning" href="edit_invoice.php?update_id=' . $invoiceDetails["id_cotizacion"] . '"  title="Editar Factura"><i class="bi bi-pencil-square"></i></a>';
-					  $deleteLink = '<a class="btn btn-danger" href="#" id="' . $invoiceDetails["id_cotizacion"] . '" class="deleteInvoice"  title="Eliminar Factura"><i class="bi bi-trash-fill"></i></a>';
+					  $deleteLink = '<a class="btn btn-danger deleteInvoice" href="#" id="' . $invoiceDetails["id_cotizacion"] . '" class="deleteInvoice"  title="Eliminar Cotizacion"><i class="bi bi-trash-fill"></i></a>';
   
 					  $data[] = array(
 						  'id_cotizacion' => $invoiceDetails["id_cotizacion"],
 						  'fecha_cotizacion' => $invoiceDate,
 						  'cliente_nombre' => $invoiceDetails["cliente_nombre"],
-						  'total_despues_impuestos' => $invoiceDetails["total_despues_impuestos"] . ' Bs',
+						  'nota' => $invoiceDetails["nota"],
+						  'total_antes_impuestos' => $invoiceDetails["total_antes_impuestos"] . ' Bs',
+						  'id_usuario' => $invoiceDetails["id_usuario"],
 						  'print_link' => $printLink,
 						  'edit_link' => $editLink,
 						  'delete_link' => $deleteLink
 					  );
 				  }
   
-				  // Ordenar los datos por la columna 'id_cotizacion' en orden descendente
-				  usort($data, function ($a, $b) {
-					  return $b['id_cotizacion'] - $a['id_cotizacion'];
-				  });
+				
+					// Ordenar los datos por la columna 'fecha_cotizacion' en orden ascendente
+					usort($data, function ($a, $b) {
+						$dateA = strtotime($a['fecha_cotizacion']);
+						$dateB = strtotime($b['fecha_cotizacion']);
+						return $dateA - $dateB;
+					});
+
   
 				  $response = array(
 					  'draw' => intval($_POST['draw']),

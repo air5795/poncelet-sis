@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+$usuario = $_SESSION['nombre'];
 include "../../conexion.php";
 
 include('inc/header.php');
@@ -197,13 +198,13 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 			<hr>
 			<div class="row">
 				<div class="col-md-6">
-					<h3>Observaciones: </h3>
+					<h3>Nota: </h3>
 					<div class="form-group">
-						<input class="form-control form-control-sm" type="text" name="notes" id="notes" placeholder="Observaciones">
+						<input class="form-control form-control-sm" type="text" name="notes" id="notes" placeholder="Nota">
 					</div>
 					<br>
 					<div class="form-group">
-						<input type="hidden" value="" class="form-control" name="userId">
+						<input type="hidden" value="<?php echo $usuario ?>" class="form-control" name="userId">
 						<button data-loading-text="Guardando factura..." type="submit" name="invoice_btn" class="btn btn-success submit_btn invoice-save-btm">
 							<i class="fas fa-save"></i> Guardar Cotizacion
 						</button>

@@ -39,10 +39,13 @@ class Invoice
     {
         $searchQuery = '';
         if ($searchValue != '') {
-            $searchQuery = " WHERE cliente_nombre LIKE '%" . $searchValue . "%'";
+            $searchQuery = " WHERE cliente_nombre LIKE '%" . $searchValue . "%' OR nota LIKE '%" . $searchValue . "%'";
         }
 
-        $sqlQuery = "SELECT * FROM $this->invoiceOrderTable" . $searchQuery . " LIMIT $limit OFFSET $offset";
+        //$sqlQuery = "SELECT * FROM $this->invoiceOrderTable" . $searchQuery . " LIMIT $limit OFFSET $offset";
+        //return $this->getData($sqlQuery);
+
+        $sqlQuery = "SELECT * FROM $this->invoiceOrderTable" . $searchQuery . " ORDER BY fecha_cotizacion desc LIMIT $limit OFFSET $offset";
         return $this->getData($sqlQuery);
     }
 	
@@ -191,11 +194,18 @@ class Invoice
                 total_antes_impuestos = '" . $POST['subTotal'] . "',
                 total_impuestos = '" . $POST['taxAmount'] . "',
                 porcentaje = '" . $POST['taxRate'] . "',
+                transporte = '" . $POST['transporte'] . "',
                 total_despues_impuestos = '" . $POST['totalAftertax'] . "',
+                total_antes_impuestos_c = '" . $POST['subtotal_c'] . "',
                 order_amount_paid = '" . $POST['amountPaid'] . "',
                 order_total_amount_due = '" . $POST['amountDue'] . "',
-                nota = '" . $POST['notes'] . "' 
-                WHERE id_usuario = '" . $POST['userId'] . "' AND id_cotizacion = '" . $POST['invoiceId'] . "'";
+                total_gastos = '" . $POST['total_gastos'] . "',
+                total_ganancia = '" . $POST['total_ganancia'] . "',
+                porcentaje_ganancia = '" . $POST['porcentaje_ganancia'] . "',
+                nota = '" . $POST['notes'] . "',
+                tiempo_garantia = '" . $POST['tiempo_garantia'] . "',
+                validez_cotizacion = '" . $POST['validez_cotizacion'] . "',
+                tiempo_entrega = '" . $POST['tiempo_entrega'] . "' WHERE id_cotizacion = '" . $POST['invoiceId'] . "'";
             mysqli_query($this->dbConnect, $sqlInsert);
         }
         $this->deleteInvoiceItems($POST['invoiceId']);
@@ -206,13 +216,21 @@ class Invoice
                 nombre_item, 
                 cantidad_item, 
                 precio_item, 
-                subtotal_item) 
+                subtotal_item,
+                marca_item,
+                unidad_item,
+                precio_item_c,
+                subtotal_item_c) 
                 VALUES ('" . $POST['invoiceId'] . "',
                 '" . $POST['productCode'][$i] . "',
                 '" . $POST['productName'][$i] . "',
                 '" . $POST['quantity'][$i] . "',
                 '" . $POST['price'][$i] . "',
-                '" . $POST['total'][$i] . "')";
+                '" . $POST['total'][$i] . "',
+                '" . $POST['marca'][$i] . "',
+                '" . $POST['unidad'][$i] . "',
+                '" . $POST['pricec'][$i] . "',
+                '" . $POST['totalc'][$i] . "')";
             mysqli_query($this->dbConnect, $sqlInsertItem);
         }
     }
@@ -238,12 +256,15 @@ class Invoice
 
     public function deleteInvoice($invoiceId)
     {
-        $sqlQuery = "
-            DELETE FROM " . $this->invoiceOrderTable . "
-            WHERE id_cotizacion = '" . $invoiceId . "'";
-        mysqli_query($this->dbConnect, $sqlQuery);
-        $this->deleteInvoiceItems($invoiceId);
-        return true;
+        $sqlQuery = "DELETE FROM " . $this->invoiceOrderTable . " WHERE id_cotizacion = '" . $invoiceId . "'";
+        $result = mysqli_query($this->dbConnect, $sqlQuery);
+        if ($result) {
+            $this->deleteInvoiceItems($invoiceId);
+            return true;
+        } else {
+            return false;
+        }
+        
     }
 
     private function deleteInvoiceItems($invoiceId)

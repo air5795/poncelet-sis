@@ -87,7 +87,9 @@
                             <th># Cotizacion</th>
                             <th>Fecha Creación</th>
                             <th>Nombre del Cliente</th>
+                            <th>Notas</th>
                             <th>Total (Monto)</th>
+                            <th>Quien lo creo ?</th>
                             <th>Imprimir</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
@@ -131,7 +133,9 @@ $(document).ready(function() {
       { data: 'id_cotizacion', title: '# Cotización' },
       { data: 'fecha_cotizacion', title: 'Fecha Creación' },
       { data: 'cliente_nombre', title: 'Nombre del Cliente', searchable: true },
-      { data: 'total_despues_impuestos', title: 'Total (Monto)' },
+      { data: 'nota', title: 'nota' },
+      { data: 'total_antes_impuestos', title: 'Total (Monto)' },
+      { data: 'id_usuario', title: 'Quien lo Creó ?' },
       { data: 'print_link', title: 'Imprimir' },
       { data: 'edit_link', title: 'Editar' },
       { data: 'delete_link', title: 'Eliminar' }
