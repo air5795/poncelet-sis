@@ -152,7 +152,7 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 							<!-- <td><input class="form-control form-control-sm" type="text" name="productName[]" id="productName_1" class="form-control" autocomplete="off"></td> -->
 							
 							<td style="padding: 0;">
-								<select style="width: 800px;"  class="form-control  js-example-basic-single2 " name="productName[]" id="productName_1" onchange="getProductPrice(1)">
+								<select style="width: 800px;"  class="form-control form-control-sm  js-example-basic-single2 " name="productName[]" id="productName_1" onchange="getProductPrice(1)">
 									<option value="">Seleccione un producto</option>
 									<?php
 									$query = mysqli_query($conexion, "SELECT * FROM productos ORDER BY p_descripcion ASC");
@@ -170,14 +170,14 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 							</td>
 
 
-							<td style="padding: 0;"><input class="form-control form-control-sm" type="text" name="marca[]" id="marca_1" class="form-control marca" autocomplete="off"></td>
-							<td style="padding: 0;"><input class="form-control form-control-sm" type="text" name="unidad[]" id="unidad_1" class="form-control unidad" autocomplete="off"></td>
+							<td style="padding: 0;"><input type="text" name="marca[]" id="marca_1" class="form-control form-control-sm marca" autocomplete="off"></td>
+							<td style="padding: 0;"><input type="text" name="unidad[]" id="unidad_1" class="form-control form-control-sm unidad" autocomplete="off"></td>
 
-							<td style="padding: 0;"><input class="form-control form-control-sm" type="number" name="quantity[]" id="quantity_1" class="form-control quantity" autocomplete="off"></td>
-							<td style="padding: 0;"><input class="form-control form-control-sm" type="number" name="price[]" id="price_1" class="form-control price" autocomplete="off"></td>
-							<td style="padding: 0;"><input class="form-control form-control-sm" type="number" name="total[]" id="total_1" class="form-control total" autocomplete="off"></td>
-							<td style="padding: 0;"><input class="form-control form-control-sm" type="number" name="pricec[]" id="pricec_1" class="form-control pricec" autocomplete="off"></td> 
-							<td style="padding: 0;"><input class="form-control form-control-sm" type="number" name="totalc[]" id="totalc_1" class="form-control totalc" autocomplete="off"></td>
+							<td style="padding: 0;"><input type="number" name="quantity[]" id="quantity_1" class="form-control form-control-sm quantity" autocomplete="off"></td>
+							<td style="padding: 0;"><input type="number" name="price[]" id="price_1" class="form-control form-control-sm price" autocomplete="off"></td>
+							<td style="padding: 0;"><input type="number" name="total[]" id="total_1" class="form-control form-control-sm total" autocomplete="off"></td>
+							<td style="padding: 0;"><input type="number" name="pricec[]" id="pricec_1" class="form-control form-control-sm pricec" autocomplete="off"></td> 
+							<td style="padding: 0;"><input type="number" name="totalc[]" id="totalc_1" class="form-control form-control-sm totalc" autocomplete="off"></td>
 
 						</tr>
 						
@@ -262,6 +262,14 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 						<div class="col-sm-6">
 							<div class="input-group mb-3">
 								<span style="width: 50%;" class="input-group-text" id="basic-addon1"> 
+								<i style="writing-mode: tb;" class="bi bi-percent"></i> de Ganancia</span>
+								<input  style="text-align:center; width:50%;background-color: #d3ffd8;" value="" type="number" class="form-control form-control-sm" name="porcentaje_ganancia" id="porcentaje_ganancia" placeholder="0.00">
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1"> 
 								<i style="writing-mode: tb;" class="bi bi-caret-down-square-fill"></i>  Total Gastos</span>
 								<input style="text-align:center; width:50%;background-color: #ffc3c9" value="" type="number" class="form-control form-control-sm" name="total_gastos" id="total_gastos" placeholder="0.00">
 							</div>
@@ -273,13 +281,7 @@ if (!empty($_POST['companyName']) && $_POST['companyName']) {
 						
 						
 
-						<div class="col-sm-6">
-							<div class="input-group mb-3">
-								<span style="width: 50%;" class="input-group-text" id="basic-addon1"> 
-								<i style="writing-mode: tb;" class="bi bi-percent"></i> de Ganancia</span>
-								<input  style="text-align:center; width:50%;background-color: #d3ffd8;" value="" type="number" class="form-control form-control-sm" name="porcentaje_ganancia" id="porcentaje_ganancia" placeholder="0.00">
-							</div>
-						</div>
+						
 
 						
 

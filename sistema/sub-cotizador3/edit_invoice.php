@@ -90,7 +90,7 @@ if (!empty($_GET['update_id']) && $_GET['update_id']) {
 
 			<div class="row">
 				
-				<div class="col-md-12 row" style="background-color:#e7e7e7;padding: 10px;border-radius: 25px;">
+				<div class="col-md-12 row" >
 					<h3><i class="bi bi-person-circle"></i> Clientes</h3>
 					<div class="form-group col-md-4">
 						<select style="width: 100%;font-size:12px ;" name="nombre" id="nombre" class="form-control  js-example-basic-single "  required onchange="fetchClienteData()" required >
@@ -117,28 +117,33 @@ if (!empty($_GET['update_id']) && $_GET['update_id']) {
 					<p></p>
 		
 					<div class="form-group col-md-4">
-						<input class="form-control form-control-sm" type="text" name="tiempo_garantia" id="tiempo_garantia" placeholder="Tiempo de Garantia">
+						<input value="<?php echo $invoiceValues['tiempo_garantia']; ?>" class="form-control form-control-sm" type="text" name="tiempo_garantia" id="tiempo_garantia" placeholder="Tiempo de Garantia">
 					</div>
 					<div class="form-group col-md-4">
-						<input class="form-control form-control-sm" type="text" name="validez_cotizacion" id="validez_cotizacion" placeholder="Validez de Cotizacion">
+						<input value="<?php echo $invoiceValues['validez_cotizacion']; ?>" class="form-control form-control-sm" type="text" name="validez_cotizacion" id="validez_cotizacion" placeholder="Validez de Cotizacion">
 					</div>
 					<div class="form-group col-md-4">
-						<input class="form-control form-control-sm" type="text" name="tiempo_entrega" id="tiempo_entrega" placeholder="Tiempo de Entrega">
+						<input value="<?php echo $invoiceValues['tiempo_entrega']; ?>" class="form-control form-control-sm" type="text" name="tiempo_entrega" id="tiempo_entrega" placeholder="Tiempo de Entrega">
 					</div>
 
 				</div>
 			</div>
 			<hr>
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<table class="table table-bordered table-hover" id="invoiceItem">
+			<h3><i class="bi bi-box-seam"></i></i> Productos</h3>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped table-bordered responsive" style="width:100%; text-align:center; " id="invoiceItem">
 						<tr>
 							<th width="2%"><input id="checkAll" class="formcontrol" type="checkbox"></th>
-							<th width="15%">No Item</th>
-							<th width="38%">Nombre Producto</th>
-							<th width="15%">Cantidad</th>
-							<th width="15%">Precio</th>
-							<th width="15%">Total</th>
+							<th width="5%">COD </th>
+							<th width="30%">Nombre Ítem</th>
+							<th width="8%">Marca</th>
+							<th width="8%">U/M</th>
+							<th width="5%">Cantidad</th>
+							<th width="8%" style="background-color: #f2ffde;">Precio Venta</th>
+							<th width="8%" style="background-color: #f2ffde;">SubTotal Venta</th>
+							<th width="8%" style="background-color: #defff7;">Precio Compra</th>
+							<th width="8%" style="background-color: #defff7;">SubTotal Compra</th>
 						</tr>
 						<?php
 						$count = 0;
@@ -146,12 +151,18 @@ if (!empty($_GET['update_id']) && $_GET['update_id']) {
 							$count++;
 						?>
 							<tr>
-								<td><input class="itemRow" type="checkbox"></td>
-								<td><input type="text" value="<?php echo $invoiceItem["codigo_item"]; ?>" name="productCode[]" id="productCode_<?php echo $count; ?>" class="form-control form-control-sm" autocomplete="off"></td>
-								<td><input type="text" value="<?php echo $invoiceItem["nombre_item"]; ?>" name="productName[]" id="productName_<?php echo $count; ?>" class="form-control form-control-sm price" autocomplete="off"></td>
-								<td><input type="number" value="<?php echo $invoiceItem["cantidad_item"]; ?>" name="quantity[]" id="quantity_<?php echo $count; ?>" class="form-control form-control-sm quantity" autocomplete="off"></td>
-								<td><input type="number" value="<?php echo $invoiceItem["precio_item"]; ?>" name="price[]" id="price_<?php echo $count; ?>" class="form-control form-control-sm price" autocomplete="off"></td>
-								<td><input type="number" value="<?php echo $invoiceItem["subtotal_item"]; ?>" name="total[]" id="total_<?php echo $count; ?>" class="form-control form-control-sm total" autocomplete="off"></td>
+								<td style="padding: 0;"><input class="itemRow" type="checkbox"></td>
+								<td style="padding: 0;"><input type="text" value="<?php echo $invoiceItem["codigo_item"]; ?>" name="productCode[]" id="productCode_<?php echo $count; ?>" class="form-control form-control-sm" autocomplete="off"></td>
+								<td style="padding: 0;"><input type="text" value="<?php echo $invoiceItem["nombre_item"]; ?>" name="productName[]" id="productName_<?php echo $count; ?>" class="form-control form-control-sm price" autocomplete="off"></td>
+
+								<td style="padding: 0;"><input type="text" value="<?php echo $invoiceItem["marca_item"]; ?>" name="marca[]" id="marca_<?php echo $count; ?>" class="form-control form-control-sm marca" autocomplete="off"></td>
+								<td style="padding: 0;"><input type="text" value="<?php echo $invoiceItem["unidad_item"]; ?>" name="unidad[]" id="unidad_<?php echo $count; ?>" class="form-control form-control-sm unidad" autocomplete="off"></td>
+
+								<td style="padding: 0;"><input type="number" value="<?php echo $invoiceItem["cantidad_item"]; ?>" name="quantity[]" id="quantity_<?php echo $count; ?>" class="form-control form-control-sm quantity" autocomplete="off"></td>
+								<td style="padding: 0;"><input type="number" value="<?php echo $invoiceItem["precio_item"]; ?>" name="price[]" id="price_<?php echo $count; ?>" class="form-control form-control-sm price" autocomplete="off"></td>
+								<td style="padding: 0;"><input type="number" value="<?php echo $invoiceItem["subtotal_item"]; ?>" name="total[]" id="total_<?php echo $count; ?>" class="form-control form-control-sm total" autocomplete="off"></td>
+								<td style="padding: 0;"><input type="number" value="<?php echo $invoiceItem["precio_item_c"]; ?>" name="pricec[]" id="pricec_<?php echo $count; ?>" class="form-control form-control-sm pricec" autocomplete="off"></td>
+								<td style="padding: 0;"><input type="number" value="<?php echo $invoiceItem["subtotal_item_c"]; ?>" name="totalc[]" id="totalc_<?php echo $count; ?>" class="form-control form-control-sm totalc" autocomplete="off"></td>
 								<input type="hidden" value="<?php echo $invoiceItem['id_items_cotizacion']; ?>" class="form-control" name="itemId[]">
 							</tr>
 						<?php } ?>
@@ -160,12 +171,13 @@ if (!empty($_GET['update_id']) && $_GET['update_id']) {
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-					<button class="btn btn-danger delete" id="removeRows" type="button">- Eliminar</button>
-					<button class="btn btn-success" id="addRows" type="button">+ Agregar más</button>
+				<button class="btn btn-danger btn-sm delete" id="removeRows" type="button"><i class="bi bi-dash-lg"></i></button>
+					<button class="btn btn-success btn-sm" id="addRows" type="button" onclick="addRow()"><i class="bi bi-plus-lg"></i></button>
+					<button class="btn btn-success btn-sm" id="addtext" type="button" onclick="addtext()"><i class="bi bi-pencil"></i></button>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+				<div class="col-md-6">
 					<h3>Observaciones: </h3>
 					<div class="form-group">
 						<textarea class="form-control txt" rows="5" name="notes" id="notes" placeholder="Observaciones"><?php echo $invoiceValues['nota']; ?></textarea>
@@ -174,55 +186,114 @@ if (!empty($_GET['update_id']) && $_GET['update_id']) {
 					<div class="form-group">
 						
 						<input type="hidden" value="<?php echo $invoiceValues['id_cotizacion']; ?>" class="form-control" name="invoiceId" id="invoiceId">
-						<input data-loading-text="Updating Invoice..." type="submit" name="invoice_btn" value="Guardar " class="btn btn-success submit_btn invoice-save-btm">
+						<input data-loading-text="Updating Invoice..." type="submit" name="invoice_btn" value="Guardar Cotizacion" class="btn btn-success submit_btn invoice-save-btm">
 					</div>
 
 				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					<span class="form-inline">
-						<div class="form-group">
-							<label>Subtotal: &nbsp;</label>
-							<div class="input-group">
-								<div class="input-group-addon currency">$</div>
-								<input value="<?php echo $invoiceValues['total_antes_impuestos']; ?>" type="number" class="form-control" name="subTotal" id="subTotal" placeholder="Subtotal">
+
+				
+				<div class="col-md-6 row">
+
+
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span  style="width: 50%;" class="input-group-text" id="basic-addon1">Total Venta (Bs)</span>
+								<input style="background-color: #f2ffde;text-align:center;" value="<?php echo $invoiceValues['total_antes_impuestos']; ?>" type="number" class="form-control form-control-sm" name="subTotal" id="subTotal" placeholder="0.00">
 							</div>
 						</div>
-						<div class="form-group">
-							<label>Porcentaje de Impuestos: &nbsp;</label>
-							<div class="input-group">
-								<input value="<?php echo $invoiceValues['porcentaje']; ?>" type="number" class="form-control" name="taxRate" id="taxRate" placeholder="Porcentaje de Impuestos">
-								<div class="input-group-addon">%</div>
+
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1">Total Compra (Bs)</span>
+								<input style="background-color: #defff7; text-align:center;" value="<?php echo $invoiceValues['total_antes_impuestos_c']; ?>" type="number" class="form-control form-control-sm" name="subtotal_c" id="subtotal_c" placeholder="0.00">
 							</div>
 						</div>
-						<div class="form-group">
-							<label>Monto de Impuestos: &nbsp;</label>
-							<div class="input-group">
-								<div class="input-group-addon currency">$</div>
-								<input value="<?php echo $invoiceValues['total_impuestos']; ?>" type="number" class="form-control" name="taxAmount" id="taxAmount" placeholder="Monto de Impuestos">
+
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1">% Impuestos</span>
+								<input style="text-align:center;" value="<?php echo $invoiceValues['porcentaje']; ?>" type="number" class="form-control form-control-sm" name="taxRate" id="taxRate" placeholder="0.00">
 							</div>
 						</div>
-						<div class="form-group">
-							<label>Total: &nbsp;</label>
-							<div class="input-group">
-								<div class="input-group-addon currency">$</div>
-								<input value="<?php echo $invoiceValues['total_despues_impuestos']; ?>" type="number" class="form-control" name="totalAftertax" id="totalAftertax" placeholder="Total">
+
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1">Monto Impuestos</span>
+								<input style="text-align:center; width:50%" value="<?php echo $invoiceValues['total_impuestos']; ?>" type="number" class="form-control form-control-sm" name="taxAmount" id="taxAmount" placeholder="0.00">
 							</div>
 						</div>
-						<div class="form-group">
-							<label>Monto Pagado: &nbsp;</label>
-							<div class="input-group">
-								<div class="input-group-addon currency">$</div>
-								<input value="<?php echo $invoiceValues['order_amount_paid']; ?>" type="number" class="form-control" name="amountPaid" id="amountPaid" placeholder="Monto Pagado">
+
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1"> 
+								<i style="writing-mode: tb;" class="bi bi-truck"></i>  Transporte o Envio </span>
+								<input style="text-align:center; width:50%" value="<?php echo $invoiceValues['transporte']; ?>" type="number" class="form-control form-control-sm" name="transporte" id="transporte" placeholder="0.00">
 							</div>
 						</div>
-						<div class="form-group">
-							<label>Cambio: &nbsp;</label>
-							<div class="input-group">
-								<div class="input-group-addon currency">$</div>
-								<input value="<?php echo $invoiceValues['order_total_amount_due']; ?>" type="number" class="form-control" name="amountDue" id="amountDue" placeholder="Cambio">
+
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1"> 
+								<i style="writing-mode: tb;" class="bi bi-caret-up-square-fill"></i>  Total Ganancia</span>
+								<input style="text-align:center; width:50%;background-color: #d3ffd8" value="<?php echo $invoiceValues['total_ganancia']; ?>" type="number" class="form-control form-control-sm" name="total_ganancia" id="total_ganancia" placeholder="0.00">
 							</div>
 						</div>
-					</span>
+
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1"> 
+								<i style="writing-mode: tb;" class="bi bi-percent"></i> de Ganancia</span>
+								<input  style="text-align:center; width:50%;background-color: #d3ffd8;" value="<?php echo $invoiceValues['porcentaje_ganancia']; ?>" type="number" class="form-control form-control-sm" name="porcentaje_ganancia" id="porcentaje_ganancia" placeholder="0.00">
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="input-group mb-3">
+								<span style="width: 50%;" class="input-group-text" id="basic-addon1"> 
+								<i style="writing-mode: tb;" class="bi bi-caret-down-square-fill"></i>  Total Gastos</span>
+								<input style="text-align:center; width:50%;background-color: #ffc3c9" value="<?php echo $invoiceValues['total_gastos']; ?>" type="number" class="form-control form-control-sm" name="total_gastos" id="total_gastos" placeholder="0.00">
+							</div>
+						</div>
+
+						
+
+						
+						
+						
+
+						
+
+						
+
+					
+
+						
+
+				
+
+						
+
+
+
+						
+					
+						<div class="col-md-4" hidden>
+							<label for="">TOTAL nulo</label>
+							<input value="<?php echo $invoiceValues['total_despues_impuestos']; ?>" type="hidden" class="form-control form-control-sm" name="totalAftertax" id="totalAftertax" placeholder="Total">
+						</div>
+
+						<div class="col-md-4" hidden>
+							<label for="">Monto Pagado:</label>
+							<input value="<?php echo $invoiceValues['order_amount_paid']; ?>" type="hidden" class="form-control form-control-sm" name="amountPaid" id="amountPaid" placeholder="Monto Pagado">
+						</div>
+
+						<div class="col-md-4" hidden>
+							<label for="">cambio:</label>
+							<input value="<?php echo $invoiceValues['order_total_amount_due']; ?>" type="hidden" class="form-control form-control-sm" name="amountDue" id="amountDue" placeholder="Cambio">
+						</div>
+
+					
+					
 				</div>
 			</div>
 			<div class="clearfix"></div>

@@ -117,14 +117,66 @@ class Invoice
     public function saveInvoice($POST)
     {
         $sqlInsert = "
-            INSERT INTO " . $this->invoiceOrderTable . "(id_usuario, cliente_nombre, cliente_direccion, total_antes_impuestos, total_impuestos, porcentaje, total_despues_impuestos, order_amount_paid, order_total_amount_due, nota) 
-            VALUES ('" . $POST['userId'] . "', '" . $POST['companyName'] . "', '" . $POST['address'] . "', '" . $POST['subTotal'] . "', '" . $POST['taxAmount'] . "', '" . $POST['taxRate'] . "', '" . $POST['totalAftertax'] . "', '" . $POST['amountPaid'] . "', '" . $POST['amountDue'] . "', '" . $POST['notes'] . "')";
+            INSERT INTO " . $this->invoiceOrderTable . "(id_usuario, 
+            cliente_nombre, 
+            cliente_direccion, 
+            total_antes_impuestos, 
+            total_impuestos, 
+            porcentaje, 
+            transporte, 
+            total_despues_impuestos,
+            total_antes_impuestos_c, 
+            order_amount_paid, 
+            order_total_amount_due, 
+            total_gastos, 
+            total_ganancia, 
+            porcentaje_ganancia, 
+            nota,
+            tiempo_garantia, 
+            validez_cotizacion, 
+            tiempo_entrega) 
+            VALUES ('" . $POST['userId'] . "',
+             '" . $POST['companyName'] . "',
+             '" . $POST['address'] . "',
+             '" . $POST['subTotal'] . "',
+             '" . $POST['taxAmount'] . "',
+             '" . $POST['taxRate'] . "',
+             '" . $POST['transporte'] . "',
+             '" . $POST['totalAftertax'] . "',
+             '" . $POST['subtotal_c'] . "',
+             '" . $POST['amountPaid'] . "',
+             '" . $POST['amountDue'] . "',
+             '" . $POST['total_gastos'] . "',
+             '" . $POST['total_ganancia'] . "',
+             '" . $POST['porcentaje_ganancia'] . "',
+             '" . $POST['notes'] . "',
+             '" . $POST['tiempo_garantia'] . "',
+             '" . $POST['validez_cotizacion'] . "',
+             '" . $POST['tiempo_entrega'] . "')";
         mysqli_query($this->dbConnect, $sqlInsert);
         $lastInsertId = mysqli_insert_id($this->dbConnect);
         for ($i = 0; $i < count($POST['productCode']); $i++) {
             $sqlInsertItem = "
-            INSERT INTO " . $this->invoiceOrderItemTable . "(id_cotizacion, codigo_item, nombre_item, cantidad_item, precio_item, subtotal_item) 
-            VALUES ('" . $lastInsertId . "', '" . $POST['productCode'][$i] . "', '" . $POST['productName'][$i] . "', '" . $POST['quantity'][$i] . "', '" . $POST['price'][$i] . "', '" . $POST['total'][$i] . "')";
+            INSERT INTO " . $this->invoiceOrderItemTable . "(id_cotizacion,
+            codigo_item,
+            nombre_item,
+            cantidad_item,
+            precio_item,
+            subtotal_item,
+            marca_item,
+            unidad_item,
+            precio_item_c,
+            subtotal_item_c) 
+            VALUES ('" . $lastInsertId . "',
+            '" . $POST['productCode'][$i] . "',
+            '" . $POST['productName'][$i] . "',
+            '" . $POST['quantity'][$i] . "',
+            '" . $POST['price'][$i] . "',
+            '" . $POST['total'][$i] . "',
+            '" . $POST['marca'][$i] . "',
+            '" . $POST['unidad'][$i] . "',
+            '" . $POST['pricec'][$i] . "',
+            '" . $POST['totalc'][$i] . "')";
             mysqli_query($this->dbConnect, $sqlInsertItem);
         }
     }
@@ -134,15 +186,33 @@ class Invoice
         if ($POST['invoiceId']) {
             $sqlInsert = "
                 UPDATE " . $this->invoiceOrderTable . " 
-                SET cliente_nombre = '" . $POST['companyName'] . "', cliente_direccion= '" . $POST['address'] . "', total_antes_impuestos = '" . $POST['subTotal'] . "', total_impuestos = '" . $POST['taxAmount'] . "', porcentaje = '" . $POST['taxRate'] . "', total_despues_impuestos = '" . $POST['totalAftertax'] . "', order_amount_paid = '" . $POST['amountPaid'] . "', order_total_amount_due = '" . $POST['amountDue'] . "', nota = '" . $POST['notes'] . "' 
+                SET cliente_nombre = '" . $POST['companyName'] . "',
+                cliente_direccion= '" . $POST['address'] . "',
+                total_antes_impuestos = '" . $POST['subTotal'] . "',
+                total_impuestos = '" . $POST['taxAmount'] . "',
+                porcentaje = '" . $POST['taxRate'] . "',
+                total_despues_impuestos = '" . $POST['totalAftertax'] . "',
+                order_amount_paid = '" . $POST['amountPaid'] . "',
+                order_total_amount_due = '" . $POST['amountDue'] . "',
+                nota = '" . $POST['notes'] . "' 
                 WHERE id_usuario = '" . $POST['userId'] . "' AND id_cotizacion = '" . $POST['invoiceId'] . "'";
             mysqli_query($this->dbConnect, $sqlInsert);
         }
         $this->deleteInvoiceItems($POST['invoiceId']);
         for ($i = 0; $i < count($POST['productCode']); $i++) {
             $sqlInsertItem = "
-                INSERT INTO " . $this->invoiceOrderItemTable . "(id_cotizacion, codigo_item, nombre_item, cantidad_item, precio_item, subtotal_item) 
-                VALUES ('" . $POST['invoiceId'] . "', '" . $POST['productCode'][$i] . "', '" . $POST['productName'][$i] . "', '" . $POST['quantity'][$i] . "', '" . $POST['price'][$i] . "', '" . $POST['total'][$i] . "')";
+                INSERT INTO " . $this->invoiceOrderItemTable . "(id_cotizacion, 
+                codigo_item, 
+                nombre_item, 
+                cantidad_item, 
+                precio_item, 
+                subtotal_item) 
+                VALUES ('" . $POST['invoiceId'] . "',
+                '" . $POST['productCode'][$i] . "',
+                '" . $POST['productName'][$i] . "',
+                '" . $POST['quantity'][$i] . "',
+                '" . $POST['price'][$i] . "',
+                '" . $POST['total'][$i] . "')";
             mysqli_query($this->dbConnect, $sqlInsertItem);
         }
     }
